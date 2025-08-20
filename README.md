@@ -1,1 +1,1 @@
-### Employee Activity Tracker for Customer Support ###
+## Employee Activity Tracker for Customer Support ##
