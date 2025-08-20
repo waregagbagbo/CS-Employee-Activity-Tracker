@@ -34,7 +34,7 @@ class Department(models.Model):
         return self.title
 
 
-class Employee(models.Model):
+class EmployeeProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     employee_id = models.IntegerField(unique=True)
     department = models.ForeignKey('Department', on_delete=models.CASCADE)
