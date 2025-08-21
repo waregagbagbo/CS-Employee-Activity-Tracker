@@ -71,7 +71,6 @@ class ActivityReport(models.Model):
     class Meta:
         model = 'ActivityReport'
         verbose_name = 'Activity Report'
-        verbose_name_plural = 'Activity Reports'
 
 
 # webhook model
@@ -82,6 +81,18 @@ class WebHook(models.Model):
     event_types = models.JSONField(default=event)
     secret_key = models.TextField()
     is_active = models.BooleanField(default=True)
+
+
+class WebHookLog(models.Model):
+    web_hook_config = models.ForeignKey(WebHook, on_delete=models.CASCADE)
+    event_types = models.JSONField(default=event)
+    response_status = models.CharField(max_length=10, choices=STATUS, default='Scheduled')
+    timestamp = models.DateTimeField(auto_now_add=True)
+    response_body = models.JSONField()
+
+
+
+
 
 
 
