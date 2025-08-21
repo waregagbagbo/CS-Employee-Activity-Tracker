@@ -1,4 +1,6 @@
 from django.db import models
+from django.forms import JSONField
+
 from accounts.models import CustomUser,EmployeeProfile
 
 # Create your models here.
@@ -25,6 +27,16 @@ REPORT_TYPES = [
     ('Break','Break'),
     ('Other','Other'),
 ]
+
+"""define callable for JSONField Dict"""
+def event():
+    return{
+        'shift_started':'shift_started',
+        'shift_completed':'shift_completed',
+        'shift_type':'shift_type',
+        'report_type':'report_type',
+        'report_submitted':'report_submitted',
+    }
 
 #create shift class
 class Shift(models.Model):
@@ -67,9 +79,9 @@ class WebHook(models.Model):
     name = models.CharField(max_length=100)
     web_url = models.URLField(max_length=200, unique=True)
     created_by = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    event_types = models.JSONField(default=event)
     secret_key = models.TextField()
     is_active = models.BooleanField(default=True)
-    event_types = models.JSONField("shift_started","report_submitted", "shift_completed",default=dict, blank=False)
 
 
 
