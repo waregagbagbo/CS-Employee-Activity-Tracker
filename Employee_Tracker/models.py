@@ -45,15 +45,15 @@ class Shift(models.Model):
     start_time = models.TimeField(auto_now_add=True, auto_now=False)
     end_time = models.TimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now=True)
-    shift_type = models.CharField(max_length=10, choices=SHIFT_TYPES, default='R_Shift')
-    shift_status = models.CharField(max_length=10, choices=STATUS, default='Scheduled')
+    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='R_Shift')
+    shift_status = models.CharField(max_length=50, choices=STATUS, default='Scheduled')
 
 
 #create activity model class
 class ActivityReport(models.Model):
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
-    employee = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
-    report_type = models.CharField(max_length=10, choices=REPORT_TYPES, default='other')
+    employee_emp = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
     title = models.CharField(max_length=100)
     description = models.TextField()
     tickets_resolved = models.IntegerField(default=0)
@@ -63,15 +63,9 @@ class ActivityReport(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
     approved_at = models.DateTimeField(auto_now_add=True)
-    approved_by = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
-
-    class Meta:
-        model = 'ActivityReport'
-        verbose_name = 'Activity Report'
-
 
 # webhook model
 class WebHook(models.Model):
