@@ -62,4 +62,14 @@ class ActivityReport(models.Model):
         verbose_name_plural = 'Activity Reports'
 
 
+# webhook model
+class WebHook(models.Model):
+    name = models.CharField(max_length=100)
+    web_url = models.URLField(max_length=200, unique=True)
+    created_by = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    secret_key = models.TextField()
+    is_active = models.BooleanField(default=True)
+    event_types = models.JSONField("shift_started","report_submitted", "shift_completed",default=dict, blank=False)
+
+
 
