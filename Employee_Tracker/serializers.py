@@ -26,16 +26,15 @@ class ActivityReportSerializer(serializers.ModelSerializer):
         model = ActivityReport
         fields = '__all__'
 
-class WebHookSerializer(serializers.HyperlinkedModelSerializer):
+class WebHookSerializer(serializers.ModelSerializer):
     class Meta:
         model = WebHook
         fields = '__all__'
-        depth = 1
 
 class WebHookLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = WebHookLog
         fields = '__all__'
- 
+
 
 
