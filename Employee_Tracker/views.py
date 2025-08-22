@@ -5,18 +5,13 @@ from rest_framework import viewsets, permissions, authentication
 from rest_framework import generics
 
 
-# Create your views here.
+# Views implemented using generics
 class EmployeeProfileAPIView(generics.ListAPIView):
     queryset = EmployeeProfile.objects.all()
     serializer_class = EmployeeProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class EmployeeProfileAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
-    model = EmployeeProfile
-    serializer_class = EmployeeProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-class EmployeeProfileDetailAPIView(generics.RetrieveAPIView):
     model = EmployeeProfile
     serializer_class = EmployeeProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -35,13 +30,16 @@ class ShiftAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication]
 
-""""Department view """
+
+
+# Implementation of viewsets
+"""" Department view """
+
 class DepartmentAPIViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication]
-
 
 """ WebHook view """
 class WebHookViewSet(viewsets.ModelViewSet):
