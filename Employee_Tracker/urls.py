@@ -1,15 +1,13 @@
-from django.urls import path, include
-from rest_framework import views
 from rest_framework.routers import DefaultRouter
+from django.urls import path,include
 from Employee_Tracker import views
 
 router = DefaultRouter()
-router.register(r'department', views.DepartmentAPIViewSet, basename='department'),
-router.register(r'webhook',views.WebHookViewSet, basename='webhook'),
-# set the views
+router.register(r'department', views.DepartmentAPIViewSet, basename='department')
+router.register(r'webhook',views.WebHookViewSet, basename='webhook')
+
 urlpatterns =[
-    path('',views.EmployeeProfileAPIView.as_view(),name='profile'),
-    path('department',include('router.urls')), # for the viewset
-    path('hooks', include('router.urls'))
+    path('api',include(router.urls)),
+    path('', views.EmployeeProfileAPIView.as_view(), name='profile'),
 
 ]
