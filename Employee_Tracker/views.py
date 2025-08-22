@@ -1,36 +1,49 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
-
 from accounts.models import EmployeeProfile, Department
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication
-from rest_framework.generics import ListAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework import generics
 
 
 # Create your views here.
-class EmployeeProfileViewSet(viewsets.ModelViewSet):
+class EmployeeProfileAPIView(generics.ListAPIView):
     queryset = EmployeeProfile.objects.all()
     serializer_class = EmployeeProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+class EmployeeProfileAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
+    model = EmployeeProfile
+    serializer_class = EmployeeProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class EmployeeProfileDetailAPIView(generics.RetrieveAPIView):
+    model = EmployeeProfile
+    serializer_class = EmployeeProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-class ShiftViewSet(viewsets.ModelViewSet):
+""" shift view """
+class ShiftAPIView(generics.ListAPIView):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication]
 
-class DepartmentViewSet(viewsets.ModelViewSet):
+class ShiftAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Shift.objects.all()
+    serializer_class = ShiftSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication]
+
+""""Department view """
+class DepartmentAPIViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication]
 
 
+""" WebHook view """
 class WebHookViewSet(viewsets.ModelViewSet):
     queryset = WebHook.objects.all()
     serializer_class = WebHookSerializer
@@ -40,7 +53,9 @@ class WebHookLogViewSet(viewsets.ModelViewSet):
     queryset = WebHookLog.objects.all()
     serializer_class = WebHookLogSerializer
     permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication]
 
+""" Activity report view """
 
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
