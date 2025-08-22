@@ -7,13 +7,16 @@ from django.urls import path,include
 from Employee_Tracker import views
 
 
-router = DefaultRouter()
-router.register(r'department', views.DepartmentAPIViewSet, basename='department')
-router.register(r'webhook',views.WebHookViewSet, basename='webhook')
-router.register(r'weblogs',views.WebHookLogViewSet, basename='webhook_log')
+dept_router = DefaultRouter()
+dept_router.register(r'', views.DepartmentAPIViewSet, basename='department')
+
+hooks_router = DefaultRouter()
+hooks_router.register(r'',views.WebHookViewSet, basename='webhook')
+#hooks_router.register(r'weblogs',views.WebHookLogViewSet, basename='webhook_log')
 
 urlpatterns =[
-    path('api',include(router.urls)),
+    path('department',include(dept_router.urls)),
+    path('webhook/', include(hooks_router.urls)),
     path('api-auth/', include('rest_framework.urls')),
 
     path('', views.EmployeeProfileAPIView.as_view(), name='profile'),
