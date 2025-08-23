@@ -22,15 +22,11 @@ class ShiftAPIView(generics.ListAPIView):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
     permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = [authentication.TokenAuthentication]
 
 class ShiftAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
     permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = [authentication.TokenAuthentication]
-
-
 
 # Implementation of viewsets
 """" Department view """
@@ -39,7 +35,6 @@ class DepartmentAPIViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = [authentication.TokenAuthentication]
 
 """ WebHook view """
 class WebHookViewSet(viewsets.ModelViewSet):
