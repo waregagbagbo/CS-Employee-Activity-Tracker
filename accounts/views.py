@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView
 from django.conf import settings
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from .models import CustomUser
@@ -24,6 +25,7 @@ def user_registration(request):
 class UserRegistration(CreateAPIView):
     serializer_class = UserSerializer
     model = settings.AUTH_USER_MODEL
+    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
