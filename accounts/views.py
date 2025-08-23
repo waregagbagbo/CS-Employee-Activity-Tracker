@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView
 from django.conf import settings
+from rest_framework.response import Response
+
+from .models import CustomUser
 from .serializers import UserSerializer
-from rest_framework import generics
+from rest_framework import generics, status
+
 
 # Create your views here.
 def user_registration(request):
@@ -20,3 +24,10 @@ def user_registration(request):
 class UserRegistration(CreateAPIView):
     serializer_class = UserSerializer
     model = settings.AUTH_USER_MODEL
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
