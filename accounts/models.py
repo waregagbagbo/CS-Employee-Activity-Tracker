@@ -10,6 +10,7 @@ USER_TYPE =[
 
 # Create your models here.
 class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True, default="test@gmail.com")
     hire_date = models.DateField(null=True, blank=True)
     bio = models.TextField()
     avatar = models.ImageField(upload_to='avatars/')
