@@ -17,6 +17,7 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     pagination_class = PageNumberPagination
 
 """ shift view """
+
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer

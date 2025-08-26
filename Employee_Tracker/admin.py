@@ -24,5 +24,5 @@ class WebHookAdmin(admin.ModelAdmin):
 
 admin.site.register(Shift, ShiftAdmin)
 admin.site.register(ActivityReport,ActivityAdmin)
-admin.site.register(WebHookLog, WebHookLogAdmin)
 admin.site.register(WebHook, WebHookAdmin)
+admin.site.register(WebHookLog, WebHookLogAdmin)
