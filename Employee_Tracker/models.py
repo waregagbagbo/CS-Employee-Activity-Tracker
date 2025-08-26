@@ -48,11 +48,19 @@ class Shift(models.Model):
     shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='R_Shift')
     shift_status = models.CharField(max_length=50, choices=STATUS, default='Scheduled')
 
+    def __str__(self):
+        return str(self.shift_agent)
+
+    class Meta:
+        verbose_name = 'Shift'
+        verbose_name_plural = 'Shifts'
+
+
 
 #create activity model class
 class ActivityReport(models.Model):
-    shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
-    employee_emp = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    shift_active_agent = models.ForeignKey(Shift, on_delete=models.CASCADE, related_name='shift_active_agent')
+    supervisor = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
     report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
     activity_title = models.CharField(max_length=100)
     activity_description = models.TextField()
@@ -65,25 +73,44 @@ class ActivityReport(models.Model):
     activity_approved_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return self.activity_title
+
+    class Meta:
+        verbose_name = 'Activity Report'
+        verbose_name_plural = 'Activity Reports'
+
 
 # webhook model
 class WebHook(models.Model):
-    name = models.CharField(max_length=100)
-    web_url = models.URLField(max_length=200, unique=True)
-    created_by = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
-    event_types = models.JSONField(default=event)
+    webhook_name = models.CharField(max_length=100)
+    webhook_url = models.URLField(max_length=200, unique=True)
+    webhook_created_by = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    webhook_event_types = models.JSONField(default=event)
     secret_key = models.TextField()
     is_active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.webhook_name
+
+    class Meta:
+        verbose_name_plural = 'WebHooks'
+        unique_together = (('webhook_name', 'webhook_url'),)
 
 
 class WebHookLog(models.Model):
-    web_hook_config = models.ForeignKey(WebHook, on_delete=models.CASCADE)
+    webhook_config = models.ForeignKey(WebHook, on_delete=models.CASCADE)
     event_types = models.JSONField(default=event)
     response_status = models.CharField(max_length=10, choices=STATUS, default='Scheduled')
     timestamp = models.DateTimeField(auto_now_add=True)
     response_body = models.JSONField()
+
+    def __str__(self):
+        return self.response_status
+
+    class Meta:
+        verbose_name_plural = 'WebHook Logs'
+        unique_together = (('webhook_config', 'event_types'),)
+
 
 
 

@@ -24,6 +24,6 @@ urlpatterns =[
     path('department/',include(dept_router.urls)),
     path('webhook/', include(hooks_router.urls)),
     path('shifts/',include(shifts_router.urls)),
-    path('activity/',include(activity_router.urls)),
+    path('reports/',include(activity_router.urls)),
 
 ]
