@@ -54,15 +54,15 @@ class ActivityReport(models.Model):
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
     employee_emp = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
     report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
-    title = models.CharField(max_length=100)
-    description = models.TextField()
+    activity_title = models.CharField(max_length=100)
+    activity_description = models.TextField()
     tickets_resolved = models.IntegerField(default=0)
     calls_made = models.IntegerField(default=0)
     issues_escalated = models.IntegerField(default=0)
     notes = models.TextField()
-    submitted_at = models.DateTimeField(auto_now_add=True)
+    activity_submitted_at = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
-    approved_at = models.DateTimeField(auto_now_add=True)
+    activity_approved_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
@@ -75,6 +75,7 @@ class WebHook(models.Model):
     event_types = models.JSONField(default=event)
     secret_key = models.TextField()
     is_active = models.BooleanField(default=True)
+
 
 
 class WebHookLog(models.Model):
