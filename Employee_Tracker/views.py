@@ -1,6 +1,8 @@
+from django.contrib.admin.templatetags.admin_list import pagination
 from django_filters import filters
 from django_filters.rest_framework import DjangoFilterBackend
-
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import IsAuthenticated
 from accounts.models import EmployeeProfile, Department
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
@@ -12,7 +14,8 @@ from rest_framework import generics
 class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = EmployeeProfile.objects.all()
     serializer_class = EmployeeProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
 
 """ shift view """
 class ShiftAPIViewSet(viewsets.ModelViewSet):

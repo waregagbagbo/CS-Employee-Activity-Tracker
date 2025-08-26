@@ -21,5 +21,4 @@ urlpatterns =[
     path('employee',include(employee_router.urls)),
     path('',include(shifts_router.urls)),
 
-    path('api-auth/', include('rest_framework.urls')),
 ]
