@@ -18,15 +18,11 @@ class EmployeeProfileAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
 
 
 """ shift view """
-class ShiftAPIView(generics.ListAPIView):
+class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class ShiftAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Shift.objects.all()
-    serializer_class = ShiftSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 # Implementation of viewsets
 """" Department view """
