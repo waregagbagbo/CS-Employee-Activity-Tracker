@@ -14,14 +14,12 @@ from rest_framework import generics
 class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = EmployeeProfile.objects.all()
     serializer_class = EmployeeProfileSerializer
-    permission_classes = [IsAuthenticated]
     pagination_class = PageNumberPagination
 
 """ shift view """
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
-    permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filter_fields = ['employee']
 
@@ -31,13 +29,11 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
 class DepartmentAPIViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 """ WebHook view """
 class WebHookViewSet(viewsets.ModelViewSet):
     queryset = WebHook.objects.all()
     serializer_class = WebHookSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 class WebHookLogViewSet(viewsets.ModelViewSet):
     queryset = WebHookLog.objects.all()
