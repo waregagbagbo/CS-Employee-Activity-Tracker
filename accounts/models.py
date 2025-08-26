@@ -14,20 +14,9 @@ class CustomUser(AbstractUser):
     hire_date = models.DateField(null=True, blank=True)
     bio = models.TextField()
     avatar = models.ImageField(upload_to='avatars/')
+
     def __str__(self):
         return self.username
-
-    class Meta:
-        db_table = 'CustomUser'
-        verbose_name = 'CustomUser'
-        verbose_name_plural = 'CustomUsers'
-        ordering = ['email']
-        constraints = [
-            models.UniqueConstraint(
-                fields=['email'],
-                name='unique_email'
-            )
-        ]
 
 class Department(models.Model):
     title = models.CharField(max_length=100)

@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from accounts.models import EmployeeProfile,CustomUser
+from accounts.models import EmployeeProfile, CustomUser, Department
+
 
 # Register your models here.
 class CustomUserAdmin(UserAdmin):
@@ -17,4 +18,9 @@ class EmployeeProfileAdmin(admin.ModelAdmin):
     search_fields = ('first_name', 'last_name', 'email')
     list_filter = ('user_type','user',)
 
+class DepartmentAdmin(admin.ModelAdmin):
+    model = Department
+    list_display = ('title',)
+
 admin.site.register(EmployeeProfile, EmployeeProfileAdmin)
+admin.site.register(Department, DepartmentAdmin)
