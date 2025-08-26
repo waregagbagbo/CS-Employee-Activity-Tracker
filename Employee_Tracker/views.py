@@ -6,16 +6,10 @@ from rest_framework import generics
 
 
 # Views implemented using generics
-class EmployeeProfileAPIView(generics.ListAPIView):
+class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = EmployeeProfile.objects.all()
     serializer_class = EmployeeProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
-
-class EmployeeProfileAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
-    model = EmployeeProfile
-    serializer_class = EmployeeProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
 
 """ shift view """
 class ShiftAPIViewSet(viewsets.ModelViewSet):
@@ -24,7 +18,6 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-# Implementation of viewsets
 """" Department view """
 
 class DepartmentAPIViewSet(viewsets.ModelViewSet):

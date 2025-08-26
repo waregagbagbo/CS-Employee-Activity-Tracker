@@ -9,18 +9,24 @@ dept_router.register(r'', views.DepartmentAPIViewSet, basename='department')
 # Router for webhook
 hooks_router = DefaultRouter()
 hooks_router.register(r'',views.WebHookViewSet, basename='webhook')
-#hooks_router.register(r'weblogs',views.WebHookLogViewSet, basename='webhook_log')
 
+# Router for Employee and shifts
+employee_router = DefaultRouter()
+shifts_router = DefaultRouter()
+employee_router.register(r'',views.EmployeeProfileViewSet, basename='employee_profile')
+shifts_router.register(r'',views.ShiftAPIViewSet, basename='shift')
 urlpatterns =[
     path('department',include(dept_router.urls)),
     path('webhook/', include(hooks_router.urls)),
+    path('employee',include(employee_router.urls)),
+    path('shift',include(shifts_router.urls)),
+
     path('api-auth/', include('rest_framework.urls')),
 
-    path('', views.EmployeeProfileAPIView.as_view(), name='profile'),
-    path('profile_update',views.EmployeeProfileAPIUpdate.as_view(), name='profile_update'),
-    path('shifts',views.ShiftAPIView.as_view(), name='shift'),
-    path('shift/update',views.ShiftAPIUpdate.as_view(), name='shift_update'),
-
+    #path('', views.EmployeeProfileAPIView.as_view(), name='profile'),
+    #path('profile_update',views.EmployeeProfileAPIUpdate.as_view(), name='profile_update'),
+    #path('shifts',views.ShiftAPIView.as_view(), name='shift'),
+    #path('shift/update',views.ShiftAPIUpdate.as_view(), name='shift_update'),
     # for tokens
 
 
