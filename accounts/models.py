@@ -18,10 +18,24 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+        db_table = 'CustomUser'
+        ordering = ['email']
+
+
 class Department(models.Model):
     title = models.CharField(max_length=100)
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Department'
+        verbose_name_plural = 'Departments'
+        db_table = 'Department'
+        ordering = ['title']
+
 
 
 class EmployeeProfile(models.Model):
@@ -35,4 +49,12 @@ class EmployeeProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.employee_id}"
+
+    class Meta:
+        verbose_name = 'Employee Profile'
+        verbose_name_plural = 'Employee Profiles'
+        db_table = 'EmployeeProfile'
+        ordering = ['employee_id']
+        unique_together = (('employee_id', 'department'),)
+        
 
