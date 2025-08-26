@@ -22,12 +22,4 @@ urlpatterns =[
     path('shift',include(shifts_router.urls)),
 
     path('api-auth/', include('rest_framework.urls')),
-
-    #path('', views.EmployeeProfileAPIView.as_view(), name='profile'),
-    #path('profile_update',views.EmployeeProfileAPIUpdate.as_view(), name='profile_update'),
-    #path('shifts',views.ShiftAPIView.as_view(), name='shift'),
-    #path('shift/update',views.ShiftAPIUpdate.as_view(), name='shift_update'),
-    # for tokens
-
-
 ]
