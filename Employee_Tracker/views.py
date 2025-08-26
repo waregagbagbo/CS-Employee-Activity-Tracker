@@ -1,3 +1,6 @@
+from django_filters import filters
+from django_filters.rest_framework import DjangoFilterBackend
+
 from accounts.models import EmployeeProfile, Department
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
@@ -16,6 +19,8 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filter_fields = ['employee']
 
 
 """" Department view """
@@ -44,6 +49,8 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     serializer_class = ActivityReportSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['employee', 'department']
 
 
 
