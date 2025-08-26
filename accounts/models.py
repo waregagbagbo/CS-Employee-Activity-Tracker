@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from Cs_Tracker.settings import AUTH_USER_MODEL
+
 USER_TYPE =[
     ('Supervisor', 'Supervisor'),
     ('Employee_Agent', 'Employee_Agent'),
@@ -21,7 +23,6 @@ class CustomUser(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
-        db_table = 'CustomUser'
         ordering = ['email']
 
 
@@ -40,7 +41,6 @@ class Department(models.Model):
 
 class EmployeeProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    employee_id = models.IntegerField(unique=True)
     department = models.ForeignKey('Department', on_delete=models.CASCADE)
     shift_start_time = models.DateTimeField(auto_now_add=True)
     shift_end_time = models.DateTimeField(auto_now_add=True)
@@ -48,13 +48,13 @@ class EmployeeProfile(models.Model):
     supervisor = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name='supervised_employees')
 
     def __str__(self):
-        return f"{self.user.username} - {self.employee_id}"
+        return f"{self.user.username}"
 
     class Meta:
         verbose_name = 'Employee Profile'
         verbose_name_plural = 'Employee Profiles'
-        db_table = 'EmployeeProfile'
-        ordering = ['employee_id']
-        unique_together = (('employee_id', 'department'),)
-        
+        db_table = 'employee_profile'
+        #ordering = ['employee_id']
+        unique_together = (('supervisor', 'department'),)
+
 
