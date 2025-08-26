@@ -4,17 +4,19 @@ from django.conf import settings
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from Cs_Tracker.settings import AUTH_USER_MODEL
+from .models import CustomUser
 from .serializers import UserSerializer,UserRegistrationSerializer
 from rest_framework import generics, status
+from django.apps import apps
 
 # our standalone custom user model object instead of direct import
-User = AUTH_USER_MODEL
+User = apps.get_model(AUTH_USER_MODEL)
 
 
 # we can use API VIEW to enable user registration
 class UserRegistration(generics.CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
@@ -27,7 +29,7 @@ class UserRegistration(generics.CreateAPIView):
 
 
 class UserProfileViews(generics.RetrieveUpdateAPIView):
-    queryset = User.objects.all()
+    queryset = User.object.all()
     serializer_class = UserSerializer
 
     def get_object(self):

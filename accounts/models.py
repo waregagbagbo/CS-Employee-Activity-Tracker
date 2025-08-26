@@ -24,8 +24,6 @@ class CustomUser(AbstractUser):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
-
-
 class Department(models.Model):
     title = models.CharField(max_length=100)
     def __str__(self):

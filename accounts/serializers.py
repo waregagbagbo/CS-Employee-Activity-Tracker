@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from Cs_Tracker.settings import AUTH_USER_MODEL
+from django.apps import apps
 
-user = AUTH_USER_MODEL # create an object from the AUTH_USER_MODEK
+user = apps.get_model(AUTH_USER_MODEL) # create an object from the AUTH_USER_MODEK
 # create user serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
             else:
                 return value
 
-# create registration serilaizer
+# create registration serializer
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     password_confirmation = serializers.CharField(write_only=True)
