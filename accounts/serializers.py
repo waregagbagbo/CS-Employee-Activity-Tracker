@@ -1,11 +1,11 @@
-from .models import CustomUser
 from rest_framework import serializers
+from Cs_Tracker.settings import AUTH_USER_MODEL
 
-user = CustomUser() # create an object from the AUTH_USER_MODEK
+user = AUTH_USER_MODEL # create an object from the AUTH_USER_MODEK
 # create user serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
+        model = AUTH_USER_MODEL
         fields = ('username', 'email', 'first_name', 'last_name')
         extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
 
@@ -17,4 +17,28 @@ class UserSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('Email already registered')
             else:
                 return value
+
+# create registration serilaizer
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    password_confirmation = serializers.CharField(write_only=True)
+    class Meta:
+        model = AUTH_USER_MODEL
+        fields = ('username', 'email', 'first_name', 'last_name')
+        extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
+
+    def validate_password(self, value):
+            if value['password'] != value['password_confirmation']:
+                raise serializers.ValidationError('Passwords do not match')
+            return value
+
+    def create(self, validated_data):
+        validated_data.pop('password_confirmation')
+        password = validated_data.pop('password')
+        user = AUTH_USER_MODEL.create(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+
+
+
 
