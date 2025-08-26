@@ -19,7 +19,7 @@ urlpatterns =[
     path('department',include(dept_router.urls)),
     path('webhook/', include(hooks_router.urls)),
     path('employee',include(employee_router.urls)),
-    path('shift',include(shifts_router.urls)),
+    path('',include(shifts_router.urls)),
 
     path('api-auth/', include('rest_framework.urls')),
 ]
