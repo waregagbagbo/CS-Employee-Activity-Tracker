@@ -6,6 +6,6 @@ from .import views
 url_patterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/user/', views.UserRegistration.as_view(), name='user'),
+    path('', views.UserRegistration.as_view(), name='user'),
 
 ]
