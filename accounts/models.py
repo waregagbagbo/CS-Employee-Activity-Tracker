@@ -23,7 +23,7 @@ class CustomUser(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
-        ordering = ['email']
+
 
 
 class Department(models.Model):
@@ -48,13 +48,19 @@ class EmployeeProfile(models.Model):
     supervisor = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name='supervised_employees')
 
     def __str__(self):
-        return f"{self.user.username}"
+        return self.user.username
 
     class Meta:
         verbose_name = 'Employee Profile'
         verbose_name_plural = 'Employee Profiles'
         db_table = 'employee_profile'
-        #ordering = ['employee_id']
+        ordering = ['user_id']
         unique_together = (('supervisor', 'department'),)
+        permissions = (
+            'can_add_users', 'can_change_users', 'can_delete_users',
+            'can_update_shifts', 'can_view_shifts','can_delete_shifts',
+            'can_update_reports', 'can_view_reports','can_delete_reports',
+            'can_update_webhook', 'can_delete_webhook',
+        )
 
 
