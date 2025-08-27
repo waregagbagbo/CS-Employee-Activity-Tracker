@@ -22,12 +22,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 # create registration serializer
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-    password_confirmation = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True,style={'input_type': 'password'}, min_length=5)
+    password_confirmation = serializers.CharField(write_only=True,style={'input_type': 'password'})
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name', 'last_name','password', 'password_confirmation')
-        extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
+        extra_kwargs = {'password': {'write_only': True,'min_length': 5}}
 
     def validate(self, value):
         password = value.get('password')
@@ -51,7 +51,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
 class UserLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True,style={'input_type': 'password'}, min_length=5)
 
     def validate(self, attrs):
         email = attrs.get('email')
