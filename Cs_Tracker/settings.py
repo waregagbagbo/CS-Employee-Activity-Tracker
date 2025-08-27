@@ -130,6 +130,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # model to use
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+# Logout Redirect
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = ''
+
+LOGOUT_REDIRECT_URL = ''
+
+
 # Setting global authentication
 
 REST_FRAMEWORK = {

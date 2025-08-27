@@ -1,3 +1,4 @@
+from django.contrib.auth import password_validation
 from rest_framework import serializers
 from Cs_Tracker.settings import AUTH_USER_MODEL
 from django.apps import apps
@@ -31,6 +32,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def validate_password(self, value):
             if value['password'] != value['password_confirmation']:
                 raise serializers.ValidationError('Passwords do not match')
+            value = password_validation.validate_password(value)
             return value
 
     def create(self, validated_data):
@@ -39,6 +41,23 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user = AUTH_USER_MODEL.create(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
+
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(write_only=True)
+
+    def validate(self, attrs):
+        email = attrs.get('email')
+        password = attrs.get('password')
+        return attrs
+
+    def create(self, validated_data):
+        validated_data.pop('password')
+        user = AUTH_USER_MODEL.create(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
 
 
 

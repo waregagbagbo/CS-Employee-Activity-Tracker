@@ -1,11 +1,13 @@
+from django.db.migrations import serializer
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView
 from django.conf import settings
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from Cs_Tracker.settings import AUTH_USER_MODEL
 from .models import CustomUser
-from .serializers import UserSerializer,UserRegistrationSerializer
+from .serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer
 from rest_framework import generics, status
 from django.apps import apps
 
@@ -33,3 +35,13 @@ class UserProfileViews(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+class UserLogin(APIView):
+    serializer_class = UserLoginSerializer
+    def post(self, request):
+        serializer = UserRegistrationSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        message = 'User logged in'
+        return Response({message,UserSerializer(user).data}, status=status.HTTP_200_OK)
+
