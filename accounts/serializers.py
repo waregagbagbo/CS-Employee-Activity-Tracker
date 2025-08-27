@@ -1,4 +1,4 @@
-from django.contrib.auth import password_validation
+from django.contrib.auth import password_validation,authenticate
 from rest_framework import serializers
 from Cs_Tracker.settings import AUTH_USER_MODEL
 from django.apps import apps
@@ -29,17 +29,24 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', 'first_name', 'last_name','password', 'password_confirmation')
         extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
 
-    def validate_password(self, value):
-            if value['password'] != value['password_confirmation']:
-                raise serializers.ValidationError('Passwords do not match')
-            value = password_validation.validate_password(value)
-            return value
+    def validate(self, value):
+        password = value.get('password')
+        password_confirmation = value.get('password_confirmation')
+
+        if password != password_confirmation:
+            raise serializers.ValidationError('Passwords do not match,try again')
+
+        # try to validate the password
+        password_validation.validate_password(password)
+        return value
 
     def create(self, validated_data):
+        # remove pass confirmation
         validated_data.pop('password_confirmation')
         password = validated_data.pop('password')
-        user = AUTH_USER_MODEL.create(**validated_data)
-        user.set_password(validated_data['password'])
+
+        user = User.objects.create(**validated_data)
+        user.set_password(password) #sets the pass
         user.save()
 
 class UserLoginSerializer(serializers.Serializer):
@@ -49,14 +56,18 @@ class UserLoginSerializer(serializers.Serializer):
     def validate(self, attrs):
         email = attrs.get('email')
         password = attrs.get('password')
-        return attrs
 
-    def create(self, validated_data):
-        validated_data.pop('password')
-        user = AUTH_USER_MODEL.create(**validated_data)
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
+        if email and password:
+            user = authenticate(username=email, password=password)
+            #user = User.objects.get(email=email)
+            if not user.check_password(password):
+                raise serializers.ValidationError('Incorrect password')
+            if not user.is_active:
+                raise serializers.ValidationError('User is not active')
+            # now add validated user
+            attrs['user'] = user
+            return attrs
+
 
 
 
