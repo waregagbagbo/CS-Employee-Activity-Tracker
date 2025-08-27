@@ -1,3 +1,5 @@
+from urllib import request
+
 from django.db.migrations import serializer
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView
@@ -38,10 +40,13 @@ class UserProfileViews(generics.RetrieveUpdateAPIView):
 
 class UserLogin(APIView):
     serializer_class = UserLoginSerializer
-    def post(self, request):
-        serializer = UserRegistrationSerializer(data=request.data)
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        message = 'User logged in'
-        return Response({message,UserSerializer(user).data}, status=status.HTTP_200_OK)
+        user = serializer.validated_data['user']
+        context = {'message':'User logged in successfully'}
+        return Response(context, status=status.HTTP_200_OK)
+
 

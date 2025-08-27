@@ -60,8 +60,8 @@ class UserLoginSerializer(serializers.Serializer):
         if email and password:
             user = authenticate(username=email, password=password)
             #user = User.objects.get(email=email)
-            if not user.check_password(password):
-                raise serializers.ValidationError('Incorrect password')
+            if not user:
+                raise serializers.ValidationError('Incorrect password or email')
             if not user.is_active:
                 raise serializers.ValidationError('User is not active')
             # now add validated user
