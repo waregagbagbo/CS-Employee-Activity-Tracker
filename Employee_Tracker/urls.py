@@ -12,13 +12,16 @@ hooks_router.register(r'',views.WebHookViewSet, basename='webhook')
 
 # Router for Employee and shifts
 employee_router = DefaultRouter()
+
 shifts_router = DefaultRouter()
+
 employee_router.register(r'',views.EmployeeProfileViewSet, basename='employee_profile')
 shifts_router.register(r'',views.ShiftAPIViewSet, basename='shift')
 
 # router for activity reports
 activity_router = DefaultRouter()
 activity_router.register(r'', views.ActivityReportViewSet, basename='activity_reports')
+
 urlpatterns =[
     path('', include(employee_router.urls)),
     path('department/',include(dept_router.urls)),

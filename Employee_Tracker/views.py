@@ -21,8 +21,9 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    #filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     filter_fields = ['employee']
+
 
 
 """" Department view """

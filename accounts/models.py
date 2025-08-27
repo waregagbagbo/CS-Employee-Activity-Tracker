@@ -54,11 +54,10 @@ class EmployeeProfile(models.Model):
         db_table = 'employee_profile'
         ordering = ['user_id']
         unique_together = (('supervisor', 'department'),)
-        permissions = (
-            'can_add_users', 'can_change_users', 'can_delete_users',
-            'can_update_shifts', 'can_view_shifts','can_delete_shifts',
-            'can_update_reports', 'can_view_reports','can_delete_reports',
-            'can_update_webhook', 'can_delete_webhook',
-        )
+       # permissions = ('can_add_users', 'can_change_users', 'can_delete_users',
+            #'can_update_shifts', 'can_view_shifts','can_delete_shifts',
+            #'can_update_reports', 'can_view_reports','can_delete_reports',
+           # 'can_update_webhook', 'can_delete_webhook',
+        #)
 
 

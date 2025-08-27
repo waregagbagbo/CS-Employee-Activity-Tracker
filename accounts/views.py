@@ -12,7 +12,6 @@ from django.apps import apps
 # our standalone custom user model object instead of direct import
 User = apps.get_model(AUTH_USER_MODEL)
 
-
 # we can use API VIEW to enable user registration
 class UserRegistration(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -29,7 +28,7 @@ class UserRegistration(generics.CreateAPIView):
 
 
 class UserProfileViews(generics.RetrieveUpdateAPIView):
-    queryset = User.object.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def get_object(self):
