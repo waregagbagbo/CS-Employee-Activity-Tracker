@@ -23,7 +23,7 @@ activity_router = DefaultRouter()
 activity_router.register(r'', views.ActivityReportViewSet, basename='activity_reports')
 
 urlpatterns =[
-    path('', include(employee_router.urls)),
+    path('employee', include(employee_router.urls)),
     path('department/',include(dept_router.urls)),
     path('webhook/', include(hooks_router.urls)),
     path('shifts/',include(shifts_router.urls)),
