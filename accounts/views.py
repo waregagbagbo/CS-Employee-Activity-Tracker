@@ -27,8 +27,8 @@ class UserRegistration(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         # object instance
         user = serializer.save()
-        message = 'User created successfully'
-        return Response({message,UserSerializer(user).data}, status=status.HTTP_201_CREATED)
+        message = {'message':'User created successfully'}
+        return Response(message,status=status.HTTP_201_CREATED)
 
 
 class UserProfileViews(generics.RetrieveUpdateAPIView):

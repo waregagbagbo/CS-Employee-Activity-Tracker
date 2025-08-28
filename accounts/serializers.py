@@ -44,10 +44,10 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         # remove pass confirmation
         validated_data.pop('password_confirmation')
         password = validated_data.pop('password')
-
         user = User.objects.create(**validated_data)
         user.set_password(password) #sets the pass
         user.save()
+        return user
 
 class UserLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
