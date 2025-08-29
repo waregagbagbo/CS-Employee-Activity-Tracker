@@ -1,6 +1,8 @@
 from django.contrib.admin.templatetags.admin_list import pagination
 from django_filters import filters
 from django_filters.rest_framework import DjangoFilterBackend
+from pip._vendor.requests.models import Response
+from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from accounts.models import EmployeeProfile, Department
@@ -16,8 +18,17 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     serializer_class = EmployeeProfileSerializer
     pagination_class = PageNumberPagination
 
-""" shift view """
+    # add detail method
+    def detail(self, request, pk=None):
+        query = EmployeeProfile.objects.all()
+        user = get_object_or_404(query,pk=pk)
+        serializer = EmployeeProfileSerializer(user)
+        return Response(serializer.data)
 
+
+
+
+""" shift view """
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
