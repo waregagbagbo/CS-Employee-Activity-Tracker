@@ -36,7 +36,6 @@ class Department(models.Model):
         ordering = ['title']
 
 
-
 class EmployeeProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     department = models.ForeignKey('Department', on_delete=models.CASCADE)
