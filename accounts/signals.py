@@ -17,5 +17,6 @@ def create_user_profile(sender, instance=None, created=False, **kwargs):
         profile = EmployeeProfile(user=instance)
         Token.objects.create(profile=profile)
         profile.save()
+        print('Profile created!'.format(instance=instance))
 
 
