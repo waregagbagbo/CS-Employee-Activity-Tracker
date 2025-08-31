@@ -27,6 +27,8 @@ class UserRegistration(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         # object instance
         user = serializer.save()
+        user.set_password(serializer.validated_data['password'])
+        user.save()
         message = {'message':'User created successfully'}
         return Response(message,status=status.HTTP_201_CREATED)
 
@@ -41,12 +43,16 @@ class UserProfileViews(generics.RetrieveUpdateAPIView):
 class UserLogin(APIView):
     serializer_class = UserLoginSerializer
     permission_classes = [AllowAny]
+    success_url = 'cs/shifts'
 
     def post(self, request, *args, **kwargs):
         serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
-        context = {'message':'User logged in successfully'}
+        user.set_password(serializer.validated_data['password'])
+        user.save()
+        context = {"message":'User logged in successfully'}
         return Response(context, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

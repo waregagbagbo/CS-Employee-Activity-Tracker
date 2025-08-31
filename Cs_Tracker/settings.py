@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 
+from django.conf.global_settings import LOGIN_REDIRECT_URL
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -129,12 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # model to use
 AUTH_USER_MODEL = 'accounts.CustomUser'
-
-# Logout Redirect
-LOGOUT_REDIRECT_URL = ''
-
-REGISTER_REDIRECT_URL = '/login'
-
+LOGIN_REDIRECT_URL = 'cs/shifts'
 
 # Setting global authentication
 REST_FRAMEWORK = {

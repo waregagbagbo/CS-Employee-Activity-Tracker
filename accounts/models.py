@@ -17,6 +17,13 @@ class CustomUser(AbstractUser):
     bio = models.TextField()
     avatar = models.ImageField(upload_to='avatars/')
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = [
+        'first_name',
+        'last_name',
+        'email',
+    ]
+
     def __str__(self):
         return self.username
 
