@@ -64,3 +64,6 @@ to ensure automatic profile creation alongside auth-token regeneration.
 
 
 ## SAMPLE Results.
+#### DRF Login (uSe case for SessionAuth)
+<img width="673" height="281" alt="image" src="https://github.com/user-attachments/assets/6c274122-b485-4be7-bf4e-9ccfa064ba7f" />
+
