@@ -10,8 +10,8 @@ A system where customer support agents can log end-of-shift reports. Provide man
 
 ### Employee Management (Viewsets)/Generic
 
-I implemented Abstract User setup. Email has been used in place of username as a key requirement. Signals have been enabled <br/>
-to ensure automatic profile creation alongside auth-token regenerated.
+I implemented Abstract User setup. Email has been used in place of username as a key requirement. Signals have been enabled
+to ensure automatic profile creation alongside auth-token regeneration.
 
  - GET /api/employees/ - List employees (paginated)
  - GET /api/employees/{id}/ - Get employee details
