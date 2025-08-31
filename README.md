@@ -60,7 +60,7 @@ to ensure automatic profile creation alongside auth-token regeneration.
  3. Django REST Framework
  5. MySQL 8.0+
  6. Git
- 7. Code editor (Pyacharm)
+ 7. Code editor (Pycharm)
 
 
 ## SAMPLE Results.
