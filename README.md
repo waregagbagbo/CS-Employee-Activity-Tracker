@@ -64,6 +64,18 @@ to ensure automatic profile creation alongside auth-token regeneration.
 
 
 ## SAMPLE Results.
-#### DRF Login (uSe case for SessionAuth)
+
+#### DRF Login (use case for SessionAuth) http://127.0.0.1:8000/
+
 <img width="673" height="281" alt="image" src="https://github.com/user-attachments/assets/6c274122-b485-4be7-bf4e-9ccfa064ba7f" />
+
+### Authentication and permissions required for the view functionality (http://127.0.0.1:8000/cs/shifts/)
+
+<img width="653" height="181" alt="image" src="https://github.com/user-attachments/assets/579fc4c1-8791-44ba-b199-575ee414d39f" />
+
+#### Token Auth in operation
+
+<img width="648" height="302" alt="image" src="https://github.com/user-attachments/assets/104d2465-05d3-4bc0-bf1b-19c98a2d4c26" />
+
+
 
