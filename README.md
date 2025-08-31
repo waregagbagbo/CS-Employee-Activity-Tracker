@@ -49,4 +49,15 @@ A system where customer support agents can log end-of-shift reports. Provide man
  6. Database indexing on frequently queried fields (MYSQL)
  7. Pagination for large datasets * DRF Paginator *
 
+## Development Environment Setup
+
+### Required Tools
+ 1. Python 3.9+
+ 2. Django 4.2+
+ 3. Django REST Framework
+ 5. MySQL 8.0+
+ 6. Git
+ 7. Code editor (Pyacharm)
+
+
 
