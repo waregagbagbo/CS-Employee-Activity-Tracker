@@ -69,7 +69,7 @@ to ensure automatic profile creation alongside auth-token regeneration.
 
 <img width="673" height="281" alt="image" src="https://github.com/user-attachments/assets/6c274122-b485-4be7-bf4e-9ccfa064ba7f" />
 
-### Authentication and permissions required for the view functionality (http://127.0.0.1:8000/cs/shifts/)
+#### Authentication and permissions required for the view functionality (http://127.0.0.1:8000/cs/shifts/)
 
 <img width="653" height="181" alt="image" src="https://github.com/user-attachments/assets/579fc4c1-8791-44ba-b199-575ee414d39f" />
 
