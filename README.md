@@ -31,4 +31,10 @@ A system where customer support agents can log end-of-shift reports. Provide man
  - PUT /api/reports/{id}/ - Update report (if not approved)
  - PATCH /api/reports/{id}/approve/ - Approve report (supervisors/managers only)
 
+### Webhook Management
+
+ - GET /api/webhooks/ - List webhook configurations
+ - POST /api/webhooks/ - Create webhook
+ - PUT /api/webhooks/{id}/ - Update webhook
+ - DELETE /api/webhooks/{id}/ - Delete webhook
 
