@@ -30,7 +30,7 @@ A system where customer support agents can log end-of-shift reports. Provide man
  - GET /api/reports/{id}/ - Get report details
  - PUT /api/reports/{id}/ - Update report (if not approved)
  - PATCH /api/reports/{id}/approve/ - Approve report (supervisors/managers only)
-
+ - GET /api/reports/export/ - <b> Export reports (CSV)(Future)</b>
 ### Webhook Management
 
  - GET /api/webhooks/ - List webhook configurations
