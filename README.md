@@ -38,3 +38,15 @@ A system where customer support agents can log end-of-shift reports. Provide man
  - PUT /api/webhooks/{id}/ - Update webhook
  - DELETE /api/webhooks/{id}/ - Delete webhook
 
+## Technical Considerations
+
+### Security
+ 1. JWT token authentication / SessionAuth /Auth-Token
+ 2. Role-based permissions (supervisors and shift-agents)
+ 3. Input validation and sanitization (Permissions)
+ 4. CORS configuration (During deployment)
+ 5. Performance (caching and the rest from research)
+ 6. Database indexing on frequently queried fields (MYSQL)
+ 7. Pagination for large datasets * DRF Paginator *
+
+
