@@ -30,7 +30,7 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'Users'
 
 class Department(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100,null=False)
     def __str__(self):
         return self.title
 
