@@ -53,9 +53,9 @@ class UserLogin(APIView):
         user.save()
         login(request, user)
         # get the token from the signals
-        token = user.auth_token.key # send the str part token
+        token = {'token':'user.auth_token.key'}, # send the str part token
         context = {"message":'User logged in successfully'}
-        return Response(context,token, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(context)
+        #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
