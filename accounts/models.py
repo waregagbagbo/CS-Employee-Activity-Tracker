@@ -11,6 +11,7 @@ USER_TYPE =[
 # Create your models here.
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, default="test@gmail.com")
+    #department = models.OneToOneField('Department', on_delete=models.SET_NULL, null=True, blank=True)
     hire_date = models.DateField(null=True, blank=True)
     bio = models.TextField()
     avatar = models.ImageField(upload_to='avatars/')
@@ -47,7 +48,7 @@ class EmployeeProfile(models.Model):
     shift_start_time = models.DateTimeField(auto_now_add=True)
     shift_end_time = models.DateTimeField(auto_now_add=True)
     user_type = models.CharField(max_length=20, choices=USER_TYPE, default='Employee_Agent')
-    supervisor = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name='supervised_employees')
+    supervisor = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name='supervised_employees',null=True)
 
     def __str__(self):
         return self.user.username

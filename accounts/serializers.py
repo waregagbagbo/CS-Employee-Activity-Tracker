@@ -24,12 +24,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 # create registration serializer
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    department = serializers.SlugRelatedField(queryset=Department.objects.all(), slug_field='title')
+    #department = serializers.SlugRelatedField(queryset=Department.objects.all(), slug_field='title')
     password = serializers.CharField(write_only=True,style={'input_type': 'password'}, min_length=5)
     password_confirmation = serializers.CharField(write_only=True,style={'input_type': 'password'})
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name','department','password', 'password_confirmation')
+        fields = ('username', 'email', 'first_name', 'last_name','password', 'password_confirmation')
         extra_kwargs = {'password': {'write_only': True,'min_length': 5}}
 
     def validate(self, value):
