@@ -13,8 +13,8 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 # handle auto profile creation
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_user_profile(sender, instance=None, created=False, **kwargs):
-    if created:
-        EmployeeProfile(user=instance)
-        print('Profile created!'.format(instance=instance))
+    if created and not hasattr(instance, 'employee profile'): # ensures handling duplicates
+        EmployeeProfile.objects.create(user=instance)
+        print('Profile created!'.format(user=instance))
 
 
