@@ -1,5 +1,5 @@
 from urllib import request
-
+from django.contrib.redirects.models import Redirect
 from django.db.migrations import serializer
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView
@@ -43,7 +43,7 @@ class UserProfileViews(generics.RetrieveUpdateAPIView):
 class UserLogin(APIView):
     serializer_class = UserLoginSerializer
     permission_classes = [AllowAny]
-    success_url = 'cs/shifts'
+    #success_url = settings.REDIRECT_URL
 
     def post(self, request, *args, **kwargs):
         serializer = UserLoginSerializer(data=request.data)

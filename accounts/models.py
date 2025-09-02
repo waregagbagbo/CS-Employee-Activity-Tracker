@@ -2,8 +2,6 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-from Cs_Tracker.settings import AUTH_USER_MODEL
-
 USER_TYPE =[
     ('Supervisor', 'Supervisor'),
     ('Employee_Agent', 'Employee_Agent'),
@@ -21,7 +19,7 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = [
         'first_name',
         'last_name',
-        'email',
+        'username',
     ]
 
     def __str__(self):

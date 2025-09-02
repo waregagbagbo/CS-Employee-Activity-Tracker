@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
+
 
 # Application definition
 
@@ -40,10 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.redirects',
     'rest_framework',
     'accounts',
     'Employee_Tracker',
     'rest_framework.authtoken',
+
+
 ]
 
 
@@ -131,6 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # model to use
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
 LOGIN_REDIRECT_URL = 'cs/shifts'
 
 # Setting global authentication

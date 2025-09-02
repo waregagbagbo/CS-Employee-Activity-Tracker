@@ -14,8 +14,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_user_profile(sender, instance=None, created=False, **kwargs):
     if created:
-        profile = EmployeeProfile(user=instance)
-        profile.save()
+        EmployeeProfile(user=instance)
         print('Profile created!'.format(instance=instance))
 
 
