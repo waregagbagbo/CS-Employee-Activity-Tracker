@@ -12,6 +12,7 @@ from .models import CustomUser
 from .serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer
 from rest_framework import generics, status
 from django.apps import apps
+from django.contrib.auth import login
 
 # our standalone custom user model object instead of direct import
 User = apps.get_model(AUTH_USER_MODEL)
@@ -49,10 +50,12 @@ class UserLogin(APIView):
         serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
-        user.set_password(serializer.validated_data['password'])
         user.save()
+        login(request, user)
+        # get the token from the signals
+        token = user.auth_token.key # send the str part token
         context = {"message":'User logged in successfully'}
-        return Response(context, status=status.HTTP_200_OK)
+        return Response(context,token, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
