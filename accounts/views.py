@@ -58,10 +58,13 @@ class UserLogin(APIView):
         return Response(context)
         #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+# logout view for token authentication
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
         request.user.auth_token.delete()
+        logout(request) # for session auth
         context ={'message':'user logged out successfully'}
         return Response(context,status=200)
