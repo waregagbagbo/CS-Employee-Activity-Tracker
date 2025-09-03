@@ -27,14 +27,14 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
 
     # add detail method
-    def detail(self, request, pk=None):
+    """def detail(self, request, pk=None):
         query = EmployeeProfile.objects.all()
         user = get_object_or_404(query,pk=pk)
         serializer = EmployeeProfileSerializer(user)
-        return Response(serializer.data)
+        return Response(serializer.data)"""
 
     def get_queryset(self):
-        query = EmployeeProfile.objects.all(employee=self.request.user)
+        query = EmployeeProfile.objects.all().filter(user=self.request.user)
         return query
 
 
