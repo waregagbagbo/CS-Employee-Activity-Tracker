@@ -41,13 +41,18 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
-    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    #filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     filter_fields = ['shift_agent']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        queryset = Shift.objects.filter(shift_agent=self.request.user)
+        # to get the employee profile instance
+        try:
+            employee_profile = EmployeeProfile.objects.get(user=self.request.user)
+            queryset = Shift.objects.filter(shift_agent = employee_profile)
+        except EmployeeProfile.DoesNotExist:
+            queryset = Shift.objects.all() # returns empty queryset if no profile exists
         return queryset
 
 
