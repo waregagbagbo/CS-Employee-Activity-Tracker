@@ -32,7 +32,6 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
         user = get_object_or_404(query,pk=pk)
         serializer = EmployeeProfileSerializer(user)
         return Response(serializer.data)"""
-
     def get_queryset(self):
         query = EmployeeProfile.objects.all().filter(user=self.request.user)
         return query
@@ -42,16 +41,15 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
-    #filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    filter_fields = ['employee']
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    filter_fields = ['shift_agent']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        user = User.objects.get(id=self.request.user.id)
-        if user.is_authenticated:
-            query = Shift.objects.all().filter(shift_agent=self.request.user)
-            return query
+        queryset = Shift.objects.filter(shift_agent=self.request.user)
+        return queryset
+
 
 """" Department view """
 class DepartmentAPIViewSet(viewsets.ModelViewSet):
