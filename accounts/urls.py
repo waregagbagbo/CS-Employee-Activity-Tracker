@@ -9,7 +9,7 @@ urlpatterns = [
     path('api/register/', views.UserRegistration.as_view(), name='user_registration'),
     path('api/profile/', views.UserProfileViews.as_view(), name='user-profile'),
     path('',views.UserLogin.as_view(),name='login'),
-    path('logout/',views.LogoutView.as_view(),name='logout'),
+    path('api/logout/',views.LogoutView.as_view(),name='logout'),
 
     # for auth token
     path('api-token-auth/', obtain_auth_token),
