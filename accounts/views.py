@@ -61,8 +61,7 @@ class UserLogin(APIView):
 
 # logout view for token authentication
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
-
+    #permission_classes = [IsAuthenticated]
     def post(self, request):
         request.user.auth_token.delete()
         logout(request) # for session auth

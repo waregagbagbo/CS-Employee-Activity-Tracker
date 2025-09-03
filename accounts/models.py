@@ -53,6 +53,7 @@ class EmployeeProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+
     class Meta:
         verbose_name = 'Employee Profile'
         verbose_name_plural = 'Employee Profiles'
