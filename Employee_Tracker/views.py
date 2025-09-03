@@ -6,12 +6,17 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
+
+from Cs_Tracker import settings
 from accounts.models import EmployeeProfile, Department
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication
 from rest_framework import generics
+from django.apps import apps
 
+
+User = apps.get_model(settings.AUTH_USER_MODEL)
 
 # Views implemented using generics
 class EmployeeProfileViewSet(viewsets.ModelViewSet):
@@ -28,6 +33,10 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
         serializer = EmployeeProfileSerializer(user)
         return Response(serializer.data)
 
+    def get_queryset(self):
+        query = EmployeeProfile.objects.all(employee=self.request.user)
+        return query
+
 
 """ shift view """
 class ShiftAPIViewSet(viewsets.ModelViewSet):
@@ -37,6 +46,12 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     filter_fields = ['employee']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = User.objects.get(id=self.request.user.id)
+        if user.is_authenticated:
+            query = Shift.objects.all().filter(shift_agent=self.request.user)
+            return query
 
 """" Department view """
 class DepartmentAPIViewSet(viewsets.ModelViewSet):
@@ -66,6 +81,9 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     filterset_fields = ['employee', 'department']
     permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
+
+
+    
 
 
 

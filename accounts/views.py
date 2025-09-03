@@ -4,7 +4,7 @@ from django.db.migrations import serializer
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView
 from django.conf import settings
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from Cs_Tracker.settings import AUTH_USER_MODEL
@@ -12,7 +12,7 @@ from .models import CustomUser
 from .serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer
 from rest_framework import generics, status
 from django.apps import apps
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 # our standalone custom user model object instead of direct import
 User = apps.get_model(AUTH_USER_MODEL)
@@ -58,4 +58,10 @@ class UserLogin(APIView):
         return Response(context)
         #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
 
+    def post(self, request):
+        logout = request.user.auth_token.delete()
+        context ={'message':'user logged out successfully'}
+        return Response(logout, context,status=status.HTTP_200_OK)
