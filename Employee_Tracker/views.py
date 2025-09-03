@@ -1,5 +1,3 @@
-from django.contrib.admin.templatetags.admin_list import pagination
-from django_filters import filters
 from django_filters.rest_framework import DjangoFilterBackend
 from pip._vendor.requests.models import Response
 from rest_framework.authentication import SessionAuthentication
@@ -11,7 +9,7 @@ from Cs_Tracker import settings
 from accounts.models import EmployeeProfile, Department
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
-from rest_framework import viewsets, permissions, authentication
+from rest_framework import viewsets, permissions, authentication,filters
 from rest_framework import generics
 from django.apps import apps
 
@@ -41,15 +39,15 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
-    #filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    filter_fields = ['shift_agent']
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    filter_fields = ['shift_agent','shift_type','shift_status']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         # to get the employee profile instance
         try:
-            employee_profile = EmployeeProfile.objects.get(user=self.request.user)
+            employee_profile = EmployeeProfile.objects.get(user=self.request.user) #get the profile
             queryset = Shift.objects.filter(shift_agent = employee_profile)
         except EmployeeProfile.DoesNotExist:
             queryset = Shift.objects.all() # returns empty queryset if no profile exists
@@ -81,10 +79,11 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_fields = ['employee', 'department']
+    filterset_fields = ['shift_active_agent', 'supervisor','report_type','is_approved']
     permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
 
+# run the queryset to get reports
 
     
 
