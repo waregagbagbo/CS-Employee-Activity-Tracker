@@ -31,8 +31,8 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
         serializer = EmployeeProfileSerializer(user)
         return Response(serializer.data)"""
     def get_queryset(self):
-        query = EmployeeProfile.objects.all().filter(user=self.request.user)
-        return query
+        employee_profile = EmployeeProfile.objects.filter(user=self.request.user)
+        return employee_profile
 
 
 """ shift view """
@@ -83,7 +83,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
 
-# run the queryset to get reports
+    # run the queryset to get reports
 
     
 

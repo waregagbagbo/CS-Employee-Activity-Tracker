@@ -54,6 +54,7 @@ class Shift(models.Model):
     class Meta:
         verbose_name = 'Shift'
         verbose_name_plural = 'Shifts'
+        ordering = ['shift_agent', 'shift_date']
 
 
 
