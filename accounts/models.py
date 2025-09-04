@@ -30,6 +30,7 @@ class CustomUser(AbstractUser):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
+
 class Department(models.Model):
     title = models.CharField(max_length=100,null=False)
     def __str__(self):
@@ -59,8 +60,10 @@ class EmployeeProfile(models.Model):
         db_table = 'employee_profile'
         ordering = ['user__id']
         permissions = (
-            'can_edit','can_delete',
-            'can_view','can_create',
+            'can_create_report','create reports',
+            'can_view_report','view reports',
+            'can_update_report','update reports',
+            'can_delete_report','delete reports',
         )
 
 
