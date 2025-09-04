@@ -60,12 +60,12 @@ class EmployeeProfile(models.Model):
         db_table = 'employee_profile'
         ordering = ['user__id']
         permissions = (
-            'can_create_report','create reports',
-            'can_view_report','view reports',
-            'can_update_report','update reports',
-            'can_delete_report','delete reports',
-            'can_add_users','add users',
-            'can_modify_users','modify users',
+            ('can_create_report','create reports'),
+            ('can_view_report','view reports'),
+            ('can_update_report','update reports'),
+            ('can_delete_report','delete reports'),
+            ('can_add_users','add users'),
+            ('can_modify_users','modify users'),
         )
 
 
