@@ -49,7 +49,7 @@ class EmployeeProfile(models.Model):
     shift_start_time = models.DateTimeField()
     shift_end_time = models.DateTimeField()
     user_type = models.CharField(max_length=20, choices=USER_TYPE, default='Employee_Agent')
-    supervisor = models.ForeignKey('self', on_delete=models.CASCADE,null=True,related_name='supervised_employee')
+    supervisor = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,blank=True,related_name='supervised_employee')
 
     def __str__(self):
         return self.user.username
@@ -64,6 +64,8 @@ class EmployeeProfile(models.Model):
             'can_view_report','view reports',
             'can_update_report','update reports',
             'can_delete_report','delete reports',
+            'can_add_users','add users',
+            'can_modify_users','modify users',
         )
 
 

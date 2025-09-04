@@ -84,7 +84,13 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
 
     # run the queryset to get reports
-
+    def get_reports(self,request):
+        if request.user.user_type == 'Supervisor' or request.user.user_type == 'Admin':
+            # fetch employees handled by the supervisor
+            supervised_team = request.user.supervised_employee.all()
+            # fetch the report
+            reports_query = ActivityReport.objects.filter(employee__in=supervised_team) | ActivityReport.objects.filter(is_approved=True)
+            return reports_query
     
 
 
