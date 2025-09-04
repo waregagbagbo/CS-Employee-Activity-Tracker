@@ -139,7 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 LOGIN_REDIRECT_URL = 'cs/shifts'
-LOGOUT_REDIRECT_URL = 'api/logout'
+LOGOUT_REDIRECT_URL = '/login/'
 
 # Setting global authentication
 REST_FRAMEWORK = {

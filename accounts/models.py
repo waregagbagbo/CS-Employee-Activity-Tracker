@@ -43,27 +43,24 @@ class Department(models.Model):
 
 
 class EmployeeProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='employee_profile')
     department = models.ForeignKey('Department', on_delete=models.CASCADE)
-    shift_start_time = models.DateTimeField(auto_now_add=True)
-    shift_end_time = models.DateTimeField(auto_now_add=True)
+    shift_start_time = models.DateTimeField()
+    shift_end_time = models.DateTimeField()
     user_type = models.CharField(max_length=20, choices=USER_TYPE, default='Employee_Agent')
-    supervisor = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name='supervised_employees',null=True)
+    supervisor = models.ForeignKey('self', on_delete=models.CASCADE,null=True,related_name='supervised_employee')
 
     def __str__(self):
         return self.user.username
-
 
     class Meta:
         verbose_name = 'Employee Profile'
         verbose_name_plural = 'Employee Profiles'
         db_table = 'employee_profile'
-        ordering = ['user_id']
-        unique_together = (('supervisor', 'department'),)
-       # permissions = ('can_add_users', 'can_change_users', 'can_delete_users',
-            #'can_update_shifts', 'can_view_shifts','can_delete_shifts',
-            #'can_update_reports', 'can_view_reports','can_delete_reports',
-           # 'can_update_webhook', 'can_delete_webhook',
-        #)
+        ordering = ['user__id']
+        permissions = (
+            'can_edit','can_delete',
+            'can_view','can_create',
+        )
 
 
