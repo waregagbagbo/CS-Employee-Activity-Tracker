@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from Cs_Tracker import settings
 from accounts.models import EmployeeProfile, Department
+from accounts.permissions import IsEmployee, IsSupervisor, IsOwnerOrSupervisor
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication,filters
@@ -80,8 +81,17 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     filterset_fields = ['shift_active_agent', 'supervisor','report_type','is_approved']
-    permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
+    permission_classes = [IsEmployee | IsSupervisor,IsAuthenticated]  # Either employee or supervisor
+
+    def get_permissions(self):
+        if self.action in ['create', 'update']:
+            return [IsEmployee()]
+        elif self.action in ['approve']:
+            return [IsSupervisor()]
+        elif self.action in ['retrieve', 'list']:
+            return [IsOwnerOrSupervisor()]
+        return super().get_permissions()
 
     # run the queryset to get reports
     def get_reports(self,request):
