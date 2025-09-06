@@ -10,7 +10,7 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser,CustomUserAdmin)
 
-@admin.register(EmployeeProfile)
+#@admin.register(EmployeeProfile)
 class EmployeeProfileAdmin(admin.ModelAdmin):
     model = EmployeeProfile
     list_display = ('user',)
@@ -23,5 +23,5 @@ class DepartmentAdmin(admin.ModelAdmin):
     model = Department
     list_display = ('title',)
 
-#admin.site.unregister(EmployeeProfile)
+admin.site.register(EmployeeProfile,EmployeeProfileAdmin)
 admin.site.register(Department, DepartmentAdmin)

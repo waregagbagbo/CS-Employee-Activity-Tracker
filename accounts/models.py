@@ -57,7 +57,7 @@ class EmployeeProfile(models.Model):
     class Meta:
         verbose_name = 'Employee Profile'
         verbose_name_plural = 'Employee Profiles'
-        db_table = 'employee_profile'
+        #db_table = 'employee_profile'
         ordering = ['user__id']
         permissions = (
             ('can_create_report','create reports'),
