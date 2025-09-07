@@ -44,7 +44,6 @@ class UserProfileViews(generics.RetrieveUpdateAPIView):
 class UserLogin(APIView):
     serializer_class = UserLoginSerializer
     permission_classes = [AllowAny]
-    #success_url = settings.REDIRECT_URL
 
     def post(self, request, *args, **kwargs):
         serializer = UserLoginSerializer(data=request.data)

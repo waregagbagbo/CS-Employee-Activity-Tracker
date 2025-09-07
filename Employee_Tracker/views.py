@@ -79,8 +79,8 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     serializer_class = ActivityReportSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_fields = ['shift_active_agent', 'supervisor','report_type','is_approved']
+    #filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    #filterset_fields = ['shift_active_agent', 'supervisor','report_type','is_approved']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsEmployee | IsSupervisor,IsAuthenticated]  # Either employee or supervisor
 
