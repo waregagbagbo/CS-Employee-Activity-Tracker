@@ -2,7 +2,8 @@ from django.contrib.auth import password_validation,authenticate
 from rest_framework import serializers
 from Cs_Tracker.settings import AUTH_USER_MODEL
 from django.apps import apps
-from accounts.models import Department
+#from accounts.models import Employee,Department
+
 
 User = apps.get_model(AUTH_USER_MODEL) # create an object from the AUTH_USER_MODEK
 # create user serializer
@@ -23,12 +24,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 # create registration serializer
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    department = serializers.SlugRelatedField(queryset=Department.objects.all(), slug_field='title')
     password = serializers.CharField(write_only=True,style={'input_type': 'password'}, min_length=5)
     password_confirmation = serializers.CharField(write_only=True,style={'input_type': 'password'})
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name','department','password', 'password_confirmation')
+        fields = ('username', 'email', 'first_name', 'last_name','password', 'password_confirmation')
         extra_kwargs = {'password': {'write_only': True,'min_length': 5}}
 
     def validate(self, value):

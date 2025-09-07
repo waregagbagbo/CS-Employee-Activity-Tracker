@@ -11,7 +11,6 @@ USER_TYPE =[
 # Create your models here.
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, default="test@gmail.com")
-    #department = models.OneToOneField('Department', on_delete=models.SET_NULL, null=True, blank=True)
     hire_date = models.DateField(null=True, blank=True)
     bio = models.TextField()
     avatar = models.ImageField(upload_to='avatars/')
@@ -29,10 +28,12 @@ class CustomUser(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+        db_table = 'Users'
 
 
 class Department(models.Model):
-    title = models.CharField(max_length=100,null=False)
+    title = models.CharField(max_length=100,default='Tech')
+
     def __str__(self):
         return self.title
 
