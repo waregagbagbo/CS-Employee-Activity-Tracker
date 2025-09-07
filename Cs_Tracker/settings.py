@@ -88,8 +88,18 @@ WSGI_APPLICATION = 'Cs_Tracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'handover_shift',
+        'USER': 'root',
+        'PASSWORD': 'Chelsea@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+
+              # Ensure consistent timezone behavior
+            'init_command': "SET time_zone='+00:00'; SET sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION",
+        },
     }
 }
 

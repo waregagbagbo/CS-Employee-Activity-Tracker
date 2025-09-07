@@ -8,8 +8,6 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ('username','email','first_name','last_name','bio',)
 
-admin.site.register(CustomUser,CustomUserAdmin)
-
 #@admin.register(EmployeeProfile)
 class EmployeeProfileAdmin(admin.ModelAdmin):
     model = EmployeeProfile
@@ -25,3 +23,5 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 admin.site.register(EmployeeProfile,EmployeeProfileAdmin)
 admin.site.register(Department, DepartmentAdmin)
+admin.site.register(CustomUser,CustomUserAdmin)
+
