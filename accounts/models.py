@@ -43,7 +43,7 @@ class Department(models.Model):
         ordering = ['title']
 
 
-class EmployeeProfile(models.Model):
+class Employee(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='employee_profile')
     department = models.ForeignKey('Department', on_delete=models.CASCADE)
     shift_start_time = models.DateTimeField()
@@ -55,8 +55,8 @@ class EmployeeProfile(models.Model):
         return self.user.username
 
     class Meta:
-        verbose_name = 'Employee Profile'
-        verbose_name_plural = 'Employee Profiles'
+        verbose_name = 'Employee'
+        verbose_name_plural = 'Employees'
         #db_table = 'employee_profile'
         ordering = ['user__id']
         permissions = (

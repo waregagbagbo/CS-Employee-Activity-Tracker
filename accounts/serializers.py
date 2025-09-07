@@ -2,7 +2,6 @@ from django.contrib.auth import password_validation,authenticate
 from rest_framework import serializers
 from Cs_Tracker.settings import AUTH_USER_MODEL
 from django.apps import apps
-
 from accounts.models import Department
 
 User = apps.get_model(AUTH_USER_MODEL) # create an object from the AUTH_USER_MODEK

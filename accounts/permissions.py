@@ -1,6 +1,5 @@
 from rest_framework import permissions
 from rest_framework.permissions import BasePermission
-
 from accounts.models import *
 
 class IsAdmin(permissions.BasePermission):
@@ -16,7 +15,7 @@ class IsEmployee(permissions.BasePermission):
         try:
             profile = request.user.employee_profile
             return profile.user_type == 'Employee_Agent'
-        except EmployeeProfile.DoesNotExist:
+        except Employee.DoesNotExist:
             return False
 
 
@@ -51,7 +50,7 @@ class IsOwnerOrSupervisor(permissions.BasePermission):
                 if hasattr(obj, 'employee'):
                     return obj.employee.supervisor == user_profile
 
-        except EmployeeProfile.DoesNotExist:
+        except Employee.DoesNotExist:
             pass
 
         return False
