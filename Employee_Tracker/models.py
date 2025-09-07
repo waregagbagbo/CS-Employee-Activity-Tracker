@@ -1,7 +1,7 @@
 from django.db import models
 from django.forms import JSONField
 
-from accounts.models import CustomUser,EmployeeProfile
+from accounts.models import CustomUser,Employee
 
 # Create your models here.
 STATUS = [
@@ -29,6 +29,7 @@ REPORT_TYPES = [
 ]
 
 """define callable for JSONField Dict"""
+
 def event():
     return{
         'shift_started':'shift_started',
@@ -38,9 +39,10 @@ def event():
         'report_submitted':'report_submitted',
     }
 
+
 #create shift class
 class Shift(models.Model):
-    shift_agent = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE)
     shift_date = models.DateField(auto_now_add=True, auto_now=False)
     shift_start_time = models.TimeField(auto_now_add=True, auto_now=False)
     shift_end_time = models.TimeField(auto_now_add=True, auto_now=False)
@@ -61,7 +63,7 @@ class Shift(models.Model):
 #create activity model class
 class ActivityReport(models.Model):
     shift_active_agent = models.ForeignKey(Shift, on_delete=models.CASCADE, related_name='shift_active_agent')
-    supervisor = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    supervisor = models.ForeignKey(Employee, on_delete=models.CASCADE)
     report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
     activity_title = models.CharField(max_length=100)
     activity_description = models.TextField()
@@ -85,7 +87,7 @@ class ActivityReport(models.Model):
 class WebHook(models.Model):
     webhook_name = models.CharField(max_length=100)
     webhook_url = models.URLField(max_length=200, unique=True)
-    webhook_created_by = models.ForeignKey(EmployeeProfile, on_delete=models.CASCADE)
+    webhook_created_by = models.ForeignKey(Employee, on_delete=models.CASCADE)
     webhook_event_types = models.JSONField(default=event)
     secret_key = models.TextField()
     is_active = models.BooleanField(default=True)

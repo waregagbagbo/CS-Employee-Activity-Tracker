@@ -6,7 +6,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 
 from Cs_Tracker import settings
-from accounts.models import EmployeeProfile, Department
+from accounts.models import Employee, Department
 from accounts.permissions import IsEmployee, IsSupervisor, IsOwnerOrSupervisor
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
@@ -19,7 +19,7 @@ User = apps.get_model(settings.AUTH_USER_MODEL)
 
 # Views implemented using generics
 class EmployeeProfileViewSet(viewsets.ModelViewSet):
-    queryset = EmployeeProfile.objects.all()
+    queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
     pagination_class = PageNumberPagination
     permission_classes = (IsAuthenticated,)
@@ -32,7 +32,7 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
         serializer = EmployeeProfileSerializer(user)
         return Response(serializer.data)"""
     def get_queryset(self):
-        employee_profile = EmployeeProfile.objects.filter(user=self.request.user)
+        employee_profile = Employee.objects.filter(user=self.request.user)
         return employee_profile
 
 
@@ -48,9 +48,9 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         # to get the employee profile instance
         try:
-            employee_profile = EmployeeProfile.objects.get(user=self.request.user) #get the profile
+            employee_profile = Employee.objects.get(user=self.request.user) #get the profile
             queryset = Shift.objects.filter(shift_agent = employee_profile)
-        except EmployeeProfile.DoesNotExist:
+        except Employee.DoesNotExist:
             queryset = Shift.objects.all() # returns empty queryset if no profile exists
         return queryset
 

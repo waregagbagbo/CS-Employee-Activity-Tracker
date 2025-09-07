@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from accounts.models import EmployeeProfile,Department
+from accounts.models import Employee,Department
 from .models import Shift,ActivityReport,WebHook,WebHookLog
 
 #create the serializers for the models
 class EmployeeProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = EmployeeProfile
+        model = Employee
         fields = '__all__'
         depth = 1
 
