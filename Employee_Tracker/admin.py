@@ -11,7 +11,7 @@ class ShiftAdmin(admin.ModelAdmin):
 
 
 class ActivityAdmin(admin.ModelAdmin):
-    list_display = ('report_type','activity_submitted_at','supervisor',)
+    list_display = ('report_type','activity_submitted_at','supervisor','is_approved',)
     list_filter = ('supervisor','report_type','tickets_resolved','is_approved')
 
 
