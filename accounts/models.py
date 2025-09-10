@@ -11,9 +11,7 @@ USER_TYPE =[
 # Create your models here.
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, default="test@gmail.com")
-    hire_date = models.DateField(null=True, blank=True)
-    bio = models.TextField()
-    avatar = models.ImageField(upload_to='avatars/')
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
@@ -46,6 +44,9 @@ class Department(models.Model):
 
 class Employee(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='employee_profile')
+    hire_date = models.DateField(null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    #avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     department = models.ForeignKey('Department', on_delete=models.CASCADE, blank=True, null=True)
     shift_start_time = models.DateTimeField()
     shift_end_time = models.DateTimeField()

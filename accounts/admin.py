@@ -6,7 +6,7 @@ from accounts.models import Employee, CustomUser, Department
 # Register your models here.
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('username','email','first_name','last_name','bio',)
+    list_display = ('username','email','first_name','last_name',)
 
 #@admin.register(EmployeeProfile)
 class EmployeeAdmin(admin.ModelAdmin):
