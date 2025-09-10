@@ -18,7 +18,6 @@ class IsEmployee(permissions.BasePermission):
         except Employee.DoesNotExist:
             return False
 
-
 class IsSupervisor(permissions.BasePermission):
     """Supervisors can manage their team"""
     def has_permission(self, request, view):
