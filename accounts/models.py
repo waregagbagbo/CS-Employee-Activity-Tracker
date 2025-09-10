@@ -46,14 +46,14 @@ class Department(models.Model):
 
 class Employee(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='employee_profile')
-    department = models.ForeignKey('Department', on_delete=models.CASCADE)
+    department = models.ForeignKey('Department', on_delete=models.CASCADE, blank=True, null=True)
     shift_start_time = models.DateTimeField()
     shift_end_time = models.DateTimeField()
     user_type = models.CharField(max_length=20, choices=USER_TYPE, default='Employee_Agent')
     supervisor = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,blank=True,related_name='supervised_employee')
 
     def __str__(self):
-        return self.user.username
+        return f"{self.user.username}, {self.department}"
 
     class Meta:
         verbose_name = 'Employee'

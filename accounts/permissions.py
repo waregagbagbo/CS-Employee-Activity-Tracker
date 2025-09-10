@@ -21,15 +21,12 @@ class IsEmployee(permissions.BasePermission):
 
 class IsSupervisor(permissions.BasePermission):
     """Supervisors can manage their team"""
-
     def has_permission(self, request, view):
         if not request.user.is_authenticated:
             return False
 
-
 class IsOwnerOrSupervisor(permissions.BasePermission):
     """Users can only access their own data, supervisors can access team data"""
-
     def has_object_permission(self, request, view, obj):
         if not request.user.is_authenticated:
             return False
@@ -55,7 +52,6 @@ class IsOwnerOrSupervisor(permissions.BasePermission):
 
         return False
 
-
 # Combined permissions for common use cases
 class CanCreateReport(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -67,3 +63,4 @@ class CanViewReports(permissions.BasePermission):
     def has_permission(self, request, view):
         return (request.user.is_authenticated and
                 request.user.has_perm('accounts.can_view_report'))
+
