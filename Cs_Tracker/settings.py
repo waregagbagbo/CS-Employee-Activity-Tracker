@@ -45,11 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.redirects',
     'rest_framework',
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'Employee_Tracker',
     'rest_framework.authtoken',
-
-
 ]
 
 
