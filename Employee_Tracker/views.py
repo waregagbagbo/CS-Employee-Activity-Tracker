@@ -32,7 +32,9 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
         serializer = EmployeeProfileSerializer(user)
         return Response(serializer.data)"""
     def get_queryset(self):
-        employee_profile = Employee.objects.filter(user=self.request.user)
+        employee_profile = Employee.objects.get(user=self.request.user)
+        if self.request.user.is_supervisor:
+            employee_profile = Employee.objects.all()
         return employee_profile
 
 
@@ -54,7 +56,6 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             queryset = Shift.objects.all() # returns empty queryset if no profile exists
         return queryset
 
-
 """" Department view """
 class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Department.objects.all()
@@ -63,18 +64,17 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated]
 
 """ WebHook view """
-class WebHookViewSet(viewsets.ModelViewSet):
+class WebHookViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = WebHook.objects.all()
     serializer_class = WebHookSerializer
 
-class WebHookLogViewSet(viewsets.ModelViewSet):
+class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = WebHookLog.objects.all()
     serializer_class = WebHookLogSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
 
 """ Activity report view """
-@
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
     serializer_class = ActivityReportSerializer
@@ -82,8 +82,6 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     #filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     #filterset_fields = ['shift_active_agent', 'supervisor','report_type','is_approved']
-    authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsEmployee | IsSupervisor,IsAuthenticated]  # Either employee or supervisor
 
     def get_permissions(self):
         if self.action in ['create', 'view']:
