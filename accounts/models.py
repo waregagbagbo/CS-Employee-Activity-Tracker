@@ -48,8 +48,8 @@ class Employee(models.Model):
     bio = models.TextField(null=True, blank=True)
     #avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     department = models.ForeignKey('Department', on_delete=models.CASCADE, blank=True, null=True)
-    shift_start_time = models.DateTimeField()
-    shift_end_time = models.DateTimeField()
+   # shift_start_time = models.DateTimeField()
+  #  shift_end_time = models.DateTimeField()
     user_type = models.CharField(max_length=20, choices=USER_TYPE, default='Employee_Agent')
     supervisor = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,blank=True,related_name='supervised_employee')
 
