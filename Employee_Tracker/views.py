@@ -18,7 +18,7 @@ from django.apps import apps
 User = apps.get_model(settings.AUTH_USER_MODEL)
 
 # Views implemented using generics
-class EmployeeProfileViewSet(viewsets.ModelViewSet):
+class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
     pagination_class = PageNumberPagination
@@ -56,7 +56,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
 
 
 """" Department view """
-class DepartmentAPIViewSet(viewsets.ModelViewSet):
+class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
@@ -74,6 +74,7 @@ class WebHookLogViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
 
 """ Activity report view """
+@
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
     serializer_class = ActivityReportSerializer
@@ -85,7 +86,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     permission_classes = [IsEmployee | IsSupervisor,IsAuthenticated]  # Either employee or supervisor
 
     def get_permissions(self):
-        if self.action in ['create', 'update']:
+        if self.action in ['create', 'view']:
             return [IsEmployee()]
         elif self.action in ['approve']:
             return [IsSupervisor()]
