@@ -1,11 +1,10 @@
+from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
-from django.conf import settings
-from Employee_Tracker import apps
 
 # set the model
-User = apps.get_model(settings.AUTH_USER_MODEL)
+User = get_user_model()
 
-# set the authtoken usage
-tokens = User.objects.get(email = 'email')
-token, created = Token.objects.get_or_created(tokens = tokens)
+# set the auth-token usage
+user = User.objects.get(email = 'email')
+token, created = Token.objects.get_or_create(user = user)
 print(token.key)

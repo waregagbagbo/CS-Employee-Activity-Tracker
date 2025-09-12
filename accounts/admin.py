@@ -14,7 +14,6 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('user','department','supervisor','user_type','bio',)
     search_fields = ('first_name', 'last_name', 'email')
     list_filter = ('user_type','user',)
-    exclude = ('supervisor',)
     #readonly_fields = ('supervisor',) # not writable
 
 class DepartmentAdmin(admin.ModelAdmin):
