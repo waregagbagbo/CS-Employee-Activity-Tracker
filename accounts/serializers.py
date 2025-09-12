@@ -4,7 +4,7 @@ from Cs_Tracker.settings import AUTH_USER_MODEL
 from django.apps import apps
 
 
-User = apps.get_model(AUTH_USER_MODEL) # create an object from the AUTH_USER_MODEK
+User = apps.get_model(AUTH_USER_MODEL) # create an object from the AUTH_USER_MODEL
 # create user serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

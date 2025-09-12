@@ -30,7 +30,7 @@ class CustomUser(AbstractUser):
 
 
 class Department(models.Model):
-    title = models.CharField(max_length=100,default='Tech')
+    title = models.CharField(max_length=100,default=1)
 
     def __str__(self):
         return self.title
@@ -56,7 +56,6 @@ class Employee(models.Model):
     class Meta:
         verbose_name = 'Employee'
         verbose_name_plural = 'Employees'
-        #db_table = 'employee_profile'
         ordering = ['user__id']
         permissions = (
             ('can_create_report','create reports'),
