@@ -58,8 +58,6 @@ class Shift(models.Model):
         verbose_name_plural = 'Shifts'
         ordering = ['shift_agent', 'shift_date']
 
-
-
 #create activity model class
 class ActivityReport(models.Model):
     shift_active_agent = models.ForeignKey(Shift, on_delete=models.CASCADE, related_name='shift_active_agent')
