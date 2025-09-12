@@ -33,7 +33,7 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
         return Response(serializer.data)"""
     def get_queryset(self):
         employee_profile = Employee.objects.get(user=self.request.user)
-        if self.request.user.is_supervisor:
+        if self.request.user.is_superuser:
             employee_profile = Employee.objects.all()
         return employee_profile
 
