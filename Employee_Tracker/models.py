@@ -1,6 +1,5 @@
 from django.db import models
 from django.forms import JSONField
-
 from accounts.models import CustomUser,Employee
 
 # Create your models here.

@@ -1,7 +1,4 @@
-from django_filters.rest_framework import DjangoFilterBackend
-from pip._vendor.requests.models import Response
 from rest_framework.authentication import SessionAuthentication
-from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 
@@ -13,6 +10,7 @@ from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSer
 from rest_framework import viewsets, permissions, authentication,filters
 from rest_framework import generics
 from django.apps import apps
+from rest_framework.decorators import permission_classes
 
 
 User = apps.get_model(settings.AUTH_USER_MODEL)
@@ -39,8 +37,8 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 """ shift view """
+
 class ShiftAPIViewSet(viewsets.ModelViewSet):
-    queryset = Shift.objects.all()
     serializer_class = ShiftSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     filter_fields = ['shift_agent','shift_type','shift_status']
@@ -48,13 +46,23 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # to get the employee profile instance
+        user = self.request.user
+        if not user.is_authenticated:
+            return Shift.objects.none()
         try:
-            employee_profile = Employee.objects.get(user=self.request.user) #get the profile
-            queryset = Shift.objects.filter(shift_agent = employee_profile)
+            employee_profile = Employee.objects.get(user=user)
+            return Shift.objects.filter(shift_agent=employee_profile)
         except Employee.DoesNotExist:
-            queryset = Shift.objects.all() # returns empty queryset if no profile exists
-        return queryset
+            return Shift.objects.none()
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        try:
+            employee_profile = Employee.objects.get(user=user)
+            serializer.save(shift_agent=employee_profile)
+        except Employee.DoesNotExist:
+            return 'Employee does not exist'
+
 
 """" Department view """
 class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
@@ -86,7 +94,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action in ['create', 'view']:
             return [IsEmployee()]
-        elif self.action in ['approve']:
+        elif self.action in ['approve','update','delete']:
             return [IsSupervisor()]
         elif self.action in ['retrieve', 'list']:
             return [IsOwnerOrSupervisor()]

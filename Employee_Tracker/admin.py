@@ -6,7 +6,6 @@ from Employee_Tracker.models import *
 class ShiftAdmin(admin.ModelAdmin):
     list_display = ('shift_type','shift_date','shift_status','shift_agent','shift_start_time','shift_end_time',)
     list_filter = ('shift_agent','shift_type','shift_date','shift_status',)
-
     search_fields = ('shift_type','shift_status','shift_start_time',)
 
 
