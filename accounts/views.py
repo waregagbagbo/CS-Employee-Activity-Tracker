@@ -1,21 +1,13 @@
-from urllib import request
-from django.contrib.redirects.models import Redirect
-from django.db.migrations import serializer
-from django.shortcuts import render
-from rest_framework.generics import CreateAPIView
-from django.conf import settings
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from Cs_Tracker.settings import AUTH_USER_MODEL
-from .models import CustomUser
-from .serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer
+from .serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer, EmployeeSerializer
 from rest_framework import generics, status
-from django.apps import apps
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, get_user_model
 
 # our standalone custom user model object instead of direct import
-User = apps.get_model(AUTH_USER_MODEL)
+User = get_user_model()
 
 # we can use API VIEW to enable user registration
 class UserRegistration(generics.CreateAPIView):
@@ -36,7 +28,8 @@ class UserRegistration(generics.CreateAPIView):
 
 class UserProfileViews(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = EmployeeSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         return self.request.user
@@ -55,12 +48,12 @@ class UserLogin(APIView):
         token = {'token':'user.auth_token.key'}, # send the str part token
         context = {"message":'User logged in successfully'}
         return Response(context)
-        #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 # logout view for token authentication
 class LogoutView(APIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+
     def post(self, request):
         request.user.auth_token.delete()
         logout(request) # for session auth

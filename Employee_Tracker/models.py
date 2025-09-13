@@ -1,5 +1,4 @@
-from datetime import timezone, datetime
-
+from datetime import datetime
 from django.db import models
 from django.forms import JSONField
 from accounts.models import CustomUser,Employee

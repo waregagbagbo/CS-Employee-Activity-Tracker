@@ -1,10 +1,9 @@
-from django.contrib.auth import password_validation,authenticate
+from django.contrib.auth import password_validation, authenticate, get_user_model
 from rest_framework import serializers
-from Cs_Tracker.settings import AUTH_USER_MODEL
-from django.apps import apps
 
+from accounts.models import Employee
 
-User = apps.get_model(AUTH_USER_MODEL) # create an object from the AUTH_USER_MODEL
+User = get_user_model() # create an object from the AUTH_USER_MODEL
 # create user serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -68,6 +67,14 @@ class UserLoginSerializer(serializers.Serializer):
             # now add validated user
             attrs['user'] = user
             return attrs
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Employee
+        fields = "__all__"
+        #depth = 1
 
 
 

@@ -1,22 +1,19 @@
 from datetime import datetime
-
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
-
-from Cs_Tracker import settings
 from accounts.models import Employee, Department
 from accounts.permissions import IsEmployee, IsSupervisor, IsOwnerOrSupervisor
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication,filters
 from rest_framework import generics
-from django.apps import apps
 from rest_framework.decorators import permission_classes
 
 
-User = apps.get_model(settings.AUTH_USER_MODEL)
+User = get_user_model()
 
 # Views implemented using generics
 class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
@@ -49,7 +46,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         try:
             employee_profile = Employee.objects.get(user=user)
             return Shift.objects.filter(shift_agent=employee_profile)
-        except Employee.DoesNotExist:
+        except ObjectDoesNotExist:
             return Shift.objects.none()
 
     def perform_create(self, serializer):
