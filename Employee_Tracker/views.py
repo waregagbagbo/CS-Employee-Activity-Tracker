@@ -12,7 +12,6 @@ from rest_framework import viewsets, permissions, authentication,filters
 from rest_framework import generics
 from rest_framework.decorators import permission_classes
 
-
 User = get_user_model()
 
 # Views implemented using generics
