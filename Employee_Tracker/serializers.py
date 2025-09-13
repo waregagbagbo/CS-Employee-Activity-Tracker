@@ -18,7 +18,6 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
         model = Employee
         fields = '__all__'
 
-
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
@@ -27,7 +26,6 @@ class ShiftSerializer(serializers.ModelSerializer):
         model = Shift
         fields = ('shift_agent','shift_date','shift_start_time','shift_end_time',
                   'shift_type','shift_status','shift_timer_count',)
-
 
    #custom serializer method
     def get_shift_timer_count(self, obj):
@@ -73,10 +71,11 @@ class ActivityReportSerializer(serializers.ModelSerializer):
         fields = super().get_fields()
         user = self.context['request'].user
         if not user.groups.filter(name__in=['supervisor', 'superuser','Admin']).exists():
-            fields.pop('is_approved', None)
+            fields.pop('is_approved',None)
+            fields.pop('activity_approved_at',None)
         return fields
 
-    def create(self, validated_data):
+    def create(self,validated_data):
         user = self.context['request'].user
         #fetch employee profile
         try:
@@ -85,16 +84,18 @@ class ActivityReportSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Employee does not exist')
 
         # restrict is_approved unless is supervisor
-        if validated_data.get('is_approved', False):
-            if not user.groups.filter(name__in=['Supervisor','Manager']).exists():
+        if validated_data.get('is_approved','activity_approved_at', False):
+            if not user.groups.filter(name__in=['Supervisor','superuser','admin']).exists():
                 raise serializers.ValidationError('Only supervisor or Managers can approve')
 
             # auto assign shift agent or supervisor
             validated_data['shift_active_agent'] = employee_profile
-            if user.groups.filter(name__in=['Supervisor','manager']).exists():
+            if user.groups.filter(name__in=['supervisor','superuser']).exists():
                 validated_data['supervisor'] = employee_profile
-
             return super().create(validated_data)
+        return validated_data
+
+
 
 class WebHookSerializer(serializers.ModelSerializer):
     class Meta:

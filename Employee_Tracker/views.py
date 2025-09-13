@@ -87,21 +87,16 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    filter_fields = ['activity_type','activity_status']
 
-    def get_permissions(self):
-        if self.action in ['create', 'view']:
-            return [IsEmployee()]
-        elif self.action in ['approve','update','delete']:
-            return [IsSupervisor()]
-        elif self.action in ['retrieve', 'list']:
-            return [IsOwnerOrSupervisor()]
-        return super().get_permissions()
+    #filter reports based on the users present
+    def get_queryset(self):
+        user = Employee.objects.get(user=self.request.user)
+        if self.request.user.groups.filter(name__in=['supervisor','admin','superuser']).exists():
+            return ActivityReport.objects.filter(is_approved = False)
+        else:
+            return ActivityReport.objects.filter(shift_active_agent = user)
 
-    # run the queryset to get reports
-    def get_reports(self,request):
-        if request.user.user_type == 'Supervisor' or request.user.user_type == 'Admin':
-            # fetch employees handled by the supervisor
-            supervised_team = request.user.supervised_employee.all()
-            # fetch the report
-            reports_query = ActivityReport.objects.filter(employee__in=supervised_team) | ActivityReport.objects.filter(is_approved=True)
-            return reports_query
+
+
+

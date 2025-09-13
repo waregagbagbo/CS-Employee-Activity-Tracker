@@ -1,3 +1,5 @@
+from datetime import timezone, datetime
+
 from django.db import models
 from django.forms import JSONField
 from accounts.models import CustomUser,Employee
@@ -16,7 +18,6 @@ SHIFT_TYPES = [
     ('Late','Late_Shift'),
     ('Recon_Shift','Recon_Shift'),
     ('Night_Shift','Night_Shift'),
-    ('R_Shift','R_Shift'),
 ]
 
 REPORT_TYPES = [
@@ -45,7 +46,7 @@ class Shift(models.Model):
     shift_start_time = models.TimeField(auto_now=False,blank=False)
     shift_end_time = models.TimeField(auto_now=False, blank=False)
     shift_updated_at = models.DateTimeField(auto_now=True)
-    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='R_Shift', blank=False)
+    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift', blank=False)
     shift_status = models.CharField(max_length=50, choices=STATUS, default='Scheduled',blank = False)
 
     def __str__(self):
@@ -58,8 +59,9 @@ class Shift(models.Model):
 
 #create activity model class
 class ActivityReport(models.Model):
-    shift_active_agent = models.ForeignKey(Shift, on_delete=models.CASCADE, related_name='shift_active_agent')
+    shift_active_agent = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='shift_active_agent')
     supervisor = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    shift_activity_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Night_Shift')
     report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
     activity_description = models.TextField()
     tickets_resolved = models.IntegerField(default=0)
@@ -68,14 +70,15 @@ class ActivityReport(models.Model):
     notes = models.TextField()
     activity_submitted_at = models.DateTimeField(auto_now=False, blank=False)
     is_approved = models.BooleanField(default=False)
-    #activity_approved_at = models.DateTimeField(auto_now=False)
+    activity_approved_at = models.DateTimeField(auto_now=False, default=datetime.now)
 
     def __str__(self):
-        return self.activity_title
+        return self.report_type
 
     class Meta:
         verbose_name = 'Activity Report'
         verbose_name_plural = 'Activity Reports'
+        ordering = ['report_type', 'shift_activity_type']
 
 
 # webhook model
