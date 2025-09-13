@@ -1,4 +1,5 @@
 from datetime import datetime,timedelta
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import serializers
 from accounts.models import Employee,Department
 from .models import Shift,ActivityReport,WebHook,WebHookLog
@@ -20,7 +21,6 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
 
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
-    #shift_agent_id = EmployeeProfileSerializer(write_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
 
     class Meta:
@@ -62,9 +62,39 @@ class ShiftSerializer(serializers.ModelSerializer):
             return 'Shift not started'
 
 class ActivityReportSerializer(serializers.ModelSerializer):
+    shift_active_agent = EmployeeProfileSerializer(read_only=True)
+    supervisor = EmployeeProfileSerializer(read_only=True)
     class Meta:
         model = ActivityReport
         fields = '__all__'
+
+    # hide is_approved field to non supervisor/admin
+    def get_fields(self):
+        fields = super().get_fields()
+        user = self.context['request'].user
+        if not user.groups.filter(name__in=['supervisor', 'superuser','Admin']).exists():
+            fields.pop('is_approved', None)
+        return fields
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        #fetch employee profile
+        try:
+            employee_profile = Employee.objects.get(user=user)
+        except ObjectDoesNotExist:
+            raise serializers.ValidationError('Employee does not exist')
+
+        # restrict is_approved unless is supervisor
+        if validated_data.get('is_approved', False):
+            if not user.groups.filter(name__in=['Supervisor','Manager']).exists():
+                raise serializers.ValidationError('Only supervisor or Managers can approve')
+
+            # auto assign shift agent or supervisor
+            validated_data['shift_active_agent'] = employee_profile
+            if user.groups.filter(name__in=['Supervisor','manager']).exists():
+                validated_data['supervisor'] = employee_profile
+
+            return super().create(validated_data)
 
 class WebHookSerializer(serializers.ModelSerializer):
     class Meta:

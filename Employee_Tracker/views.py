@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
@@ -32,7 +33,7 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
         return employee_profile
 
 
-""" shift view """
+#Shift view
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     serializer_class = ShiftSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
@@ -57,18 +58,18 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             employee_profile = Employee.objects.get(user=user)
             timer = datetime.now().time()
             serializer.save(shift_agent=employee_profile, shift_start_time=timer)
-        except Employee.DoesNotExist:
-            return 'Employee does not exist'
+        except ObjectDoesNotExist:
+            raise 'Employee does not exist'
 
 
-"""" Department view """
+#Department view
 class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
-""" WebHook view """
+#WebHook view
 class WebHookViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = WebHook.objects.all()
     serializer_class = WebHookSerializer
@@ -79,14 +80,13 @@ class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
 
-""" Activity report view """
+#Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
     serializer_class = ActivityReportSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    #filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    #filterset_fields = ['shift_active_agent', 'supervisor','report_type','is_approved']
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
 
     def get_permissions(self):
         if self.action in ['create', 'view']:
@@ -105,8 +105,3 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
             # fetch the report
             reports_query = ActivityReport.objects.filter(employee__in=supervised_team) | ActivityReport.objects.filter(is_approved=True)
             return reports_query
-    
-
-
-
-

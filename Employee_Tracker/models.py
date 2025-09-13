@@ -61,15 +61,14 @@ class ActivityReport(models.Model):
     shift_active_agent = models.ForeignKey(Shift, on_delete=models.CASCADE, related_name='shift_active_agent')
     supervisor = models.ForeignKey(Employee, on_delete=models.CASCADE)
     report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
-    activity_title = models.CharField(max_length=100)
     activity_description = models.TextField()
     tickets_resolved = models.IntegerField(default=0)
     calls_made = models.IntegerField(default=0)
     issues_escalated = models.IntegerField(default=0)
     notes = models.TextField()
-    activity_submitted_at = models.DateTimeField(auto_now_add=True)
+    activity_submitted_at = models.DateTimeField(auto_now=False, blank=False)
     is_approved = models.BooleanField(default=False)
-    activity_approved_at = models.DateTimeField(auto_now_add=True)
+    #activity_approved_at = models.DateTimeField(auto_now=False)
 
     def __str__(self):
         return self.activity_title
