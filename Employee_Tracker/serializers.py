@@ -61,8 +61,6 @@ class ShiftSerializer(serializers.ModelSerializer):
         else:
             return 'Shift not started'
 
-
-
 class ActivityReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = ActivityReport

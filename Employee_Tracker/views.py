@@ -25,12 +25,6 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (IsAuthenticated,)
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
 
-    # add detail method
-    """def detail(self, request, pk=None):
-        query = EmployeeProfile.objects.all()
-        user = get_object_or_404(query,pk=pk)
-        serializer = EmployeeProfileSerializer(user)
-        return Response(serializer.data)"""
     def get_queryset(self):
         employee_profile = Employee.objects.get(user=self.request.user)
         if self.request.user.is_superuser:
@@ -39,7 +33,6 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 """ shift view """
-
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     serializer_class = ShiftSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]

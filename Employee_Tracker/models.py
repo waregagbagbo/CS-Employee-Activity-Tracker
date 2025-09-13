@@ -21,7 +21,6 @@ SHIFT_TYPES = [
 
 REPORT_TYPES = [
     ('End_of_Shift','End_of_Shift'),
-    ('Lunch','Lunch'),
     ('Emergency','Emergency'),
     ('Break','Break'),
     ('Other','Other'),
