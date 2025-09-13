@@ -28,6 +28,7 @@ class ShiftSerializer(serializers.ModelSerializer):
         fields = ('shift_agent','shift_date','shift_start_time','shift_end_time','shift_agent',
                   'shift_type','shift_status','shift_timer_count',)
 
+
    #custom serializer method
     def get_shift_timer_count(self, obj):
         if obj.shift_start_time and obj.shift_end_time:

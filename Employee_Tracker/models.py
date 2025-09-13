@@ -42,12 +42,12 @@ def event():
 #create shift class
 class Shift(models.Model):
     shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    shift_date = models.DateField(auto_now_add=True, auto_now=False)
-    shift_start_time = models.TimeField(auto_now_add=True, auto_now=False)
-    shift_end_time = models.TimeField(auto_now_add=True, auto_now=False)
+    shift_date = models.DateField(auto_now_add=True, auto_now=False, blank=False)
+    shift_start_time = models.TimeField(auto_now_add=True, auto_now=False,blank=False)
+    shift_end_time = models.TimeField(auto_now_add=True, auto_now=False, blank=False)
     shift_updated_at = models.DateTimeField(auto_now=True)
-    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='R_Shift')
-    shift_status = models.CharField(max_length=50, choices=STATUS, default='Scheduled')
+    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='R_Shift', blank=False)
+    shift_status = models.CharField(max_length=50, choices=STATUS, default='Scheduled',blank = False)
 
     def __str__(self):
         return str(self.shift_agent)

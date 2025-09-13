@@ -44,6 +44,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     filter_fields = ['shift_agent','shift_type','shift_status']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
+    PaginationClass = PageNumberPagination
 
     def get_queryset(self):
         user = self.request.user
