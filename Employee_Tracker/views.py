@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
@@ -60,7 +62,8 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         user = self.request.user
         try:
             employee_profile = Employee.objects.get(user=user)
-            serializer.save(shift_agent=employee_profile)
+            timer = datetime.now().time()
+            serializer.save(shift_agent=employee_profile, shift_start_time=timer)
         except Employee.DoesNotExist:
             return 'Employee does not exist'
 

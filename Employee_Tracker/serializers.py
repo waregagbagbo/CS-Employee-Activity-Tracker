@@ -25,7 +25,7 @@ class ShiftSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Shift
-        fields = ('shift_agent','shift_date','shift_start_time','shift_end_time','shift_agent',
+        fields = ('shift_agent','shift_date','shift_start_time','shift_end_time',
                   'shift_type','shift_status','shift_timer_count',)
 
 
