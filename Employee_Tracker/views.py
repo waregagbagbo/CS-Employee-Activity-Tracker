@@ -1,11 +1,11 @@
 from datetime import datetime
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from accounts.models import Employee, Department
-from accounts.permissions import IsEmployee, IsSupervisor, IsOwnerOrSupervisor
+from accounts.permissions import IsEmployee, IsSupervisor, IsOwnerOrSupervisor, IsAdmin
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication,filters
@@ -34,7 +34,7 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
 class ShiftAPIViewSet(viewsets.ModelViewSet):
     serializer_class = ShiftSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    filter_fields = ['shift_agent','shift_type','shift_status']
+    search_fields = ['shift_agent','shift_type','shift_status']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
     PaginationClass = PageNumberPagination
@@ -56,8 +56,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             timer = datetime.now().time()
             serializer.save(shift_agent=employee_profile, shift_start_time=timer)
         except ObjectDoesNotExist:
-            raise 'Employee does not exist'
-
+            raise ValidationError('Employee does not exist')
 
 #Department view
 class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
@@ -80,19 +79,43 @@ class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
 #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
-    serializer_class = ActivityReportSerializer
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ActivityReportSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    filter_fields = ['activity_type','activity_status']
+    search_fields = ['activity_type','activity_status']
+    ordering_fields = ['activity_type','activity_status']
+    pagination_class = PageNumberPagination
 
     #filter reports based on the users present
     def get_queryset(self):
-        user = Employee.objects.get(user=self.request.user)
-        if self.request.user.groups.filter(name__in=['supervisor','admin','superuser']).exists():
-            return ActivityReport.objects.filter(is_approved = False)
-        else:
-            return ActivityReport.objects.filter(shift_active_agent = user)
+            user = Employee.objects.get_object_or_404(user=self.request.user)
+            if self.request.user.groups.filter(name__in=['Supervisor','Admin','Superuser']).exists():
+                return ActivityReport.objects.filter(is_approved = False)
+            else:
+                return ActivityReport.objects.select_related('shift_active_agent').filter(shift_active_agent=user,is_approved = True)
+
+    # set permissions
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [permissions.IsAuthenticated]
+
+        elif self.action == 'create':
+            permission_classes = [permissions.IsAuthenticated,IsEmployee,IsAdmin]
+
+        elif self.action == 'retrieve':
+            permission_classes = [permissions.IsAuthenticated,IsEmployee,IsAdmin,IsOwnerOrSupervisor]
+
+        elif self.action == 'update':
+            permission_classes = [permissions.IsAuthenticated,IsSupervisor,IsAdmin]
+
+        elif self.action == 'destroy':
+            permission_classes = [permissions.IsAuthenticated,IsAdmin]
+
+        return [permissions() for permissions in permission_classes]
+
+
+
 
 
 

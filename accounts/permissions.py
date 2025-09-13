@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import permissions
 from rest_framework.permissions import BasePermission
 from accounts.models import *
@@ -15,7 +16,7 @@ class IsEmployee(permissions.BasePermission):
         try:
             profile = request.user.employee_profile
             return profile.user_type == 'Employee_Agent'
-        except Employee.DoesNotExist:
+        except ObjectDoesNotExist:
             return False
 
 class IsSupervisor(permissions.BasePermission):
