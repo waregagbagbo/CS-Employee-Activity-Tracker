@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'Employee_Tracker',
     'rest_framework.authtoken',
+    'djoser',
 ]
 
 
