@@ -43,7 +43,7 @@ class IsOwnerOrSupervisor(permissions.BasePermission):
                 return True
 
             # If user is supervisor and obj belongs to their supervised employee
-            if user_profile.user_type in ['Supervisor', 'Manager']:
+            if user_profile.user_type in ['Supervisor']:
                 if hasattr(obj, 'employee'):
                     return obj.employee.supervisor == user_profile
 
