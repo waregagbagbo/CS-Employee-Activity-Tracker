@@ -3,13 +3,45 @@ from rest_framework import permissions
 from rest_framework.permissions import BasePermission
 from accounts.models import *
 
-class IsAdmin(permissions.BasePermission):
+# permissions.py
+from rest_framework.permissions import BasePermission
+
+class IsEmployee(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.role == 'employee'
+
+class IsAdmin(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.role == 'admin'
+
+class IsOwnerOrSupervisor(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        # Check if user owns the object or is the supervisor
+        return (obj.owner == request.user or
+                obj.owner.supervisor == request.user)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""class IsAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.is_superuser
 
 
 class IsEmployee(permissions.BasePermission):
-    """Employee agents can perform basic operations"""
+    #Employee agents can perform basic operations
     def has_permission(self, request, view):
         if not request.user.is_authenticated:
             return False
@@ -20,13 +52,13 @@ class IsEmployee(permissions.BasePermission):
             return False
 
 class IsSupervisor(permissions.BasePermission):
-    """Supervisors can manage their team"""
+ #Supervisors can manage their team
     def has_permission(self, request, view):
         if not request.user.is_authenticated:
             return False
 
 class IsOwnerOrSupervisor(permissions.BasePermission):
-    """Users can only access their own data, supervisors can access team data"""
+    Users can only access their own data, supervisors can access team data
     def has_object_permission(self, request, view, obj):
         if not request.user.is_authenticated:
             return False
@@ -62,5 +94,5 @@ class CanCreateReport(permissions.BasePermission):
 class CanViewReports(permissions.BasePermission):
     def has_permission(self, request, view):
         return (request.user.is_authenticated and
-                request.user.has_perm('accounts.can_view_report'))
+                request.user.has_perm('accounts.can_view_report'))"""
 

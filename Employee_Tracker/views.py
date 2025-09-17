@@ -88,7 +88,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
 
     #filter reports based on the users present
     def get_queryset(self):
-            user = Employee.objects.get_object_or_404(user=self.request.user)
+            user = Employee.objects.get(user=self.request.user)
             if self.request.user.groups.filter(name__in=['supervisor','admin','superuser']).exists():
                 return ActivityReport.objects.filter(is_approved = False)
             else:
@@ -103,15 +103,15 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
             permission_classes = [permissions.IsAuthenticated,IsEmployee,IsAdmin]
 
         elif self.action == 'retrieve':
-            permission_classes = [permissions.IsAuthenticated,IsAdmin,IsOwnerOrSupervisor]
+            permission_classes = [permissions.IsAuthenticated, IsAdmin, IsOwnerOrSupervisor]
 
         elif self.action == 'update':
             permission_classes = [permissions.IsAuthenticated,IsAdmin]
 
         elif self.action == 'destroy':
-            permission_classes = [permissions.IsAuthenticated,IsAdmin]
+            permission_classes  = [permissions.IsAuthenticated,IsAdmin]
 
-        return [permissions() for permissions in permission_classes]
+        return [permission() for permission in permission_classes]
 
 
 

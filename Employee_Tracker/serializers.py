@@ -39,7 +39,7 @@ class ShiftSerializer(serializers.ModelSerializer):
                 end_dt += timedelta(days=1)
 
             duration = (end_dt - start_dt).total_seconds() / 3600
-            if duration >= 8:
+            if duration >= 8 and not "Scheduled":
                 return 'Good work, shift done for today'
             else:
                 return f'Shift incomplete ({round(duration, 2)} hours logged)'
