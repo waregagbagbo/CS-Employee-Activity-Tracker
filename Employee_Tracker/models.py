@@ -75,8 +75,8 @@ class ActivityReport(models.Model):
         return self.report_type
 
     class Meta:
-        verbose_name = 'Activity Report'
-        verbose_name_plural = 'Activity Reports'
+        verbose_name = 'Report'
+        verbose_name_plural = 'Reports'
         ordering = ['report_type', 'shift_activity_type']
 
 
