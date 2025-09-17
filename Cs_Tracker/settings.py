@@ -96,7 +96,7 @@ DATABASES = {
         'OPTIONS': {
             'charset': 'utf8mb4',
 
-              # Ensure consistent timezone behavior
+            # Ensure consistent timezone behavior
             'init_command': "SET time_zone='+00:00'; SET sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION",
         },
     }
@@ -180,5 +180,19 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_TYPES': ('JWT',), # Useful for user authentication details unlike bearer
 }
+
+# key Djoser requirements
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
+}
+
+# this line ensures Djoser is compatible with previous versions
+AUTHENTICATION_BACKENDS = [
+    "djoser.auth_backends.LoginFieldBackend",
+]
