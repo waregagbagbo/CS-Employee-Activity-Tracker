@@ -5,7 +5,7 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from accounts.models import Employee, Department
-from accounts.permissions import IsEmployee, IsSupervisor, IsOwnerOrSupervisor, IsAdmin
+from accounts.permissions import IsInAllowedGroup
 from .models import Shift, WebHook, WebHookLog, ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication,filters
@@ -69,6 +69,7 @@ class WebHookViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = WebHook.objects.all()
     serializer_class = WebHookSerializer
 
+
 class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = WebHookLog.objects.all()
     serializer_class = WebHookLogSerializer
@@ -78,7 +79,7 @@ class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
 #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsInAllowedGroup]
     serializer_class = ActivityReportSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
@@ -88,34 +89,12 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
 
     #filter reports based on the users present
     def get_queryset(self):
+        try:
             user = Employee.objects.get(user=self.request.user)
-            if self.request.user.groups.filter(name__in=['supervisor','admin','superuser']).exists():
-                return ActivityReport.objects.filter(is_approved = False)
-            else:
-                return ActivityReport.objects.select_related('shift_active_agent').filter(shift_active_agent=user,is_approved = True)
+        except ObjectDoesNotExist:
+            return ActivityReport.objects.none()
 
-    # set permissions
-    def get_permissions(self):
-        if self.action == 'list':
-            permission_classes = [permissions.IsAuthenticated]
-
-        elif self.action == 'create':
-            permission_classes = [permissions.IsAuthenticated,IsEmployee,IsAdmin]
-
-        elif self.action == 'retrieve':
-            permission_classes = [permissions.IsAuthenticated, IsAdmin, IsOwnerOrSupervisor]
-
-        elif self.action == 'update':
-            permission_classes = [permissions.IsAuthenticated,IsAdmin]
-
-        elif self.action == 'destroy':
-            permission_classes  = [permissions.IsAuthenticated,IsAdmin]
-
-        return [permission() for permission in permission_classes]
-
-
-
-
-
-
-
+        if self.request.user.groups.filter(name__in=['Supervisor','Admin']).exists():
+            return ActivityReport.objects.filter(is_approved = False)
+        else:
+            return ActivityReport.objects.select_related('shift_active_agent').filter(shift_active_agent=user,is_approved = True)

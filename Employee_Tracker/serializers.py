@@ -70,7 +70,7 @@ class ActivityReportSerializer(serializers.ModelSerializer):
     def get_fields(self):
         fields = super().get_fields()
         user = self.context['request'].user
-        if not user.groups.filter(name__in=['supervisor', 'superuser','Admin']).exists():
+        if not user.groups.filter(name__in=['Supervisor','Admin']).exists():
             fields.pop('is_approved',None)
             fields.pop('activity_approved_at',None)
         return fields
@@ -85,16 +85,15 @@ class ActivityReportSerializer(serializers.ModelSerializer):
 
         # restrict is_approved unless is supervisor
         if validated_data.get('is_approved','activity_approved_at', False):
-            if not user.groups.filter(name__in=['Supervisor','superuser','admin']).exists():
+            if not user.groups.filter(name__in=['Supervisor','Admin']).exists():
                 raise serializers.ValidationError('Only supervisor or Managers can approve')
 
             # auto assign shift agent or supervisor
             validated_data['shift_active_agent'] = employee_profile
-            if user.groups.filter(name__in=['supervisor','superuser']).exists():
-                validated_data['supervisor'] = employee_profile
+            if user.groups.filter(name__in=['Supervisor','Admin']).exists():
+                validated_data['Supervisor'] = employee_profile
             return super().create(validated_data)
         return validated_data
-
 
 
 class WebHookSerializer(serializers.ModelSerializer):
