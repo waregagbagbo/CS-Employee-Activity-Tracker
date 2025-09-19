@@ -13,6 +13,4 @@ urlpatterns = [
 
     # for auth token
     path('api-token-auth/', obtain_auth_token),
-
-
 ]

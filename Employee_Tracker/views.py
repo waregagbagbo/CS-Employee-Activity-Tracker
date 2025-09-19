@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from accounts.models import Employee, Department
 from accounts.permissions import IsInAllowedGroup
 from .models import Shift, WebHook, WebHookLog, ActivityReport
@@ -65,16 +65,19 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated]
 
 #WebHook view
-class WebHookViewSet(viewsets.ReadOnlyModelViewSet):
+class WebHookViewSet(viewsets.ModelViewSet):
     queryset = WebHook.objects.all()
     serializer_class = WebHookSerializer
+
+    def get_queryset(self):
+        return WebHook.objects.all()
 
 
 class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = WebHookLog.objects.all()
     serializer_class = WebHookLogSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
+    permission_classes = [AllowAny]
+    #authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
 
 #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
@@ -98,3 +101,10 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
             return ActivityReport.objects.filter(is_approved = False)
         else:
             return ActivityReport.objects.select_related('shift_active_agent').filter(shift_active_agent=user,is_approved = True)
+
+    # get perms
+    def get_permissions(self):
+        if self.action == 'list':
+            return  [permission() for permission in permission_classes]
+
+
