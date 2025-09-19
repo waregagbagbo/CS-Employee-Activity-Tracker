@@ -81,7 +81,7 @@ class ActivityReport(models.Model):
 
 
 # webhook model
-class WebHook(models.Model):
+"""class WebHook(models.Model):
     webhook_name = models.CharField(max_length=100)
     webhook_url = models.URLField(max_length=200, unique=True)
     webhook_created_by = models.ForeignKey(Employee, on_delete=models.CASCADE)
@@ -109,7 +109,7 @@ class WebHookLog(models.Model):
 
     class Meta:
         verbose_name_plural = 'WebHook Logs'
-        unique_together = (('webhook_config', 'event_types'),)
+        unique_together = (('webhook_config', 'event_types'),)"""
 
 
 

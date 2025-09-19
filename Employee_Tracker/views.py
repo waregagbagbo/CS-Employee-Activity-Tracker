@@ -65,7 +65,7 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated]
 
 #WebHook view
-class WebHookViewSet(viewsets.ModelViewSet):
+""""class WebHookViewSet(viewsets.ModelViewSet):
     queryset = WebHook.objects.all()
     serializer_class = WebHookSerializer
 
@@ -77,7 +77,7 @@ class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = WebHookLog.objects.all()
     serializer_class = WebHookLogSerializer
     permission_classes = [AllowAny]
-    #authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
+    #authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]"""
 
 #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
