@@ -1,7 +1,7 @@
 import requests
 
 """ To create a slack trigger with the endpoint"""
-SLACK_WEBHOOK_URL = ''
+SLACK_WEBHOOK_URL = 'my_endpoint will go  here'
 
 # creat a function to handle the logic
 def slack_trigger(payload):
