@@ -6,10 +6,8 @@ from accounts.models import CustomUser,Employee
 # Create your models here.
 STATUS = [
     ('Scheduled', 'Scheduled'),
-    ('Active', 'Active'),
     ('Completed', 'Completed'),
-    ('Missed', 'Missed'),
-    ('Scheduled', 'Scheduled'),
+    ('Signed_In', 'Signed_In'),
 ]
 
 SHIFT_TYPES = [
