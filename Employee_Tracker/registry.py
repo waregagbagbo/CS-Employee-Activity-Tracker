@@ -4,7 +4,7 @@ EVENTS = {
     'shift_status_changed': {
         'destination': 'slack',
         'formatter': lambda shift: {
-            "text": f"🔔 Shift status changed for *{shift.user.username}*: `{shift.old_status}` → `{shift.status}`"
+            "text": f"🔔 Shift status changed for *{shift.user.username}*: `{shift.previous_status}` → `{shift.status}`"
         }
     }
 }

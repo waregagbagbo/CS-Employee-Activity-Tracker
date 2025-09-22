@@ -8,7 +8,7 @@ dept_router.register(r'', views.DepartmentAPIViewSet, basename='department')
 
 # Router for webhook
 hooks_router = DefaultRouter()
-hooks_router.register(r'',views.WebHookViewSet, basename='webhook')
+#hooks_router.register(r'',views.WebHookViewSet, basename='webhook')
 
 # Router for Employee and shifts
 employee_router = DefaultRouter()
@@ -25,7 +25,7 @@ activity_router.register(r'', views.ActivityReportViewSet, basename='activity_re
 urlpatterns =[
     path('employee', include(employee_router.urls)),
     path('department/',include(dept_router.urls)),
-    path('webhook/', include(hooks_router.urls)),
+    #path('webhook/', include(hooks_router.urls)),
     path('shifts/',include(shifts_router.urls)),
     path('reports/',include(activity_router.urls)),
 

@@ -6,8 +6,8 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from accounts.models import Employee, Department
 from accounts.permissions import IsInAllowedGroup
-from .models import Shift, WebHook, WebHookLog, ActivityReport
-from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,WebHookSerializer,WebHookLogSerializer,ActivityReportSerializer
+from .models import Shift,ActivityReport
+from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication,filters
 from rest_framework import generics
 from rest_framework.decorators import permission_classes

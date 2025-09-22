@@ -2,12 +2,14 @@ from datetime import datetime
 from django.db import models
 from django.forms import JSONField
 from accounts.models import CustomUser,Employee
+from .dispatcher import webhook_dispatcher
+from .registry import EVENTS
 
 # Create your models here.
 STATUS = [
-    ('Scheduled', 'Scheduled'),
-    ('Completed', 'Completed'),
     ('Signed_In', 'Signed_In'),
+    ('Shift_Started','Shift_Started'),
+    ('Shift_Completed','Shift_Completed')
 ]
 
 SHIFT_TYPES = [
@@ -28,8 +30,6 @@ REPORT_TYPES = [
 
 def event():
     return{
-        'shift_started':'shift_started',
-        'shift_completed':'shift_completed',
         'shift_type':'shift_type',
         'report_type':'report_type',
         'report_submitted':'report_submitted',
@@ -42,9 +42,9 @@ class Shift(models.Model):
     shift_date = models.DateField(auto_now=False, blank=False)
     shift_start_time = models.TimeField(auto_now=False,blank=False)
     shift_end_time = models.TimeField(auto_now=False, blank=False)
-    shift_updated_at = models.DateTimeField(auto_now=True)
+    shift_updated_at = models.DateTimeField(auto_now=True) #    records the time at which the shift was last updated
     shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift', blank=False)
-    shift_status = models.CharField(max_length=50, choices=STATUS, default='Scheduled',blank = False)
+    shift_status = models.CharField(max_length=50, choices=STATUS, default='Signed_In',blank = False)
 
     def __str__(self):
         return str(self.shift_agent)
@@ -53,6 +53,27 @@ class Shift(models.Model):
         verbose_name = 'Shift'
         verbose_name_plural = 'Shifts'
         ordering = ['shift_agent', 'shift_date']
+
+    # logic to trigger the webhook
+    def save(self, *args, **kwargs):
+        if self.pk:
+            shift_previous_status = Shift.objects.get(pk=self.pk).shift_status
+            new_status_recorded = shift_previous_status != self.shift_status
+        else:
+            new_status_recorded = False
+            shift_previous_status = self.shift_status
+            return super(*args,**kwargs).save
+
+        if new_status_recorded:
+            self.shift_previous_status = shift_previous_status  # attach for formatter
+            event = EVENTS.get('shift_status_changed')
+            if event:
+                payload = event['formatter'](self)
+                webhook_dispatcher('shift_status_changed', payload, event['destination'])
+
+
+
+
 
 #create activity model class
 class ActivityReport(models.Model):

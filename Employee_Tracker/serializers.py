@@ -2,7 +2,7 @@ from datetime import datetime,timedelta
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import serializers
 from accounts.models import Employee,Department
-from .models import Shift,ActivityReport,WebHook,WebHookLog
+from .models import Shift,ActivityReport
 from django.utils import timezone
 
 
@@ -95,16 +95,6 @@ class ActivityReportSerializer(serializers.ModelSerializer):
             return super().create(validated_data)
         return validated_data
 
-
-class WebHookSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WebHook
-        fields = '__all__'
-
-class WebHookLogSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WebHookLog
-        fields = '__all__'
 
 
 
