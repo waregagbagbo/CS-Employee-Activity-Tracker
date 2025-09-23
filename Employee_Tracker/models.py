@@ -35,7 +35,6 @@ def event():
         'report_submitted':'report_submitted',
     }
 
-
 #create shift class
 class Shift(models.Model):
     shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE)
@@ -62,7 +61,7 @@ class Shift(models.Model):
         else:
             new_status_recorded = False
             shift_previous_status = self.shift_status
-            return super(*args,**kwargs).save
+            return super().save
 
         if new_status_recorded:
             self.shift_previous_status = shift_previous_status  # attach for formatter
@@ -70,9 +69,6 @@ class Shift(models.Model):
             if event:
                 payload = event['formatter'](self)
                 webhook_dispatcher('shift_status_changed', payload, event['destination'])
-
-
-
 
 
 #create activity model class
