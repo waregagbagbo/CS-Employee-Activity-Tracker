@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-
-from django.conf.global_settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -102,6 +101,15 @@ DATABASES = {
     }
 }
 
+# EMAIL setup
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'denzrich10@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_app_password'  # not your Gmail password
+DEFAULT_FROM_EMAIL = 'no-reply@yourdomain.com'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -146,9 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # model to use
 AUTH_USER_MODEL = 'accounts.CustomUser'
-
-LOGIN_REDIRECT_URL = 'cs/shifts'
-LOGOUT_REDIRECT_URL = '/login/'
 
 # Setting global authentication
 REST_FRAMEWORK = {
@@ -196,3 +201,28 @@ DJOSER = {
 AUTHENTICATION_BACKENDS = [
     "djoser.auth_backends.LoginFieldBackend",
 ]
+
+# FOR LOGGING
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "logs", "webhook.log"),
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "Employee_Tracker": {   # our app
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}

@@ -11,7 +11,6 @@ def slack_trigger(payload):
         'text': payload.get['text', 'Message triggered not yet received'],
     }
     # fallback in case the message is not executed
-
     try:
         requests.post(SLACK_WEBHOOK_URL, json=message)
         print('Message sent')

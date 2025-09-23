@@ -4,7 +4,7 @@ from django.forms import JSONField
 from accounts.models import CustomUser,Employee
 from .dispatcher import webhook_dispatcher
 from .registry import EVENTS
-from .email import shift_email_trigger
+from .webhook_email import shift_email_trigger
 
 # Create your models here.
 STATUS = [
@@ -61,20 +61,13 @@ class Shift(models.Model):
             shift_previous_status = Shift.objects.get(pk=self.pk).shift_status
             new_status_recorded = shift_previous_status != self.shift_status
         else:
-            return super().save
+            return super().save(*args, **kwargs)
         if new_status_recorded:
             self.shift_previous_status = shift_previous_status  # attach for formatter
             event = EVENTS.get('shift_status_changed')
             if event:
                 payload = event['formatter'](self)
                 webhook_dispatcher('shift_status_changed', payload, event['destination'])
-
-        if new_status_recorded:
-            payload = {
-                "text": f"🔔 Shift status changed for {self.shift_agent.user.username}: {shift_previous_status} → {self.shift_status}"
-            }
-            shift_email_trigger(payload)
-
 
 #create activity model class
 class ActivityReport(models.Model):
