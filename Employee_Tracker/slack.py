@@ -14,7 +14,7 @@ def slack_trigger(payload):
 
     try:
         requests.post(EMAIL_WEBHOOK_URL, json=message)
-        return True
+        print('Message sent')
     except requests.exceptions.RequestException as e:
         print('Statuses failed: {e}')
 

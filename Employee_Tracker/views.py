@@ -54,6 +54,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             employee_profile = Employee.objects.get(user=user)
             timer = datetime.now().time()
             serializer.save(shift_agent=employee_profile, shift_start_time=timer)
+            print('Shift updated successfully')
         except ObjectDoesNotExist:
             raise ValidationError('Employee does not exist')
 
