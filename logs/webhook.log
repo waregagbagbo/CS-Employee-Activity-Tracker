@@ -5742,3 +5742,30 @@ D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
 Watching for file changes with StatReloader
 D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
 Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /cs/shifts/ HTTP/1.1" 201 11265
+"POST /cs/shifts/ HTTP/1.1" 201 11266
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /cs/shifts/ HTTP/1.1" 201 11265
+"GET /cs/shifts/ HTTP/1.1" 200 19334
+"GET /cs/shifts/ HTTP/1.1" 200 19334
+"GET /cs/shifts/?page=2 HTTP/1.1" 200 19670
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /cs/shifts/?page=2 HTTP/1.1" 201 11329
+D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader

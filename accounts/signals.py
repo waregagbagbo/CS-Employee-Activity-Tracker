@@ -1,3 +1,5 @@
+import logging
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.sites import requests
 from django.dispatch import receiver
@@ -6,9 +8,14 @@ from rest_framework.authtoken.models import Token
 from accounts.models import Employee, Department
 from Employee_Tracker.models import Shift
 import requests
-from .settings import LOGGING
 
+# use logging from logs
+logger = logging.getLogger(__name__)
+
+# use the AUTH USER model as an object instead of str
 User = get_user_model()
+
+# webhook url
 webhook_url = ' https://webhook.site/924a9fa3-98cd-418f-9689-15fbdcb644c7'
 
 # handle auto token generation
@@ -30,8 +37,9 @@ def create_user_profile(sender, instance=None, created=False, **kwargs):
 # create signal to fire up shift changes
 @receiver(post_save, sender=Shift)
 def create_shift_trigger(sender, instance, created, **kwargs):
-    if created:
+    if created: # only for updates
         data ={
+            "STATUS": f'🚨 Shift Update!',
             'id': instance.id,
             'shift_agent': instance.shift_agent,
             'shift_status': instance.shift_status,
@@ -42,6 +50,8 @@ def create_shift_trigger(sender, instance, created, **kwargs):
     #add your webhook url
     try:
         response = requests.post(webhook_url, data)
-        print(response.json())
+        # raise status upon trigger
+        response.raise_for_status()
+        logger.info(f'Webhook updated successfully{response.json()}')
     except requests.exceptions.RequestException as e:
         print(f'Webhook failed to post. {e}')
