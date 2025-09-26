@@ -1,7 +1,7 @@
-import requests
+#import requests
 """event is what we want, payload is the future of what we might add, destination is the target"""
 
-def webhook_dispatcher(event,payload, destinations):  # create a method to handle the webhook
+"""def webhook_dispatcher(event,payload, destinations):  # create a method to handle the webhook
     if isinstance(destinations, dict):
         destinations = [destinations]
 
@@ -17,7 +17,7 @@ def webhook_dispatcher(event,payload, destinations):  # create a method to handl
            try:
                requests.post()
            except requests.exceptions.RequestException as e:
-               print(f'Webhook failed {e}')
+               print(f'Webhook failed {e}')"""
 
 
 

@@ -2,9 +2,9 @@ from datetime import datetime
 from django.db import models
 from django.forms import JSONField
 from accounts.models import CustomUser,Employee
-from .dispatcher import webhook_dispatcher
+#from .dispatcher import webhook_dispatcher
 from .registry import EVENTS
-from .webhook_email import shift_email_trigger
+#from .webhook_email import shift_email_trigger
 
 # Create your models here.
 STATUS = [
@@ -56,7 +56,7 @@ class Shift(models.Model):
         ordering = ['shift_agent', 'shift_date']
 
     # logic to trigger the webhook
-    def save(self, *args, **kwargs):
+    """def save(self, *args, **kwargs):
         if self.pk:
             shift_previous_status = Shift.objects.get(pk=self.pk).shift_status
             new_status_recorded = shift_previous_status != self.shift_status
@@ -67,7 +67,7 @@ class Shift(models.Model):
             event = EVENTS.get('shift_status_changed')
             if event:
                 payload = event['formatter'](self)
-                webhook_dispatcher('shift_status_changed', payload, event['destination'])
+                webhook_dispatcher('shift_status_changed', payload, event['destination'])"""
 
 #create activity model class
 class ActivityReport(models.Model):
