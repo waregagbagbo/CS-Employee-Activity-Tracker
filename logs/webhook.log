@@ -5769,3 +5769,24 @@ Watching for file changes with StatReloader
 "POST /cs/shifts/?page=2 HTTP/1.1" 201 11329
 D:\CS-Employee-Activity-Tracker\accounts\signals.py changed, reloading.
 Watching for file changes with StatReloader
+"POST /cs/shifts/?page=2 HTTP/1.1" 201 11329
+"GET /cs/shifts/3 HTTP/1.1" 301 0
+"GET /cs/shifts/3/ HTTP/1.1" 200 13150
+"GET /cs/shifts/5 HTTP/1.1" 301 0
+"GET /cs/shifts/5/ HTTP/1.1" 200 13187
+"GET /cs/shifts/55 HTTP/1.1" 301 0
+"GET /cs/shifts/55/ HTTP/1.1" 200 13194
+"GET /cs/shifts/52 HTTP/1.1" 301 0
+"GET /cs/shifts/52/ HTTP/1.1" 200 13182
+"GET /cs/shifts/36 HTTP/1.1" 301 0
+"GET /cs/shifts/36/ HTTP/1.1" 200 13192
+"GET /cs/shifts/50 HTTP/1.1" 301 0
+"GET /cs/shifts/50/ HTTP/1.1" 200 13180
+"GET /cs/shifts/51/ HTTP/1.1" 200 13180
+"GET /cs/shifts/51/?format=json HTTP/1.1" 200 368
+"GET /cs/shifts/52/ HTTP/1.1" 200 13182
+"GET /cs/shifts/52/?format=api HTTP/1.1" 200 13281
+"GET /cs/shifts/52/?format=api HTTP/1.1" 200 13281
+"GET /cs/shifts/52/?format=json HTTP/1.1" 200 369
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
