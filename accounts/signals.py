@@ -22,7 +22,7 @@ webhook_url = ' https://webhook.site/924a9fa3-98cd-418f-9689-15fbdcb644c7'
 @receiver(post_save, sender=User)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
-       Token.objects.create(user=instance)
+       Token.objects.get_or_create(user=instance)
 
 
 # handle auto profile creation

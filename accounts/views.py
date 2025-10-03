@@ -1,3 +1,4 @@
+from contextvars import Token
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -45,9 +46,12 @@ class UserLogin(APIView):
         user.save()
         login(request, user)
         # get the token from the signals
-        token = {'token':'user.auth_token.key'}, # send the str part token
-        context = {"message":'User logged in successfully'}
-        return Response(context)
+        token,created = Token.objects.get_or_create(user=user)
+        #token = {'token':user.auth_token.key}, # send the str part token
+        context = {"message":'User logged in successfully',
+                   'token':token.key
+                   }
+        return Response(context,status=status.HTTP_200_OK)
 
 # logout view for token authentication
 class LogoutView(APIView):
@@ -55,7 +59,11 @@ class LogoutView(APIView):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def post(self, request):
-        request.user.auth_token.delete()
-        logout(request) # for session auth
+        # checks if user has auth token to be deleted
+        if hasattr(request.user, 'auth_token'):
+            request.user.auth_token.delete()
+
+        logout(request) # for session auth clearing
+
         context ={'message':'user logged out successfully'}
         return Response(context,status=200)
