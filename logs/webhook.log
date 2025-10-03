@@ -6087,3 +6087,163 @@ Not Found: /cs/shifts/3/
 "GET /cs/shifts/3/ HTTP/1.1" 404 11820
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4486
+"GET /auth HTTP/1.1" 301 0
+"GET /auth/ HTTP/1.1" 200 5397
+"GET /auth/users HTTP/1.1" 301 0
+"GET /auth/users/ HTTP/1.1" 200 14535
+"GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+"GET /auth/users/logout HTTP/1.1" 301 0
+Not Found: /auth/users/logout/
+"GET /auth/users/logout/ HTTP/1.1" 404 10674
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /auth/users/logout/
+"GET /auth/users/logout/ HTTP/1.1" 404 9848
+Not Found: /auth/users/login
+"GET /auth/users/login HTTP/1.1" 404 9842
+"GET / HTTP/1.1" 200 5262
+Not Found: /logout
+"GET /logout HTTP/1.1" 404 9812
+Not Found: /auth/
+"GET /auth/ HTTP/1.1" 404 9809
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10488
+"GET / HTTP/1.1" 200 5262
+"GET /users HTTP/1.1" 301 0
+"GET /users/ HTTP/1.1" 200 14300
+"GET /users/me/ HTTP/1.1" 200 12150
+"PUT /users/me/ HTTP/1.1" 200 12150
+Method Not Allowed: /users/reset_email/
+"GET /users/reset_email/ HTTP/1.1" 405 8904
+Method Not Allowed: /users/reset_email_confirm/
+"GET /users/reset_email_confirm/ HTTP/1.1" 405 9000
+Method Not Allowed: /users/set_email/
+"GET /users/set_email/ HTTP/1.1" 405 9201
+Method Not Allowed: /users/activation/
+"GET /users/activation/ HTTP/1.1" 405 9142
+"GET /users/me/ HTTP/1.1" 200 12150
+Internal Server Error: /users/me/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 526, in options
+    data = self.metadata_class().determine_metadata(request, self)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\metadata.py", line 67, in determine_metadata
+    actions = self.determine_actions(request, view)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\metadata.py", line 86, in determine_actions
+    view.get_object()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 92, in get_object
+    assert lookup_url_kwarg in self.kwargs, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected view UserViewSet to be called with a URL keyword argument named "id". Fix your URL conf, or set the `.lookup_field` attribute on the view correctly.
+"OPTIONS /users/me/ HTTP/1.1" 500 110920
+"GET /users/ HTTP/1.1" 200 14300
+"GET / HTTP/1.1" 200 5262
+"GET /users/ HTTP/1.1" 200 14300
+"GET /users/1 HTTP/1.1" 301 0
+"GET /users/1/ HTTP/1.1" 200 10794
+"GET /users/2 HTTP/1.1" 301 0
+"GET /users/2/ HTTP/1.1" 200 10818
+"GET /users/3 HTTP/1.1" 301 0
+"GET /users/3/ HTTP/1.1" 200 10803
+"GET /users/ HTTP/1.1" 200 14300
+"GET /users/ HTTP/1.1" 200 14300
+"GET / HTTP/1.1" 200 5262
+Not Found: /auth/
+"GET /auth/ HTTP/1.1" 404 9809
+Not Found: /auth/jwt
+"GET /auth/jwt HTTP/1.1" 404 9818
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10488
+Not Found: /auth/api/jwt
+"GET /auth/api/jwt HTTP/1.1" 404 10500
+Not Found: /auth/
+"GET /auth/ HTTP/1.1" 404 9809
+Not Found: /token
+"GET /token HTTP/1.1" 404 9809
+Not Found: /auth/
+"GET /auth/ HTTP/1.1" 404 9809
+Not Found: /auth/users/toke
+"GET /auth/users/toke HTTP/1.1" 404 9839
+Not Found: /auth/users/token
+"GET /auth/users/token HTTP/1.1" 404 9842
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10488
+D:\CS-Employee-Activity-Tracker\accounts\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10488
+"GET / HTTP/1.1" 200 5262
+"GET /users/ HTTP/1.1" 200 14300
+"GET /users/ HTTP/1.1" 200 14300
+"GET /users/?ordering=id HTTP/1.1" 200 14514
+"GET /users/ HTTP/1.1" 200 14300
+"GET / HTTP/1.1" 200 5262
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 2757
+Not Found: /auth/
+"GET /auth/ HTTP/1.1" 404 9905
+Not Found: /auth/apu
+"GET /auth/apu HTTP/1.1" 404 9914
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10584
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10584
+Not Found: /auth/api/
+"GET /auth/api/ HTTP/1.1" 404 10587
+Not Found: /auth/api/create
+"GET /auth/api/create HTTP/1.1" 404 10605
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10584
+Not Found: /auth/token/logout
+"GET /auth/token/logout HTTP/1.1" 404 9941
+Not Found: /api/v1/
+"GET /api/v1/ HTTP/1.1" 404 2796
+Not Found: /auth/api/v1/
+"GET /auth/api/v1/ HTTP/1.1" 404 10596
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10584
+Not Found: /auth/api
+"GET /auth/api HTTP/1.1" 404 10584
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\urls.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\urls.py changed, reloading.
+Watching for file changes with StatReloader
