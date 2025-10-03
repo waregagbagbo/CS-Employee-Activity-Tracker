@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -58,9 +59,6 @@ class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication, TokenAuthentication]
 
-    def get(self, request):
-        return self.post(request)
-
     def post(self, request):
         # checks if user has auth token to be deleted
         if hasattr(request.user, 'auth_token'):
@@ -69,3 +67,7 @@ class LogoutView(APIView):
         logout(request) # for session auth clearing
         context ={'message':'user logged out successfully'}
         return Response(context,status=200)
+
+    # the traditional django using unsecure GET
+    def get(self, request):
+        return self.post(request)
