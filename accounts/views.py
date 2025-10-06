@@ -71,3 +71,5 @@ class LogoutView(APIView):
     # the traditional django using unsecure GET
     def get(self, request):
         return self.post(request)
+
+

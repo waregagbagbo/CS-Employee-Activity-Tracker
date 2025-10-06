@@ -18,6 +18,16 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
         model = Employee
         fields = '__all__'
 
+    # add update logic
+    def update(self, instance, validated_data):
+        instance.hire_date = validated_data.get('hire_date', instance.hire_date)
+        instance.bio = validated_data.get('bio', instance.bio)
+        instance.department = validated_data.get('department', instance.department)
+        instance.user_type = validated_data.get('user_type', instance.user_type)
+        instance.supervisor = validated_data.get('supervisor', instance.supervisor)
+        instance.save()
+        return instance
+
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked

@@ -6519,3 +6519,612 @@ Method Not Allowed: /
 "POST / HTTP/1.1" 200 7379
 D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
 Watching for file changes with StatReloader
+"GET /api/logout/ HTTP/1.1" 200 5035
+Forbidden: /api/logout/
+"GET /api/logout/ HTTP/1.1" 403 5007
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"POST / HTTP/1.1" 200 7379
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 73, in get
+    return self.post(request, HttpResponseRedirect('/'))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: LogoutView.post() takes 2 positional arguments but 3 were given
+"GET /api/logout/ HTTP/1.1" 500 95054
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 73, in get
+    return self.post(request, HttpResponseRedirect('/'))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: LogoutView.post() takes 2 positional arguments but 3 were given
+"GET /api/logout/ HTTP/1.1" 500 94780
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/logout/ HTTP/1.1" 200 5035
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST / HTTP/1.1" 200 7379
+Forbidden: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 403 5091
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 517, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 429, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected a `Response`, `HttpResponse` or `StreamingHttpResponse` to be returned from the view, but received a `<class 'tuple'>`
+"GET /api/logout/ HTTP/1.1" 500 83797
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 517, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 429, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected a `Response`, `HttpResponse` or `StreamingHttpResponse` to be returned from the view, but received a `<class 'tuple'>`
+"GET /api/logout/ HTTP/1.1" 500 83523
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 135, in __init__
+    self.status_code = int(status)
+                       ~~~^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'SimpleLazyObject'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 75, in get
+    return Response(endpoint_value, obj)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 30, in __init__
+    super().__init__(None, status=status)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 44, in __init__
+    super().__init__("", content_type, status, charset=charset, headers=headers)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 375, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 137, in __init__
+    raise TypeError("HTTP status code must be an integer.")
+TypeError: HTTP status code must be an integer.
+"GET /api/logout/ HTTP/1.1" 500 120745
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 135, in __init__
+    self.status_code = int(status)
+                       ~~~^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'SimpleLazyObject'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 75, in get
+    return Response(endpoint_value, obj,200)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 30, in __init__
+    super().__init__(None, status=status)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 44, in __init__
+    super().__init__("", content_type, status, charset=charset, headers=headers)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 375, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 137, in __init__
+    raise TypeError("HTTP status code must be an integer.")
+TypeError: HTTP status code must be an integer.
+"GET /api/logout/ HTTP/1.1" 500 120760
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 135, in __init__
+    self.status_code = int(status)
+                       ~~~^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'SimpleLazyObject'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 75, in get
+    return Response(endpoint_value, obj,200)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 30, in __init__
+    super().__init__(None, status=status)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 44, in __init__
+    super().__init__("", content_type, status, charset=charset, headers=headers)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 375, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 137, in __init__
+    raise TypeError("HTTP status code must be an integer.")
+TypeError: HTTP status code must be an integer.
+"GET /api/logout/ HTTP/1.1" 500 120760
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 135, in __init__
+    self.status_code = int(status)
+                       ~~~^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'SimpleLazyObject'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 75, in get
+    return Response(endpoint_value, obj,200)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 30, in __init__
+    super().__init__(None, status=status)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 44, in __init__
+    super().__init__("", content_type, status, charset=charset, headers=headers)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 375, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\http\response.py", line 137, in __init__
+    raise TypeError("HTTP status code must be an integer.")
+TypeError: HTTP status code must be an integer.
+"GET /api/logout/ HTTP/1.1" 500 120760
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 517, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 429, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected a `Response`, `HttpResponse` or `StreamingHttpResponse` to be returned from the view, but received a `<class 'django.utils.functional.SimpleLazyObject'>`
+"GET /api/logout/ HTTP/1.1" 500 83588
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 517, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 429, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected a `Response`, `HttpResponse` or `StreamingHttpResponse` to be returned from the view, but received a `<class 'django.utils.functional.SimpleLazyObject'>`
+"GET /api/logout/ HTTP/1.1" 500 83588
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/logout/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'post'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 73, in get
+    obj = self.request.post
+          ^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\request.py", line 424, in __getattr__
+    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{attr}'")
+AttributeError: 'Request' object has no attribute 'post'
+"GET /api/logout/ HTTP/1.1" 500 104359
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/logout/ HTTP/1.1" 200 5035
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Forbidden: /api/logout/
+"GET /api/logout/ HTTP/1.1" 403 5007
+"GET /api/register HTTP/1.1" 301 0
+Method Not Allowed: /api/register/
+"GET /api/register/ HTTP/1.1" 405 8869
+"POST /api/register/ HTTP/1.1" 201 8848
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"POST / HTTP/1.1" 200 7377
+"GET /cs/shifts HTTP/1.1" 301 0
+Forbidden: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 403 5089
+Not Found: /cs/profile
+"GET /cs/profile HTTP/1.1" 404 5462
+"GET /api/profile HTTP/1.1" 301 0
+"GET /api/profile/ HTTP/1.1" 200 10760
+"PUT /api/profile/ HTTP/1.1" 200 11205
+"PUT /api/profile/ HTTP/1.1" 200 11205
+"GET /api/profile/?format=json HTTP/1.1" 200 72
+"OPTIONS /api/profile/ HTTP/1.1" 200 15023
+"GET /api/profile/ HTTP/1.1" 200 10760
+"GET /api/profile/ HTTP/1.1" 200 10760
+"PUT /api/profile/ HTTP/1.1" 200 11180
+"PUT /api/profile/ HTTP/1.1" 200 11180
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 11180
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 11180
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 11180
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 11180
+"GET /api/profile/ HTTP/1.1" 200 10760
+"PUT /api/profile/ HTTP/1.1" 200 11007
+"GET /api/profile/ HTTP/1.1" 200 10760
+"GET /api/profile/ HTTP/1.1" 200 10760
+"PUT /api/profile/ HTTP/1.1" 200 10946
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 10946
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 10946
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 10946
+Not Found: /api/
+"GET /api/ HTTP/1.1" 404 4612
+"GET /api/profile/ HTTP/1.1" 200 10760
+"PUT /api/profile/ HTTP/1.1" 200 10922
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/profile/ HTTP/1.1" 200 10760
+"PUT /api/profile/ HTTP/1.1" 200 10949
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4633
+"POST / HTTP/1.1" 200 7379
+"GET /api/profile HTTP/1.1" 301 0
+"GET /api/profile/ HTTP/1.1" 200 10762
+"PUT /api/profile/ HTTP/1.1" 200 10981
+"PUT /api/profile/ HTTP/1.1" 200 10981
+"PUT /api/profile/ HTTP/1.1" 200 10981
+"PUT /api/profile/ HTTP/1.1" 200 10981
+"PUT /api/profile/ HTTP/1.1" 200 10981
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 10981
+"GET /api/profile/ HTTP/1.1" 200 10762
+"PUT /api/profile/ HTTP/1.1" 200 10951
+"PUT /api/profile/ HTTP/1.1" 200 10951
+"GET /api/profile/ HTTP/1.1" 200 10762
+"GET /api/logout/ HTTP/1.1" 200 5035
+"GET /admin HTTP/1.1" 301 0
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4170
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/css/login.css HTTP/1.1" 200 951
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/base.css HTTP/1.1" 200 22120
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 16486
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/accounts/employee/ HTTP/1.1" 200 17989
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/core.js HTTP/1.1" 200 6208
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+"GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Bad Request: /
+"POST / HTTP/1.1" 400 7328
+"POST / HTTP/1.1" 200 7379
+"GET /api/profile HTTP/1.1" 301 0
+"GET /api/profile/ HTTP/1.1" 200 10762
+Not Found: /api/profile/1
+"GET /api/profile/1 HTTP/1.1" 404 4639
+Not Found: /api/profile/1
+"GET /api/profile/1 HTTP/1.1" 404 4639
+Not Found: /api/profile/2
+"GET /api/profile/2 HTTP/1.1" 404 4639
+Not Found: /api/profile/3
+"GET /api/profile/3 HTTP/1.1" 404 4639
+"GET /auth HTTP/1.1" 200 5389
+Not Found: /auth/users
+"GET /auth/users HTTP/1.1" 404 12133
+Not Found: /users
+"GET /users HTTP/1.1" 404 4615
+Not Found: /auth/users
+"GET /auth/users HTTP/1.1" 404 12133
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Not Found: /profile
+"GET /profile HTTP/1.1" 404 4621
+"GET /api/profile/ HTTP/1.1" 200 10762
+Not Found: /api/profile/3
+"GET /api/profile/3 HTTP/1.1" 404 4639
+"GET /api/profile/ HTTP/1.1" 200 10762
+"GET /api/profile/ HTTP/1.1" 200 10762
+"OPTIONS /api/profile/ HTTP/1.1" 200 15025
+"GET /admin/accounts/employee/3/change/ HTTP/1.1" 200 21311
+"GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+"GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+"GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+"POST /admin/accounts/employee/3/change/ HTTP/1.1" 302 0
+"GET /admin/accounts/employee/ HTTP/1.1" 200 18217
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /api/profile/ HTTP/1.1" 200 10762
+"GET /api/profile/ HTTP/1.1" 200 10762
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/profile/ HTTP/1.1" 200 10762
+"GET /cs/shifts HTTP/1.1" 301 0
+Forbidden: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 403 5091
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/ HTTP/1.1" 200 19328
+"GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+"GET /api/profile/ HTTP/1.1" 200 10762
+"GET /cs/shifts/ HTTP/1.1" 200 19328
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/?page=2 HTTP/1.1" 200 19631
+"GET /cs/shifts/?page=2 HTTP/1.1" 200 19631
+"GET /cs/shifts/?page=2 HTTP/1.1" 200 19631
+"GET /cs/shifts/?page=3 HTTP/1.1" 200 19779
+"GET /api/profile/ HTTP/1.1" 200 10762
+"GET /api/profile/ HTTP/1.1" 200 10762
+"GET /api/profile/?format=json HTTP/1.1" 200 72
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 11011
+"GET /api/profile/ HTTP/1.1" 200 10762
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"PUT /api/profile/ HTTP/1.1" 200 10939
+"PUT /api/profile/ HTTP/1.1" 200 10939
+"PUT /api/profile/ HTTP/1.1" 200 10939
+"PUT /api/profile/ HTTP/1.1" 200 10939
+"PUT /api/profile/ HTTP/1.1" 200 10939
+"PUT /api/profile/ HTTP/1.1" 200 10939
+"GET /cs/shifts/ HTTP/1.1" 200 19328
+Watching for file changes with StatReloader

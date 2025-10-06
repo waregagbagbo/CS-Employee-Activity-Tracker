@@ -1,6 +1,8 @@
 from datetime import datetime
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from django.db.migrations import serializer
+from requests import Response
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -11,8 +13,11 @@ from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSer
 from rest_framework import viewsets, permissions, authentication,filters
 from rest_framework import generics
 from rest_framework.decorators import permission_classes
+from rest_framework import status
 
 User = get_user_model()
+
+
 
 # Views implemented using generics
 class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
@@ -25,8 +30,26 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         employee_profile = Employee.objects.get(user=self.request.user)
         if self.request.user.is_superuser:
-            employee_profile = Employee.objects.all()
+            employee_profile = Employee.objects.fetch(user = self.request.user)
         return employee_profile
+
+    # update logic
+    def put(self, request, pk):
+        # fetch the model instance
+        try:
+            user_profile = self.get_object(pk)
+        except ObjectDoesNotExist:
+            print('Object does not exist')
+        # deserialize and validate
+        serializer = EmployeeProfileSerializer(user_profile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
 
 
 #Shift view
@@ -35,7 +58,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['shift_agent','shift_type','shift_status']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsAuthenticated,IsInAllowedGroup]
+    permission_classes = [IsAuthenticated]
     PaginationClass = PageNumberPagination
 
     def get_queryset(self):
