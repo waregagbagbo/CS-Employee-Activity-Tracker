@@ -28,16 +28,27 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
 
     def get_queryset(self):
+        # get the instance object of the current user
+        employee_profile = Employee.objects.filter(user=self.request.user)
+        try:
+            if self.request.user.is_superuser or self.request.user.is_staff:
+                return Employee.objects.all()
+        except ObjectDoesNotExist as e:
+            print(f'User with that profile does not exist {e}')
+
+        return employee_profile
+
+    """"def get_queryset(self):
         employee_profile = Employee.objects.get(user=self.request.user)
-        if self.request.user.is_superuser:
-            employee_profile = Employee.objects.fetch(user = self.request.user)
+        if self.request.user.is_staff:
+            employee_profile = Employee.objects.all()
         return employee_profile
 
     # update logic
     def put(self, request, pk):
         # fetch the model instance
         try:
-            user_profile = self.get_object(pk)
+            user_profile = self.get_object(pk=pk)
         except ObjectDoesNotExist:
             print('Object does not exist')
         # deserialize and validate
@@ -45,11 +56,7 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
 
 
 #Shift view

@@ -1,10 +1,9 @@
-from django.http import HttpResponseRedirect
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer, EmployeeSerializer
+from .serializers import UserRegistrationSerializer, UserLoginSerializer, EmployeeSerializer
 from rest_framework import generics, status
 from django.contrib.auth import login, logout, get_user_model
 
@@ -40,7 +39,8 @@ class UserLogin(APIView):
     serializer_class = UserLoginSerializer
     permission_classes = [AllowAny]
 
-    def post(self, request, *args, **kwargs):
+    @staticmethod
+    def post(request):
         serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
@@ -59,13 +59,13 @@ class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication, TokenAuthentication]
 
-    def post(self, request):
+    def post(self,request):
         # checks if user has auth token to be deleted
         if hasattr(request.user, 'auth_token'):
             request.user.auth_token.delete()
 
         logout(request) # for session auth clearing
-        context ={'message':'user logged out successfully'}
+        context ={'message':'User logged out successfully'}
         return Response(context,status=200)
 
     # the traditional django using unsecure GET

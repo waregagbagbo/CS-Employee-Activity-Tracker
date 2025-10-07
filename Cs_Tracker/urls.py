@@ -22,7 +22,7 @@ urlpatterns = [
     path('cs/',include('Employee_Tracker.urls')),
     path('',include('accounts.urls')),
 
-    path('auth', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')), # for authentication
-    path('auth/api', include('djoser.urls.jwt')),
+    #path('auth', include('djoser.urls')),
+    #path('auth/', include('djoser.urls.authtoken')), # for authentication
+    #path('auth/api', include('djoser.urls.jwt')),
 ]
