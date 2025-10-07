@@ -1,9 +1,14 @@
 from datetime import datetime
+from http.client import HTTPResponse
+from urllib import response
+
 from django.contrib.auth import get_user_model
+from django.contrib.sessions.serializers import JSONSerializer
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db.migrations import serializer
 from requests import Response
 from rest_framework.authentication import SessionAuthentication
+from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from accounts.models import Employee, Department
@@ -15,12 +20,10 @@ from rest_framework import generics
 from rest_framework.decorators import permission_classes
 from rest_framework import status
 
-User = get_user_model()
-
-
+User = get_user_model() # reference the custom User model
 
 # Views implemented using generics
-class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
+class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
     pagination_class = PageNumberPagination
@@ -35,28 +38,17 @@ class EmployeeProfileViewSet(viewsets.ReadOnlyModelViewSet):
                 return Employee.objects.all()
         except ObjectDoesNotExist as e:
             print(f'User with that profile does not exist {e}')
-
         return employee_profile
 
-    """"def get_queryset(self):
-        employee_profile = Employee.objects.get(user=self.request.user)
-        if self.request.user.is_staff:
-            employee_profile = Employee.objects.all()
-        return employee_profile
-
-    # update logic
-    def put(self, request, pk):
-        # fetch the model instance
-        try:
-            user_profile = self.get_object(pk=pk)
-        except ObjectDoesNotExist:
-            print('Object does not exist')
-        # deserialize and validate
-        serializer = EmployeeProfileSerializer(user_profile, data=request.data)
+    def partial_update(self, request,pk=None):
+        # get the profile instance
+        profile = self.get_object()
+        # deserialize the data
+        serializer = EmployeeProfileSerializer(profile,data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
+            return Response(serializer.data, status=200)
+        return Response(serializer.errors, status= 400)
 
 
 #Shift view

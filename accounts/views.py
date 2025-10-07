@@ -27,13 +27,13 @@ class UserRegistration(generics.CreateAPIView):
         return Response(message,status=status.HTTP_201_CREATED)
 
 
-class UserProfileViews(generics.RetrieveUpdateAPIView):
+"""class UserProfileViews(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = EmployeeSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
-        return self.request.user
+        return self.request.user"""
 
 class UserLogin(APIView):
     serializer_class = UserLoginSerializer

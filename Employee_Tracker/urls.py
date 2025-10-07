@@ -15,7 +15,7 @@ employee_router = DefaultRouter()
 
 shifts_router = DefaultRouter()
 
-employee_router.register(r'',views.EmployeeProfileViewSet, basename='profile')
+employee_router.register(r'',views.EmployeeProfileViewSet, basename='user_profile')
 shifts_router.register(r'',views.ShiftAPIViewSet, basename='shift')
 
 # router for activity reports

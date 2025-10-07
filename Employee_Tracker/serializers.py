@@ -17,16 +17,8 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = '__all__'
+        read_only_fields = ( 'user',)
 
-    # add update logic
-    """def update(self, instance, validated_data):
-        instance.hire_date = validated_data.get('hire_date', instance.hire_date)
-        instance.bio = validated_data.get('bio', instance.bio)
-        instance.department = validated_data.get('department', instance.department)
-        instance.user_type = validated_data.get('user_type', instance.user_type)
-        instance.supervisor = validated_data.get('supervisor', instance.supervisor)
-        instance.save()
-        return instance"""
 
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
@@ -38,6 +30,7 @@ class ShiftSerializer(serializers.ModelSerializer):
                   'shift_type','shift_status','shift_timer_count',)
 
    #custom serializer method
+    @staticmethod
     def get_shift_timer_count(self, obj):
         if obj.shift_start_time and obj.shift_end_time:
             today = timezone.localdate()
