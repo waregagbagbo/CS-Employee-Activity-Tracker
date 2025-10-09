@@ -12,6 +12,8 @@ class DepartmentSerializer(serializers.ModelSerializer):
         model = Department
         fields = '__all__'
 
+
+
 class EmployeeProfileSerializer(serializers.ModelSerializer):
     department = DepartmentSerializer(read_only=True)
     user = serializers.PrimaryKeyRelatedField(read_only=True)
@@ -19,24 +21,25 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = '__all__'
-        #read_only_fields = ( 'id','user',)
+        #read_only_fields = ( 'user',)
 
     def update(self, instance, validated_data):
         # user is already set on the instance, just update other fields
         return super().update(instance, validated_data)
 
 
+
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
+    shift_agent_id = serializers.PrimaryKeyRelatedField(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
 
     class Meta:
         model = Shift
-        fields = ('shift_agent','shift_date','shift_start_time','shift_end_time',
+        fields = ('shift_agent','shift_agent_id','shift_date','shift_start_time','shift_end_time',
                   'shift_type','shift_status','shift_timer_count',)
 
    #custom serializer method
-    
     def get_shift_timer_count(self, obj):
         if obj.shift_start_time and obj.shift_end_time:
             today = timezone.localdate()
@@ -67,6 +70,9 @@ class ShiftSerializer(serializers.ModelSerializer):
 
         else:
             return 'Shift not started'
+
+
+
 
 class ActivityReportSerializer(serializers.ModelSerializer):
     shift_active_agent = EmployeeProfileSerializer(read_only=True)

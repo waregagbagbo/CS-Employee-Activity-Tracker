@@ -55,19 +55,6 @@ class Shift(models.Model):
         verbose_name_plural = 'Shifts'
         ordering = ['shift_agent', 'shift_date']
 
-    # logic to trigger the webhook
-    """def save(self, *args, **kwargs):
-        if self.pk:
-            shift_previous_status = Shift.objects.get(pk=self.pk).shift_status
-            new_status_recorded = shift_previous_status != self.shift_status
-        else:
-            return super().save(*args, **kwargs)
-        if new_status_recorded:
-            self.shift_previous_status = shift_previous_status  # attach for formatter
-            event = EVENTS.get('shift_status_changed')
-            if event:
-                payload = event['formatter'](self)
-                webhook_dispatcher('shift_status_changed', payload, event['destination'])"""
 
 #create activity model class
 class ActivityReport(models.Model):
@@ -91,43 +78,5 @@ class ActivityReport(models.Model):
         verbose_name = 'Report'
         verbose_name_plural = 'Reports'
         ordering = ['report_type', 'shift_activity_type']
-
-
-# webhook model
-"""class WebHook(models.Model):
-    webhook_name = models.CharField(max_length=100)
-    webhook_url = models.URLField(max_length=200, unique=True)
-    webhook_created_by = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    webhook_event_types = models.JSONField(default=event)
-    secret_key = models.TextField()
-    is_active = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.webhook_name
-
-    class Meta:
-        verbose_name_plural = 'WebHooks'
-        unique_together = (('webhook_name', 'webhook_url'),)
-
-
-class WebHookLog(models.Model):
-    webhook_config = models.ForeignKey(WebHook, on_delete=models.CASCADE)
-    event_types = models.JSONField(default=event)
-    response_status = models.CharField(max_length=10, choices=STATUS, default='Scheduled')
-    timestamp = models.DateTimeField(auto_now_add=True)
-    response_body = models.JSONField()
-
-    def __str__(self):
-        return self.response_status
-
-    class Meta:
-        verbose_name_plural = 'WebHook Logs'
-        unique_together = (('webhook_config', 'event_types'),)"""
-
-
-
-
-
-
 
 

@@ -1,5 +1,6 @@
 from rest_framework import permissions
 from rest_framework.permissions import BasePermission
+from Employee_Tracker.models import *
 
 # use a combine class permission class
 class IsAdmin(BasePermission):
@@ -40,4 +41,5 @@ class IsSuperVisor(BasePermission):
     def has_permission(self, request, view):
         if request.user.is_supervisor:
             return True
+
 

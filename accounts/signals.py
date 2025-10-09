@@ -5,6 +5,8 @@ from django.contrib.sites import requests
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from rest_framework.authtoken.models import Token
+from rest_framework.utils import json
+
 from accounts.models import Employee, Department
 from Employee_Tracker.models import Shift
 import requests
@@ -48,7 +50,7 @@ def create_shift_trigger(sender, instance, created, **kwargs):
         }
     #add your webhook url
     try:
-        response = requests.post(webhook_url, data)
+        response = requests.post(webhook_url, json=data) # auto handle serialization
         # raise status upon trigger
         response.raise_for_status()
         logger.info(f'Webhook updated successfully{response.json()}')

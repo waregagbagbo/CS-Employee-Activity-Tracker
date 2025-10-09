@@ -56,16 +56,38 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     PaginationClass = PageNumberPagination
 
     def get_queryset(self):
+        """Return shifts based on user_type
+          Admin - View all,
+          Supervisor - View shifts for their agents,
+          Agents - View only their shifts.
+        """
+        # create user object / instance
         user = self.request.user
         if not user.is_authenticated:
-            return Shift.objects.none()
+            return Shift.objects.none() # no shifts for unathenticated users
+
         try:
-            employee_profile = Employee.objects.get(user=user)
-            return Shift.objects.filter(shift_agent=employee_profile)
-        except ObjectDoesNotExist:
+            employee_profile = Employee.objects.select_related('user').get(user=self.request.user)
+        except ObjectDoesNotExist as e:
+            print(f'User with that profile does not exist {e}')
             return Shift.objects.none()
 
+        # set a parent queryset to achieve optimization
+        parent_queryset = Shift.objects.select_related('shift_agent')
+
+        # filter base on user type
+        if employee_profile.user_type == 'Admin':
+            return parent_queryset.all()
+
+        elif employee_profile.user_type == 'Supervisor':
+            return parent_queryset.filter(shift_agent__supervisor=employee_profile)
+
+        else:
+            return parent_queryset.filter(shift_agent=employee_profile)
+
+
     def perform_create(self, serializer):
+        # create shift for authenticated users
         user = self.request.user
         try:
             employee_profile = Employee.objects.get(user=user)
@@ -74,6 +96,15 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             print('Shift updated successfully')
         except ObjectDoesNotExist:
             raise ValidationError('Employee does not exist')
+
+        # prevent supervisors from creating their own shifts
+        if employee_profile.user_type == 'Supervisor':
+            raise ValidationError({
+                'detail': 'Supervisors cannot create shifts for themselves.'
+            })
+        current_time = datetime.now().time()
+        serializer.save(shift_agent=employee_profile,shift_start_time=current_time)
+
 
 #Department view
 class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
