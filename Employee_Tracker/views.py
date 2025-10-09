@@ -11,14 +11,16 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.status import HTTP_201_CREATED
 from accounts.models import Employee, Department
-from accounts.permissions import IsInAllowedGroup
+from accounts.permissions import IsAdmin,IsEmployee
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
-from rest_framework import viewsets, permissions, authentication,filters
+from rest_framework import viewsets, permissions, authentication, filters, status
 from rest_framework import generics
 from rest_framework.decorators import permission_classes
-from rest_framework import status
+
+
 
 User = get_user_model() # reference the custom User model
 
@@ -40,15 +42,8 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
             print(f'User with that profile does not exist {e}')
         return employee_profile
 
-    def partial_update(self, request,pk=None):
-        # get the profile instance
-        profile = self.get_object()
-        # deserialize the data
-        serializer = EmployeeProfileSerializer(profile,data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=200)
-        return Response(serializer.errors, status= 400)
+    def perform_update(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 #Shift view
@@ -105,7 +100,7 @@ class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
 #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
-    permission_classes = [IsInAllowedGroup]
+    permission_classes = []
     serializer_class = ActivityReportSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]

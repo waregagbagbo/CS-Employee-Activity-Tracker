@@ -14,10 +14,16 @@ class DepartmentSerializer(serializers.ModelSerializer):
 
 class EmployeeProfileSerializer(serializers.ModelSerializer):
     department = DepartmentSerializer(read_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = Employee
         fields = '__all__'
-        read_only_fields = ( 'user',)
+        #read_only_fields = ( 'id','user',)
+
+    def update(self, instance, validated_data):
+        # user is already set on the instance, just update other fields
+        return super().update(instance, validated_data)
 
 
 class ShiftSerializer(serializers.ModelSerializer):
@@ -30,7 +36,7 @@ class ShiftSerializer(serializers.ModelSerializer):
                   'shift_type','shift_status','shift_timer_count',)
 
    #custom serializer method
-    @staticmethod
+    
     def get_shift_timer_count(self, obj):
         if obj.shift_start_time and obj.shift_end_time:
             today = timezone.localdate()

@@ -24,13 +24,12 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
        Token.objects.get_or_create(user=instance)
 
-
 # handle auto profile creation
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance=None, created=False, **kwargs):
     if created and not hasattr(instance, 'employee_profile'): # ensures handling duplicates
         assign_dept, _= Department.objects.get_or_create(title='Tech')
-        Employee.objects.get_or_create(user=instance, department=assign_dept)
+        Employee.objects.create(user=instance, department=assign_dept)
         print(f'Profile created! for {instance.email}')
 
 
