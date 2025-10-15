@@ -21,7 +21,6 @@ from rest_framework import generics
 from rest_framework.decorators import permission_classes
 
 
-
 User = get_user_model() # reference the custom User model
 
 # Views implemented using generics
@@ -113,21 +112,6 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
-#WebHook view
-""""class WebHookViewSet(viewsets.ModelViewSet):
-    queryset = WebHook.objects.all()
-    serializer_class = WebHookSerializer
-
-    def get_queryset(self):
-        return WebHook.objects.all()
-
-
-class WebHookLogViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = WebHookLog.objects.all()
-    serializer_class = WebHookLogSerializer
-    permission_classes = [AllowAny]
-    #authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]"""
-
 #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
@@ -137,23 +121,35 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['activity_type','activity_status']
     ordering_fields = ['activity_type','activity_status']
-    pagination_class = PageNumberPagination
+    #Pagination_class = PageNumberPagination
 
     #filter reports based on the users present
     def get_queryset(self):
+        """Return activity reports based on user_type
+        Admin - View all,
+        Supervisor - View activity reports for their agents,
+        Agents - View only their activity reports.
+        """
+        # create a user object
+        user = self.request.user
+        if not user.is_authenticated:
+            return ActivityReport.objects.none()
         try:
-            user = Employee.objects.get(user=self.request.user)
-        except ObjectDoesNotExist:
+            employee_profile = Employee.objects.select_related('user').get(user=self.request.user)
+
+        except ObjectDoesNotExist as e:
+            print(f'User with that profile does not exist {e}')
             return ActivityReport.objects.none()
 
-        if self.request.user.groups.filter(name__in=['Supervisor','Admin']).exists():
-            return ActivityReport.objects.filter(is_approved = False)
+        # set base queryset for optimization
+        reports_base_queryset = ActivityReport.objects.select_related('shift_active_agent')
+
+        # now fetch access for the actual user types
+        if employee_profile.user_type == 'Admin':
+            return reports_base_queryset.all()
+
+        elif employee_profile.user_type == 'Supervisor':
+            return reports_base_queryset.filter(shift_active_agent__supervisor=employee_profile)
+
         else:
-            return ActivityReport.objects.select_related('shift_active_agent').filter(shift_active_agent=user,is_approved = True)
-
-    # get perms
-    def get_permissions(self):
-        if self.action == 'list':
-            return  [permission() for permission in permission_classes]
-
-
+            return reports_base_queryset.filter(shift_active_agent=employee_profile)

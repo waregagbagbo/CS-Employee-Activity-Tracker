@@ -1,3 +1,4 @@
+import json
 import logging
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -5,8 +6,6 @@ from django.contrib.sites import requests
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from rest_framework.authtoken.models import Token
-from rest_framework.utils import json
-
 from accounts.models import Employee, Department
 from Employee_Tracker.models import Shift
 import requests
@@ -38,8 +37,9 @@ def create_user_profile(sender, instance=None, created=False, **kwargs):
 # create signal to fire up shift changes
 @receiver(post_save, sender=Shift)
 def create_shift_trigger(sender, instance, created, **kwargs):
-    if created: # only for updates
-        data ={
+    payload  = None
+    if not created:
+       payload = {
             "STATUS": f'🚨 Shift Update!',
             'id': instance.id,
             'shift_agent': instance.shift_agent,
@@ -50,9 +50,14 @@ def create_shift_trigger(sender, instance, created, **kwargs):
         }
     #add your webhook url
     try:
-        response = requests.post(webhook_url, json=data) # auto handle serialization
-        # raise status upon trigger
-        response.raise_for_status()
-        logger.info(f'Webhook updated successfully{response.json()}')
+        if payload:
+            response = requests.post(webhook_url,payload) # auto handle serialization
+            print(response.json())
+            # raise status upon trigger
+            response.raise_for_status()
+            logger.info(f'Webhook updated successfully{response.json()}')
+        else:
+            logger.info('Webhook update failed')
+
     except requests.exceptions.RequestException as e:
-        print(f'Webhook failed to post. {e}')
+        logger.error(f'Webhook failed to post. {e}')

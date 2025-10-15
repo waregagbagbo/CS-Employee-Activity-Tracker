@@ -31,12 +31,11 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
 
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
-    shift_agent_id = serializers.PrimaryKeyRelatedField(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
 
     class Meta:
         model = Shift
-        fields = ('shift_agent','shift_agent_id','shift_date','shift_start_time','shift_end_time',
+        fields = ('shift_agent','shift_date','shift_start_time','shift_end_time',
                   'shift_type','shift_status','shift_timer_count',)
 
    #custom serializer method
@@ -70,8 +69,6 @@ class ShiftSerializer(serializers.ModelSerializer):
 
         else:
             return 'Shift not started'
-
-
 
 
 class ActivityReportSerializer(serializers.ModelSerializer):
