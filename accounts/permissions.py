@@ -43,3 +43,44 @@ class IsSuperVisor(BasePermission):
             return True
 
 
+# create a permission to regulate the view
+class ActivityReportsPermissions(BasePermission):
+    # declare view method
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            return True
+
+        """declare user object"""
+        user_profile = Employee.objects.get(user= request.user)
+        # fetch the view controls and limit the view
+        try:
+            if user_profile.user_type == 'Admin':
+                return True
+            elif user_profile.user_type == 'Supervisor' and view.action in ['DESTROY','UPDATE']:
+                    return True
+
+        except AttributeError:
+            print('You are not logged in and do not have permission to access this endpoint')
+            return True
+
+    # object view
+    def has_object_permission(self, request, view, obj):
+        # object level permission check
+        if request.user.is_authenticated:
+            return True
+
+        user_profile = Employee.objects.get(user=request.user)
+        try:
+            if user_profile.user_type == 'Supervisor':
+                return request.method in permissions.SAFE_METHODS
+        except Employee.DoesNotExist:
+            return False
+
+
+
+
+
+
+
+
+

@@ -28,7 +28,6 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 
-
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
@@ -106,7 +105,6 @@ class ActivityReportSerializer(serializers.ModelSerializer):
                 validated_data['Supervisor'] = employee_profile
             return super().create(validated_data)
         return validated_data
-
 
 
 

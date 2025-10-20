@@ -4,7 +4,7 @@ from urllib import response
 
 from django.contrib.auth import get_user_model
 from django.contrib.sessions.serializers import JSONSerializer
-from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from django.core.exceptions import ObjectDoesNotExist, ValidationError, PermissionDenied
 from django.db.migrations import serializer
 from requests import Response
 from rest_framework.authentication import SessionAuthentication
@@ -13,12 +13,11 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.status import HTTP_201_CREATED
 from accounts.models import Employee, Department
-from accounts.permissions import IsAdmin,IsEmployee
+from accounts.permissions import IsAdmin, IsEmployee, ActivityReportsPermissions
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication, filters, status
-from rest_framework import generics
-from rest_framework.decorators import permission_classes
+from rest_framework import permissions
 
 
 User = get_user_model() # reference the custom User model
@@ -115,7 +114,7 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
 #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
-    permission_classes = []
+    permission_classes = [IsAuthenticated]
     serializer_class = ActivityReportSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
@@ -153,3 +152,13 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
 
         else:
             return reports_base_queryset.filter(shift_active_agent=employee_profile)
+
+
+    # create a serializer to control the field displays
+    def create(self, request, *args, **kwargs):
+        user_profile = Employee.objects.select_related('user').get(user=request.user)
+        if user_profile.user_type == 'Supervisor':
+            raise PermissionDenied("Supervisors are not allowed to create reports.")
+        return super().create(request, *args, **kwargs)
+
+
