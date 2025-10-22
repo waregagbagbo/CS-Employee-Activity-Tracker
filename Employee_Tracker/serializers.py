@@ -113,8 +113,32 @@ class ActivityReportSerializer(serializers.ModelSerializer):
             #if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
             if not employee_profile.user_type not in ['Supervisor','Admin']:
                 validated_data['Supervisor'] = employee_profile
-            return super().create(validated_data)
-        return validated_data
+
+        return super().create(validated_data)
+
+    # run full update
+   """def update(self, instance, validated_data):
+        # create a user instance
+        user = self.context['request'].user
+        try:
+            employee_profile = Employee.objects.get(user=user)
+        except ObjectDoesNotExist:
+            raise serializers.ValidationError('Employee does not exist')
+
+        # check for the validations
+        if validated_data.get('is_approved') or validated_data.get('activity_approved_at',False):
+            if not employee_profile.user_type not in ['Supervisor','Admin']:
+                raise serializers.ValidationError('Only supervisor or Managers can approve')
+
+            # auto assign supervisors during approval
+            if employee_profile.user_type == 'Supervisor':
+                instance.supervisor = employee_profile
+
+            # This line assigns shift agent for traceability
+            if employee_profile.user_type == 'Employee':
+                instance.shift_active_agent = employee_profile
+            # Update other fields normally
+        return super().update(instance, validated_data)"""
 
 
 
