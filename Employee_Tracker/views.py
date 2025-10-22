@@ -13,7 +13,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.status import HTTP_201_CREATED
 from accounts.models import Employee, Department
-from accounts.permissions import IsAdmin, IsEmployee, ActivityReportsPermissions
+#from accounts.permissions import
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication, filters, status
@@ -120,7 +120,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['activity_type','activity_status']
     ordering_fields = ['activity_type','activity_status']
-    #Pagination_class = PageNumberPagination
+    pagination_class = PageNumberPagination
 
     #filter reports based on the users present
     def get_queryset(self):
@@ -140,7 +140,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
             print(f'User with that profile does not exist {e}')
             return ActivityReport.objects.none()
 
-        # set base queryset for optimization
+        # set base queryset for optimization from an agent
         reports_base_queryset = ActivityReport.objects.select_related('shift_active_agent')
 
         # now fetch access for the actual user types
@@ -154,11 +154,9 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
             return reports_base_queryset.filter(shift_active_agent=employee_profile)
 
 
-    # create a serializer to control the field displays
-    def create(self, request, *args, **kwargs):
-        user_profile = Employee.objects.select_related('user').get(user=request.user)
-        if user_profile.user_type == 'Supervisor':
-            raise PermissionDenied("Supervisors are not allowed to create reports.")
-        return super().create(request, *args, **kwargs)
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({"request": self.request})
+        return context
 
 
