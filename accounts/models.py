@@ -56,6 +56,7 @@ class Employee(models.Model):
         verbose_name = 'Employee'
         verbose_name_plural = 'Employees'
         ordering = ['user__id']
+        unique_together = (('user', 'department'),) # a user cannot belong to the same department twice
         permissions = (
             ('can_create_report','create reports'),
             ('can_view_report','view reports'),
