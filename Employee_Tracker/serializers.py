@@ -81,8 +81,13 @@ class ActivityReportSerializer(serializers.ModelSerializer):
     def get_fields(self):
         fields = super().get_fields()
         user = self.context['request'].user
+        try:
+            employee_profile = Employee.objects.get(user=user)
+        except ObjectDoesNotExist:
+            raise serializers.ValidationError('Employee does not exist')
         #if not user.groups.filter(name__in=['Supervisor','Admin']).exists():
-        if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
+        #if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
+        if employee_profile.user_type not in ['Supervisor','Admin']:
             fields.pop('is_approved',None)
             fields.pop('activity_approved_at',None)
         return fields
@@ -98,13 +103,15 @@ class ActivityReportSerializer(serializers.ModelSerializer):
         # restrict is_approved unless is supervisor
         if validated_data.get('is_approved') or validated_data.get('activity_approved_at',False):
             #if not user.groups.filter(name__in=['Supervisor','Admin']).exists():
-            if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
+           # if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
+            if not employee_profile.user_type not in ['Supervisor','Admin']:
                 raise serializers.ValidationError('Only supervisor or Managers can approve')
 
             # auto assign shift agent or supervisor
             validated_data['shift_active_agent'] = employee_profile
             #if user.groups.filter(name__in=['Supervisor','Admin']).exists():
-            if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
+            #if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
+            if not employee_profile.user_type not in ['Supervisor','Admin']:
                 validated_data['Supervisor'] = employee_profile
             return super().create(validated_data)
         return validated_data
