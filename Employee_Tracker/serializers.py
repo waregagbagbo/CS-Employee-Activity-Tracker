@@ -87,6 +87,7 @@ class ActivityReportSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Employee does not exist')
         #if not user.groups.filter(name__in=['Supervisor','Admin']).exists():
         #if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
+
         if employee_profile.user_type not in ['Supervisor','Admin']:
             fields.pop('is_approved',None)
             fields.pop('activity_approved_at',None)
@@ -100,20 +101,19 @@ class ActivityReportSerializer(serializers.ModelSerializer):
         except ObjectDoesNotExist:
             raise serializers.ValidationError('Employee does not exist')
 
+        # Always assign the active agent
+        validated_data['shift_active_agent'] = employee_profile
+
+        # Auto-attach the supervisor if the agent has one
+        if hasattr(employee_profile, 'supervisor') and employee_profile.supervisor:
+            validated_data['supervisor'] = employee_profile.supervisor
+
         # restrict is_approved unless is supervisor
         if validated_data.get('is_approved') or validated_data.get('activity_approved_at',False):
-            #if not user.groups.filter(name__in=['Supervisor','Admin']).exists():
-           # if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
-            if not employee_profile.user_type not in ['Supervisor','Admin']:
-                raise serializers.ValidationError('Only supervisor or Managers can approve')
-
-            # auto assign shift agent or supervisor
-            validated_data['shift_active_agent'] = employee_profile
-            #if user.groups.filter(name__in=['Supervisor','Admin']).exists():
-            #if not user.groups.filter(name__iregex=r'^(Supervisor|Admin)$').exists():
-            if not employee_profile.user_type not in ['Supervisor','Admin']:
-                validated_data['Supervisor'] = employee_profile
-
+            if employee_profile.user_type not in ['Supervisor','Admin']:
+                raise serializers.ValidationError('Only supervisor or Admins can approve')
+            # auto assign supervisor
+            validated_data['supervisor'] = employee_profile
         return super().create(validated_data)
 
     # run partial update
@@ -130,7 +130,7 @@ class ActivityReportSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('Only supervisor or Managers can approve')
         print('Data saved successfully')
         return super().update(instance,validated_data)
-        
+
 
     # run full update
     """def update(self, instance, validated_data):

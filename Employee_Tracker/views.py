@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from http.client import HTTPResponse
 from urllib import response
 
@@ -53,6 +53,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     PaginationClass = PageNumberPagination
 
+    @property
     def get_queryset(self):
         """Return shifts based on user_type
           Admin - View all,
@@ -111,7 +112,8 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
-#Activity report view
+
+    #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
     permission_classes = [IsAuthenticated]
@@ -153,10 +155,22 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
         else:
             return reports_base_queryset.filter(shift_active_agent=employee_profile)
 
+    # perform destroy method by user type
+    def perform_destroy(self, instance):
+        # create user instance
+        user = self.request.user
+        try:
+            e_profile = Employee.objects.select_related('user').get(user=self.request.user)
+        except ObjectDoesNotExist as e:
+            print(f'User with that profile does not exist {e}')
+            raise ValidationError('Employee does not exist')
 
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context.update({"request": self.request})
-        return context
+        # get the user type
+        if e_profile.user_type == 'Employee_Agent':
+            raise PermissionDenied('Employee Agents Cannot delete a record')
+
+        instance.is_deleted = True
+        instance.save()
+
 
 
