@@ -12,6 +12,7 @@ implement has_permission for views and has_obj_permission  to enable manipulatio
 The view should be for authenticated users
 """
 
+
 # create a BasePermision View
 class OwnerReport(BasePermission):
     def has_permission(self, request, view):
@@ -20,8 +21,11 @@ class OwnerReport(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         user = request.user
-        if list.actions in ['create', 'view']:
-            return user.is_Employee_Agent
+        try:
+            return request.user == 'Employee_Agent'
+        except ObjectDoesNotExist:
+            print('Permission denied')
+            return False
 
 class SupervisorReport(BasePermission):
     def has_permission(self, request, view):
@@ -30,9 +34,12 @@ class SupervisorReport(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         user = request.user
+        try:
+            return request.user== 'Supervisor'
+        except ObjectDoesNotExist:
+            print('Permission denied')
+            return False
 
-        if list.actions in ['create', 'view']:
-            return user.is_Supervisor
 
 class AdminReport(BasePermission):
     def has_permission(self, request, view):
@@ -41,7 +48,7 @@ class AdminReport(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         user = request.user
-        return user in ['Admin', 'superuser']
+        return request.user in ['Admin','superuser']
 
 
 
