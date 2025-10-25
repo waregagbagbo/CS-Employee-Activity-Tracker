@@ -1,23 +1,17 @@
 from datetime import datetime, timezone
-from http.client import HTTPResponse
-from urllib import response
-
 from django.contrib.auth import get_user_model
 from django.contrib.sessions.serializers import JSONSerializer
 from django.core.exceptions import ObjectDoesNotExist, ValidationError, PermissionDenied
-from django.db.migrations import serializer
-from requests import Response
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.status import HTTP_201_CREATED
 from accounts.models import Employee, Department
-#from accounts.permissions import
+from accounts.permissions import UserTypeReportPermission,IsOwnerOrReadOnly
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication, filters, status
-from rest_framework import permissions
 
 
 User = get_user_model() # reference the custom User model
@@ -50,10 +44,9 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['shift_agent','shift_type','shift_status']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-    PaginationClass = PageNumberPagination
+    permission_classes = [IsAuthenticated,IsOwnerOrReadOnly]
+    pagination_class = PageNumberPagination
 
-    @property
     def get_queryset(self):
         """Return shifts based on user_type
           Admin - View all,
@@ -116,7 +109,7 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     #Activity report view
 class ActivityReportViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,UserTypeReportPermission]
     serializer_class = ActivityReportSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
@@ -156,7 +149,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
             return reports_base_queryset.filter(shift_active_agent=employee_profile)
 
     # perform destroy method by user type
-    def perform_destroy(self, instance):
+    """def perform_destroy(self, instance):
         # create user instance
         user = self.request.user
         try:
@@ -170,7 +163,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
             raise PermissionDenied('Employee Agents Cannot delete a record')
 
         instance.is_deleted = True
-        instance.save()
+        instance.save()"""
 
 
 
