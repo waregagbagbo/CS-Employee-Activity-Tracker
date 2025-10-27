@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts.apps.AccountsConfig',
     'Employee_Tracker',
+    'corsheaders',
     'rest_framework.authtoken',
     'djoser',
 ]
@@ -54,12 +55,18 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+'http://localhost:3000', # frontend url
+'http://localhost:8000', # our DRF backend
+)
 
 ROOT_URLCONF = 'Cs_Tracker.urls'
 
@@ -183,10 +190,12 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle',
+        'rest_framework.throttling.ScopedRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/days', # non -authenticated users, 100 requests per day
-        'user': '100/days', # Authenticated users, 1000 requests per day
+        'user': '1000/hour', # Authenticated users, 1000 requests per day
+        'burst': '10/minute',
     }
 }
 

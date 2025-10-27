@@ -1,7 +1,11 @@
+from datetime import datetime
+
+from django.contrib.contenttypes.models import ContentType
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.status import HTTP_201_CREATED
 from rest_framework.views import APIView
 from .serializers import UserRegistrationSerializer, UserLoginSerializer, EmployeeSerializer
 from rest_framework import generics, status
@@ -24,7 +28,10 @@ class UserRegistration(generics.CreateAPIView):
         user.set_password(serializer.validated_data['password'])
         user.save()
         message = {'message':'User created successfully'}
-        return Response(message,status=status.HTTP_201_CREATED)
+        return Response(message,status=status.HTTP_201_CREATED,headers={
+            "connection":"keep-alive","date":datetime
+        })
+
 
 
 """class UserProfileViews(generics.RetrieveUpdateAPIView):
@@ -66,7 +73,7 @@ class LogoutView(APIView):
 
         logout(request) # for session auth clearing
         context ={'message':'User logged out successfully'}
-        return Response(context,status=200)
+        return Response(context,status=HTTP_201_CREATED,headers={})
 
     # the traditional django using unsecure GET
     def get(self, request):
