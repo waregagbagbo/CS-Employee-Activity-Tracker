@@ -34,8 +34,10 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
             print(f'User with that profile does not exist {e}')
         return employee_profile
 
-    def perform_update(self, serializer):
-        serializer.save(user=self.request.user)
+    # enable partial update
+    def partial_update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().partial_update(request, *args, **kwargs)
 
 
 #Shift view

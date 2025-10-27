@@ -6518,3 +6518,11 @@ Not Found: /cs/shifts/1/
 "GET /cs/shifts/1/ HTTP/1.1" 404 11820
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
 Watching for file changes with StatReloader
+"GET /cs/shifts/ HTTP/1.1" 200 14389
+Not Found: /ap/employee
+"GET /ap/employee HTTP/1.1" 404 3926
+"GET /cs/employee HTTP/1.1" 200 13190
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
