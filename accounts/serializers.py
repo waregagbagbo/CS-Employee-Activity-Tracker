@@ -69,12 +69,11 @@ class UserLoginSerializer(serializers.Serializer):
             attrs['user'] = user
             return attrs
 
-class EmployeeSerializer(serializers.ModelSerializer):
+"""class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer(read_only=True)
     class Meta:
         model = Employee
-        fields = "__all__"
-
+        fields = "__all__"""""
 
 
 

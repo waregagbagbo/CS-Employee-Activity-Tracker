@@ -11,7 +11,7 @@ class CustomUserAdmin(UserAdmin):
 #@admin.register(EmployeeProfile)
 class EmployeeAdmin(admin.ModelAdmin):
     model = Employee
-    list_display = ('user','department','supervisor','user_type','bio',)
+    list_display = ('username','department','supervisor','user_type','bio',)
     search_fields = ('first_name', 'last_name', 'email')
     list_filter = ('user_type','user',)
     #readonly_fields = ('supervisor',) # not writable

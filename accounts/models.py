@@ -50,7 +50,12 @@ class Employee(models.Model):
     supervisor = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,blank=True,related_name='supervised_employee')
 
     def __str__(self):
-        return f"{self.user.username}, {self.department},{self.user_type}"
+        return f"{self.user.username}, {self.department}, {self.user_type}"
+
+    # let us expose the username by using @property decorator to access it directly
+    @property
+    def username(self):
+        return self.user.username
 
     class Meta:
         verbose_name = 'Employee'
