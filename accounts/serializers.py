@@ -4,6 +4,7 @@ from rest_framework import serializers
 from accounts.models import Employee
 
 User = get_user_model() # create an object from the AUTH_USER_MODEL
+
 # create user serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

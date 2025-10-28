@@ -6526,3 +6526,314 @@ D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
 Watching for file changes with StatReloader
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3926
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+"GET /cs/shifts HTTP/1.1" 301 0
+"GET /cs/shifts/ HTTP/1.1" 200 14389
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 58, in has_object_permission
+    return obj.owner == request.user
+           ^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'owner'
+"POST /cs/shifts/ HTTP/1.1" 500 110208
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 58, in has_object_permission
+    return obj.user == request.user
+           ^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'user'
+"POST /cs/shifts/ HTTP/1.1" 500 110200
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 58, in has_object_permission
+    return obj.user == request.user
+           ^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'user'
+"POST /cs/shifts/ HTTP/1.1" 500 110200
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 58, in has_object_permission
+    return obj.user == request.user
+           ^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'user'
+"POST /cs/shifts/ HTTP/1.1" 500 110200
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /cs/shifts/ HTTP/1.1" 201 11270
+Not Found: /cs/shifts/1/
+"GET /cs/shifts/1/ HTTP/1.1" 404 11820
+"GET /cs/shifts/2 HTTP/1.1" 301 0
+Not Found: /cs/shifts/2/
+"GET /cs/shifts/2/ HTTP/1.1" 404 11820
+Not Found: /cs/shifts/1/
+"GET /cs/shifts/1/ HTTP/1.1" 404 11820
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+Not Found: /cs/shifts/2/
+"GET /cs/shifts/2/ HTTP/1.1" 404 11820
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+Forbidden: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 403 58
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+Forbidden: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 403 58
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+"GET /cs/reports HTTP/1.1" 301 0
+Forbidden: /cs/reports/
+"GET /cs/reports/ HTTP/1.1" 403 58
+"GET /cs/reports HTTP/1.1" 301 0
+Forbidden: /cs/reports/
+"GET /cs/reports/ HTTP/1.1" 403 58
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+"GET /api/logout/ HTTP/1.1" 201 5040
+Forbidden: /api/logout/
+"POST /api/logout/ HTTP/1.1" 403 58
+Forbidden: /api/logout/
+"GET /api/logout/ HTTP/1.1" 403 58
+Forbidden: /api/logout/
+"POST /api/logout/ HTTP/1.1" 403 58
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Bad Request: /
+"POST / HTTP/1.1" 400 7329
+Bad Request: /
+"POST / HTTP/1.1" 400 7329
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Bad Request: /
+"POST / HTTP/1.1" 400 7329
+"POST / HTTP/1.1" 200 7379
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Bad Request: /
+"POST /?auth=f4d34324a9ea0ee6b5353c00226652b46d1ff25b HTTP/1.1" 400 76
+Bad Request: /
+"POST /?auth=f4d34324a9ea0ee6b5353c00226652b46d1ff25b HTTP/1.1" 400 76
+Bad Request: /
+"POST /?maurice@gmail.com=Chelsea@123 HTTP/1.1" 400 76
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Forbidden: /api/logout/
+"POST /api/logout/ HTTP/1.1" 403 58
+Forbidden: /
+"POST / HTTP/1.1" 403 3842
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Bad Request: /
+"POST / HTTP/1.1" 400 76
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+"GET /cs/shifts/?page=2 HTTP/1.1" 200 15365
+Not Found: /cs/shifts/
+"GET /cs/shifts/?page=3 HTTP/1.1" 404 10544
+Bad Request: /
+"POST / HTTP/1.1" 400 68
+"POST / HTTP/1.1" 200 92
+"GET /cs/shifts/?page=2 HTTP/1.1" 200 15365
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+Forbidden: /
+"POST / HTTP/1.1" 403 45
+Forbidden: /
+"POST / HTTP/1.1" 403 45
+Forbidden: /api/logout/
+"POST /api/logout/ HTTP/1.1" 403 45
+"GET /cs/shifts/ HTTP/1.1" 200 1948
+Not Found: /cs/shifts/1/
+"GET /cs/shifts/1/ HTTP/1.1" 404 11820
+"GET /cs/shifts/22 HTTP/1.1" 301 0
+Not Found: /cs/shifts/22/
+"GET /cs/shifts/22/ HTTP/1.1" 404 11829
+"GET /api/logout/ HTTP/1.1" 201 5040
+Forbidden: /api/logout/
+"GET /api/logout/ HTTP/1.1" 403 5007
+Forbidden: /cs/shifts/22/
+"GET /cs/shifts/22/ HTTP/1.1" 403 5212
+Forbidden: /cs/shifts/22/
+"GET /cs/shifts/22/ HTTP/1.1" 403 5212
+Forbidden: /cs/shifts/22/
+"GET /cs/shifts/22/ HTTP/1.1" 403 5212
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Watching for file changes with StatReloader
+Forbidden: /api/logout/
+"GET /api/logout/ HTTP/1.1" 403 5007
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3926
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Bad Request: /
+"POST / HTTP/1.1" 400 7332
+"POST / HTTP/1.1" 200 7379
+Forbidden: /
+"POST / HTTP/1.1" 403 45
+Bad Request: /
+"POST / HTTP/1.1" 400 103
+Forbidden: /
+"POST / HTTP/1.1" 403 45
+Forbidden: /
+"POST / HTTP/1.1" 403 45
+Forbidden: /
+"POST / HTTP/1.1" 403 3842
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Internal Server Error: /api/logout
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\middleware\common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\middleware\common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+    ...<9 lines>...
+    )
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/api/logout/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /api/logout HTTP/1.1" 500 73112
+Forbidden: /api/logout/
+"POST /api/logout/ HTTP/1.1" 403 45
+"GET /api/logout/ HTTP/1.1" 201 5040
+Watching for file changes with StatReloader
+Not Found: /a
+"GET /a HTTP/1.1" 404 3896
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3926
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"POST / HTTP/1.1" 200 7379
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+"GET /cs/shifts/ HTTP/1.1" 200 18987
+D:\CS-Employee-Activity-Tracker\accounts\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/ HTTP/1.1" 200 19577

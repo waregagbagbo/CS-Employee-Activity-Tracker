@@ -8,7 +8,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.status import HTTP_201_CREATED
 from accounts.models import Employee, Department
-from accounts.permissions import UserTypeReportPermission,IsOwnerOrReadOnly
+from accounts.permissions import UserTypeReportPermission
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication, filters, status
@@ -46,7 +46,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['shift_agent','shift_type','shift_status']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsAuthenticated,IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticated]
     pagination_class = PageNumberPagination
 
     def get_queryset(self):

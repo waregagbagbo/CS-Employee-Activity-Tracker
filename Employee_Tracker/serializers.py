@@ -7,7 +7,7 @@ from django.utils import timezone
 
 
 #create the serializers for the models
-class DepartmentSerializer(serializers.ModelSerializer):
+class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Department
         fields = '__all__'
@@ -23,9 +23,11 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
         fields = '__all__'
         #read_only_fields = ( 'user',)
 
-    def update(self, instance, validated_data):
+    def partial_update(self, instance, validated_data):
         # user is already set on the instance, just update other fields
-        return super().update(instance, validated_data)
+        instance['partial'] = True
+        return super().partial_update(instance, validated_data)
+
 
 
 class ShiftSerializer(serializers.ModelSerializer):

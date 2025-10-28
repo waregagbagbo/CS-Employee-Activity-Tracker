@@ -39,10 +39,10 @@ class UserTypeReportPermission(permissions.BasePermission):
 
         # Logic based on user_type
         if emp_profile == 'Employee_Agent' and action in ['create', 'view']:
-            return obj.owner == user
+            return obj
 
         elif emp_profile == 'Supervisor' and action in ['update', 'view']:
-            return obj.owner == user
+            return obj
 
         elif emp_profile == 'Admin' and action in ['create', 'view','delete','update']:
             return
@@ -50,33 +50,16 @@ class UserTypeReportPermission(permissions.BasePermission):
             return False
 
 # create perms for shifts
-class IsOwnerOrReadOnly(BasePermission):
+"""class IsOwnerOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in ['GET','HEAD']:
             return True
         elif request.method in ['POST','PUT','PATCH']:
-            return obj.owner == request.user
+            return obj.user == request.user
         elif request.method in ['DELETE']:
-            return obj.user == request.user.is_superuser
+            return obj.u == request.user.is_superuser
         else:
-            return False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            return False"""
 
 
 # create a BasePermision View
