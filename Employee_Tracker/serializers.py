@@ -19,21 +19,14 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
 # Profile setup serializer
 class EmployeeProfileSerializer(serializers.HyperlinkedModelSerializer):
     department = DepartmentSerializer(read_only=True)
-    #user = serializers.PrimaryKeyRelatedField(read_only=True) # suitable for ModelSerializer
     user = serializers.HyperlinkedRelatedField(read_only=True, view_name='employee-detail', lookup_field='pk')
+
+    # user = serializers.PrimaryKeyRelatedField(read_only=True) # suitable with ModelSerializer
 
     class Meta:
         model = Employee
         fields = '__all__'
-        #fields = ('url','user','hire_date','department','user_type','supervisor')
         #read_only_fields = ( 'user',)
-
-
-    def partial_update(self, instance, validated_data):
-        # user is already set on the instance, just update other fields
-        instance['partial'] = True
-        return super().partial_update(instance, validated_data)
-
 
 
 # shifts serializer
