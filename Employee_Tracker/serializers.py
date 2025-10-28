@@ -17,7 +17,7 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # Profile setup serializer
-class EmployeeProfileSerializer(serializers.HyperlinkedModelSerializer):
+class EmployeeProfileSerializer(serializers.ModelSerializer):
     department = DepartmentSerializer(read_only=True)
     user = serializers.HyperlinkedRelatedField(read_only=True, view_name='employee-detail', lookup_field='pk')
 
@@ -30,7 +30,8 @@ class EmployeeProfileSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # shifts serializer
-class ShiftSerializer(serializers.ModelSerializer):
+class ShiftSerializer(serializers.HyperlinkedModelSerializer):
+    shift_type = serializers.HyperlinkedIdentityField(read_only=True, view_name='shift-detail', lookup_field='shift_type')
     shift_agent = EmployeeProfileSerializer(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
 
@@ -38,6 +39,7 @@ class ShiftSerializer(serializers.ModelSerializer):
         model = Shift
         fields = ('shift_agent','shift_date','shift_start_time','shift_end_time',
                   'shift_type','shift_status','shift_timer_count',)
+
 
    #custom serializer method
     def get_shift_timer_count(self, obj):

@@ -49,6 +49,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
     pagination_class = PageNumberPagination
+    lookup_field = 'shift_type'
 
     def get_queryset(self):
         """Return shifts based on user_type
