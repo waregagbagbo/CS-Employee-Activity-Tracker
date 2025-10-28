@@ -6,10 +6,6 @@ from Employee_Tracker import views
 dept_router = DefaultRouter()
 dept_router.register(r'', views.DepartmentAPIViewSet, basename='department')
 
-# Router for webhook
-hooks_router = DefaultRouter()
-#hooks_router.register(r'',views.WebHookViewSet, basename='webhook')
-
 # Router for Employee and shifts
 employee_router = DefaultRouter()
 
@@ -19,13 +15,12 @@ employee_router.register(r'',views.EmployeeProfileViewSet, basename='employee')
 shifts_router.register(r'',views.ShiftAPIViewSet, basename='shift')
 
 # router for activity reports
-activity_router = DefaultRouter()
-activity_router.register(r'', views.ActivityReportViewSet, basename='activity_reports')
+activityreport_router = DefaultRouter()
+activityreport_router.register(r'', views.ReportsViewSet, basename='activity_report')
 
 urlpatterns =[
     path('employee/', include(employee_router.urls)),
     path('department/',include(dept_router.urls)),
     path('shifts/',include(shifts_router.urls)),
-    path('reports/',include(activity_router.urls)),
-
+    path('reports/',include(activityreport_router.urls)),
 ]

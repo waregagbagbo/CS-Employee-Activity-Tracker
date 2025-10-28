@@ -14,13 +14,6 @@ class ActivityAdmin(admin.ModelAdmin):
     list_filter = ('supervisor','report_type','tickets_resolved','is_approved')
 
 
-"""class WebHookLogAdmin(admin.ModelAdmin):
-    list_display = ('webhook_config','response_status',)
-
-class WebHookAdmin(admin.ModelAdmin):
-    list_display = ('webhook_name','webhook_url','webhook_event_types',)
-    list_filter = ('webhook_created_by','is_active',)"""
-
 admin.site.register(Shift, ShiftAdmin)
 admin.site.register(ActivityReport,ActivityAdmin)
 #admin.site.register(WebHook, WebHookAdmin)

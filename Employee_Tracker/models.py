@@ -17,8 +17,9 @@ STATUS = [
 SHIFT_TYPES = [
     ('Day_Shift','Day_Shift'),
     ('Late','Late_Shift'),
-    ('Recon_Shift','Recon_Shift'),
-    ('Night_Shift','Night_Shift'),
+    ('Recon_Shift','RS_Shift'),
+    ('Night_Shift','Night_shift'),
+    ('Scheduled','Scheduled')
 ]
 
 REPORT_TYPES = [

@@ -49,7 +49,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
     pagination_class = PageNumberPagination
-    lookup_field = 'shift_type'
+    lookup_field = 'pk'
 
     def get_queryset(self):
         """Return shifts based on user_type
@@ -111,7 +111,7 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
 
 
     #Activity report view
-class ActivityReportViewSet(viewsets.ModelViewSet):
+class ReportsViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
     permission_classes = [IsAuthenticated,UserTypeReportPermission]
     serializer_class = ActivityReportSerializer
@@ -120,6 +120,7 @@ class ActivityReportViewSet(viewsets.ModelViewSet):
     search_fields = ['activity_type','activity_status']
     ordering_fields = ['activity_type','activity_status']
     pagination_class = PageNumberPagination
+    lookup_field = 'pk'
 
     #filter reports based on the users present
     def get_queryset(self):
