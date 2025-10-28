@@ -11,17 +11,23 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Department
         fields = '__all__'
+        extra_kwargs = {
+            "url": {"view_name": "department-detail", "lookup_field": "pk"}
+        }
 
 
-
-class EmployeeProfileSerializer(serializers.ModelSerializer):
+# Profile setup serializer
+class EmployeeProfileSerializer(serializers.HyperlinkedModelSerializer):
     department = DepartmentSerializer(read_only=True)
-    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    #user = serializers.PrimaryKeyRelatedField(read_only=True) # suitable for ModelSerializer
+    user = serializers.HyperlinkedRelatedField(read_only=True, view_name='employee-detail', lookup_field='pk')
 
     class Meta:
         model = Employee
         fields = '__all__'
+        #fields = ('url','user','hire_date','department','user_type','supervisor')
         #read_only_fields = ( 'user',)
+
 
     def partial_update(self, instance, validated_data):
         # user is already set on the instance, just update other fields
@@ -30,6 +36,7 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
 
 
 
+# shifts serializer
 class ShiftSerializer(serializers.ModelSerializer):
     shift_agent = EmployeeProfileSerializer(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
