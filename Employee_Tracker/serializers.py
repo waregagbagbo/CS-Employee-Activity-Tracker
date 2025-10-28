@@ -30,14 +30,14 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
 
 
 # shifts serializer
-class ShiftSerializer(serializers.HyperlinkedModelSerializer):
-    shift_type = serializers.HyperlinkedIdentityField(read_only=True, view_name='shift-detail', lookup_field='shift_type')
+class ShiftSerializer(serializers.ModelSerializer):
+    shift_id = serializers.HyperlinkedIdentityField(read_only=False,view_name='shift-detail', lookup_field='pk')
     shift_agent = EmployeeProfileSerializer(read_only=True)
     shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
 
     class Meta:
         model = Shift
-        fields = ('shift_agent','shift_date','shift_start_time','shift_end_time',
+        fields = ('shift_id','shift_agent','shift_date','shift_start_time','shift_end_time',
                   'shift_type','shift_status','shift_timer_count',)
 
 
