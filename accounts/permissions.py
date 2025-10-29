@@ -22,13 +22,14 @@ class UserTypeReportPermission(permissions.BasePermission):
         # access the user object
         user = request.user
         try:
-            #user_type = Employee.objects.select_related('user').get(user=user)
-            emp_profile = Employee.user_type
+            employee = user.employee_profile
+            emp_profile = employee.user_type
         except ObjectDoesNotExist:
             return False
 
         method  = request.method  # to fetch the HTTP methods into action
-        if method in ['GET','HEAD']:
+
+        if method in ['GET','HEAD','OPTIONS']:
             action = 'view'
         elif method == 'POST':
             action = 'create'
@@ -38,28 +39,75 @@ class UserTypeReportPermission(permissions.BasePermission):
             action = 'delete'
 
         # Logic based on user_type
-        if emp_profile == 'Employee_Agent' and action in ['create', 'view']:
-            return obj
+        # admin has full access
+        if user.is_staff or emp_profile == 'Admin':
+            return True
+
+        # Agent can create and view their own  shift
+        if emp_profile == 'Employee_Agent':
+            if action in ['create', 'view']:
+                # ascertain if hs
+                return obj.shift_agent == employee
+            return False
 
         elif emp_profile == 'Supervisor' and action in ['update', 'view']:
-            return obj
+            return obj.supervisor == employee
 
-        elif emp_profile == 'Admin' and action in ['create', 'view','delete','update']:
-            return
         else:
             return False
 
-# create perms for shifts
-"""class IsOwnerOrReadOnly(BasePermission):
+""" restict shifts to be actioned based on user_type
+ If agent, create, and view
+ Admin - Full access )CRUD
+ Supervisor - view 
+ """
+# permissions for shifts
+class UserShiftPermission(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated
+
     def has_object_permission(self, request, view, obj):
-        if request.method in ['GET','HEAD']:
-            return True
-        elif request.method in ['POST','PUT','PATCH']:
-            return obj.user == request.user
-        elif request.method in ['DELETE']:
-            return obj.u == request.user.is_superuser
+        user = request.user
+        try:
+            employee = user.employee_profile
+            emp_profile = employee.user_type
+        except ObjectDoesNotExist:
+            return False
+
+        method = request.method
+
+        if method in ['GET','HEAD','OPTIONS']:
+            action = 'view'
+
+        elif method == 'POST':
+            action = 'create'
+
+        elif method in ['PUT','PATCH']:
+            action = 'update'
+
+        elif method in ['DELETE']:
+            action = 'delete'
+
         else:
-            return False"""
+            return False
+
+        # set admin to have the full access
+        if user.is_staff or emp_profile == 'Admin':
+            return True
+
+        # query the various user_types permission
+        if emp_profile == 'Employee_Agent':
+            if action in ['create', 'view']:
+                return obj.shift_agent == employee # return resultant objects
+            return False
+
+        elif emp_profile == 'Supervisor':
+            if action == 'view':
+                return obj.supervisor == employee
+            return False
+
+        return False
+
 
 
 

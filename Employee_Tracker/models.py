@@ -8,7 +8,6 @@ from .registry import EVENTS
 
 # Create your models here.
 STATUS = [
-    ('Signed_In', 'Signed_In'),
     ('Shift_Started','Shift_Started'),
     ('Shift_Completed','Shift_Completed'),
     ('Scheduled','Scheduled'),

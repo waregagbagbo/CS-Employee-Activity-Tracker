@@ -15637,3 +15637,2192 @@ Watching for file changes with StatReloader
 "POST /cs/shifts/ HTTP/1.1" 201 11724
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
 Watching for file changes with StatReloader
+"POST /cs/shifts/ HTTP/1.1" 201 11951
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7323
+"GET /api/logout/ HTTP/1.1" 201 5040
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 14342
+"GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 14342
+"GET /admin/accounts/customuser/ HTTP/1.1" 200 18622
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/accounts/employee/ HTTP/1.1" 200 18552
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST / HTTP/1.1" 200 7377
+"GET /cs/shifts/ HTTP/1.1" 200 19748
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 21261
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13418
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19657
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /cs/shifts/ HTTP/1.1" 200 15089
+"GET /cs/shifts/108/ HTTP/1.1" 200 14144
+"GET /cs/shifts/ HTTP/1.1" 200 15089
+"GET /cs/shifts/108/ HTTP/1.1" 200 14144
+"GET /cs/shifts/ HTTP/1.1" 200 15089
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+"GET /cs/reports/ HTTP/1.1" 200 20051
+"GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+"GET /cs/shifts HTTP/1.1" 301 0
+"GET /cs/shifts/ HTTP/1.1" 200 16638
+"GET /cs/employee/3/ HTTP/1.1" 200 13006
+"GET /cs/employee/ HTTP/1.1" 200 13574
+"GET /cs/employee/8/ HTTP/1.1" 200 13023
+"GET /cs/employee/8/ HTTP/1.1" 200 13023
+"PUT /cs/employee/8/ HTTP/1.1" 200 13029
+"GET /cs/employee/8/ HTTP/1.1" 200 13029
+"GET /cs/employee/8/ HTTP/1.1" 200 13029
+"PUT /cs/employee/8/ HTTP/1.1" 200 13152
+"GET /cs/employee/8/ HTTP/1.1" 200 13152
+"PUT /cs/employee/8/ HTTP/1.1" 200 13155
+"GET /cs/shifts/ HTTP/1.1" 200 15089
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/ HTTP/1.1" 200 15089
+"GET /cs/shifts/ HTTP/1.1" 200 15089
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 98, in perform_create
+    raise ValidationError({
+        'detail': 'Supervisors cannot create shifts for themselves.'
+    })
+django.core.exceptions.ValidationError: {'detail': ['Supervisors cannot create shifts for themselves.']}
+"POST /cs/shifts/ HTTP/1.1" 500 109228
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 98, in perform_create
+    raise ValidationError({
+        'detail': 'Supervisors cannot create shifts for themselves.'
+    })
+django.core.exceptions.ValidationError: {'detail': ['Supervisors cannot create shifts for themselves.']}
+"POST /cs/shifts/ HTTP/1.1" 500 109228
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 98, in perform_create
+    raise ValidationError({
+        'detail': 'Supervisors cannot create shifts for themselves.'
+    })
+django.core.exceptions.ValidationError: {'detail': ['Supervisors cannot create shifts for themselves.']}
+"POST /cs/shifts/ HTTP/1.1" 500 109228
+"GET /admin/ HTTP/1.1" 200 16375
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 21255
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13409
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19657
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 98, in perform_create
+    raise ValidationError({
+        'detail': 'Supervisors cannot create shifts for themselves.'
+    })
+django.core.exceptions.ValidationError: {'detail': ['Supervisors cannot create shifts for themselves.']}
+"POST /cs/shifts/ HTTP/1.1" 500 109227
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20095
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13080
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19656
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 98, in perform_create
+    raise ValidationError({
+        'detail': 'Supervisors cannot create shifts for themselves.'
+    })
+django.core.exceptions.ValidationError: {'detail': ['Supervisors cannot create shifts for themselves.']}
+"POST /cs/shifts/ HTTP/1.1" 500 109227
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20098
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13080
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19656
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 98, in perform_create
+    raise ValidationError({
+        'detail': 'Supervisors cannot create shifts for themselves.'
+    })
+django.core.exceptions.ValidationError: {'detail': ['Supervisors cannot create shifts for themselves.']}
+"POST /cs/shifts/ HTTP/1.1" 500 109228
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20098
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20223
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13080
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19656
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 98, in perform_create
+    raise ValidationError({
+        'detail': 'Supervisors cannot create shifts for themselves.'
+    })
+django.core.exceptions.ValidationError: {'detail': ['Supervisors cannot create shifts for themselves.']}
+"POST /cs/shifts/ HTTP/1.1" 500 109227
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20098
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13080
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19656
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 102, in perform_create
+    serializer.save(shift_agent=employee_profile,shift_start_time=current_time)
+                                                                  ^^^^^^^^^^^^
+NameError: name 'current_time' is not defined
+"POST /cs/shifts/ HTTP/1.1" 500 109093
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 75, in has_object_permission
+    employee = user.employee
+               ^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'CustomUser' object has no attribute 'employee'
+"POST /cs/shifts/ HTTP/1.1" 500 115546
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244756
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20675
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13245
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19657
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19521
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244596
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244404
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 75, in has_object_permission
+    employee = user.employee
+               ^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'CustomUser' object has no attribute 'employee'
+"POST /cs/shifts/ HTTP/1.1" 500 115498
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 75, in has_object_permission
+    employee = user.employee
+               ^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'CustomUser' object has no attribute 'employee'
+"POST /cs/shifts/ HTTP/1.1" 500 115495
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20593
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13245
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19581
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 662, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 545, in get_raw_data_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 75, in has_object_permission
+    employee = user.employee
+               ^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'CustomUser' object has no attribute 'employee'
+"POST /cs/shifts/ HTTP/1.1" 500 115498
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 20019
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 200 13080
+"POST /admin/Employee_Tracker/shift/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19580
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244404
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244404
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244404
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/ HTTP/1.1" 200 15001
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 74, in has_object_permission
+    employee = user.employee
+               ^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'CustomUser' object has no attribute 'employee'
+"GET /cs/shifts/108/ HTTP/1.1" 500 115893
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /cs/shifts/108/
+"GET /cs/shifts/108/ HTTP/1.1" 403 6571
+"GET /cs/employee/8/ HTTP/1.1" 200 13155
+Forbidden: /cs/shifts/108/
+"GET /cs/shifts/108/ HTTP/1.1" 403 6571
+Forbidden: /cs/shifts/108/
+"GET /cs/shifts/108/ HTTP/1.1" 403 6571
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /cs/shifts/108/
+"GET /cs/shifts/108/ HTTP/1.1" 403 6571
+Forbidden: /cs/shifts/108/
+"GET /cs/shifts/108/ HTTP/1.1" 403 6571
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /cs/shifts/108/ HTTP/1.1" 200 14056
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /cs/shifts/108/
+"PUT /cs/shifts/108/ HTTP/1.1" 403 6571
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.supervisor
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112690
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.supervisor
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112690
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112726
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112726
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.Supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'Supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112726
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.Supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'Supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112707
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.Supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'Supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112707
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 108, in has_object_permission
+    return obj.supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112705
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/108/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 103, in get_object
+    self.check_object_permissions(self.request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 106, in has_object_permission
+    return obj.supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'supervisor'
+"GET /cs/shifts/108/ HTTP/1.1" 500 112704
+"GET /cs/shifts/ HTTP/1.1" 200 15001
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244404
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244404
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'shift_agent_id' cannot be null")
+"POST /cs/shifts/ HTTP/1.1" 500 244404
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 97, in perform_create
+    raise ValidationError({
+        'shift_agent': 'This field is required for your role'
+    })
+django.core.exceptions.ValidationError: {'shift_agent': ['This field is required for your role']}
+"POST /cs/shifts/ HTTP/1.1" 500 109036
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/shifts/ HTTP/1.1" 200 15001
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 731, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 705, in get_context
+    'options_form': self.get_rendered_html_form(data, view, 'OPTIONS', request),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 480, in get_rendered_html_form
+    if not self.show_form_for_method(view, method, request, instance):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\renderers.py", line 437, in show_form_for_method
+    view.check_object_permissions(request, obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 351, in check_object_permissions
+    if not permission.has_object_permission(request, self, obj):
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\accounts\permissions.py", line 106, in has_object_permission
+    return obj.supervisor == employee
+           ^^^^^^^^^^^^^^
+AttributeError: 'Shift' object has no attribute 'supervisor'
+"POST /cs/shifts/ HTTP/1.1" 500 114418
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 91, in perform_create
+    raise ValidationError({
+        'error': 'Only Employee Agents can create shifts'
+    })
+django.core.exceptions.ValidationError: {'error': ['Only Employee Agents can create shifts']}
+"POST /cs/shifts/ HTTP/1.1" 500 108926

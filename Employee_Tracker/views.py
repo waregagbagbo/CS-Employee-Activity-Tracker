@@ -8,7 +8,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.status import HTTP_201_CREATED
 from accounts.models import Employee, Department
-from accounts.permissions import UserTypeReportPermission
+from accounts.permissions import UserTypeReportPermission,UserShiftPermission
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, permissions, authentication, filters, status
@@ -47,7 +47,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['shift_agent','shift_type','shift_status']
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,UserShiftPermission]
     pagination_class = PageNumberPagination
     lookup_field = 'pk'
 
@@ -81,25 +81,22 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         else:
             return parent_queryset.filter(shift_agent=employee_profile)
 
-
     def perform_create(self, serializer):
-        # create shift for authenticated users
+        """Auto-assign shift_agent to current user's employee profile"""
         user = self.request.user
         try:
-            employee_profile = Employee.objects.get(user=user)
-            timer = datetime.now().time()
-            serializer.save(shift_agent=employee_profile, shift_start_time=timer)
-            print('Shift updated successfully')
-        except ObjectDoesNotExist:
-            raise ValidationError('Employee does not exist')
-
-        # prevent supervisors from creating their own shifts
-        if employee_profile.user_type == 'Supervisor':
+            employee = user.employee_profile
+            # Only Employee_Agent can create their own shifts
+            if employee.user_type != 'Employee_Agent':
+                raise ValidationError({
+                    'error': 'Only Employee Agents can create shifts'
+                })
+            # Save with shift_agent set to current employee
+            serializer.save(shift_agent=employee)
+        except (ObjectDoesNotExist, AttributeError):
             raise ValidationError({
-                'detail': 'Supervisors cannot create shifts for themselves.'
+                'error': 'Employee profile not found. Please contact admin.'
             })
-        current_time = datetime.now().time()
-        serializer.save(shift_agent=employee_profile,shift_start_time=current_time)
 
 
 #Department view
@@ -110,7 +107,7 @@ class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-    #Activity report view
+#Activity report view
 class ReportsViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
     permission_classes = [IsAuthenticated,UserTypeReportPermission]
