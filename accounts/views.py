@@ -28,9 +28,7 @@ class UserRegistration(generics.CreateAPIView):
         user.set_password(serializer.validated_data['password'])
         user.save()
         message = {'message':'User created successfully'}
-        return Response(message,status=status.HTTP_201_CREATED,headers={
-            "connection":"keep-alive","date":datetime
-        })
+        return Response(message,status=status.HTTP_201_CREATED,headers={})
 
 
 

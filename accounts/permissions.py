@@ -62,45 +62,6 @@ class UserTypeReportPermission(permissions.BasePermission):
             return False"""
 
 
-# create a BasePermision View
-""""class OwnerReport(BasePermission):
-    def has_permission(self, request, view):
-        if request.user.is_authenticated:
-            return True
-
-    def has_object_permission(self, request, view, obj):
-        user = request.user
-        try:
-            return obj.owner == user
-        except ObjectDoesNotExist:
-            print('Permission denied')
-            return False
-
-class SupervisorReport(BasePermission):
-    def has_permission(self, request, view):
-        if request.user.is_authenticated:
-            return True
-
-    def has_object_permission(self, request, view, obj):
-        user = request.user
-        try:
-            return request.user== 'Supervisor'
-        except ObjectDoesNotExist:
-            print('Permission denied')
-            return False
-
-
-class AdminReport(BasePermission):
-    def has_permission(self, request, view):
-        if request.user.is_authenticated:
-            return True
-
-    def has_object_permission(self, request, view, obj):
-        user = request.user
-        return request.user in ['Admin','superuser']"""
-
-
-
 
 
 
