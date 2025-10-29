@@ -17,9 +17,9 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # Profile setup serializer
-class EmployeeProfileSerializer(serializers.ModelSerializer):
+class EmployeeProfileSerializer(serializers.HyperlinkedModelSerializer):
     department = DepartmentSerializer(read_only=True)
-    user = serializers.HyperlinkedRelatedField(read_only=True, view_name='employee-detail', lookup_field='pk')
+    user = serializers.HyperlinkedIdentityField(read_only=True, view_name='employee-detail', lookup_field='pk')
 
     # user = serializers.PrimaryKeyRelatedField(read_only=True) # suitable with ModelSerializer
 

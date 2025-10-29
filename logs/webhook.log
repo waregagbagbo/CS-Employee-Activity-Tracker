@@ -15596,3 +15596,44 @@ Method Not Allowed: /api/register/
 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
 Watching for file changes with StatReloader
+Bad Request: /api/register/
+"POST /api/register/ HTTP/1.1" 400 9236
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"POST / HTTP/1.1" 200 7376
+"GET /cs/shifts/ HTTP/1.1" 200 13531
+"GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 304 0
+"POST /cs/shifts/ HTTP/1.1" 201 11724
+"GET /admin/accounts/employee/ HTTP/1.1" 200 18552
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Not Found: /cs/employee/7/
+"GET /cs/employee/7/ HTTP/1.1" 404 11669
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /cs/shifts/ HTTP/1.1" 201 11951
+Not Found: /cs/employee/8/
+"GET /cs/employee/8/ HTTP/1.1" 404 11844
+"GET /cs/employee/9/ HTTP/1.1" 200 12994
+Not Found: /cs/employee/8/
+"GET /cs/employee/8/ HTTP/1.1" 404 11844
+"GET /admin/accounts/employee/8/change/ HTTP/1.1" 200 21479
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/accounts/customuser/ HTTP/1.1" 200 18622
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/accounts/employee/ HTTP/1.1" 200 18552
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /cs/employee/9/ HTTP/1.1" 200 12994
+Not Found: /cs/employee/7/
+"GET /cs/employee/7/ HTTP/1.1" 404 11844
+Not Found: /cs/employee/7/
+"GET /cs/employee/7/ HTTP/1.1" 404 11844
+"GET /cs/employee/9/ HTTP/1.1" 200 12994
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/9/ HTTP/1.1" 200 12994
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/9/ HTTP/1.1" 200 12497
+"POST /cs/shifts/ HTTP/1.1" 201 11724
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
