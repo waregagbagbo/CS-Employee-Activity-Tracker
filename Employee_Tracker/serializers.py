@@ -128,7 +128,6 @@ class ActivityReportSerializer(serializers.ModelSerializer):
             employee_profile = instance.shift_active_agent
         except ObjectDoesNotExist:
             raise serializers.ValidationError('Employee does not exist')
-
         # check for validations
         if validated_data.get('is_approved') or validated_data.get('activity_approved_at',False):
             if not employee_profile.user_type not in ['Supervisor','Admin']:

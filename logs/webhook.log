@@ -18250,3 +18250,93 @@ Watching for file changes with StatReloader
 "GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19580
 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 "GET /cs/shifts/ HTTP/1.1" 200 15001
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 91, in perform_create
+    raise ValidationError({
+        'error': 'Only Employee Agents can create shifts'
+    })
+django.core.exceptions.ValidationError: {'error': ['Only Employee Agents can create shifts']}
+"POST /cs/shifts/ HTTP/1.1" 500 108941
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Internal Server Error: /cs/shifts/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 91, in perform_create
+    raise ValidationError({
+        'error': 'Only Employee Agents can create shifts'
+    })
+django.core.exceptions.ValidationError: {'error': ['Only Employee Agents can create shifts']}
+"POST /cs/shifts/ HTTP/1.1" 500 108941
+"GET /cs/shifts/ HTTP/1.1" 200 15001
+"GET /cs/shifts/108/ HTTP/1.1" 200 6851
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/reports/ HTTP/1.1" 200 13999
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 19445
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 18495
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 200 25687
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+"POST /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 18717
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /cs/reports/ HTTP/1.1" 200 17209

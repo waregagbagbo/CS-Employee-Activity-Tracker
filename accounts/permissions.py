@@ -47,12 +47,12 @@ class UserTypeReportPermission(permissions.BasePermission):
         if emp_profile == 'Employee_Agent':
             if action in ['create', 'view']:
                 # ascertain if hs
-                return obj.shift_agent == employee
+                return obj.shift_active_agent == employee
             return False
 
-        elif emp_profile == 'Supervisor' and action in ['update', 'view']:
-            return obj.supervisor == employee
-
+        elif emp_profile == 'Supervisor':
+            if action in ['update', 'view']:
+                return obj
         else:
             return False
 

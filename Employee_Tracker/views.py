@@ -1,22 +1,28 @@
-from datetime import datetime, timezone
 from django.contrib.auth import get_user_model
-from django.contrib.sessions.serializers import JSONSerializer
-from django.core.exceptions import ObjectDoesNotExist, ValidationError, PermissionDenied
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from rest_framework.authentication import SessionAuthentication
-from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.status import HTTP_201_CREATED
+from rest_framework.permissions import IsAuthenticated
 from accounts.models import Employee, Department
 from accounts.permissions import UserTypeReportPermission,UserShiftPermission
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
-from rest_framework import viewsets, permissions, authentication, filters, status
+from rest_framework import viewsets, authentication, filters
 
 
 User = get_user_model() # reference the custom User model
 
 # Views implemented using generics
+
+#Department view
+class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+    authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+
+#Profile view
 class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
@@ -99,13 +105,6 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             })
 
 
-#Department view
-class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Department.objects.all()
-    serializer_class = DepartmentSerializer
-    authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
 
 #Activity report view
 class ReportsViewSet(viewsets.ModelViewSet):
@@ -150,22 +149,4 @@ class ReportsViewSet(viewsets.ModelViewSet):
         else:
             return reports_base_queryset.filter(shift_active_agent=employee_profile)
 
-    # perform destroy method by user type
-    """def perform_destroy(self, instance):
-        # create user instance
-        user = self.request.user
-        try:
-            e_profile = Employee.objects.select_related('user').get(user=self.request.user)
-        except ObjectDoesNotExist as e:
-            print(f'User with that profile does not exist {e}')
-            raise ValidationError('Employee does not exist')
-
-        # get the user type
-        if e_profile.user_type == 'Employee_Agent':
-            raise PermissionDenied('Employee Agents Cannot delete a record')
-
-        instance.is_deleted = True
-        instance.save()"""
-
-
-
+    # perform create method by user type
