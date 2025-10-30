@@ -102,8 +102,8 @@ class UserShiftPermission(permissions.BasePermission):
             return False
 
         elif emp_profile == 'Supervisor':
-            if action == 'view':
-                return obj.supervisor == employee
+            if action in ['view']:
+                return obj
             return False
 
         return False
