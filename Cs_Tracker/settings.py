@@ -15,6 +15,7 @@ from datetime import timedelta
 import os
 
 from decouple import config,Csv
+from django.conf.global_settings import SECURE_HSTS_SECONDS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',default=True, cast=bool)
+DEBUG = config('DEBUG',default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
 
@@ -116,8 +117,8 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_USER')
-DEFAULT_FROM_EMAIL = 'no-reply@yourdomain.com'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('no-reply@yourdomain.com')
 
 
 # Password validation
@@ -246,3 +247,11 @@ LOGGING = {
         },
     },
 }
+# settings.py
+SECURE_SSL_REDIRECT = True # Automatically redirect HTTP to HTTPS
+SESSION_COOKIE_SECURE = True # Session cookies are only sent via HTTPS
+CSRF_COOKIE_SECURE = True # Tokens sent via HTTPS not HTTP
+SECURE_BROWSER_XSS_FILTER = True # for regular activation of XSS protection
+SECURE_CONTENT_TYPE_NOSNIFF = True # Browser processes the actual contents without guess
+X_FRAME_OPTIONS = 'DENY' # Prevents site from being embedded in iframe (click jacking attacks)
+SECURE_HSTS_SECONDS = 0 # Disabled for deployment without full domain control

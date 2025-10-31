@@ -20138,3 +20138,8 @@ D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
 Watching for file changes with StatReloader
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
 Watching for file changes with StatReloader
+"GET /cs/employee/ HTTP/1.1" 200 13634
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/reports/ HTTP/1.1" 200 16976
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
