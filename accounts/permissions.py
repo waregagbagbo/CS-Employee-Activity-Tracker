@@ -56,8 +56,8 @@ class UserTypeReportPermission(permissions.BasePermission):
 
 """ restrict shifts to be actioned based on user_type
  If agent, create, and view
- Admin - Full access )CRUD
- Supervisor - view 
+ Admin - Full access (CRUD)
+ Supervisor - view only
  """
 # permissions for shifts
 class UserShiftPermission(permissions.BasePermission):
@@ -103,7 +103,6 @@ class UserShiftPermission(permissions.BasePermission):
             if action in ['view']:
                 return obj
             return False
-
         return False
 
 
