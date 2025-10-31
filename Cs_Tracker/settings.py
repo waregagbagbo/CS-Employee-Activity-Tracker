@@ -14,6 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+from decouple import config,Csv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,12 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8@sot$57g^*=m-^pin0gqnl6okr2htr=v15sp=_$uc-o-)29as'
+SECRET_KEY=config('SECRET_KEY')
+
+#SECRET_KEY = 'django-insecure-8@sot$57g^*=m-^pin0gqnl6okr2htr=v15sp=_$uc-o-)29as'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+#DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
+#ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
@@ -94,11 +100,11 @@ WSGI_APPLICATION = 'Cs_Tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'handover_shift',
-        'USER': 'root',
-        'PASSWORD': 'Chelsea@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST':  config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='5432'),
         'OPTIONS': {
             'charset': 'utf8mb4',
 
@@ -110,11 +116,11 @@ DATABASES = {
 
 # EMAIL setup
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'denzrich10@gmail.com'
-EMAIL_HOST_PASSWORD = 'your_app_password'  # not your Gmail password
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_USER')
 DEFAULT_FROM_EMAIL = 'no-reply@yourdomain.com'
 
 

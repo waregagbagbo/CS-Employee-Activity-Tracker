@@ -1,11 +1,9 @@
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import permissions
-from rest_framework.permissions import BasePermission
-from accounts.models import Employee
 
 """create roles based on user type
 Employee_Agent - create, view - shift and reports
-Admin - create, view and delete (shfts and reports)
+Admin - create, view and delete (shifts and reports)
 Supervisor  - View shift and report, update report,
 Use BasePermission
 implement has_permission for views and has_obj_permission  to enable manipulation
@@ -43,12 +41,12 @@ class UserTypeReportPermission(permissions.BasePermission):
         if user.is_staff or emp_profile == 'Admin':
             return True
 
-        # Agent can create and view their own  shift
+        # Agent can create and view their own reports
         if emp_profile == 'Employee_Agent':
-            if action in ['create', 'view']:
-                # ascertain if hs
-                return obj.shift_active_agent == employee
-            return False
+            if action not in ['create', 'view']:
+                return False
+            # ascertain if hs
+            return obj.shift_active_agent == employee
 
         elif emp_profile == 'Supervisor':
             if action in ['update', 'view']:
@@ -56,7 +54,7 @@ class UserTypeReportPermission(permissions.BasePermission):
         else:
             return False
 
-""" restict shifts to be actioned based on user_type
+""" restrict shifts to be actioned based on user_type
  If agent, create, and view
  Admin - Full access )CRUD
  Supervisor - view 

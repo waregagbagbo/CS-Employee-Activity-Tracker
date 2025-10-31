@@ -18340,3 +18340,51 @@ Watching for file changes with StatReloader
 "GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 18717
 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 "GET /cs/reports/ HTTP/1.1" 200 17209
+"GET /cs/reports/1/ HTTP/1.1" 200 17786
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+"GET /cs/reports/ HTTP/1.1" 200 20101
+"GET /cs/reports/1 HTTP/1.1" 301 0
+"GET /cs/reports/1/ HTTP/1.1" 200 18840
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/reports/ HTTP/1.1" 200 17209
+"GET /cs/reports/ HTTP/1.1" 200 20101
+"GET /cs/reports/2 HTTP/1.1" 301 0
+Not Found: /cs/reports/2/
+"GET /cs/reports/2/ HTTP/1.1" 404 13427
+"GET /cs/reports/3 HTTP/1.1" 301 0
+"GET /cs/reports/3/ HTTP/1.1" 200 17946
+"GET /cs/reports/1/ HTTP/1.1" 200 17786
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Bad Request: /
+"POST / HTTP/1.1" 400 7326
+"POST / HTTP/1.1" 200 7376
+"GET /cs/reports/ HTTP/1.1" 200 16473
+"GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+"GET /cs/reports/1 HTTP/1.1" 301 0
+"GET /cs/reports/1/ HTTP/1.1" 200 8247
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7323
+"GET /api/logout/ HTTP/1.1" 201 5040
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7324
+"GET /api/logout/ HTTP/1.1" 201 5040
+"OPTIONS /cs/reports/3/ HTTP/1.1" 200 26885
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+"GET /api/logout/ HTTP/1.1" 201 5040
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
