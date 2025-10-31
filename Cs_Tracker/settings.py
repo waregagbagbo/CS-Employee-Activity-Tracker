@@ -118,7 +118,7 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = config('no-reply@yourdomain.com')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
 # Password validation
@@ -248,9 +248,9 @@ LOGGING = {
     },
 }
 # settings.py
-SECURE_SSL_REDIRECT = True # Automatically redirect HTTP to HTTPS
-SESSION_COOKIE_SECURE = True # Session cookies are only sent via HTTPS
-CSRF_COOKIE_SECURE = True # Tokens sent via HTTPS not HTTP
+SECURE_SSL_REDIRECT = False # Automatically redirect HTTP to HTTPS
+SESSION_COOKIE_SECURE = False # Session cookies are only sent via HTTPS
+CSRF_COOKIE_SECURE = False # Tokens sent via HTTPS not HTTP
 SECURE_BROWSER_XSS_FILTER = True # for regular activation of XSS protection
 SECURE_CONTENT_TYPE_NOSNIFF = True # Browser processes the actual contents without guess
 X_FRAME_OPTIONS = 'DENY' # Prevents site from being embedded in iframe (click jacking attacks)

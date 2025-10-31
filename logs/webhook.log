@@ -20143,3 +20143,52 @@ D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
 Watching for file changes with StatReloader
 "GET /cs/reports/ HTTP/1.1" 200 16976
 D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/reports/ HTTP/1.1" 301 0
+code 400, message Bad request version ('\x97\x18Î\x9cE\x97BQv?eB5ù³!\x00\'ý¥\x04/á\x8aÚã"?Ë\x18')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03u²B\x88cm>\x07D7\x94i\x8dÌê÷Z\x84M')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('Q%^ÕéN\x19¢\x92')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request syntax ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03¯')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('aú!÷\x00')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('×\x08\x08Ö\x95Õ»P°Èaòh_éx\x1b*\x84Íi')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request syntax ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03ÅG\x16')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('\x02h2\x08http/1.1\x00\x12\x00\x00DÍ\x00\x05\x00\x03\x02h2\x003\x04ï\x04í\x8a\x8a\x00\x01\x00\x11ì\x04À\x99Ñ\x14ú\x04`\x1aáÊ\x1aújjá3*\x17CÉ,,')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('¥Y2¶\x00\x93ïÊ;Îçd\x96~\x931\x01\x07ù\x99¿')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+code 400, message Bad request version ('\x01Éì\x0096\x88;\x89\x86E\x95¢ÅÌ!f¤oDÍ\x00\x05\x00\x03\x02h2\x00')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('\x00')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('\x9eò\x84÷ù1è\x18R¾í\x13â\x80\x0e\x86W9\x14\x0e')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93\x1a\x1a\x00\x00\x00#\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ("M¦O\x7f¶{N@A\x07¹'Lü§\x99u\x86D+jwV\x80f\x94bO7\x188")
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('\\Ö6\x809\x06YítL(x\x99½\x95²¿ç')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('¡\x9eP¬0±ZîJ<²&¾OD\x87F\x81\x82\x96tR»5^\x15SP/âÍ8Y³E\x8c2\x1aö§$·¸\x11\x95\x8a#È\x8d\x06#\x00\x18x©ÿ\x98Â/ü¨t')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('§\x9bT\x0fÊ\x84\x9c:A\x0fÇ\x02&G+\x96\x1b')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('`\x18Gò©ÎZ9âûa\x9bV\x90\x94wi\x87Ä6\x97ö\x9cÔ&\x05MÇN\x8bp\x15¹f\x18º»m¿')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+code 400, message Bad request version ('m\x86U·\x96sMc\'©`d[9oþû\x95Þâ\x0eØUT\x05êI""º$ÜA\x01æZáL\x9bF\x93Ädy\x8e\x0e')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+Watching for file changes with StatReloader
