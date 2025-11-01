@@ -91,18 +91,18 @@ Future support for multi-channel registry.
    cd employee-activity-tracker
 
 2. Create a virtual environment and install dependencies:
-
-python -m venv env
-source env/bin/activate
-pip install -r requirements.txt
+   ``` bash
+   python -m venv env - linux
+   source env/bin/activate  - windows
+   pip install -r requirements.txt - scafolds the resources in the dev
 
 3. - Set up .env and run migrations:
-
-python manage.py makemigrations  - schema version control
-python manage.py migrate - Applies changes
+   ``` bash
+   python manage.py makemigrations  - schema version control
+   python manage.py migrate - Applies changes
 
 4. Run the server:
-
-python manage.py runserver
+``` bash
+    python manage.py runserver
 
 
