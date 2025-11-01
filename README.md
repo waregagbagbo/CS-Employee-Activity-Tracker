@@ -19,6 +19,7 @@ to ensure automatic profile creation alongside auth-token regeneration.
 
 ### Shift Management (Viewsets)
 
+
  - GET /api/shifts/ - List shifts (with filters)
  - POST /api/shifts/ - Create new shift
  - GET /api/shifts/{id}/ - Get shift details
@@ -33,13 +34,10 @@ to ensure automatic profile creation alongside auth-token regeneration.
  - GET /api/reports/{id}/ - Get report details
  - PUT /api/reports/{id}/ - Update report (if not approved)
  - PATCH /api/reports/{id}/approve/ - Approve report (supervisors/managers only)
- - GET /api/reports/export/ - <b> Export reports (CSV)(Future)</b>
+ - GET /api/reports/export/ - <b> Export reports (CSV)(Future) ONCE VALIDATED with Frontend library</b>
 ### Webhook Management
 
- - GET /api/webhooks/ - List webhook configurations
- - POST /api/webhooks/ - Create webhook
- - PUT /api/webhooks/{id}/ - Update webhook
- - DELETE /api/webhooks/{id}/ - Delete webhook
+This is triggered when there's a change in shifts. Implemented via signals.
 
 ## Technical Considerations
 
@@ -48,7 +46,7 @@ to ensure automatic profile creation alongside auth-token regeneration.
  2. Role-based permissions (supervisors and shift-agents)
  3. Input validation and sanitization (Permissions)
  4. CORS configuration (During deployment)
- 5. Performance (caching and the rest from research)
+ 5. Performance
  6. Database indexing on frequently queried fields (MYSQL)
  7. Pagination for large datasets * DRF Paginator *
 
@@ -61,6 +59,7 @@ to ensure automatic profile creation alongside auth-token regeneration.
  5. MySQL 8.0+
  6. Git
  7. Code editor (Pycharm)
+ 8. Postman for endpoint tests
 
 
 ## SAMPLE Results.
