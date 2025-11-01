@@ -81,9 +81,7 @@ Future support for multi-channel registry.
 #### Token Auth in operation
 
 <img width="648" height="302" alt="image" src="https://github.com/user-attachments/assets/104d2465-05d3-4bc0-bf1b-19c98a2d4c26" />
-
-
-# QUICKSTART
+<br>
 
 ## 🚀 Quickstart
 
