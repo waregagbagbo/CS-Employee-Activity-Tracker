@@ -2,6 +2,13 @@
 
 A Django-based system for customer support teams to log end-of-shift reports and provide managers/supervisors with real-time visibility into team activities and performance.
 
+## Project Structure
+- `accounts/` – Custom user model and auth logic
+- `shifts/` – Shift tracking and webhook triggers
+- `reports/` – End-of-shift reporting and approval flow
+- `notifications/` – Webhook registry and dispatch logic
+- 
+
 ## 🚀 Quickstart
 
 1. Clone the repo:
