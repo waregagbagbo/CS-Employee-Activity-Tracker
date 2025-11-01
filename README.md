@@ -5,13 +5,15 @@ A Django-based system for customer support teams to log end-of-shift reports and
 ## 🚀 Quickstart
 
 1. Clone the repo:
+
    ```bash
    git clone https://github.com/your-org/employee-activity-tracker.git
    cd employee-activity-tracker
 
 2. Create a virtual environment and install dependencies:
-   Linux
+   
    ``` bash
+   Linux
    python -m venv env
    source env/bin/activate
    
@@ -21,15 +23,18 @@ A Django-based system for customer support teams to log end-of-shift reports and
    venv\Scripts\activate
 
 3. Install dependencies
+
    ``` bash
    pip install -r requirements.txt
 
 4. Set up .env and run migrations:
+
    ``` bash
    python manage.py makemigrations  - schema version control
    python manage.py migrate - Applies changes
 
 5. Run the server:
+
    ``` bash
     python manage.py runserver
 
