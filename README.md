@@ -23,10 +23,9 @@ A Django-based system for customer support teams to log end-of-shift reports and
 4. Run the server:
 ``` bash
     python manage.py runserver
-    \
-<br>
 
 ## API Endpoints
+
 ### Authentication
  - POST /api/auth/login/ - User login
  - POST /api/auth/logout/ - User logout
