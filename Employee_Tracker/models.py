@@ -54,6 +54,7 @@ class Shift(models.Model):
         verbose_name = 'Shift'
         verbose_name_plural = 'Shifts'
         ordering = ['shift_agent', 'shift_date']
+        unique_together = (('shift_agent', 'shift_date'),)
 
 
 #create activity model class
@@ -78,5 +79,6 @@ class ActivityReport(models.Model):
         verbose_name = 'Report'
         verbose_name_plural = 'Reports'
         ordering = ['report_type', 'shift_activity_type']
+        unique_together = (('report_type', 'shift_active_agent'),)
 
 

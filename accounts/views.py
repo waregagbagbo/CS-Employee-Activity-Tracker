@@ -1,15 +1,17 @@
-from datetime import datetime
-
-from django.contrib.contenttypes.models import ContentType
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from rest_framework.views import APIView
+
+from Employee_Tracker.serializers import EmployeeProfileSerializer
 from .serializers import UserRegistrationSerializer, UserLoginSerializer
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from django.contrib.auth import login, logout, get_user_model
+from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiExample
+from drf_spectacular.types import OpenApiTypes
+
 
 # our standalone custom user model object instead of direct import
 User = get_user_model()
@@ -30,15 +32,6 @@ class UserRegistration(generics.CreateAPIView):
         message = {'message':'User created successfully'}
         return Response(message,status=status.HTTP_201_CREATED,headers={})
 
-
-
-"""class UserProfileViews(generics.RetrieveUpdateAPIView):
-    queryset = User.objects.all()
-    serializer_class = EmployeeSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_object(self):
-        return self.request.user"""
 
 class UserLogin(APIView):
     serializer_class = UserLoginSerializer
@@ -78,3 +71,34 @@ class LogoutView(APIView):
         return self.post(request)
 
 
+# swagger view
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = EmployeeProfileSerializer
+
+    @extend_schema(
+        summary="List all users",
+        description="Retrieve a list of all users in the system",
+        tags=['Users']
+    )
+    def list(self, request):
+        return super().list(request)
+
+    @extend_schema(
+        summary="Create a new user",
+        description="Create a new user with the provided information",
+        tags=['Users'],
+        examples=[
+            OpenApiExample(
+                'Create User Example',
+                value={
+                    'username': 'john_doe',
+                    'email': 'john@example.com',
+                    'first_name': 'John',
+                    'last_name': 'Doe'
+                }
+            )
+        ]
+    )
+    def create(self, request):
+        return super().create(request)

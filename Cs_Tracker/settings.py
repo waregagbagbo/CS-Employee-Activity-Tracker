@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'Employee_Tracker',
     'corsheaders',
     'rest_framework.authtoken',
+    'drf_spectacular',
     'djoser',
+   # for swagger
 ]
 
 
@@ -202,6 +204,7 @@ REST_FRAMEWORK = {
     }
 }
 
+
 # customize token lifetime
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
@@ -255,3 +258,24 @@ SECURE_BROWSER_XSS_FILTER = True # for regular activation of XSS protection
 SECURE_CONTENT_TYPE_NOSNIFF = True # Browser processes the actual contents without guess
 X_FRAME_OPTIONS = 'DENY' # Prevents site from being embedded in iframe (click jacking attacks)
 SECURE_HSTS_SECONDS = 0 # Disabled for deployment without full domain control
+
+
+#swagger settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your API Title',
+    'DESCRIPTION': 'Your API description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # Optional: Customize the UI
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'persistAuthorization': True,
+        'displayOperationId': True,
+    },
+    'COMPONENT_SPLIT_REQUEST': True,
+}
