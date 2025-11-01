@@ -1,17 +1,16 @@
 ## Employee Activity Tracker for Customer Support 
 
-A system where customer support agents can log end-of-shift reports. Provide managers with visibility into team activities.
+A Django-based system for customer support teams to log end-of-shift reports and provide managers/supervisors with real-time visibility into team activities and performance.
 
 ## API Endpoints
 ### Authentication
  - POST /api/auth/login/ - User login
  - POST /api/auth/logout/ - User logout
- - POST /api/auth/refresh/ - Refresh auth-token and SessionAuth- To update it on accounts app
+ - POST /api/auth/refresh/ - Refresh JWT token. Also updates session-based auth tokens for compatibility with the accounts app.
 
 ### Employee Management (Viewsets)/Generic
 
-I implemented Abstract User setup. Email has been used in place of username as a key requirement. Signals have been enabled
-to ensure automatic profile creation alongside auth-token regeneration.
+Uses a custom AbstractUser model with email as the primary identifier. <br> Signals ensure automatic profile creation and token regeneration on user creation.
 
  - GET /api/employees/ - List employees (paginated)
  - GET /api/employees/{id}/ - Get employee details
@@ -37,18 +36,25 @@ to ensure automatic profile creation alongside auth-token regeneration.
  - GET /api/reports/export/ - <b> Export reports (CSV)(Future) ONCE VALIDATED with Frontend library</b>
 ### Webhook Management
 
-This is triggered when there's a change in shifts. Implemented via signals.
+Webhooks are triggered on shift status changes (start/end). Implemented using Django signals and dispatched to registered endpoints test(https://webhook.site/). <br> 
+Future support for multi-channel registry.
 
 ## Technical Considerations
 
 ### Security
- 1. JWT token authentication / SessionAuth /Auth-Token
- 2. Role-based permissions (supervisors and shift-agents)
- 3. Input validation and sanitization (Permissions)
- 4. CORS configuration (During deployment)
- 5. Performance
- 6. Database indexing on frequently queried fields (MYSQL)
- 7. Pagination for large datasets * DRF Paginator *
+- JWT, SessionAuth, and TokenAuth supported
+- Role-based access control (supervisors, agents)
+- Input validation and permission checks
+- CORS configured for deployment
+
+### Performance
+- Database indexing on frequently queried fields (MySQL)
+- Pagination via DRF’s `PageNumberPagination` setting
+
+### Architecture
+- Modular design using ViewSets, signals, and custom user models.
+- Webhook dispatch system for real-time notifications on shifts and reports. Testing ground (https://webhook.site/#!/view/a66fc247-bafa-41ce-93af-a408e52ea2b3)
+
 
 ## Development Environment Setup
 
@@ -76,5 +82,29 @@ This is triggered when there's a change in shifts. Implemented via signals.
 
 <img width="648" height="302" alt="image" src="https://github.com/user-attachments/assets/104d2465-05d3-4bc0-bf1b-19c98a2d4c26" />
 
+
+# QUICKSTART
+
+## 🚀 Quickstart
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/your-org/employee-activity-tracker.git
+   cd employee-activity-tracker
+
+2. Create a virtual environment and install dependencies:
+
+python -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+
+3. - Set up .env and run migrations:
+
+python manage.py makemigrations  - schema version control
+python manage.py migrate - Applies changes
+
+4. Run the server:
+
+python manage.py runserver
 
 
