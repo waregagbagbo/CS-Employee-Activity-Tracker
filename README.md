@@ -2,6 +2,29 @@
 
 A Django-based system for customer support teams to log end-of-shift reports and provide managers/supervisors with real-time visibility into team activities and performance.
 
+## 🚀 Quickstart
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/your-org/employee-activity-tracker.git
+   cd employee-activity-tracker
+
+2. Create a virtual environment and install dependencies:
+   ``` bash
+   python -m venv env - linux
+   source env/bin/activate  - windows
+   pip install -r requirements.txt - scafolds the resources in the dev
+
+3. - Set up .env and run migrations:
+   ``` bash
+   python manage.py makemigrations  - schema version control
+   python manage.py migrate - Applies changes
+
+4. Run the server:
+``` bash
+    python manage.py runserver
+    
+
 ## API Endpoints
 ### Authentication
  - POST /api/auth/login/ - User login
@@ -83,26 +106,6 @@ Future support for multi-channel registry.
 <img width="648" height="302" alt="image" src="https://github.com/user-attachments/assets/104d2465-05d3-4bc0-bf1b-19c98a2d4c26" />
 <br>
 
-## 🚀 Quickstart
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-org/employee-activity-tracker.git
-   cd employee-activity-tracker
-
-2. Create a virtual environment and install dependencies:
-   ``` bash
-   python -m venv env - linux
-   source env/bin/activate  - windows
-   pip install -r requirements.txt - scafolds the resources in the dev
-
-3. - Set up .env and run migrations:
-   ``` bash
-   python manage.py makemigrations  - schema version control
-   python manage.py migrate - Applies changes
-
-4. Run the server:
-``` bash
-    python manage.py runserver
 
 
