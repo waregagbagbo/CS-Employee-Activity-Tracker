@@ -251,7 +251,6 @@ LOGGING = {
     },
 }
 # settings.py
-SECURE_SSL_REDIRECT = False # Automatically redirect HTTP to HTTPS
 SESSION_COOKIE_SECURE = False # Session cookies are only sent via HTTPS
 CSRF_COOKIE_SECURE = False # Tokens sent via HTTPS not HTTP
 SECURE_BROWSER_XSS_FILTER = True # for regular activation of XSS protection
