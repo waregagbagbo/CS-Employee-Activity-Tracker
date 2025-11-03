@@ -6,8 +6,6 @@ A Django-based system for customer support teams to log end-of-shift reports and
 - `accounts/` – Custom user model and auth logic
 - `shifts/` – Shift tracking and webhook triggers
 - `reports/` – End-of-shift reporting and approval flow
-- `notifications/` – Webhook registry and dispatch logic
-- 
 
 ## 🚀 Quickstart
 
@@ -50,6 +48,7 @@ A Django-based system for customer support teams to log end-of-shift reports and
 
 ### Authentication
  - POST /api/auth/login/ - User login
+ - POST /api/auth/register - User register
  - POST /api/auth/logout/ - User logout
  - POST /api/auth/refresh/ - Refresh JWT token. Also updates session-based auth tokens for compatibility with the accounts app.
 
