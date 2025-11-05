@@ -8,6 +8,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, Sp
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
     path('api/register/', views.UserRegistration.as_view(), name='user_registration'),
     #path('api/profile/', views.UserProfileViews.as_view(), name='profile'),
     path('',views.UserLogin.as_view(),name='login'),

@@ -21476,3 +21476,24 @@ Method Not Allowed: /
 "GET /cs/reports/ HTTP/1.1" 200 16719
 "GET /cs/reports/ HTTP/1.1" 200 16719
 "GET /api/logout/ HTTP/1.1" 201 5040
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+"GET /cs/shifts/ HTTP/1.1" 200 14326
+"GET /cs/shifts/99/ HTTP/1.1" 200 6950
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /cs/shifts/ HTTP/1.1" 200 14818
+"GET /cs/shifts/ HTTP/1.1" 200 14818
+"GET /cs/shifts/ HTTP/1.1" 200 14818
