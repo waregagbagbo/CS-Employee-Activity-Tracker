@@ -1,0 +1,144 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Dashboard - CS Activity Tracker{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Dashboard Overview</h1>
+
+<!-- Stats Grid -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-label">Total Employees</div>
+        <div class="stat-value">{{ total_employees }}</div>
+    </div>
+
+    <div class="stat-card success">
+        <div class="stat-label">Active Shifts Today</div>
+        <div class="stat-value">{{ active_shifts }}</div>
+    </div>
+
+    <div class="stat-card warning">
+        <div class="stat-label">Completed Shifts Today</div>
+        <div class="stat-value">{{ completed_shifts }}</div>
+    </div>
+
+    {% if user.role in 'supervisor,manager' %}
+    <div class="stat-card danger">
+        <div class="stat-label">Pending Report Approvals</div>
+        <div class="stat-value">{{ pending_reports }}</div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Your Shifts Today -->
+{% if user_shifts_today %}
+<div class="card">
+    <div class="card-header">Your Shifts Today</div>
+    <div class="card-body">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shift in user_shifts_today %}
+                    <tr>
+                        <td>{{ shift.start_time|date:"h:i A" }}</td>
+                        <td>{{ shift.end_time|date:"h:i A"|default:"—" }}</td>
+                        <td>
+                            {% if shift.status == 'completed' %}
+                                <span class="badge badge-success">Completed</span>
+                            {% elif shift.status == 'in_progress' %}
+                                <span class="badge badge-warning">In Progress</span>
+                            {% else %}
+                                <span class="badge badge-secondary">{{ shift.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'dashboard:shift_detail' shift.id %}" class="btn btn-sm btn-primary">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Recent Shifts -->
+<div class="card">
+    <div class="card-header">
+        Recent Shifts
+        <a href="{% url 'dashboard:shift_list' %}" class="btn btn-sm btn-primary" style="float: right;">View All</a>
+    </div>
+    <div class="card-body">
+        {% if recent_shifts %}
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        {% if user.role in 'supervisor,manager' %}
+                        <th>Employee</th>
+                        {% endif %}
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shift in recent_shifts %}
+                    <tr>
+                        <td>{{ shift.date|date:"M d, Y" }}</td>
+                        {% if user.role in 'supervisor,manager' %}
+                        <td>{{ shift.user.get_full_name|default:shift.user.email }}</td>
+                        {% endif %}
+                        <td>{{ shift.start_time|date:"h:i A" }}</td>
+                        <td>{{ shift.end_time|date:"h:i A"|default:"—" }}</td>
+                        <td>
+                            {% if shift.status == 'completed' %}
+                                <span class="badge badge-success">Completed</span>
+                            {% elif shift.status == 'in_progress' %}
+                                <span class="badge badge-warning">In Progress</span>
+                            {% else %}
+                                <span class="badge badge-secondary">{{ shift.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'dashboard:shift_detail' shift.id %}" class="btn btn-sm btn-primary">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon">📋</div>
+            <p>No shifts found</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="card">
+    <div class="card-header">Quick Actions</div>
+    <div class="card-body">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="{% url 'dashboard:shift_list' %}" class="btn btn-primary">View All Shifts</a>
+            <a href="{% url 'dashboard:report_list' %}" class="btn btn-primary">View All Reports</a>
+            {% if user.role in 'supervisor,manager' %}
+            <a href="{% url 'dashboard:employee_list' %}" class="btn btn-primary">Manage Employees</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

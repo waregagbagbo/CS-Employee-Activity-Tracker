@@ -1,0 +1,107 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Shifts - CS Activity Tracker{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Shifts</h1>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+    <form method="get" style="display: flex; gap: 1rem; flex: 1; flex-wrap: wrap; align-items: end;">
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select name="status" id="status">
+                <option value="">All Statuses</option>
+                <option value="scheduled" {% if status_filter == 'scheduled' %}selected{% endif %}>Scheduled</option>
+                <option value="in_progress" {% if status_filter == 'in_progress' %}selected{% endif %}>In Progress</option>
+                <option value="completed" {% if status_filter == 'completed' %}selected{% endif %}>Completed</option>
+                <option value="cancelled" {% if status_filter == 'cancelled' %}selected{% endif %}>Cancelled</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" value="{{ date_filter }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+        {% if status_filter or date_filter %}
+        <a href="{% url 'dashboard:shift_list' %}" class="btn btn-secondary">Clear</a>
+        {% endif %}
+    </form>
+</div>
+
+<!-- Shifts Table -->
+<div class="card">
+    <div class="card-body">
+        {% if shifts %}
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        {% if user.role in 'supervisor,manager' %}
+                        <th>Employee</th>
+                        {% endif %}
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shift in shifts %}
+                    <tr>
+                        <td>#{{ shift.id }}</td>
+                        <td>{{ shift.date|date:"M d, Y" }}</td>
+                        {% if user.role in 'supervisor,manager' %}
+                        <td>
+                            <a href="{% url 'dashboard:employee_detail' shift.user.id %}">
+                                {{ shift.user.get_full_name|default:shift.user.email }}
+                            </a>
+                        </td>
+                        {% endif %}
+                        <td>{{ shift.start_time|date:"h:i A" }}</td>
+                        <td>{{ shift.end_time|date:"h:i A"|default:"—" }}</td>
+                        <td>
+                            {% if shift.end_time %}
+                                {% widthratio shift.end_time|timeuntil:shift.start_time 60 1 %} hrs
+                            {% else %}
+                                In progress
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if shift.status == 'completed' %}
+                                <span class="badge badge-success">Completed</span>
+                            {% elif shift.status == 'in_progress' %}
+                                <span class="badge badge-warning">In Progress</span>
+                            {% elif shift.status == 'scheduled' %}
+                                <span class="badge badge-info">Scheduled</span>
+                            {% elif shift.status == 'cancelled' %}
+                                <span class="badge badge-danger">Cancelled</span>
+                            {% else %}
+                                <span class="badge badge-secondary">{{ shift.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'dashboard:shift_detail' shift.id %}" class="btn btn-sm btn-primary">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon">📅</div>
+            <p>No shifts found</p>
+            {% if status_filter or date_filter %}
+            <a href="{% url 'dashboard:shift_list' %}" class="btn btn-primary mt-2">Clear Filters</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
