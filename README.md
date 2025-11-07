@@ -114,7 +114,7 @@ Future support for multi-channel registry.
 
 ## SAMPLE Results.
 
-#### DRF Login (use case for SessionAuth) http://127.0.0.1:8000/
+#### DRF Login (use case for SessionAuth) http://127.0.0.1:8000/accounts/api/login/
 
 <img width="673" height="281" alt="image" src="https://github.com/user-attachments/assets/6c274122-b485-4be7-bf4e-9ccfa064ba7f" />
 
