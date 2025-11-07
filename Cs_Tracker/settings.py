@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'Employee_Tracker',
     'corsheaders',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    'dashboard',
     'drf_spectacular',
     'djoser',
    # for swagger
@@ -255,7 +257,7 @@ SESSION_COOKIE_SECURE = False # Session cookies are only sent via HTTPS
 CSRF_COOKIE_SECURE = False # Tokens sent via HTTPS not HTTP
 SECURE_BROWSER_XSS_FILTER = True # for regular activation of XSS protection
 SECURE_CONTENT_TYPE_NOSNIFF = True # Browser processes the actual contents without guess
-X_FRAME_OPTIONS = 'DENY' # Prevents site from being embedded in iframe (click jacking attacks)
+#X_FRAME_OPTIONS = 'DENY' # Prevents site from being embedded in iframe (click jacking attacks)
 SECURE_HSTS_SECONDS = 0 # Disabled for deployment without full domain control
 
 
