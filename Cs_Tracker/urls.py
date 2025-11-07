@@ -22,6 +22,8 @@ urlpatterns = [
     path('cs/',include('Employee_Tracker.urls')),
     path('',include('accounts.urls')),
 
+    path('dashboard/',include('dashboard.urls')),
+
     #path('auth', include('djoser.urls')),
     #path('auth/', include('djoser.urls.authtoken')), # for authentication
     #path('auth/api', include('djoser.urls.jwt')),
