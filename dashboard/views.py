@@ -7,6 +7,7 @@ from django.db.models import Q, Count
 from django.utils import timezone
 from datetime import timedelta
 from Employee_Tracker.models import Shift,ActivityReport
+from accounts.models import Employee
 
 
 
@@ -46,29 +47,30 @@ def logout_view(request):
 def home(request):
     """Dashboard home with overview stats"""
     user = request.user
+    emp_profile = Employee.objects.select_related('user').get(user=user)
 
     # Total employees
     total_employees = User.objects.filter(is_active=True).count()
 
     # Today's shifts
     today = timezone.now().date()
-    today_shifts = Shift.objects.filter(date=today)
-    active_shifts = today_shifts.filter(status='in_progress').count()
-    completed_shifts = today_shifts.filter(status='completed').count()
+    today_shifts = Shift.objects.filter(shift_date=today)
+    active_shifts = today_shifts.filter(shift_status='in_progress').count()
+    completed_shifts = today_shifts.filter(shift_status='completed').count()
 
     # Pending reports (for supervisors/managers)
     pending_reports = 0
-    if user.role in ['supervisor', 'manager']:
+    if emp_profile.user_type in ['supervisor', 'manager']:
         pending_reports = ActivityReport.objects.filter(approved=False).count()
 
     # Recent shifts (last 5)
-    if user.role == 'agent':
+    if emp_profile.user_type == 'agent':
         recent_shifts = Shift.objects.filter(user=user).order_by('-created_at')[:5]
     else:
-        recent_shifts = Shift.objects.all().order_by('-created_at')[:5]
+        recent_shifts = Shift.objects.all().order_by('-shift_updated_at')[:5]
 
     # User's shifts today
-    user_shifts_today = today_shifts.filter(user=user)
+    user_shifts_today = today_shifts.filter(shift_agent=emp_profile)
 
     context = {
         'total_employees': total_employees,
