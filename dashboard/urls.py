@@ -6,10 +6,10 @@ app_name = 'dashboard'
 
 urlpatterns = [
     # Dashboard Home
-    path('', views.home, name='home'),
+    path('home/', views.home, name='home'),
 
     # Authentication
-    path('login/', views.login_view, name='login'),
+    path('', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
 
     # Employees

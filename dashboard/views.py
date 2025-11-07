@@ -10,8 +10,7 @@ from Employee_Tracker.models import Shift,ActivityReport
 
 
 
-
-User = get_user_model() # fetch the CustomeUser model
+User = get_user_model() # fetch the CustomUser model
 
 # ============== Authentication Views ==============
 def login_view(request):
