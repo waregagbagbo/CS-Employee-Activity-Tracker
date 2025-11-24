@@ -372,13 +372,13 @@
             </a>
             <ul class="navbar-nav">
                 <li><a href="{% url 'dashboard:home' %}">Dashboard</a></li>
-                {% if user.role in 'supervisor,manager' %}
+                {% if emp_profile.user_type in 'supervisor,manager' %}
                 <li><a href="{% url 'dashboard:employee_list' %}">Employees</a></li>
                 {% endif %}
                 <li><a href="{% url 'dashboard:shift_list' %}">Shifts</a></li>
                 <li><a href="{% url 'dashboard:report_list' %}">Reports</a></li>
                 <li class="user-info">
-                    <span class="user-badge">{{ user.get_role_display|default:user.role }}</span>
+                     <span class="user-badge">{{request.user.username}}</span>
                     <span>{{ user.get_full_name|default:user.email }}</span>
                     <a href="{% url 'dashboard:logout' %}">Logout</a>
                 </li>

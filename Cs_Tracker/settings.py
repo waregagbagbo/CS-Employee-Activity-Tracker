@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
 
@@ -252,12 +252,13 @@ LOGGING = {
         },
     },
 }
-# settings.py
+
+# SECURITY settings.py
 SESSION_COOKIE_SECURE = False # Session cookies are only sent via HTTPS
 CSRF_COOKIE_SECURE = False # Tokens sent via HTTPS not HTTP
 SECURE_BROWSER_XSS_FILTER = True # for regular activation of XSS protection
 SECURE_CONTENT_TYPE_NOSNIFF = True # Browser processes the actual contents without guess
-#X_FRAME_OPTIONS = 'DENY' # Prevents site from being embedded in iframe (click jacking attacks)
+X_FRAME_OPTIONS = 'DENY' # Prevents site from being embedded in iframe (click jacking attacks)
 SECURE_HSTS_SECONDS = 0 # Disabled for deployment without full domain control
 
 

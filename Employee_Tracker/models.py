@@ -10,7 +10,7 @@ from .registry import EVENTS
 STATUS = [
     ('Shift_Started','Shift_Started'),
     ('Shift_Completed','Shift_Completed'),
-    ('Scheduled','Scheduled'),
+    ('In_Progress','In_Progress'),
 ]
 
 SHIFT_TYPES = [

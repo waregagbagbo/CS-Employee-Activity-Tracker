@@ -89,7 +89,7 @@ def home(request):
 def employee_list(request):
     """List all employees"""
     # Only supervisors and managers can see all employees
-    if request.user.role not in ['supervisor', 'manager']:
+    if request.user.role not in ['supervisor', 'admin']:
         messages.warning(request, 'You do not have permission to view this page.')
         return redirect('dashboard:home')
 
@@ -156,23 +156,24 @@ def employee_detail(request, pk):
 def shift_list(request):
     """List shifts"""
     user = request.user
+    emp_profile = Employee.objects.select_related('user').get(user=user)
 
     # Agents see only their shifts
-    if user.role == 'agent':
+    if emp_profile.user_type == 'Employee_Agent':
         shifts = Shift.objects.filter(user=user)
     else:
         shifts = Shift.objects.all()
 
-    shifts = shifts.order_by('-date', '-start_time')
+    shifts = shifts.order_by('-shift_date', '-shift_start_time')
 
     # Filters
-    status_filter = request.GET.get('status', '')
+    status_filter = request.GET.get('shift_status', '')
     if status_filter:
-        shifts = shifts.filter(status=status_filter)
+        shifts = shifts.filter(shift_status=status_filter)
 
-    date_filter = request.GET.get('date', '')
+    date_filter = request.GET.get('shift_date', '')
     if date_filter:
-        shifts = shifts.filter(date=date_filter)
+        shifts = shifts.filter(shift_date=date_filter)
 
     context = {
         'shifts': shifts,
@@ -189,7 +190,7 @@ def shift_detail(request, pk):
     shift = get_object_or_404(Shift, pk=pk)
 
     # Agents can only view their own shifts
-    if request.user.role == 'agent' and request.user != shift.user:
+    if request.user.role == 'Employee_Agent' and request.user != shift.user:
         messages.warning(request, 'You can only view your own shifts.')
         return redirect('dashboard:shift_list')
 
@@ -212,14 +213,15 @@ def shift_detail(request, pk):
 def report_list(request):
     """List reports"""
     user = request.user
+    emp_profile = Employee.objects.select_related('user').get(user=user)
 
     # Agents see only their reports
-    if user.role == 'agent':
+    if emp_profile == 'Employee_Agent':
         reports = ActivityReport.objects.filter(shift__user=user)
     else:
         reports = ActivityReport.objects.all()
 
-    reports = reports.order_by('-created_at')
+    reports = reports.order_by('-activity_submitted_at')
 
     # Filters
     approved_filter = request.GET.get('approved', '')
@@ -238,11 +240,14 @@ def report_list(request):
 
 @login_required
 def report_detail(request, pk):
+    user = request.user
+    emp_profile = Employee.objects.select_related('user').get(user=user)
+
     """View report details"""
     report = get_object_or_404(ActivityReport, pk=pk)
 
     # Agents can only view their own reports
-    if request.user.role == 'agent' and request.user != report.shift.user:
+    if emp_profile.user_type == 'Employee_Agent' and request.user != report.shift.shift_agent:
         messages.warning(request, 'You can only view your own reports.')
         return redirect('dashboard:report_list')
 
@@ -256,7 +261,10 @@ def report_detail(request, pk):
 @login_required
 def report_approve(request, pk):
     """Approve a report (supervisors/managers only)"""
-    if request.user.role not in ['supervisor', 'manager']:
+    user = request.user
+    emp = Employee.objects.select_related('user').get(user=user)
+
+    if request.emp.user_type not in ['supervisor', 'admin']:
         messages.error(request, 'You do not have permission to approve reports.')
         return redirect('dashboard:report_list')
 
