@@ -47,9 +47,9 @@ A Django-based system for customer support teams to log end-of-shift reports and
 ## API Endpoints
 
 ### Authentication
- - POST /api/auth/login/ - User login
- - POST /api/auth/register - User register
- - POST /api/auth/logout/ - User logout
+ - POST /login/ - User login
+ - POST /api/register - User register
+ - POST /api/logout/ - User logout
  - POST /api/auth/refresh/ - Refresh JWT token. Also updates session-based auth tokens for compatibility with the accounts app.
 
 ### Employee Management (Viewsets)/Generic
