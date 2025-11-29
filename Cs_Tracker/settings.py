@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    'dashboard',
     'drf_spectacular',
     'djoser',
    # for swagger
