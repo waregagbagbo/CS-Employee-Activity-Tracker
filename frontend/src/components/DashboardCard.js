@@ -4,12 +4,12 @@ export default function DashboardCard({ title, value, icon, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="bg-white shadow rounded-lg p-5 flex items-center space-x-4 cursor-pointer hover:bg-indigo-50 transition"
+      className="bg-white shadow-lg rounded-xl p-6 flex items-center space-x-4 cursor-pointer hover:scale-105 transform transition-all duration-300"
     >
-      {icon && <div className="text-indigo-600 text-3xl">{icon}</div>}
+      <div className="text-indigo-600 text-4xl">{icon}</div>
       <div>
-        <p className="text-gray-500">{title}</p>
-        <p className="text-2xl font-bold">{value}</p>
+        <p className="text-gray-400 uppercase text-sm">{title}</p>
+        <p className="text-3xl font-bold">{value}</p>
       </div>
     </div>
   );

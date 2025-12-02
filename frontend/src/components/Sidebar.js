@@ -1,31 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
-  return (
-    <div className="bg-indigo-600 text-white w-64 min-h-screen p-6 flex flex-col">
-      <h2 className="text-2xl font-bold mb-8">Employee Tracker</h2>
+  const [open, setOpen] = useState(true);
 
-      <nav className="flex flex-col space-y-2">
-        <Link
-          to="/dashboard"
-          className="px-3 py-2 rounded hover:bg-indigo-700 transition"
-        >
-          Dashboard
-        </Link>
-        <Link
-          to="/reports"
-          className="px-3 py-2 rounded hover:bg-indigo-700 transition"
-        >
-          Reports
-        </Link>
-        <Link
-          to="/logout"
-          className="px-3 py-2 rounded bg-red-500 hover:bg-red-600 transition mt-auto"
-        >
-          Logout
-        </Link>
+  const modules = [
+    { name: "Dashboard", route: "/dashboard" },
+    { name: "Employees", route: "/employees" },
+    { name: "Activities", route: "/activities" },
+    { name: "Reports", route: "/reports" },
+    { name: "Health & Nutrition", route: "/nutrition" },
+    { name: "Attendance", route: "/attendance" },
+  ];
+
+  return (
+    <div className={`bg-indigo-600 text-white ${open ? "w-64" : "w-20"} transition-all duration-300 min-h-screen flex flex-col`}>
+      <div className="p-6 flex justify-between items-center">
+        <h2 className={`${open ? "text-xl font-bold" : "text-sm"} transition-all duration-300`}>Employee Tracker</h2>
+        <button onClick={() => setOpen(!open)} className="text-white text-xl focus:outline-none">
+          {open ? "«" : "»"}
+        </button>
+      </div>
+
+      <nav className="flex-1 flex flex-col space-y-2 px-2">
+        {modules.map((mod, idx) => (
+          <Link
+            key={idx}
+            to={mod.route}
+            className="px-3 py-2 rounded hover:bg-indigo-700 transition"
+          >
+            {mod.name}
+          </Link>
+        ))}
       </nav>
+
+      <Link
+        to="/logout"
+        className="px-3 py-2 rounded bg-red-500 hover:bg-red-600 m-6 text-center"
+      >
+        Logout
+      </Link>
     </div>
   );
 }
