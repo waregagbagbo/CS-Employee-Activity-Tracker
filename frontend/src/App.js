@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import Employees from "./pages/Employees";
+import Employees from "./pages/modules/Employees";
 import Shifts from "./pages/Shifts";
 import Reports from "./pages/Reports";
 import Logout from "./pages/Logout";
