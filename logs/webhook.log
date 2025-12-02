@@ -28269,3 +28269,383 @@ D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
 Watching for file changes with StatReloader
 D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Method Not Allowed: /auth/register/
+"GET /auth/register/ HTTP/1.1" 405 8874
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"OPTIONS /auth/login/ HTTP/1.1" 200 0
+"OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"GET /api/auth/login/ HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/auth/login/
+"GET /api/auth/login/ HTTP/1.1" 404 179
+Not Found: /auth/login
+"GET /auth/login HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\accounts\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /auth/login
+"GET /auth/login HTTP/1.1" 404 179
+Not Found: /
+"GET / HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\accounts\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 179
+Not Found: /auth/login
+"GET /auth/login HTTP/1.1" 404 179
+Not Found: /login
+"GET /login HTTP/1.1" 404 179
+Not Found: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /login
+"GET /login HTTP/1.1" 404 179
+Not Found: /
+"GET / HTTP/1.1" 404 179
+Not Found: /
+"GET / HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\accounts\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"OPTIONS /api/login/ HTTP/1.1" 200 0
+Not Found: /api/login/
+"POST /api/login/ HTTP/1.1" 404 179
+Not Found: /api/login/
+"POST /api/login/ HTTP/1.1" 404 179
+"OPTIONS /login/ HTTP/1.1" 200 0
+Not Found: /login/
+"POST /login/ HTTP/1.1" 404 179
+Not Found: /login/
+"POST /login/ HTTP/1.1" 404 179
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 92
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /api/logout/
+"GET /api/logout/ HTTP/1.1" 404 179
+Not Found: /auth/logout
+"GET /auth/logout HTTP/1.1" 404 179
+Not Found: /api/register
+"GET /api/register HTTP/1.1" 404 179
+Not Found: /register
+"GET /register HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\accounts\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /register
+"GET /register HTTP/1.1" 404 179
+Method Not Allowed: /auth/register/
+"GET /auth/register/ HTTP/1.1" 405 8874
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179

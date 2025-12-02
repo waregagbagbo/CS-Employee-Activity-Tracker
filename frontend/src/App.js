@@ -1,11 +1,12 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Employees from "./pages/Employees";
 import Shifts from "./pages/Shifts";
 import Reports from "./pages/Reports";
+import Logout from "./pages/Logout";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App(){
@@ -19,6 +20,8 @@ function App(){
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
+        {/* logout route (optional but clean) */}
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </BrowserRouter>
   );

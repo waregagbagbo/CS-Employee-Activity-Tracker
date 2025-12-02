@@ -69,10 +69,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-'http://localhost:3000', # frontend url
-'http://localhost:8000', # our DRF backend
-)
+CORS_ALLOWED_ORIGINS = [
+'http://localhost:3000' # frontend url
+]
 
 ROOT_URLCONF = 'Cs_Tracker.urls'
 
