@@ -6,14 +6,14 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, Sp
 
 
 urlpatterns = [
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     
-    path('api/register/', views.UserRegistration.as_view(), name='user_registration'),
+    path('auth/register/', views.UserRegistration.as_view(), name='user_registration'),
 
     path('',views.UserLogin.as_view(),name='login'),
-    path('api/logout/',views.LogoutView.as_view(),name='logout'),
+    path('auth/logout/',views.LogoutView.as_view(),name='logout'),
     # for auth token
     path('api-token-auth/', obtain_auth_token),
 
