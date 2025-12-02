@@ -1,8 +1,8 @@
 // src/services/auth.js
 import API from "./api";
 
-export const loginUser = async (username, password) => {
-  const res = await API.post("auth/login/", { username, password });
+export const loginUser = async (email, password) => {
+  const res = await API.post("auth/login/", { email, password });
   localStorage.setItem("access", res.data.access);
   if (res.data.refresh) localStorage.setItem("refresh", res.data.refresh);
   return res.data;
