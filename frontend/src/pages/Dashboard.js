@@ -4,6 +4,7 @@ import Topbar from "../components/Topbar";
 import DashboardCard from "../components/DashboardCard";
 import { FaUsers, FaClipboardList, FaFileAlt, FaAppleAlt, FaCalendarCheck, FaChartLine, FaClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import {FaHouse, FaPeopleGroup} from "react-icons/fa6";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ export default function Dashboard() {
     {
       title: "Departments",
       value: "50",
-      icon: <FaAppleAlt />,
+      icon: <FaPeopleGroup />,
       route: "/departments",
       color: "bg-orange-500",
       trend: "+2",
@@ -81,7 +82,7 @@ export default function Dashboard() {
     <div className="flex bg-gray-50">
       <Sidebar />
       <div className="flex-1 flex flex-col min-h-screen">
-        <Topbar title="Dashboard" user={user} />
+        <Topbar title="Enterprise Support" user={user} />
 
         <main className="p-6 flex-1">
           {/* Welcome Section */}
@@ -89,7 +90,7 @@ export default function Dashboard() {
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-3xl font-bold mb-2">Welcome back, {user}! 👋</h1>
-                <p className="text-indigo-100">Here's what's happening with your organization today.</p>
+                <p className="text-indigo-100">Here's what's happening with your department today.</p>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-semibold">
