@@ -7,9 +7,8 @@ export default function Sidebar() {
   const modules = [
     { name: "Dashboard", route: "/dashboard" },
     { name: "Employees", route: "/employees" },
-    { name: "Activities", route: "/activities" },
     { name: "Reports", route: "/reports" },
-    { name: "Health & Nutrition", route: "/nutrition" },
+    { name: "Departments", route: "/departments" },
     { name: "Attendance", route: "/attendance" },
   ];
 

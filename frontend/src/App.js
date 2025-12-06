@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Employees from "./pages/modules/Employees";
 import Shifts from "./pages/Shifts";
 import Reports from "./pages/Reports";
+import Departments from "./pages/modules/Departments";
 import Logout from "./pages/Logout";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -20,6 +21,8 @@ function App(){
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
+         <Route path="/departments" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
+
         {/* logout route (optional but clean) */}
         <Route path="/logout" element={<Logout />} />
       </Routes>
