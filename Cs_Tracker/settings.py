@@ -14,8 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+from charset_normalizer.constant import UTF8_MAXIMAL_ALLOCATION
 from decouple import config,Csv
-from django.conf.global_settings import SECURE_HSTS_SECONDS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -175,6 +175,9 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 
+    # for swagger
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
     # this one handles pagination
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -229,6 +232,7 @@ AUTHENTICATION_BACKENDS = [
 # FOR LOGGING
 LOGGING = {
     "version": 1,
+    "charset": UTF8_MAXIMAL_ALLOCATION,
     "disable_existing_loggers": False,
     "handlers": {
         "file": {
@@ -261,11 +265,6 @@ SECURE_HSTS_SECONDS = 0 # Disabled for deployment without full domain control
 
 
 #swagger settings
-
-REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-}
-
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Your API Title',
     'DESCRIPTION': 'Your API description',

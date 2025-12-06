@@ -7,13 +7,13 @@ from django.utils import timezone
 
 
 #create the serializers for the models
-class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
+class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = '__all__'
-        extra_kwargs = {
-            "url": {"view_name": "department-detail", "lookup_field": "pk"}
-        }
+        #extra_kwargs = {
+           # "url": {"view_name": "department-detail", "lookup_field": "pk"}
+        #}
 
 
 # Profile setup serializer

@@ -15,7 +15,7 @@ User = get_user_model() # reference the custom User model
 # Views implemented using generics
 
 #Department view
-class DepartmentAPIViewSet(viewsets.ReadOnlyModelViewSet):
+class DepartmentAPIViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
