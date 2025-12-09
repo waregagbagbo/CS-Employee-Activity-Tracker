@@ -21,6 +21,9 @@ class DepartmentAPIViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        return Department.objects.all()
+
 
 #Profile view
 class EmployeeProfileViewSet(viewsets.ModelViewSet):

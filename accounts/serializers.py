@@ -1,8 +1,6 @@
 from django.contrib.auth import password_validation, authenticate, get_user_model
 from rest_framework import serializers
 
-from accounts.models import Employee
-
 User = get_user_model() # create an object from the AUTH_USER_MODEL
 
 # create user serializer

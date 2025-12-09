@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchDepartments } from "../../services/department"; // adjust path if needed
+import { fetchDepartments } from "../services/department" // adjust path if needed
 import { Loader2 } from "lucide-react";
 
 export default function Departments() {

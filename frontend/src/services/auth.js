@@ -1,5 +1,5 @@
 // src/services/auth.js
-import API from "./api";
+import API from "../services/api";
 
 
 // register authentication

@@ -13,7 +13,7 @@ export default function Login() {
   useEffect(() => {
     const token = localStorage.getItem("access");
     if (token) {
-      navigate("/dashboard");
+      navigate("/home");
     }
   }, [navigate]);
 
@@ -24,7 +24,7 @@ export default function Login() {
 
     try {
       await loginUser(email, password);
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err) {
       setError("Invalid email or password. Please try again.");
     } finally {
