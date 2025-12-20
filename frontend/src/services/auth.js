@@ -27,7 +27,7 @@ export const loginUser = async (email, password) => {
   localStorage.setItem("email", email);
 
   console.log("✅ Logged in:", res.data.username); // You'll see the username!
-  
+
   return res.data;
 };
 

@@ -5,12 +5,37 @@ import DashboardCard from "../components/DashboardCard";
 import { FaUsers, FaClipboardList, FaFileAlt, FaAppleAlt, FaCalendarCheck, FaChartLine, FaClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import {FaHouse, FaPeopleGroup} from "react-icons/fa6";
+import { listEmployees } from "../services/employee";
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  //const username = localStorage.getItem("username");
   const user = localStorage.getItem("username");
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [totalEmployees, setTotalEmployees] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch employee count on mount
+  useEffect(() => {
+    fetchEmployeeCount();
+  }, []);
+
+  const fetchEmployeeCount = async () => {
+    try {
+      const response = await listEmployees({page: 1});
+
+      // Get total count from paginated response
+      if (response.data.count) {
+        setTotalEmployees(response.data.count); // Total across all pages
+      } else if (Array.isArray(response.data)) {
+        setTotalEmployees(response.data.length);
+      }
+    } catch (error) {
+      console.error("Failed to fetch employee count:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Update clock every second
   useEffect(() => {
@@ -21,7 +46,7 @@ export default function Dashboard() {
   const modules = [
     {
       title: "Employees",
-      value: "120",
+      value: loading ? "..." : totalEmployees,
       icon: <FaUsers />,
       route: "/employees",
       color: "bg-blue-500",
