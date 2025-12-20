@@ -8,7 +8,8 @@ import {FaHouse, FaPeopleGroup} from "react-icons/fa6";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const user = localStorage.getItem("username") || "User";
+  //const username = localStorage.getItem("username");
+  const user = localStorage.getItem("username");
   const [currentTime, setCurrentTime] = useState(new Date());
 
   // Update clock every second

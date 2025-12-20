@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Dashboard";
 import Employees from "./pages/Employees";
 import Shifts from "./pages/Shifts";
+import Profile from "./pages/Profile"
 import Reports from "./pages/Reports";
 import Departments from "./pages/Departments";
 import Logout from "./pages/Logout";
@@ -21,6 +22,7 @@ function App(){
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
           <Route path="/employees/:id" element={<EmployeeDetail />} />
+          <Route path="/employee/:id" element={<Profile />} />
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
          <Route path="/department" element={<ProtectedRoute><Departments /></ProtectedRoute>} />

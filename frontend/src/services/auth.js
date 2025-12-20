@@ -11,12 +11,25 @@ export const registerUser = async (payload) => {
 
 // login authentication
 export const loginUser = async (email, password) => {
-  const res = await API.post("/", { email, password });
-  // backend returns { message, token }
-  localStorage.setItem("access", res.data.token);
+  const res = await API.post("", { email, password });
+  //console.log("Login response",res.data.username);
+
+  //const token  = res.data.token || res.data.access;
+  // Backend returns { message, token, username }
+  if (res.data.token) {
+    localStorage.setItem("access", res.data.token);
+  }
+
+  if (res.data.username) {
+    localStorage.setItem("username", res.data.username);
+  }
+
+  localStorage.setItem("email", email);
+
+  console.log("✅ Logged in:", res.data.username); // You'll see the username!
+  
   return res.data;
 };
-
 
 // logout authentication
 export const logoutUser = async () => {
@@ -26,6 +39,8 @@ export const logoutUser = async () => {
     // ignore server logout errors
   }
   localStorage.removeItem("access");
+  localStorage.removeItem("username");
+  localStorage.removeItem("email");
   window.location.href = "/";
 };
 

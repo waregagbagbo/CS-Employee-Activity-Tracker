@@ -16,7 +16,7 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const username = localStorage.getItem("username") || "User";
+  const username = localStorage.getItem("user") || "User";
 
   const navLinks = [
     { name: "Dashboard", path: "/dashboard", icon: <FaTachometerAlt /> },
@@ -44,7 +44,6 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-gray-800">Employee Tracker</h1>
-              <p className="text-xs text-gray-500">Management System</p>
             </div>
           </div>
 
