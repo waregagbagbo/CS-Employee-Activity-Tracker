@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { FaBell, FaSearch, FaUser, FaCog, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
+
 
 export default function Topbar({ title }) {
   const navigate = useNavigate();
+  const employeeId = localStorage.getItem("employee_id");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [user, setUser] = useState({
@@ -27,7 +30,7 @@ export default function Topbar({ title }) {
         return;
       }
 
-      const response = await fetch("http://127.0.0.1:8000/cs/employee/{id}/", {
+      const response = await fetch("http://127.0.0.1:8000/", {
         headers: {
           "Authorization": `Token ${token}`,
           "Content-Type": "application/json"
@@ -38,7 +41,7 @@ export default function Topbar({ title }) {
         const data = await response.json();
 
         const userData = {
-          username: data.username || data.user?.username || localStorage.getItem("username") || "User",
+          username: data.username || data.user?.username || localStorage.getItem("username"),
           email: data.email || data.user?.email || localStorage.getItem("email") || ""
         };
 
@@ -191,7 +194,7 @@ export default function Topbar({ title }) {
 
               <div className="py-2">
                 <button
-                  onClick={() => navigate("/profile")}
+                  onClick={() => navigate(`/employees`)}
                   className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-3 transition"
                 >
                   <FaUser className="text-gray-400" />

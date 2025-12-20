@@ -122,7 +122,6 @@ export default function Navbar() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-gray-800">{username}</p>
-                <p className="text-xs text-gray-500">Administrator</p>
               </div>
             </div>
 

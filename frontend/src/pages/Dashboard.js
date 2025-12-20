@@ -116,7 +116,7 @@ export default function Dashboard() {
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-3xl font-bold mb-2">Welcome back, {user}! 👋</h1>
-                <p className="text-indigo-100">Here's what's happening with your department today.</p>
+                <p className="text-indigo-100">Here's what's happening in your department today.</p>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-semibold">
