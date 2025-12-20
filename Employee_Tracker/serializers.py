@@ -17,16 +17,16 @@ class DepartmentSerializer(serializers.ModelSerializer):
 
 
 # Profile setup serializer
-class EmployeeProfileSerializer(serializers.HyperlinkedModelSerializer):
+class EmployeeProfileSerializer(serializers.ModelSerializer):
     department = DepartmentSerializer(read_only=True)
-    user = serializers.HyperlinkedIdentityField(read_only=True, view_name='employee-detail', lookup_field='pk')
-
-    # user = serializers.PrimaryKeyRelatedField(read_only=True) # suitable with ModelSerializer
+    username = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
 
     class Meta:
         model = Employee
         fields = '__all__'
-        #read_only_fields = ( 'user',)
 
 
 # shifts serializer

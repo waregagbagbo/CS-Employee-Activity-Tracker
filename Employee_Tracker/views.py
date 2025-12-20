@@ -32,7 +32,7 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     pagination_class = PageNumberPagination
     permission_classes = (IsAuthenticated,)
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
-    lookup_field = 'pk'
+    #lookup_field = 'pk'
 
     def get_queryset(self):
         # get the instance object of the current user

@@ -414,3 +414,973 @@ Forbidden: /cs/department/
 "GET /cs/department/ HTTP/1.1" 403 27
 D:\CS-Employee-Activity-Tracker\accounts\serializers.py changed, reloading.
 Watching for file changes with StatReloader
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"OPTIONS /cs/department/1 HTTP/1.1" 200 0
+"OPTIONS /cs/department/1 HTTP/1.1" 200 0
+"GET /cs/department/1 HTTP/1.1" 301 0
+"OPTIONS /cs/department/1/ HTTP/1.1" 200 0
+"OPTIONS /cs/department/1/ HTTP/1.1" 200 0
+Forbidden: /cs/department/1/
+"GET /cs/department/1/ HTTP/1.1" 403 27
+Forbidden: /cs/department/1/
+"GET /cs/department/1/ HTTP/1.1" 403 27
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 27
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 27
+"OPTIONS /department/ HTTP/1.1" 200 0
+"OPTIONS /department/ HTTP/1.1" 200 0
+Not Found: /department/
+"GET /department/ HTTP/1.1" 404 179
+Not Found: /department/
+"GET /department/ HTTP/1.1" 404 179
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /department/
+"GET /department/ HTTP/1.1" 404 179
+Not Found: /department/
+"GET /department/ HTTP/1.1" 404 179
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 27
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 27
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 27
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 27
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 27
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 27
+"OPTIONS / HTTP/1.1" 200 0
+Bad Request: /
+"POST / HTTP/1.1" 400 86
+"POST / HTTP/1.1" 200 92
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /shifts/
+"GET /shifts/ HTTP/1.1" 404 179
+Not Found: /shifts/
+"GET /shifts/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Forbidden: /auth/logout/
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 58
+"POST /auth/logout/ HTTP/1.1" 403 58
+Not Found: /api/logout
+"GET /api/logout HTTP/1.1" 404 179
+"GET /auth/logout/ HTTP/1.1" 201 5045
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Watching for file changes with StatReloader
+"OPTIONS / HTTP/1.1" 200 0
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 92
+"GET /cs/department HTTP/1.1" 301 0
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 5100
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 5100
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /cs/employee HTTP/1.1" 301 0
+Forbidden: /cs/employee/
+"GET /cs/employee/ HTTP/1.1" 403 5102
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"POST / HTTP/1.1" 200 7379
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /cs/employee/ HTTP/1.1" 200 15351
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+Not Found: /employees/
+"GET /employees/?page=1 HTTP/1.1" 404 179
+"GET /cs/employee/1 HTTP/1.1" 301 0
+"GET /cs/employee/1/ HTTP/1.1" 200 12914
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /cs/employee/2 HTTP/1.1" 301 0
+"GET /cs/employee/2/ HTTP/1.1" 200 13005
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /cs/employees/
+"GET /cs/employees/?page=1 HTTP/1.1" 404 179
+Not Found: /cs/employees/
+"GET /cs/employees/?page=1 HTTP/1.1" 404 179
+Not Found: /cs/employees/
+"GET /cs/employees/?page=1 HTTP/1.1" 404 179
+Not Found: /cs/employees/
+"GET /cs/employees/?page=1 HTTP/1.1" 404 179
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /auth/logout/
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 58
+"POST /auth/logout/ HTTP/1.1" 403 58
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 92
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /auth/logout/
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 58
+"POST /auth/logout/ HTTP/1.1" 403 58
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 92
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /auth/logout/
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 58
+"POST /auth/logout/ HTTP/1.1" 403 58
+"POST / HTTP/1.1" 200 92
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+Forbidden: /cs/employee/
+"GET /cs/employee/?page=1 HTTP/1.1" 403 58
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"GET /cs/employee/?page=1 HTTP/1.1" 200 264
+"GET /cs/employee/?page=1 HTTP/1.1" 200 264
+"GET /cs/employee/?page=1 HTTP/1.1" 200 264
+"GET /cs/employee/?page=1 HTTP/1.1" 200 264
+"GET /cs/employee/?page=1 HTTP/1.1" 200 264
+"GET /cs/employee/?page=1 HTTP/1.1" 200 264
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 27
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 92
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/2/ HTTP/1.1" 200 13005
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"OPTIONS /cs/employee/2/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/2/ HTTP/1.1" 200 0
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"OPTIONS /cs/employee/new/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/new/ HTTP/1.1" 200 0
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+Watching for file changes with StatReloader
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"OPTIONS /cs/employee/new/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/new/ HTTP/1.1" 200 0
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"OPTIONS /cs/employee/2/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/2/ HTTP/1.1" 200 0
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/2/ HTTP/1.1" 200 212
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/1/ HTTP/1.1" 200 181
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+"GET /cs/employee/?page=1 HTTP/1.1" 200 966
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/9/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/9/ HTTP/1.1" 200 0
+"GET /cs/employee/9/ HTTP/1.1" 200 227
+"GET /cs/employee/9/ HTTP/1.1" 200 227
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /api/user/profile/ HTTP/1.1" 200 0
+"OPTIONS /api/user/profile/ HTTP/1.1" 200 0
+Not Found: /api/user/profile/
+"GET /api/user/profile/ HTTP/1.1" 404 179
+Not Found: /api/user/profile/
+"GET /api/user/profile/ HTTP/1.1" 404 179
+Not Found: /api/user/profile/
+"GET /api/user/profile/ HTTP/1.1" 404 179
+Not Found: /api/user/profile/
+"GET /api/user/profile/ HTTP/1.1" 404 179
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /api/user/profile/
+"GET /api/user/profile/ HTTP/1.1" 404 179
+Not Found: /api/user/profile/
+"GET /api/user/profile/ HTTP/1.1" 404 179
+"GET /cs/department HTTP/1.1" 301 0
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+"GET /cs/employee HTTP/1.1" 301 0
+"GET /cs/employee/ HTTP/1.1" 200 18401
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /cs/employee/ HTTP/1.1" 200 18401
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /cs/employee/ HTTP/1.1" 200 18401
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /cs/employee/1 HTTP/1.1" 301 0
+"GET /cs/employee/1/ HTTP/1.1" 200 13362
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/ajax-form.js
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+Not Found: /static/rest_framework/js/prettify-min.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"OPTIONS /cs/employee/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/ HTTP/1.1" 200 0
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/ HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413

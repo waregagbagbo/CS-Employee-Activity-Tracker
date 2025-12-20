@@ -1,11 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBell, FaSearch, FaUser, FaCog, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-export default function Topbar({ title, user }) {
+export default function Topbar({ title }) {
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [user, setUser] = useState({
+    username: localStorage.getItem("username") || "User",
+    email: localStorage.getItem("email") || ""
+  });
+  const [loading, setLoading] = useState(true);
+
+  // Fetch user data when component mounts
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      // Try to get user info from your API
+      const token = localStorage.getItem("token") || localStorage.getItem("authToken");
+
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
+      const response = await fetch("http://127.0.0.1:8000/cs/employee/{id}/", {
+        headers: {
+          "Authorization": `Token ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        const userData = {
+          username: data.username || data.user?.username || localStorage.getItem("username") || "User",
+          email: data.email || data.user?.email || localStorage.getItem("email") || ""
+        };
+
+        setUser(userData);
+
+        // Update localStorage for future use
+        localStorage.setItem("username", userData.username);
+        if (userData.email) {
+          localStorage.setItem("email", userData.email);
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      // Keep using localStorage data if API fails
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const notifications = [
     { id: 1, text: "New employee registered", time: "5 mins ago", unread: true },
@@ -14,6 +65,10 @@ export default function Topbar({ title, user }) {
   ];
 
   const unreadCount = notifications.filter(n => n.unread).length;
+
+  const handleLogout = () => {
+    navigate("/logout");
+  };
 
   return (
     <div className="bg-white shadow-md px-6 py-4 flex justify-between items-center sticky top-0 z-50 border-b border-gray-200">
@@ -115,11 +170,13 @@ export default function Topbar({ title, user }) {
             className="flex items-center space-x-3 px-3 py-2 hover:bg-gray-100 rounded-lg transition"
           >
             <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold shadow-md">
-              {user?.charAt(0).toUpperCase() || "U"}
+              {loading ? "..." : user.username.charAt(0).toUpperCase()}
             </div>
             <div className="hidden lg:block text-left">
-              <p className="text-sm font-semibold text-gray-700">{user || "User"}</p>
-              <p className="text-xs text-gray-500">Administrator</p>
+              <p className="text-sm font-semibold text-gray-700">
+                {loading ? "Loading..." : user.username}
+              </p>
+              <p className="text-xs text-gray-500"></p>
             </div>
             <FaChevronDown className="text-gray-400 text-xs hidden lg:block" />
           </button>
@@ -128,8 +185,8 @@ export default function Topbar({ title, user }) {
           {showUserMenu && (
             <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden">
               <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
-                <p className="text-sm font-semibold text-gray-800">{user || "User"}</p>
-                <p className="text-xs text-gray-500">{localStorage.getItem("email") || "user@example.com"}</p>
+                <p className="text-sm font-semibold text-gray-800">{user.username}</p>
+                <p className="text-xs text-gray-500 truncate">{user.email || "No email"}</p>
               </div>
 
               <div className="py-2">
@@ -152,7 +209,7 @@ export default function Topbar({ title, user }) {
 
               <div className="border-t border-gray-100 py-2">
                 <button
-                  onClick={() => navigate("/logout")}
+                  onClick={handleLogout}
                   className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 flex items-center space-x-3 transition"
                 >
                   <FaSignOutAlt className="text-red-500" />
