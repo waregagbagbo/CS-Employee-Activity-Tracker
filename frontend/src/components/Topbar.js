@@ -191,10 +191,9 @@ export default function Topbar({ title }) {
                 <p className="text-sm font-semibold text-gray-800">{user.username}</p>
                 <p className="text-xs text-gray-500 truncate">{user.email || "No email"}</p>
               </div>
-
               <div className="py-2">
                 <button
-                  onClick={() => navigate(`/employees`)}
+                  onClick={() => navigate(`/employees/${employeeId}/`)}
                   className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-3 transition"
                 >
                   <FaUser className="text-gray-400" />
