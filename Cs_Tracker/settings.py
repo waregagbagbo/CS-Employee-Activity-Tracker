@@ -16,6 +16,7 @@ import os
 
 from charset_normalizer.constant import UTF8_MAXIMAL_ALLOCATION
 from decouple import config,Csv
+from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -158,6 +160,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR /"static",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Where uploaded files are stored
+
+MEDIA_ROOT = BASE_DIR / "media" # URL prefix for serving uploaded files MEDIA_URL = "/media/"
+
+MEDIA_URL = '/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

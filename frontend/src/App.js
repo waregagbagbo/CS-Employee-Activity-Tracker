@@ -11,6 +11,7 @@ import Departments from "./pages/Departments";
 import Logout from "./pages/Logout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EmployeeDetail from "./components/EmployeeDetail";
+import Settings from "./pages/Settings";
 
 function App(){
   return (
@@ -23,6 +24,7 @@ function App(){
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
           <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route path="/employee/:id" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
          <Route path="/department" element={<ProtectedRoute><Departments /></ProtectedRoute>} />

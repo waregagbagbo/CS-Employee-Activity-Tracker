@@ -1384,3 +1384,1775 @@ Not Found: /static/rest_framework/js/prettify-min.js
 "GET /cs/employee/1/ HTTP/1.1" 200 272
 "GET /cs/employee/?page=1 HTTP/1.1" 200 1413
 "GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/default.js
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/css/prettify.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/csrf.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+"GET /cs/department/ HTTP/1.1" 200 10358
+Not Found: /static/rest_framework/css/bootstrap.min.css
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+Not Found: /static/rest_framework/js/ajax-form.js
+Not Found: /static/rest_framework/js/csrf.js
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/js/bootstrap.min.js
+Not Found: /static/rest_framework/js/default.js
+Not Found: /static/rest_framework/js/prettify-min.js
+Not Found: /static/rest_framework/js/load-ajax-form.js
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+Not Found: /static/rest_framework/css/bootstrap.min.css
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/css/prettify.css
+Not Found: /static/rest_framework/css/default.css
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+"GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+"GET /static/rest_framework/css/bootstrap.min.css.map HTTP/1.1" 200 540434
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /cs/employee/ HTTP/1.1" 200 18401
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+"GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+"GET /cs/employee/ HTTP/1.1" 200 18401
+"GET /cs/employee/1/ HTTP/1.1" 200 13362
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"OPTIONS / HTTP/1.1" 200 0
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 92
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/1/ HTTP/1.1" 200 13362
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 113
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 113
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 113
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/%7Bid%7D/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/%7Bid%7D/ HTTP/1.1" 200 0
+Not Found: /cs/employee/{id}/
+"GET /cs/employee/%7Bid%7D/ HTTP/1.1" 404 23
+Not Found: /cs/employee/{id}/
+"GET /cs/employee/%7Bid%7D/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Forbidden: /auth/logout/
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 58
+"POST /auth/logout/ HTTP/1.1" 403 58
+"POST / HTTP/1.1" 200 113
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 113
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/undefined/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/undefined/ HTTP/1.1" 200 0
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/null/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/null/ HTTP/1.1" 200 0
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+Not Found: /cs/employee/null/
+"GET /cs/employee/null/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 129
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"GET /cs/employee/1/ HTTP/1.1" 200 13362
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7326
+Not Found: /api/logout
+"GET /api/logout HTTP/1.1" 404 179
+"GET /auth/logout HTTP/1.1" 301 0
+"GET /auth/logout/ HTTP/1.1" 201 5045
+Watching for file changes with StatReloader
+Forbidden: /cs/department/
+"GET /cs/department/ HTTP/1.1" 403 5100
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"OPTIONS / HTTP/1.1" 200 0
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 129
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"OPTIONS /cs/employee/?page=1 HTTP/1.1" 200 0
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/1/ HTTP/1.1" 200 0
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/undefined/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/undefined/ HTTP/1.1" 200 0
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/%7BemployeeId%7D/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/%7BemployeeId%7D/ HTTP/1.1" 200 0
+Not Found: /cs/employee/{employeeId}/
+"GET /cs/employee/%7BemployeeId%7D/ HTTP/1.1" 404 23
+Not Found: /cs/employee/{employeeId}/
+"GET /cs/employee/%7BemployeeId%7D/ HTTP/1.1" 404 23
+"OPTIONS /cs/employee/7/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/7/ HTTP/1.1" 200 0
+Not Found: /cs/employee/7/
+"GET /cs/employee/7/ HTTP/1.1" 404 49
+Not Found: /cs/employee/7/
+"GET /cs/employee/7/ HTTP/1.1" 404 49
+"OPTIONS /cs/employee/3/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/3/ HTTP/1.1" 200 0
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 120
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"OPTIONS /cs/employee/2/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/2/ HTTP/1.1" 200 0
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser or request.user.is_staff:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser or request.user.is_staff:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser or request.user.is_staff:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser or request.user.is_staff:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser or request.user.is_staff:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/2/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/2/ HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/2/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/2/ HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/2/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/2/ HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/2/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/2/ HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/2/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/2/ HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/2/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\generics.py", line 87, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/2/ HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+Internal Server Error: /cs/employee/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 43, in get_queryset
+    if request.user.is_superuser:
+       ^^^^^^^^^^^^
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /cs/employee/?page=1 HTTP/1.1" 500 145
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"OPTIONS /cs/employee/new/ HTTP/1.1" 200 0
+"OPTIONS /cs/employee/new/ HTTP/1.1" 200 0
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+Not Found: /cs/employee/new/
+"GET /cs/employee/new/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/2/ HTTP/1.1" 200 311
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"GET /cs/employee/?page=1 HTTP/1.1" 200 363
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 120
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/1/ HTTP/1.1" 200 272
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 120
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+"GET /cs/employee/?page=1 HTTP/1.1" 200 1413
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"OPTIONS /reports/ HTTP/1.1" 200 0
+"OPTIONS /reports/ HTTP/1.1" 200 0
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+Not Found: /reports/
+"GET /reports/ HTTP/1.1" 404 179
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/3/ HTTP/1.1" 200 267
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 120
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"OPTIONS /cs/department/ HTTP/1.1" 200 0
+"OPTIONS /cs/department/ HTTP/1.1" 200 0
+"GET /cs/department/ HTTP/1.1" 200 135
+"GET /cs/department/ HTTP/1.1" 200 135
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+Not Found: /cs/employee/undefined/
+"GET /cs/employee/undefined/ HTTP/1.1" 404 23
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319
+"GET /cs/employee/?page=1 HTTP/1.1" 200 319

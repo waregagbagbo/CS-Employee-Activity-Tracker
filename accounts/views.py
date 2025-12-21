@@ -1,10 +1,13 @@
+from sqlite3.dbapi2 import apilevel
+
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from rest_framework.views import APIView
-
+from rest_framework.permissions import IsAuthenticated
 from Employee_Tracker.serializers import EmployeeProfileSerializer
 from .models import Employee
 from .serializers import UserRegistrationSerializer, UserLoginSerializer
@@ -12,6 +15,8 @@ from rest_framework import generics, status, viewsets
 from django.contrib.auth import login, logout, get_user_model
 from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiExample
 from drf_spectacular.types import OpenApiTypes
+from django.contrib.auth.hashers import check_password
+
 
 
 # our standalone custom user model object instead of direct import
@@ -82,6 +87,40 @@ class LogoutView(APIView):
     def get(self, request):
         return self.post(request)
 
+# password change view
+@api_view(['POST'])
+@permission_classes(IsAuthenticated)
+def password_change(request):
+    #fetch the object
+    user = request.user
+
+    # Get the JSON data by using data instead of POST
+    current_password = request.data.get('current_password')
+    new_password = request.data.get('new_password')
+
+    # confirm the input parameters
+    if not current_password or not new_password:
+        return Response({'error': 'Both current and new password are required'},
+                        status=status.HTTP_400_BAD_REQUEST
+        )
+    # validate correctness of current pass
+    if not check_password(current_password, user.password):
+        return Response(
+            {'error': 'Current password is incorrect'},status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # validate strength of new password
+    if len(new_password) < 8:
+        return Response({'error': 'New password must be at least 8 characters'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Update password
+    user.set_password(new_password)
+    user.save()
+
+    return Response({'message':'Password changed successfully'}, status=HTTP_201_CREATED)
+
 
 # swagger view
 class UserViewSet(viewsets.ModelViewSet):
@@ -114,3 +153,9 @@ class UserViewSet(viewsets.ModelViewSet):
     )
     def create(self, request):
         return super().create(request)
+
+
+
+
+
+
