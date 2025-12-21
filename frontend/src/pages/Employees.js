@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { listEmployees } from "../services/employee";
 import Loader from "../components/Loader";
+import Sidebar from "../components/Sidebar";
 import {
   FaUsers,
   FaSearch,
@@ -143,8 +144,11 @@ export default function Employees() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="flex bg-gray-50">
+      <Sidebar />
+      <div className="flex-1 min-h-screen">
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 min-h-screen">
+          <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
@@ -286,8 +290,7 @@ export default function Employees() {
                         </div>
                       </div>
 
-                      <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-
+                      <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-end">
                         <span className="text-indigo-600 text-sm font-medium group-hover:translate-x-1 transition-transform">
                           View Details →
                         </span>
@@ -392,6 +395,8 @@ export default function Employees() {
             </div>
           </div>
         )}
+          </div>
+        </div>
       </div>
     </div>
   );

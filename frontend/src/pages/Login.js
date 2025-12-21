@@ -13,7 +13,7 @@ export default function Login() {
   useEffect(() => {
     const token = localStorage.getItem("access");
     if (token) {
-      navigate("/home");
+      navigate("/dashboard");
     }
   }, [navigate]);
 

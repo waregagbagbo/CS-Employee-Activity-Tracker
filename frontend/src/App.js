@@ -19,7 +19,7 @@ function App(){
         {/* Default route: "/" to "/login" */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/dashboard" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
           <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route path="/employee/:id" element={<Profile />} />
