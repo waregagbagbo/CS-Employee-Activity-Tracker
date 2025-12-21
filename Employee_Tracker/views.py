@@ -32,17 +32,14 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     pagination_class = PageNumberPagination
     permission_classes = (IsAuthenticated,)
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
-    #lookup_field = 'pk'
 
     def get_queryset(self):
         # get the instance object of the current user
-        employee_profile = Employee.objects.filter(user=self.request.user)
-        try:
-            if self.request.user.is_superuser or self.request.user.is_staff:
-                return Employee.objects.all()
-        except ObjectDoesNotExist as e:
-            print(f'User with that profile does not exist {e}')
-        return employee_profile
+        if self.request.user.is_superuser or self.request.user.is_staff:
+            return Employee.objects.all()
+
+        return Employee.objects.filter(user = self.request.user)
+
 
     # enable partial update
     def partial_update(self, request, *args, **kwargs):
