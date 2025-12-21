@@ -24,7 +24,7 @@ export default function Employees() {
   const [page, setPage] = useState(1);
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
-  const [viewMode, setViewMode] = useState("grid");
+  const [viewMode, setViewMode] = useState("list");
 
   const navigate = useNavigate();
 
