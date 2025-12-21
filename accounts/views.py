@@ -6,6 +6,7 @@ from rest_framework.status import HTTP_201_CREATED
 from rest_framework.views import APIView
 
 from Employee_Tracker.serializers import EmployeeProfileSerializer
+from .models import Employee
 from .serializers import UserRegistrationSerializer, UserLoginSerializer
 from rest_framework import generics, status, viewsets
 from django.contrib.auth import login, logout, get_user_model
@@ -47,8 +48,19 @@ class UserLogin(APIView):
         # get the token from the signals
         token,created = Token.objects.get_or_create(user=user)
         #token = {'token':user.auth_token.key}, # send the str part token
+
+        # get employee ID
+        employee_id = None
+        try:
+            employee = Employee.objects.get(user=user)
+            employee_id = employee.id
+        except Employee.DoesNotExist:
+            pass
+
         context = {"message":'User logged in successfully',
-                   'token':token.key
+                   'token':token.key,
+                   'username':user.username,
+                   'id':employee_id,
                    }
         return Response(context,status=status.HTTP_200_OK)
 
