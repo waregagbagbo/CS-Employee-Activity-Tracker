@@ -2,7 +2,7 @@ import API from '../services/api'
 import axios from "axios";
 
 // create the profile id fetcher
-export const retrieveProfile = (id) => API.get(`cs/employee/${id}/`);
+export const retrieveProfile = () => API.get(`cs/employee/me`);
 export const updateProfile = (id, data) => API.patch(`cs/employee/${id}`, data);
 
 export const changePassword = async (passwordData) => {
