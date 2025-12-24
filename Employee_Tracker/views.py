@@ -29,9 +29,20 @@ class DepartmentAPIViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Department.objects.all()
 
+# employees fetched
+class EmployeeAPIViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeProfileSerializer
+    authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
-#Profile view
-class EmployeeProfileViewSet(viewsets.ModelViewSet):
+    def get_queryset(self):
+        # fetch employees for user depending on department
+        return Employee.objects.all()
+
+
+#Employee view
+class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
     pagination_class = PageNumberPagination
