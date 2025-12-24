@@ -19,8 +19,8 @@ activityreport_router = DefaultRouter()
 activityreport_router.register(r'', views.ReportsViewSet, basename='activity_report')
 
 urlpatterns =[
-    path('employee/', include(employee_router.urls)),
-    path('department/',include(dept_router.urls)),
+    path('employees/', include(employee_router.urls)),
+    path('departments/',include(dept_router.urls)),
     path('shifts/',include(shifts_router.urls)),
     path('reports/',include(activityreport_router.urls)),
 ]

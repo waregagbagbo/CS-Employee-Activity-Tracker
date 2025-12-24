@@ -97,10 +97,10 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         parent_queryset = Shift.objects.select_related('shift_agent')
 
         # filter base on user type
-        if employee_profile.user_type == 'Admin':
+        if employee_profile.user_type == 'sdmin':
             return parent_queryset.all()
 
-        elif employee_profile.user_type == 'Supervisor':
+        elif employee_profile.user_type == 'supervisor':
             return parent_queryset.filter(shift_agent__supervisor=employee_profile)
 
         else:
@@ -130,19 +130,13 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
 
         # Check permissions - only the shift owner can start
         if shift.shift_agent != request.user.employee_profile:
-            return Response({
-                'error': 'You can only start your own shifts'
-            }, status=403)
+            return Response({'error':'You can only start your own shifts'}, status=403)
 
         if shift.shift_status == 'In Progress':
-            return Response({
-                'error': 'Shift is already in progress'
-            }, status=400)
+            return Response({'error': 'Shift is already in progress'}, status=400)
 
         if shift.shift_status == 'Completed':
-            return Response({
-                'error': 'Cannot start a completed shift'
-            }, status=400)
+            return Response({'error': 'Cannot start a completed shift'}, status=400)
 
         # Set current time as start time
         shift.shift_start_time = timezone.now().time()
@@ -150,10 +144,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         shift.save()
 
         serializer = self.get_serializer(shift)
-        return Response({
-            'message': 'Shift started successfully',
-            'shift': serializer.data
-        })
+        return Response({'message': 'Shift started successfully','shift': serializer.data})
 
     @action(detail=True, methods=['patch'], url_path='end')
     def end_shift(self, request, pk=None):
@@ -163,23 +154,17 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         # Check permissions
         if shift.shift_agent != request.user.employee_profile:
             return Response({
-                'error': 'You can only end your own shifts'
-            }, status=403)
+                'error': 'You can only end your own shifts'}, status=403)
 
         if shift.shift_status != 'In Progress':
-            return Response({
-                'error': 'Shift must be in progress to end it'
-            }, status=400)
+            return Response({'error': 'Shift must be in progress to end it'}, status=400)
 
         if shift.shift_status == 'Completed':
-            return Response({
-                'error': 'Shift is already completed'
-            }, status=400)
+            return Response({'error': 'Shift is already completed'}, status=400)
 
         # Calculate duration
         if not shift.shift_start_time:
-            return Response({
-                'error': 'Shift has no start time'
+            return Response({'error': 'Shift has no start time'
             }, status=400)
 
         # Get current time and calculate duration
