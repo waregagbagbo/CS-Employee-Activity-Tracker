@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 USER_TYPE =[
-    ('Supervisor', 'Supervisor'),
-    ('Employee_Agent', 'Employee_Agent'),
-    ('Admin', 'Admin'),
+    ('supervisor', 'supervisor'),
+    ('employee_Agent', 'employee_Agent'),
+    ('admin', 'admin'),
 ]
 
 # Create your models here.
@@ -62,3 +62,10 @@ class Employee(models.Model):
         verbose_name_plural = 'Employees'
         ordering = ['user__id']
         unique_together = (('user', 'department'),) # a user cannot belong to the same department twice
+
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='profile')
+
+    def __str__(self):
+        return self.user.username
+
