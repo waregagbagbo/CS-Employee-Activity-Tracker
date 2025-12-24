@@ -1,13 +1,18 @@
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from requests import Response
 from rest_framework.authentication import SessionAuthentication
+from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from accounts.models import Employee, Department
-from accounts.permissions import UserTypeReportPermission,UserShiftPermission
+from accounts.permissions import UserTypeReportPermission, UserShiftPermission, CanEditOwnProfile
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, authentication, filters
+from django.utils import timezone
+from datetime import datetime, timedelta
+
 
 
 User = get_user_model() # reference the custom User model
@@ -30,15 +35,29 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
     pagination_class = PageNumberPagination
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,CanEditOwnProfile)
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
 
     def get_queryset(self):
-        # get the instance object of the current user
         if self.request.user.is_superuser or self.request.user.is_staff:
             return Employee.objects.all()
+        return Employee.objects.get(user=self.request.user)
 
-        return Employee.objects.filter(user = self.request.user)
+    # add a custom logic for the profile
+    """@action(detail=False, methods=['GET'],url_path='me')
+    def me(self, request):
+        # profile of currently logged user
+        user = Employee.objects.get(user=self.request.user)
+        serializer = EmployeeProfileSerializer(user)
+        return Response(serializer.data)
+
+
+
+        # get the instance object of the current user
+        #if self.request.user.is_superuser or self.request.user.is_staff:
+            #return Employee.objects.all()
+
+        #return Employee.objects.filter(user = self.request.user)"""
 
 
     # enable partial update
@@ -103,6 +122,97 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             raise ValidationError({
                 'error': 'Employee profile not found. Please contact admin.'
             })
+
+    @action(detail=True, methods=['patch'], url_path='start')
+    def start_shift(self, request, pk=None):
+        """Start a shift - sets shift_start_time to now and status to In Progress"""
+        shift = self.get_object()
+
+        # Check permissions - only the shift owner can start
+        if shift.shift_agent != request.user.employee_profile:
+            return Response({
+                'error': 'You can only start your own shifts'
+            }, status=403)
+
+        if shift.shift_status == 'In Progress':
+            return Response({
+                'error': 'Shift is already in progress'
+            }, status=400)
+
+        if shift.shift_status == 'Completed':
+            return Response({
+                'error': 'Cannot start a completed shift'
+            }, status=400)
+
+        # Set current time as start time
+        shift.shift_start_time = timezone.now().time()
+        shift.shift_status = 'In Progress'
+        shift.save()
+
+        serializer = self.get_serializer(shift)
+        return Response({
+            'message': 'Shift started successfully',
+            'shift': serializer.data
+        })
+
+    @action(detail=True, methods=['patch'], url_path='end')
+    def end_shift(self, request, pk=None):
+        """End a shift - validates 8-hour minimum before completion"""
+        shift = self.get_object()
+
+        # Check permissions
+        if shift.shift_agent != request.user.employee_profile:
+            return Response({
+                'error': 'You can only end your own shifts'
+            }, status=403)
+
+        if shift.shift_status != 'In Progress':
+            return Response({
+                'error': 'Shift must be in progress to end it'
+            }, status=400)
+
+        if shift.shift_status == 'Completed':
+            return Response({
+                'error': 'Shift is already completed'
+            }, status=400)
+
+        # Calculate duration
+        if not shift.shift_start_time:
+            return Response({
+                'error': 'Shift has no start time'
+            }, status=400)
+
+        # Get current time and calculate duration
+        now = timezone.now()
+        today = timezone.localdate()
+        start_dt = timezone.make_aware(datetime.combine(today, shift.shift_start_time))
+
+        # Handle overnight shift in progress
+        if now < start_dt:
+            start_dt -= timedelta(days=1)
+
+        duration_hours = (now - start_dt).total_seconds() / 3600
+
+        # Enforce 8-hour minimum
+        if duration_hours < 8:
+            hours_remaining = 8 - duration_hours
+            return Response({
+                'error': f'Minimum 8 hours required to complete shift. {round(hours_remaining, 2)} hours remaining.',
+                'current_duration': round(duration_hours, 2),
+                'required_duration': 8
+            }, status=400)
+
+        # All validations passed - end the shift
+        shift.shift_end_time = now.time()
+        shift.shift_status = 'Completed'
+        shift.save()
+
+        serializer = self.get_serializer(shift)
+        return Response({
+            'message': f'Shift completed! You worked {round(duration_hours, 2)} hours.',
+            'shift': serializer.data,
+            'total_hours': round(duration_hours, 2)
+        })
 
 
 

@@ -24,7 +24,7 @@ export default function Login() {
 
     try {
       await loginUser(email, password);
-      navigate("/home");
+      navigate("/dashboard");
     } catch (err) {
       setError("Invalid email or password. Please try again.");
     } finally {
