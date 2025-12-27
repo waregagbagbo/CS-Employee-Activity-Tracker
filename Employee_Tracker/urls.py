@@ -12,8 +12,7 @@ employees_router = DefaultRouter()
 
 shifts_router = DefaultRouter()
 
-profile_router.register(r'',views.ProfileViewSet, basename='profile')
-employees_router.register(r'', views.EmployeeAPIViewSet, basename='employees')
+employees_router.register(r'', views.EmployeeProfileViewSet, basename='employee')
 shifts_router.register(r'',views.ShiftAPIViewSet, basename='shift')
 
 # router for activity reports
@@ -21,7 +20,6 @@ activityreport_router = DefaultRouter()
 activityreport_router.register(r'', views.ReportsViewSet, basename='activity_report')
 
 urlpatterns =[
-    path('profile/',include(profile_router.urls)),
     path('employees/', include(employees_router.urls)),
     path('departments/',include(dept_router.urls)),
     path('shifts/',include(shifts_router.urls)),

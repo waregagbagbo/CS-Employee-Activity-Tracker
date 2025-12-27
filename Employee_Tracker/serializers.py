@@ -15,7 +15,6 @@ class DepartmentSerializer(serializers.ModelSerializer):
            # "url": {"view_name": "department-detail", "lookup_field": "pk"}
         #}
 
-
 # Profile setup serializer
 class EmployeeProfileSerializer(serializers.ModelSerializer):
     department = DepartmentSerializer(read_only=True)

@@ -1,6 +1,4 @@
-import json
 import logging
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.sites import requests
 from django.dispatch import receiver
@@ -21,16 +19,18 @@ webhook_url = ' https://webhook.site/924a9fa3-98cd-418f-9689-15fbdcb644c7'
 
 # handle auto token generation
 @receiver(post_save, sender=User)
-def create_auth_token(sender, instance=None, created=False, **kwargs):
+def create_auth_token(sender, instance=None, created=False,**kwargs):
     if created:
        Token.objects.get_or_create(user=instance)
        print('Token created successfully')
 
 # handle auto profile creation
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance=None, created=False, **kwargs):
+def create_user_profile(sender,instance=None, created=False, **kwargs):
     if created and not hasattr(instance, 'employee_profile'): # ensures handling duplicates
+
         assign_dept, _= Department.objects.get_or_create(title='Tech')
+
         Employee.objects.create(user=instance, department=assign_dept)
         print(f'Profile created! for {instance.email}')
 

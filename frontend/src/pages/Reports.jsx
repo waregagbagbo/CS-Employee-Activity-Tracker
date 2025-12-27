@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
-import axios from "axios";
+import { listReports, approveReport, updateReport } from "../services/reports";
 import {
   FaFileAlt,
   FaSearch,
@@ -20,6 +20,7 @@ import {
   FaExclamationCircle,
   FaLock
 } from "react-icons/fa";
+import axios from "axios";
 
 export default function Reports() {
   const navigate = useNavigate();
@@ -96,51 +97,19 @@ export default function Reports() {
     setError("");
 
     try {
-      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+      // Use your API service
+      const response = await listReports();
 
-      const response = await axios.get('http://127.0.0.1:8000/api/reports/', {
-        headers: {
-          'Authorization': `Token ${token}`,
-        }
-      });
+      console.log("Reports response:", response.data);
 
+      // Handle different response structures
       const reportsData = response.data.results || response.data || [];
       setReports(reportsData);
+
+      console.log("Reports loaded:", reportsData.length);
     } catch (err) {
       console.error("Reports fetch error:", err);
-
-      // Mock data for demo
-      const mockReports = [
-        {
-          id: 1,
-          title: "Morning Shift Report",
-          description: "All tasks completed successfully",
-          shift: "Morning Shift",
-          submitted_by: "John Doe",
-          status: "pending",
-          created_at: "2024-12-23T08:00:00Z",
-        },
-        {
-          id: 2,
-          title: "Evening Operations Summary",
-          description: "Minor delay in delivery but resolved",
-          shift: "Evening Shift",
-          submitted_by: "Jane Smith",
-          status: "approved",
-          created_at: "2024-12-22T16:30:00Z",
-        },
-        {
-          id: 3,
-          title: "Night Security Report",
-          description: "No incidents reported",
-          shift: "Night Shift",
-          submitted_by: "Mike Johnson",
-          status: "rejected",
-          created_at: "2024-12-22T00:15:00Z",
-          rejection_reason: "Missing required details"
-        }
-      ];
-      setReports(mockReports);
+      setError(err.response?.data?.detail || "Failed to load reports");
     } finally {
       setLoading(false);
     }
@@ -171,7 +140,7 @@ export default function Reports() {
       const token = localStorage.getItem('token') || localStorage.getItem('authToken');
 
       await axios.patch(
-        `http://127.0.0.1:8000/api/reports/${reportId}/`,
+        `cs/reports/${reportId}/`,
         { status: "approved" },
         {
           headers: {

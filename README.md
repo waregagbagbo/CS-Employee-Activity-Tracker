@@ -81,13 +81,13 @@ Uses a custom AbstractUser model with email as the primary identifier. <br> Sign
 ### Webhook Management
 
 Webhooks are triggered on shift status changes (start/end). Implemented using Django signals and dispatched to registered endpoints test(https://webhook.site/). <br> 
-Future support for multi-channel registry.
+Future support for multichannel registry.
 
 ## Technical Considerations
 
 ### Security
-- JWT, SessionAuth, and TokenAuth supported
-- Role-based access control (supervisors, agents)
+- TokenAuth supported
+- Role-based access control (supervisors, agents,admins)
 - Input validation and permission checks
 - CORS configured for deployment
 

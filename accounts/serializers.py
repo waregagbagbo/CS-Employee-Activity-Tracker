@@ -18,6 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('Email already registered')
             else:
                 return value
+        return None
+
 
 # create registration serializer
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -55,7 +57,6 @@ class UserLoginSerializer(serializers.Serializer):
     def validate(self, attrs):
         email = attrs.get('email')
         password = attrs.get('password')
-
         if email and password:
             user = authenticate(email=email, password=password)
             #user = User.objects.get(email=email)
@@ -66,6 +67,7 @@ class UserLoginSerializer(serializers.Serializer):
             # now add validated user
             attrs['user'] = user
             return attrs
+        return None
 
 
 

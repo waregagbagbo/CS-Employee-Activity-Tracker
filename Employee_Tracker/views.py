@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from django.core.management.commands.makemessages import STATUS_OK
 from requests import Response
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.decorators import action
@@ -12,7 +13,7 @@ from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSer
 from rest_framework import viewsets, authentication, filters
 from django.utils import timezone
 from datetime import datetime, timedelta
-
+from rest_framework.response import Response
 
 
 User = get_user_model() # reference the custom User model
@@ -29,52 +30,41 @@ class DepartmentAPIViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Department.objects.all()
 
-# employees fetched
-class EmployeeAPIViewSet(viewsets.ModelViewSet):
+
+# Employee Profile view
+class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
-    authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        # fetch employees for user depending on department
-        return Employee.objects.all()
-
-
-#Employee view
-class ProfileViewSet(viewsets.ModelViewSet):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeProfileSerializer
-    pagination_class = PageNumberPagination
     permission_classes = (IsAuthenticated,CanEditOwnProfile)
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
 
     def get_queryset(self):
-        if self.request.user.is_superuser or self.request.user.is_staff:
+        user = self.request.user
+        if user.is_superuser or user.is_staff:
             return Employee.objects.all()
-        return Employee.objects.get(user=self.request.user)
+        return Employee.objects.filter(user=self.request.user) # filter by user's own department
 
-    # add a custom logic for the profile
-    """@action(detail=False, methods=['GET'],url_path='me')
+    # for self profile
+    @action(detail=False,methods=['PUT','GET','PATCH'], url_path='me')
     def me(self, request):
-        # profile of currently logged user
-        user = Employee.objects.get(user=self.request.user)
-        serializer = EmployeeProfileSerializer(user)
-        return Response(serializer.data)
+        """
+           Endpoint: /api/employees/me/
+           Handles fetching and updating the logged-in user's own profile.
+        """
+        try:
+            profile = request.user.employee_profile
+        except AttributeError as e:
+            return Response({"error": "User has no employee profile"},e)
 
+        if request.method == 'GET':
+            serializer = self.get_serializer(profile)
+            return Response(serializer.data)  # This will work now!
 
-
-        # get the instance object of the current user
-        #if self.request.user.is_superuser or self.request.user.is_staff:
-            #return Employee.objects.all()
-
-        #return Employee.objects.filter(user = self.request.user)"""
-
-
-    # enable partial update
-    def partial_update(self, request, *args, **kwargs):
-        kwargs['partial'] = True
-        return super().partial_update(request, *args, **kwargs)
+        elif request.method in ['PUT', 'PATCH']:
+            serializer = self.get_serializer(profile, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
 
 
 #Shift view
@@ -85,7 +75,6 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [IsAuthenticated,UserShiftPermission]
     pagination_class = PageNumberPagination
-    lookup_field = 'pk'
 
     def get_queryset(self):
         """Return shifts based on user_type

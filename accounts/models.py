@@ -2,14 +2,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 USER_TYPE =[
-    ('supervisor', 'supervisor'),
-    ('employee_Agent', 'employee_Agent'),
-    ('admin', 'admin'),
+    ('supervisor', 'Supervisor'),
+    ('employee_agent', 'Employee Agent'),
+    ('admin', 'Admin'),
 ]
 
 # Create your models here.
 class CustomUser(AbstractUser):
-    email = models.EmailField(unique=True, default="test@gmail.com")
+    email = models.EmailField(unique=True)
 
 
     USERNAME_FIELD = 'email'
@@ -46,8 +46,9 @@ class Employee(models.Model):
     hire_date = models.DateField(null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     department = models.ForeignKey('Department', on_delete=models.CASCADE, blank=True, null=True)
-    user_type = models.CharField(max_length=20, choices=USER_TYPE, default='Employee_Agent')
+    user_type = models.CharField(max_length=20, choices=USER_TYPE, default='employee_agent')
     supervisor = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,blank=True,related_name='supervised_employee')
+
 
     def __str__(self):
         return f"{self.user.username}, {self.department}, {self.user_type}"
@@ -63,9 +64,5 @@ class Employee(models.Model):
         ordering = ['user__id']
         unique_together = (('user', 'department'),) # a user cannot belong to the same department twice
 
-class Profile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='profile')
 
-    def __str__(self):
-        return self.user.username
 

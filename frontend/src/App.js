@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Home from "./pages/Dashboard";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import Home from "./pages/Dashboard.jsx";
 import Employees from "./pages/Employees";
-import Shifts from "./pages/Shifts";
-import Profile from "./pages/Profile"
-import Reports from "./pages/Reports";
-import Departments from "./pages/Departments";
-import Logout from "./pages/Logout";
+import Shifts from "./pages/Shifts.jsx";
+import Profile from "./pages/Profile.jsx"
+import Reports from "./pages/Reports.jsx";
+import Departments from "./pages/Departments.jsx";
+import Logout from "./pages/Logout.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EmployeeDetail from "./components/EmployeeDetail";
-import Settings from "./pages/Settings";
+import Settings from "./pages/Settings.jsx";
 
 function App(){
   return (

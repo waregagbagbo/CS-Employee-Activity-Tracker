@@ -1,6 +1,4 @@
 import API from "./api";
 
-export const fetchDepartments = async () => {
-  const response = await API.get("cs/department/");
-  return response.data;
-};
+export const listDepartments = (params) => API.get("api/departments/", { params });
+export const retrieveDepartment = (id) => API.get(`api/departments/${id}/`);

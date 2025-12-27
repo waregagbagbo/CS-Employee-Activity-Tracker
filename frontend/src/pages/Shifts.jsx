@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
+import { listShifts, startShift, endShift } from "../services/shifts";
 import {
   FaCalendarAlt,
   FaSearch,
@@ -15,7 +16,9 @@ import {
   FaTrash,
   FaEye,
   FaFileAlt,
-  FaLock
+  FaLock,
+  FaPlay,
+  FaStop
 } from "react-icons/fa";
 
 export default function Shifts() {
@@ -24,8 +27,11 @@ export default function Shifts() {
   const [filteredShifts, setFilteredShifts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
+  const [nextPage, setNextPage] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
   const [viewMode, setViewMode] = useState("grid");
 
   // User role state
@@ -44,11 +50,19 @@ export default function Shifts() {
   useEffect(() => {
     // Filter shifts based on search term
     if (searchTerm) {
-      const filtered = shifts.filter((shift) =>
-        shift.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        shift.employee_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        shift.department?.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      const filtered = shifts.filter((shift) => {
+        const title = shift.title || shift.shift_name || "";
+        const employeeName = shift.employee_name || shift.shift_agent_name || shift.agent?.username || "";
+        const department = shift.department || shift.department_name || "";
+
+        const searchLower = searchTerm.toLowerCase();
+
+        return (
+          title.toLowerCase().includes(searchLower) ||
+          employeeName.toLowerCase().includes(searchLower) ||
+          department.toLowerCase().includes(searchLower)
+        );
+      });
       setFilteredShifts(filtered);
     } else {
       setFilteredShifts(shifts);
@@ -65,7 +79,7 @@ export default function Shifts() {
       }
 
       // Fetch user profile to get user_type
-      const response = await fetch('http://127.0.0.1:8000/api/user/profile/', {
+      const response = await fetch('http://127.0.0.1:8000/cs/employee_profile/', {
         headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json'
@@ -101,11 +115,11 @@ export default function Shifts() {
         // EMPLOYEE_AGENT: Create and view shifts/reports
         else if (userType === "Employee_Agent") {
           setCanCreateShifts(true);    // Can create shifts
-          setCanEditShifts(false);     // Cannot update
+          setCanEditShifts(true);      // ✅ Can start/end shifts (edit permission)
           setCanDeleteShifts(false);   // Cannot delete
           setCanCreateReports(true);   // Can create reports
           setCanApproveReports(false); // Cannot approve
-          console.log("✅ Employee Agent: Create & view only");
+          console.log("✅ Employee Agent: Create shifts, start/end shifts, create reports");
         }
         // SUPERVISOR: View shifts, view and update reports
         else if (userType === "Supervisor") {
@@ -131,79 +145,136 @@ export default function Shifts() {
     }
   };
 
-  const fetchShifts = async () => {
+  const fetchShifts = async (pageNumber = 1) => {
     setLoading(true);
     setError("");
 
     try {
-      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+      // Use your API service
+      const response = await listShifts({ page: pageNumber });
 
-      // Replace with your actual shifts API endpoint
-      const response = await fetch('http://127.0.0.1:8000/api/shifts/', {
-        headers: {
-          'Authorization': `Token ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
+      console.log("Shifts response:", response.data);
 
-      if (response.ok) {
-        const data = await response.json();
-        const shiftsData = data.results || data || [];
-        setShifts(shiftsData);
-      } else {
-        // Mock data for demo purposes
-        const mockShifts = [
-          {
-            id: 1,
-            title: "Morning Shift",
-            employee_name: "John Doe",
-            department: "Sales",
-            start_time: "08:00",
-            end_time: "16:00",
-            date: "2024-12-24",
-            status: "scheduled"
-          },
-          {
-            id: 2,
-            title: "Evening Shift",
-            employee_name: "Jane Smith",
-            department: "Tech",
-            start_time: "16:00",
-            end_time: "00:00",
-            date: "2024-12-24",
-            status: "scheduled"
-          },
-          {
-            id: 3,
-            title: "Night Shift",
-            employee_name: "Mike Johnson",
-            department: "Security",
-            start_time: "00:00",
-            end_time: "08:00",
-            date: "2024-12-25",
-            status: "completed"
-          }
-        ];
-        setShifts(mockShifts);
+      // Handle different response structures
+      let shiftsData = [];
+
+      if (response.data.results) {
+        // Paginated response
+        shiftsData = response.data.results;
+        setNextPage(response.data.next);
+        setPrevPage(response.data.previous);
+      } else if (Array.isArray(response.data)) {
+        // Direct array
+        shiftsData = response.data;
+        setNextPage(null);
+        setPrevPage(null);
       }
+
+      console.log("Shifts loaded:", shiftsData.length);
+      setShifts(shiftsData);
+
     } catch (err) {
       console.error("Shifts fetch error:", err);
-      setError("Failed to load shifts");
+      setError(err.response?.data?.detail || "Failed to load shifts");
     } finally {
       setLoading(false);
     }
   };
 
+  // Helper functions to safely get field values
+  const getShiftTitle = (shift) => {
+    return shift?.title || shift?.shift_type || `Shift #${shift?.id || ''}`;
+  };
+
+  const getShiftEmployee = (shift) => {
+    return shift?.employee_name ||
+           shift?.shift_agent_name ||
+           shift?.agent?.username ||
+           shift?.shift_agent?.user?.username ||
+           "Unassigned";
+  };
+
+  const getShiftDate = (shift) => {
+    if (shift?.date) return shift.date;
+    if (shift?.shift_date) return shift.shift_date;
+    if (shift?.created_at) return new Date(shift.created_at).toLocaleDateString();
+    return "No date";
+  };
+
+  const getShiftDepartment = (shift) => {
+    return shift?.department ||
+           shift?.department_name ||
+           shift?.department?.title ||
+           "No department";
+  };
+
+  const handleStartShift = async (shiftId) => {
+    try {
+      const response = await startShift(shiftId);
+      console.log("Start shift response:", response.data);
+
+      setSuccess("Shift started successfully!");
+      setTimeout(() => setSuccess(""), 3000);
+
+      // Refresh shifts
+      fetchShifts(page);
+    } catch (err) {
+      console.error("Start shift error:", err);
+      setError(err.response?.data?.detail || "Failed to start shift");
+      setTimeout(() => setError(""), 3000);
+    }
+  };
+
+  const handleEndShift = async (shiftId) => {
+    try {
+      const response = await endShift(shiftId);
+      console.log("End shift response:", response.data);
+
+      setSuccess("Shift ended successfully!");
+      setTimeout(() => setSuccess(""), 3000);
+
+      // Refresh shifts
+      fetchShifts(page);
+    } catch (err) {
+      console.error("End shift error:", err);
+      setError(err.response?.data?.detail || "Failed to end shift");
+      setTimeout(() => setError(""), 3000);
+    }
+  };
+
   const getStatusColor = (status) => {
-    switch (status) {
+    const statusLower = status?.toLowerCase() || "";
+
+    switch (statusLower) {
       case "scheduled":
+      case "pending":
         return "bg-blue-100 text-blue-700";
-      case "completed":
+      case "active":
+      case "in_progress":
+      case "ongoing":
         return "bg-green-100 text-green-700";
+      case "completed":
+      case "finished":
+        return "bg-gray-100 text-gray-700";
       case "cancelled":
+      case "canceled":
         return "bg-red-100 text-red-700";
       default:
         return "bg-gray-100 text-gray-700";
+    }
+  };
+
+  const handlePrev = () => {
+    if (prevPage) {
+      setPage(page - 1);
+      fetchShifts(page - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (nextPage) {
+      setPage(page + 1);
+      fetchShifts(page + 1);
     }
   };
 
@@ -327,6 +398,21 @@ export default function Shifts() {
                 </div>
               </div>
 
+              {/* Success/Error Messages */}
+              {success && (
+                <div className="mb-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-start">
+                  <FaPlay className="mr-2 mt-0.5" />
+                  <span>{success}</span>
+                </div>
+              )}
+
+              {error && (
+                <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-start">
+                  <FaLock className="mr-2 mt-0.5" />
+                  <span>{error}</span>
+                </div>
+              )}
+
               {/* Search and Filter Bar */}
               <div className="bg-white rounded-xl shadow-md p-4">
                 <div className="flex flex-col md:flex-row gap-4">
@@ -418,12 +504,16 @@ export default function Shifts() {
                         {/* Card Header */}
                         <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4">
                           <div className="flex items-center justify-between">
-                            <h3 className="text-xl font-bold text-white">{shift.title}</h3>
+                            <h3 className="text-xl font-bold text-white">
+                              {getShiftTitle(shift)}
+                            </h3>
                             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(shift.status)}`}>
-                              {shift.status}
+                              {shift.status || "unknown"}
                             </span>
                           </div>
-                          <p className="text-indigo-100 text-sm mt-1">{shift.date}</p>
+                          <p className="text-indigo-100 text-sm mt-1">
+                            {getShiftDate(shift)}
+                          </p>
                         </div>
 
                         {/* Card Content */}
@@ -431,17 +521,19 @@ export default function Shifts() {
                           <div className="space-y-3 text-sm">
                             <div className="flex items-center text-gray-600">
                               <FaUser className="mr-2 text-indigo-500" />
-                              <span>{shift.employee_name}</span>
+                              <span>{getShiftEmployee(shift)}</span>
                             </div>
 
                             <div className="flex items-center text-gray-600">
                               <FaClock className="mr-2 text-indigo-500" />
-                              <span>{shift.start_time} - {shift.end_time}</span>
+                              <span>
+                                {shift.start_time || "00:00"} - {shift.end_time || "00:00"}
+                              </span>
                             </div>
 
                             <div className="flex items-center text-gray-600">
                               <FaCalendarAlt className="mr-2 text-indigo-500" />
-                              <span>{shift.department}</span>
+                              <span>{getShiftDepartment(shift)}</span>
                             </div>
                           </div>
 
@@ -455,6 +547,27 @@ export default function Shifts() {
                               <FaEye />
                               <span>View</span>
                             </button>
+
+                            {/* Start/End Shift - For active shifts */}
+                            {shift.status === "scheduled" && canEditShifts && (
+                              <button
+                                onClick={() => handleStartShift(shift.id)}
+                                className="flex-1 flex items-center justify-center space-x-1 px-3 py-2 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition text-sm"
+                              >
+                                <FaPlay />
+                                <span>Start</span>
+                              </button>
+                            )}
+
+                            {(shift.status === "active" || shift.status === "in_progress") && canEditShifts && (
+                              <button
+                                onClick={() => handleEndShift(shift.id)}
+                                className="flex-1 flex items-center justify-center space-x-1 px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition text-sm"
+                              >
+                                <FaStop />
+                                <span>End</span>
+                              </button>
+                            )}
 
                             {/* Edit button - Admin only (not Shift Agent) */}
                             {canEditShifts ? (
@@ -527,19 +640,23 @@ export default function Shifts() {
                           <tr key={shift.id} className="hover:bg-gray-50 transition">
                             <td className="px-6 py-4">
                               <div>
-                                <p className="font-semibold text-gray-800">{shift.title}</p>
-                                <p className="text-sm text-gray-500">{shift.date}</p>
+                                <p className="font-semibold text-gray-800">
+                                  {shift.title || shift.shift_name || `Shift #${shift.id}`}
+                                </p>
+                                <p className="text-sm text-gray-500">
+                                  {shift.date || shift.shift_date || new Date(shift.created_at).toLocaleDateString()}
+                                </p>
                               </div>
                             </td>
                             <td className="px-6 py-4 text-gray-600 hidden md:table-cell">
-                              {shift.employee_name}
+                              {shift.employee_name || shift.shift_agent_name || shift.agent?.username || "Unassigned"}
                             </td>
                             <td className="px-6 py-4 text-gray-600 hidden lg:table-cell">
-                              {shift.start_time} - {shift.end_time}
+                              {shift.start_time || "00:00"} - {shift.end_time || "00:00"}
                             </td>
                             <td className="px-6 py-4 hidden lg:table-cell">
                               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(shift.status)}`}>
-                                {shift.status}
+                                {shift.status || "unknown"}
                               </span>
                             </td>
                             <td className="px-6 py-4">

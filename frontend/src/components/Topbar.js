@@ -134,7 +134,7 @@ export default function Topbar({ title }) {
                   >
                     <div className="flex items-start space-x-3">
                       {notif.unread && (
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-black-500 rounded-full mt-2 flex-shrink-0"></div>
                       )}
                       <div className="flex-1 min-w-0">
                         <p className={`text-sm ${notif.unread ? "font-semibold text-gray-800" : "text-gray-600"}`}>
@@ -156,7 +156,9 @@ export default function Topbar({ title }) {
         </div>
 
         {/* Settings */}
-        <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">
+        <button onClick={() => navigate("/settings")}
+                className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">
+
           <FaCog className="text-xl" />
         </button>
 
