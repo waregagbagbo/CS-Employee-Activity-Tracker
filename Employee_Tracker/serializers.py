@@ -8,12 +8,18 @@ from django.utils import timezone
 
 #create the serializers for the models
 class DepartmentSerializer(serializers.ModelSerializer):
+    employee_count = serializers.SerializerMethodField()
+
     class Meta:
         model = Department
-        fields = '__all__'
-        #extra_kwargs = {
-           # "url": {"view_name": "department-detail", "lookup_field": "pk"}
-        #}
+        fields = ['id', 'title','employee_count']
+
+    def get_employee_count(self, obj):
+        # Count employees in this department
+        return obj.employee_set.count()
+        # OR if using related_name='employees'
+        # return obj.employees.count()
+
 
 # Profile setup serializer
 class EmployeeProfileSerializer(serializers.ModelSerializer):

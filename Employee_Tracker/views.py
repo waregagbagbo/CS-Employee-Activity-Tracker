@@ -7,7 +7,8 @@ from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from accounts.models import Employee, Department
-from accounts.permissions import UserTypeReportPermission, UserShiftPermission, CanEditOwnProfile
+from accounts.permissions import UserTypeReportPermission, UserShiftPermission, CanEditOwnProfile, \
+    DepartmentViewPermission
 from .models import Shift,ActivityReport
 from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
 from rest_framework import viewsets, authentication, filters
@@ -25,10 +26,10 @@ class DepartmentAPIViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     authentication_classes = [SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,DepartmentViewPermission]
 
     def get_queryset(self):
-        return Department.objects.all()
+       return Department.objects.all()
 
 
 # Employee Profile view

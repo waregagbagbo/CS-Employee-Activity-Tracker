@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from rest_framework import permissions
+from rest_framework import permissions, viewsets
 
 """create roles based on user type
 Employee_Agent - create, view - shift and reports
@@ -110,6 +110,21 @@ class CanEditOwnProfile(permissions.BasePermission):
         if request.user.is_superuser or request.user.is_staff:
             return True
         return obj.user == request.user
+
+class DepartmentViewPermission(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return request.user.is_authenticated
+
+        # Only Admins/Staff can POST, PUT, DELETE
+        return request.user.is_staff or request.user.is_superuser
+
+    """def has_object_permission(self, request, view, obj):
+        if request.user.is_superuser or request.user.is_staff:
+            return True
+        return obj.user == request.user"""
+
+
 
 
 
