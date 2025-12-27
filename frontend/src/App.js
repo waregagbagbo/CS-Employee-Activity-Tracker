@@ -27,7 +27,7 @@ function App(){
           <Route path="/settings" element={<Settings />} />
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
-         <Route path="/department" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
+         <Route path="/departments" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
 
         {/* logout route (optional but clean) */}
         <Route path="/logout" element={<Logout />} />

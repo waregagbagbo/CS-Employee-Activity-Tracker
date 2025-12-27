@@ -13,6 +13,7 @@ export default function Dashboard() {
   const user = localStorage.getItem("username");
   const [currentTime, setCurrentTime] = useState(new Date());
   const [totalEmployees, setTotalEmployees] = useState(0);
+  const [totalDepartments, setTotalDepartments] = useState(0);
   const [loading, setLoading] = useState(true);
 
   // Fetch employee count on mount
@@ -27,6 +28,7 @@ export default function Dashboard() {
       // Get total count from paginated response
       if (response.data.count) {
         setTotalEmployees(response.data.count); // Total across all pages
+        setTotalDepartments(response.data.count);
       } else if (Array.isArray(response.data)) {
         setTotalEmployees(response.data.length);
       }
@@ -73,7 +75,7 @@ export default function Dashboard() {
     },
     {
       title: "Departments",
-      value: "50",
+      value: loading ? "...": totalDepartments,
       icon: <FaPeopleGroup />,
       route: "/departments",
       color: "bg-orange-500",
