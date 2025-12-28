@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { listAttendance, createAttendance } from "../services/attendance";
+import Sidebar from "../components/Sidebar"; // Added back based on your previous structure
+import {
+  listAttendance,
+  createAttendance,
+  updateAttendance,
+  deleteAttendance,
+  retrieveAttendance
+} from "../services/attendance";
 import {
   FaCalendarAlt, FaChevronLeft, FaChevronRight, FaPlus,
-  FaTachometerAlt, FaUserCircle, FaClock
+  FaTachometerAlt, FaUserCircle, FaClock, FaTrash, FaEdit, FaSave, FaEye, FaTimes, FaShieldAlt
 } from "react-icons/fa";
 
 export default function Attendance() {
   const navigate = useNavigate();
-  const user = localStorage.getItem("username") || "ADMIN";
+  const user = localStorage.getItem("username") || "OPERATOR_01";
 
   const [attendance, setAttendance] = useState([]);
+  const [selectedRecord, setSelectedRecord] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -18,6 +26,8 @@ export default function Attendance() {
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
 
+  const [editingId, setEditingId] = useState(null);
+  const [editData, setEditData] = useState({});
   const [formData, setFormData] = useState({
     date: new Date().toISOString().split('T')[0],
     status: "Present",
@@ -32,7 +42,7 @@ export default function Attendance() {
       setNextPage(res.data.next);
       setPrevPage(res.data.previous);
     } catch (err) {
-      setError("Sync failed.");
+      setError("LEDGER SYNC ERROR.");
     } finally {
       setLoading(false);
     }
@@ -42,177 +52,206 @@ export default function Attendance() {
     fetchAttendance(page);
   }, [page]);
 
+  // --- RETRIEVE LOGIC ---
+  const handleViewDetails = async (id) => {
+    try {
+      const res = await retrieveAttendance(id);
+      setSelectedRecord(res.data);
+    } catch (err) {
+      setError("CRITICAL: DATA RETRIEVAL FAILED.");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); setSuccess("");
     try {
       await createAttendance(formData);
-      setSuccess("Entry Logged.");
+      setSuccess("RECORD COMMITTED TO LEDGER.");
       setFormData({ date: new Date().toISOString().split('T')[0], status: "Present", remarks: "" });
       fetchAttendance(page);
     } catch (err) {
-      setError("Unauthorized action.");
+      setError("AUTH FAILURE: ACTION REJECTED.");
     }
   };
 
-  const getStatusStyle = (status) => {
-    switch (status) {
-      case "Present": return "bg-black text-[#FFCC00] border-black";
-      case "Late": return "bg-[#FFCC00] text-black border-[#FFCC00]";
-      default: return "bg-gray-100 text-gray-400 border-gray-200";
+  const handleUpdate = async (id) => {
+    try {
+      await updateAttendance(id, editData);
+      setEditingId(null);
+      setSuccess("RECORD RECTIFIED.");
+      fetchAttendance(page);
+    } catch (err) {
+      setError("UPDATE ABORTED.");
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("PURGE THIS LOG FROM THE REGISTRY?")) return;
+    try {
+      await deleteAttendance(id);
+      setSuccess("RECORD PURGED.");
+      fetchAttendance(page);
+    } catch (err) {
+      setError("PURGE BLOCKED: INSUFFICIENT CLEARANCE.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] font-sans">
+    <div className="flex bg-[#F9FAFB] min-h-screen font-sans">
+      <Sidebar />
 
-      {/* --- ONAFRIQ TOP NAVIGATION BAR --- */}
-      <nav className="bg-black text-white px-6 py-4 flex items-center justify-between shadow-xl">
-        <div className="flex items-center gap-8">
-          <Link to="/dashboard" className="flex items-center gap-2 group">
-            <div className="bg-[#FFCC00] p-2 rounded-lg group-hover:rotate-12 transition-transform">
-              <FaTachometerAlt className="text-black" />
+      <div className="flex-1 p-8 lg:p-12 overflow-y-auto">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Header */}
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+            <div>
+              <h1 className="text-5xl font-black italic uppercase tracking-tighter text-black">
+                Attendance <span className="text-[#FFCC00]">Registry</span>
+              </h1>
+              <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] mt-3 flex items-center gap-2">
+                <FaShieldAlt className="text-[#FFCC00]" /> Operational Status: Live Tracking
+              </p>
             </div>
-            <span className="font-black italic uppercase tracking-tighter text-sm">Dashboard</span>
-          </Link>
-          <div className="hidden md:flex items-center gap-2 text-[#FFCC00]">
-            <FaClock size={12} className="animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Live Registry Mode</span>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-4 border-l border-white/10 pl-6">
-          <div className="text-right hidden sm:block">
-            <p className="text-[10px] font-black text-[#FFCC00] uppercase tracking-widest">{user}</p>
-            <p className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Active Session</p>
-          </div>
-          <FaUserCircle className="text-2xl text-gray-600" />
-        </div>
-      </nav>
-
-      <div className="max-w-7xl mx-auto py-10 px-6">
-
-        {/* Breadcrumb / Back Navigation */}
-        <button
-          onClick={() => navigate("/dashboard")}
-          className="mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-black transition-colors"
-        >
-          <FaChevronLeft size={8} /> Back to Overview
-        </button>
-
-        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <h1 className="text-4xl font-black italic uppercase tracking-tighter text-black">
-              Attendance <span className="text-[#FFCC00]">Registry</span>
-            </h1>
-            <p className="mt-2 text-gray-500 font-medium uppercase text-xs tracking-[0.2em]">Workforce Compliance Monitoring</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-
-          {/* Record Entry Form */}
-          <div className="lg:col-span-4">
-            <div className="bg-black rounded-[2.5rem] shadow-2xl p-8 text-white border border-black">
-              <h3 className="text-xl font-black uppercase tracking-tight flex items-center gap-2 text-[#FFCC00] mb-8">
-                <FaPlus size={14} /> New Record
-              </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Date</label>
-                  <input
-                    type="date"
-                    className="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-4 text-white focus:outline-none focus:border-[#FFCC00] transition-all"
-                    value={formData.date}
-                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Status</label>
-                  <select
-                    className="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-4 text-white focus:outline-none focus:border-[#FFCC00] appearance-none"
-                    value={formData.status}
-                    onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                  >
-                    <option className="text-black" value="Present">Present</option>
-                    <option className="text-black" value="Absent">Absent</option>
-                    <option className="text-black" value="Late">Late</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Remarks</label>
-                  <textarea
-                    rows="3"
-                    className="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-4 text-white focus:outline-none focus:border-[#FFCC00]"
-                    placeholder="Enter notes..."
-                    value={formData.remarks}
-                    onChange={(e) => setFormData({ ...formData, remarks: e.target.value })}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#FFCC00] text-black py-5 rounded-2xl font-black uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-lg"
-                >
-                  Confirm Entry
-                </button>
-                {error && <p className="text-red-400 text-[10px] font-black uppercase text-center">{error}</p>}
-                {success && <p className="text-[#FFCC00] text-[10px] font-black uppercase text-center">{success}</p>}
-              </form>
+            <div className="flex items-center gap-4 bg-black p-4 rounded-3xl text-white shadow-xl">
+               <FaUserCircle className="text-[#FFCC00] text-xl" />
+               <div className="pr-4 border-r border-white/10">
+                  <p className="text-[9px] font-black uppercase tracking-widest text-[#FFCC00]">{user}</p>
+                  <p className="text-[8px] font-bold text-gray-500 uppercase tracking-tighter">System Access: Verified</p>
+               </div>
+               <FaClock className="text-[#FFCC00] animate-pulse ml-2" />
             </div>
-          </div>
+          </header>
 
-          {/* Table List */}
-          <div className="lg:col-span-8">
-            <div className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
-              <div className="px-8 py-6 border-b border-gray-50 flex justify-between items-center bg-gray-50/30 font-black uppercase tracking-tighter">
-                Recent Logs
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+            {/* Create Section */}
+            <div className="lg:col-span-4">
+              <div className="bg-black rounded-[3rem] p-10 text-white shadow-2xl sticky top-10 border border-black overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFCC00] opacity-5 rounded-full -mr-10 -mt-10 group-hover:scale-110 transition-transform"></div>
+
+                <h3 className="text-xl font-black italic uppercase tracking-tight flex items-center gap-3 text-[#FFCC00] mb-10">
+                  <FaPlus size={14} className="group-hover:rotate-90 transition-transform" /> Initialize Record
+                </h3>
+
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-500 ml-1">Reporting Date</label>
+                    <input type="date" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-5 text-white focus:border-[#FFCC00] outline-none font-bold transition-all"
+                      value={formData.date} onChange={(e) => setFormData({ ...formData, date: e.target.value })} required />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-500 ml-1">Registry Status</label>
+                    <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-5 text-white outline-none appearance-none font-bold cursor-pointer focus:border-[#FFCC00] transition-all"
+                      value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })}>
+                      <option className="text-black" value="Present">PRESENT</option>
+                      <option className="text-black" value="Absent">ABSENT</option>
+                      <option className="text-black" value="Late">LATE</option>
+                    </select>
+                  </div>
+                  <button type="submit" className="w-full bg-[#FFCC00] text-black py-6 rounded-[2rem] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all shadow-xl active:scale-95">
+                    Commit Entry
+                  </button>
+                  {success && <p className="text-[#FFCC00] text-[9px] font-black uppercase text-center tracking-widest bg-[#FFCC00]/10 py-3 rounded-xl border border-[#FFCC00]/20 italic">✓ {success}</p>}
+                  {error && <p className="text-rose-500 text-[9px] font-black uppercase text-center tracking-widest italic animate-bounce">! {error}</p>}
+                </form>
               </div>
+            </div>
 
-              <div className="overflow-x-auto">
-                <table className="w-full text-left">
-                  <thead>
-                    <tr className="bg-white">
-                      <th className="px-8 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Date</th>
-                      <th className="px-8 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
-                      <th className="px-8 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-50">
-                    {loading ? (
-                      <tr><td colSpan="3" className="py-20 text-center text-gray-300 font-black uppercase">Syncing...</td></tr>
-                    ) : (
-                      attendance.map((att) => (
-                        <tr key={att.id} className="hover:bg-gray-50/50 transition-colors">
-                          <td className="px-8 py-6 text-sm font-black italic text-black">{att.date}</td>
-                          <td className="px-8 py-6">
-                            <span className={`px-3 py-1 rounded-md text-[10px] font-black uppercase border ${getStatusStyle(att.status)}`}>
+            {/* List Section */}
+            <div className="lg:col-span-8">
+              <div className="bg-white rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 overflow-hidden">
+                <div className="px-10 py-8 border-b border-gray-50 flex justify-between items-center bg-gray-50/30">
+                  <span className="text-[11px] font-black uppercase tracking-[0.4em] text-black italic">Archived Registry Logs</span>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr className="bg-white">
+                        <th className="px-10 py-8 text-[9px] font-black text-gray-400 uppercase tracking-[0.3em]">Temporal Node</th>
+                        <th className="px-10 py-8 text-[9px] font-black text-gray-400 uppercase tracking-[0.3em]">Compliance</th>
+                        <th className="px-10 py-8 text-[9px] font-black text-gray-400 uppercase tracking-[0.3em] text-right">Audit Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-50">
+                      {attendance.map((att) => (
+                        <tr key={att.id} className="group hover:bg-gray-50/50 transition-colors">
+                          <td className="px-10 py-8 font-black italic text-black text-base">{att.date}</td>
+                          <td className="px-10 py-8">
+                            <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase italic tracking-widest border ${
+                              att.status === 'Present' ? 'bg-black text-[#FFCC00] border-black' : 
+                              att.status === 'Late' ? 'bg-[#FFCC00] text-black border-[#FFCC00]' : 
+                              'bg-rose-600 text-white border-rose-600'
+                            }`}>
                               {att.status}
                             </span>
                           </td>
-                          <td className="px-8 py-6 text-right">
-                            <button onClick={() => navigate(`/attendance/${att.id}`)} className="text-black hover:text-[#FFCC00] font-black text-[10px] uppercase">Details</button>
+                          <td className="px-10 py-8 text-right">
+                            <div className="flex justify-end gap-5">
+                              {/* TRIGGER RETRIEVE */}
+                              <button onClick={() => handleViewDetails(att.id)} className="text-gray-300 hover:text-[#FFCC00] transition-colors"><FaEye size={16} /></button>
+                              <button onClick={() => { setEditingId(att.id); setEditData(att); }} className="text-gray-300 hover:text-black transition-colors"><FaEdit size={16} /></button>
+                              <button onClick={() => handleDelete(att.id)} className="text-gray-200 hover:text-rose-600 transition-colors"><FaTrash size={16} /></button>
+                            </div>
                           </td>
                         </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
 
-              {/* Pagination */}
-              <div className="px-8 py-6 bg-gray-50/50 flex justify-between">
-                <button disabled={!prevPage} onClick={() => setPage(p => p - 1)} className="p-3 bg-black text-[#FFCC00] rounded-xl disabled:opacity-20 transition-all"><FaChevronLeft size={10} /></button>
-                <button disabled={!nextPage} onClick={() => setPage(p => p + 1)} className="p-3 bg-black text-[#FFCC00] rounded-xl disabled:opacity-20 transition-all"><FaChevronRight size={10} /></button>
+                {/* Pagination */}
+                <div className="px-10 py-8 bg-gray-50/30 flex justify-between items-center border-t border-gray-100">
+                  <button disabled={!prevPage} onClick={() => setPage(p => p - 1)} className="px-6 py-3 bg-black text-[#FFCC00] rounded-2xl disabled:opacity-10 transition-all font-black text-[10px] uppercase">Prev Node</button>
+                  <button disabled={!nextPage} onClick={() => setPage(p => p + 1)} className="px-6 py-3 bg-black text-[#FFCC00] rounded-2xl disabled:opacity-10 transition-all font-black text-[10px] uppercase">Next Node</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* --- RETRIEVE MODAL (ONA-STYLE) --- */}
+      {selectedRecord && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] flex items-center justify-center p-6">
+          <div className="bg-white w-full max-w-xl rounded-[3.5rem] overflow-hidden shadow-2xl relative">
+            <div className="bg-black p-10 text-white flex justify-between items-center relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFCC00] opacity-5 rounded-full -mr-20 -mt-20"></div>
+               <div className="relative z-10">
+                  <p className="text-[10px] font-black text-[#FFCC00] uppercase tracking-[0.4em] mb-3">Audit Protocol 7.2</p>
+                  <h2 className="text-4xl font-black italic uppercase tracking-tighter">Log <span className="text-[#FFCC00]">#{selectedRecord.id}</span></h2>
+               </div>
+               <button onClick={() => setSelectedRecord(null)} className="text-gray-500 hover:text-white relative z-10"><FaTimes size={24}/></button>
+            </div>
+
+            <div className="p-12 space-y-10">
+              <div className="grid grid-cols-2 gap-10">
+                 <div>
+                    <p className="text-[9px] font-black uppercase text-gray-400 tracking-[0.3em] mb-2">Registry Date</p>
+                    <p className="text-lg font-black italic">{selectedRecord.date}</p>
+                 </div>
+                 <div>
+                    <p className="text-[9px] font-black uppercase text-gray-400 tracking-[0.3em] mb-2">Compliance Rating</p>
+                    <span className="px-3 py-1 bg-black text-[#FFCC00] text-[10px] font-black rounded-lg italic uppercase">{selectedRecord.status}</span>
+                 </div>
+              </div>
+
+              <div>
+                <p className="text-[9px] font-black uppercase text-gray-400 tracking-[0.3em] mb-4">Official Remarks</p>
+                <div className="bg-gray-50 p-8 rounded-[2rem] border border-gray-100 italic text-gray-600 leading-relaxed text-sm">
+                  {selectedRecord.remarks || "NO SUPPLEMENTARY INCIDENT DATA RECORDED FOR THIS ENTRY."}
+                </div>
+              </div>
+
+              <button onClick={() => setSelectedRecord(null)} className="w-full bg-black text-white py-6 rounded-[2rem] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-[#FFCC00] hover:text-black transition-all">
+                Close Archive
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

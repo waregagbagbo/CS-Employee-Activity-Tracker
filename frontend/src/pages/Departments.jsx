@@ -4,8 +4,7 @@ import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
 import { listDepartments } from "../services/department";
 import {
-  FaBuilding, FaSearch, FaPlus, FaUsers, FaChevronLeft,
-  FaChevronRight, FaEdit, FaTrash, FaEye, FaLock, FaUserTie, FaShieldAlt
+  FaBuilding, FaSearch, FaPlus, FaUsers,FaEdit, FaTrash, FaEye, FaLock, FaUserTie, FaShieldAlt
 } from "react-icons/fa";
 
 export default function Departments() {

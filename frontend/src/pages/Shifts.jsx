@@ -13,7 +13,8 @@ import {
   FaPlay,
   FaStop,
   FaLock,
-  FaShieldAlt
+  FaShieldAlt,
+  FaPlusCircle
 } from "react-icons/fa";
 
 export default function Shifts() {
@@ -79,11 +80,11 @@ export default function Shifts() {
         id: shift.id,
         title: shift.shift_type,
         status: shift.shift_status,
-        date: shift.shift_date,
+        date: shift.shift_date?.shift_date,
         start_time: shift.shift_start_time,
         end_time: shift.shift_end_time,
         timer: shift.shift_timer_count,
-        agentName: shift.shift_agent?.user?.username || "N/A"
+        agentName: shift.shift_agent?.username || "N/A"
       }));
       setShifts(normalized);
       setFilteredShifts(normalized);
@@ -127,102 +128,111 @@ export default function Shifts() {
       <div className="flex-1 p-8 lg:p-12">
 
         {/* Header Section */}
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
           <div>
-            <h1 className="text-4xl font-black italic uppercase tracking-tighter text-black flex items-center">
-              Shift <span className="text-[#FFCC00] ml-2">Registry</span>
+            <h1 className="text-5xl font-black italic uppercase tracking-tighter text-black flex items-center">
+              Shift <span className="text-[#FFCC00] ml-3">Registry</span>
             </h1>
-            <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mt-2 flex items-center gap-2">
-              <FaShieldAlt className="text-[#FFCC00]" /> Role-Based Access: {userRole || "Fetching..."}
+            <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] mt-3 flex items-center gap-2">
+              <FaShieldAlt className="text-[#FFCC00]" /> Auth Protocol: {userRole || "Initializing..."}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            {/* ONLY FOR NON-ADMIN / NON-SUPERVISOR */}
+          <div className="flex flex-wrap gap-4">
+            {/* ACTION: CREATE SHIFT (Limited to Agents) */}
             {canCreateShift && (
               <button
                 onClick={() => navigate("/shifts/new")}
-                className="bg-[#FFCC00] text-black px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-lg"
+                className="group bg-[#FFCC00] text-black px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-black hover:text-[#FFCC00] transition-all shadow-xl flex items-center gap-3"
               >
-                <FaPlus className="inline mr-2" /> Create Shift
+                <FaPlusCircle className="text-lg group-hover:rotate-90 transition-transform" />
+                Initialize Shift
               </button>
             )}
 
+            {/* ACTION: ADD REPORT */}
             {canCreateReports && (
               <button
                 onClick={() => navigate("/reports/new")}
-                className="bg-black text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-gray-900 transition-all shadow-lg"
+                className="bg-black text-white px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-[#FF8800] transition-all shadow-xl"
               >
-                Add Report
+                Post Activity
               </button>
             )}
 
+            {/* ACTION: APPROVALS */}
             {canApproveReports && (
               <button
                 onClick={() => navigate("/reports")}
-                className="bg-white border-2 border-black text-black px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-black hover:text-[#FFCC00] transition-all"
+                className="bg-white border-2 border-black text-black px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-black hover:text-[#FFCC00] transition-all shadow-lg"
               >
-                Approve Reports
+                Validate Logs
               </button>
             )}
           </div>
         </header>
 
-        {/* Search Bar */}
-        <div className="relative mb-10">
-          <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400" />
+        {/* Search Console */}
+        <div className="relative mb-12 group">
+          <FaSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#FFCC00] transition-colors" />
           <input
-            className="w-full pl-14 pr-6 py-5 bg-white border border-gray-100 rounded-[2rem] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FFCC00] text-sm font-medium"
-            placeholder="SEARCH BY SHIFT TYPE OR AGENT NAME..."
+            className="w-full pl-16 pr-8 py-6 bg-white border border-gray-100 rounded-[2.5rem] shadow-sm focus:outline-none focus:ring-4 focus:ring-[#FFCC00]/20 text-xs font-black uppercase tracking-widest placeholder:text-gray-300"
+            placeholder="FILTER BY MISSION TYPE OR PERSONNEL..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
         {/* Shifts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredShifts.map((shift) => (
             <div
               key={shift.id}
-              className="group bg-white rounded-[2.5rem] border border-gray-100 p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              className="group bg-white rounded-[3rem] border border-gray-100 p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 relative overflow-hidden"
             >
-              <div className="flex justify-between items-start mb-6">
-                <div className="bg-gray-50 p-3 rounded-2xl group-hover:bg-[#FFCC00] group-hover:text-black transition-colors">
+              {/* Status Header */}
+              <div className="flex justify-between items-start mb-8">
+                <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-black group-hover:text-[#FFCC00] transition-all duration-300">
                   <FaClock size={20} />
                 </div>
-                <span className={`px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest border shadow-sm ${statusBadge(shift.status)}`}>
+                <span className={`px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.2em] italic border shadow-sm ${statusBadge(shift.status)}`}>
                   {shift.status}
                 </span>
               </div>
 
-              <h3 className="font-black text-xl uppercase tracking-tight text-black mb-4">{shift.title}</h3>
+              {/* Shift Info */}
+              <h3 className="font-black text-2xl italic uppercase tracking-tighter text-black mb-6 group-hover:text-[#FF8800] transition-colors">
+                {shift.title}
+              </h3>
 
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center text-xs font-bold text-gray-500 uppercase tracking-wider">
-                  <FaUser className="mr-3 text-[#FFCC00]" />
-                  {shift.agentName}
+              <div className="space-y-4 mb-10">
+                <div className="flex items-center text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                  <FaUser className="mr-4 text-[#FFCC00]" />
+                  Agent: <span className="text-black ml-2">{shift.agentName}</span>
                 </div>
-                <div className="flex items-center text-xs font-bold text-gray-400 uppercase tracking-widest">
-                  <FaCalendarAlt className="mr-3 text-black" />
-                  {shift.start_time || "--"} <span className="mx-2">→</span> {shift.end_time || "--"}
+                <div className="flex items-center text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                  <FaCalendarAlt className="mr-4 text-black" />
+                  Window: <span className="text-black ml-2">{shift.start_time || "00:00"} — {shift.end_time || "00:00"}</span>
                 </div>
-                <div className="inline-block mt-2 px-3 py-1 bg-gray-50 rounded-lg text-[10px] font-mono font-bold text-gray-400 italic">
-                  TIMER: {shift.timer}
+                <div className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-gray-50 rounded-xl text-[9px] font-black text-gray-400 uppercase tracking-tighter italic">
+                  <span className="w-2 h-2 bg-black rounded-full animate-pulse"></span>
+                  Active Timer: {shift.timer}
                 </div>
               </div>
 
-              <div className="flex gap-2 pt-4 border-t border-gray-50">
+              {/* Action Deck */}
+              <div className="flex gap-3 pt-8 border-t border-gray-50">
                 <button
                   onClick={() => navigate(`/shifts/${shift.id}`)}
-                  className="flex-1 bg-gray-50 text-black hover:bg-black hover:text-white py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all"
+                  className="flex-1 bg-gray-50 text-black hover:bg-black hover:text-white py-4 rounded-2xl font-black text-[9px] uppercase tracking-widest transition-all"
                 >
-                  <FaEye className="inline mr-2" /> Details
+                  <FaEye className="inline mr-2" /> View
                 </button>
 
                 {shift.status === "Scheduled" && canEditShifts && (
                   <button
                     onClick={() => handleStart(shift.id)}
-                    className="flex-1 bg-[#FFCC00] text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-md"
+                    className="flex-1 bg-[#FFCC00] text-black py-4 rounded-2xl font-black text-[9px] uppercase tracking-widest hover:scale-105 transition-all shadow-xl"
                   >
                     <FaPlay className="inline mr-2" /> Start
                   </button>
@@ -231,7 +241,7 @@ export default function Shifts() {
                 {shift.status === "In Progress" && canEditShifts && (
                   <button
                     onClick={() => handleEnd(shift.id)}
-                    className="flex-1 bg-black text-[#FFCC00] py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-md"
+                    className="flex-1 bg-black text-[#FFCC00] py-4 rounded-2xl font-black text-[9px] uppercase tracking-widest hover:scale-105 transition-all shadow-xl"
                   >
                     <FaStop className="inline mr-2" /> End
                   </button>
@@ -240,9 +250,9 @@ export default function Shifts() {
                 {!canEditShifts && (
                   <button
                     disabled
-                    className="flex-1 bg-gray-100 text-gray-400 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
+                    className="flex-1 bg-gray-100 text-gray-300 py-4 rounded-2xl font-black text-[9px] uppercase tracking-widest flex items-center justify-center gap-2 cursor-not-allowed"
                   >
-                    <FaLock size={10} /> Locked
+                    <FaLock size={10} /> Secure
                   </button>
                 )}
               </div>
@@ -251,9 +261,11 @@ export default function Shifts() {
         </div>
 
         {filteredShifts.length === 0 && (
-          <div className="text-center py-20 bg-white rounded-[2.5rem] border border-dashed border-gray-200 mt-10">
-            <FaCalendarAlt className="mx-auto text-4xl text-gray-100 mb-4" />
-            <p className="text-gray-400 font-black uppercase tracking-widest">No matching shift records found</p>
+          <div className="text-center py-24 bg-white rounded-[3rem] border-4 border-dashed border-gray-50 mt-12">
+            <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
+               <FaCalendarAlt className="text-gray-200 text-3xl" />
+            </div>
+            <p className="text-gray-300 font-black italic uppercase tracking-[0.3em]">No Mission Data Detected</p>
           </div>
         )}
       </div>

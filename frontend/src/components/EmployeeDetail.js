@@ -3,17 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { retrieveEmployee, updateEmployee } from "../services/employee";
 import Loader from "../components/Loader";
 import {
-  FaUser,
-  FaEnvelope,
-  FaBuilding,
-  FaEdit,
-  FaSave,
-  FaTimes,
-  FaArrowLeft,
-  FaPhone,
-  FaCalendar,
-  FaBriefcase,
-  FaIdCard
+  FaUser, FaEnvelope, FaBuilding, FaEdit, FaSave, FaTimes,
+  FaArrowLeft, FaPhone, FaCalendar, FaBriefcase, FaIdCard, FaShieldAlt
 } from "react-icons/fa";
 
 export default function EmployeeDetail() {
@@ -39,8 +30,7 @@ export default function EmployeeDetail() {
       setEmployee(res.data);
       setFormData(res.data);
     } catch (err) {
-      console.error(err.response || err);
-      setError("Failed to load employee details");
+      setError("CRITICAL: UNABLE TO RETRIEVE PERSONNEL RECORD.");
     } finally {
       setLoading(false);
     }
@@ -54,315 +44,176 @@ export default function EmployeeDetail() {
     setSaving(true);
     setError("");
     setSuccess("");
-
     try {
       await updateEmployee(id, formData);
-      setSuccess("Employee updated successfully!");
+      setSuccess("RECORD SYNCHRONIZED SUCCESSFULLY.");
       setEditMode(false);
-      await fetchEmployee(); // Refresh data
-
-      // Clear success message after 3 seconds
+      await fetchEmployee();
       setTimeout(() => setSuccess(""), 3000);
     } catch (err) {
-      console.error(err.response || err);
-      setError("Failed to update employee. Please try again.");
+      setError("SYNC FAILED: VALIDATE INPUT PARAMETERS.");
     } finally {
       setSaving(false);
     }
   };
 
   const handleCancel = () => {
-    setFormData(employee); // Reset form data
+    setFormData(employee);
     setEditMode(false);
     setError("");
-    setSuccess("");
   };
 
-  if (loading) {
-    return <Loader fullPage message="Loading employee details..." />;
-  }
-
-  if (error && !employee) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <FaTimes className="text-red-600 text-2xl" />
-          </div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">Error Loading Employee</h2>
-          <p className="text-gray-600 mb-6">{error}</p>
-          <button
-            onClick={() => navigate("/employees")}
-            className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
-          >
-            Back to Employees
-          </button>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <Loader fullPage message="FETCHING PERSONNEL RECORD..." />;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        {/* Header Section */}
-        <div className="mb-6 flex items-center justify-between">
+    <div className="min-h-screen bg-[#F9FAFB] pb-20">
+      {/* Top Navigation Bar */}
+      <div className="bg-white border-b border-gray-100 py-4 px-8 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+        <button
+          onClick={() => navigate("/employees")}
+          className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-black transition-all"
+        >
+          <FaArrowLeft className="text-[#FFCC00]" /> Back to Directory
+        </button>
+        {!editMode && (
           <button
-            onClick={() => navigate("/employees")}
-            className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition"
+            onClick={() => setEditMode(true)}
+            className="bg-black text-[#FFCC00] px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-black/10 hover:scale-105 transition-all flex items-center gap-2"
           >
-            <FaArrowLeft />
-            <span className="font-medium">Back to Employees</span>
+            <FaEdit /> Edit Profile
           </button>
+        )}
+      </div>
 
-          {!editMode && (
-            <button
-              onClick={() => setEditMode(true)}
-              className="flex items-center space-x-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition shadow-md"
-            >
-              <FaEdit />
-              <span>Edit Profile</span>
-            </button>
-          )}
-        </div>
-
-        {/* Success Message */}
+      <div className="max-w-5xl mx-auto mt-12 px-4">
+        {/* Alerts */}
         {success && (
-          <div className="mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-start animate-pulse">
-            <svg className="w-5 h-5 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span>{success}</span>
+          <div className="mb-6 bg-emerald-50 border border-emerald-100 text-emerald-700 px-6 py-4 rounded-2xl flex items-center gap-3 animate-pulse">
+            <FaShieldAlt className="text-emerald-500" />
+            <span className="text-[11px] font-black uppercase tracking-widest">{success}</span>
           </div>
         )}
 
-        {/* Error Message */}
-        {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-start">
-            <svg className="w-5 h-5 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
-            <span>{error}</span>
-          </div>
-        )}
+        {/* Main Profile Card */}
+        <div className="bg-white rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden">
 
-        {/* Main Content Card */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          {/* Profile Header */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-12">
-            <div className="flex items-center space-x-6">
-              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-xl">
-                <span className="text-4xl font-bold text-indigo-600">
+          {/* Header Block */}
+          <div className="bg-black p-10 lg:p-16 relative overflow-hidden">
+             {/* Abstract Decor */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFCC00] opacity-5 rounded-bl-full translate-x-10 -translate-y-10"></div>
+
+            <div className="flex flex-col md:flex-row items-center gap-8 relative z-10 text-center md:text-left">
+              <div className="w-32 h-32 rounded-[2.5rem] bg-gradient-to-tr from-[#FF8800] to-[#FFCC00] flex items-center justify-center shadow-2xl rotate-3">
+                <span className="text-4xl font-black text-black italic">
                   {employee.first_name?.charAt(0)}{employee.last_name?.charAt(0)}
                 </span>
               </div>
-              <div className="text-white">
-                <h1 className="text-3xl font-bold mb-2">{employee.full_name || "Employee Name"}</h1>
-                <p className="text-indigo-100 flex items-center space-x-2">
-                  <FaBriefcase />
-                  <span>{employee.position || "Position Not Set"}</span>
+              <div>
+                <div className="flex items-center gap-2 bg-white/10 w-fit px-3 py-1 rounded-lg mb-3 mx-auto md:mx-0">
+                  <FaShieldAlt className="text-[#FFCC00] text-[10px]" />
+                  <span className="text-[9px] font-black text-[#FFCC00] uppercase tracking-widest">Employee Node Verified</span>
+                </div>
+                <h1 className="text-4xl lg:text-5xl font-black italic uppercase tracking-tighter text-white mb-2">
+                  {employee.full_name || "New Personnel"}
+                </h1>
+                <p className="text-gray-400 font-bold uppercase tracking-widest text-xs flex items-center justify-center md:justify-start gap-2 italic">
+                  <FaBriefcase className="text-[#FFCC00]" /> {employee.position || "POSITION UNASSIGNED"}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Content Section */}
-          <div className="p-8">
+          <div className="p-10 lg:p-16">
             {editMode ? (
-              // Edit Mode
-              <div className="space-y-6">
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Edit Employee Information</h2>
+              /* --- EDIT MODE --- */
+              <div className="space-y-8 animate-in fade-in duration-500">
+                <h2 className="text-[11px] font-black text-black uppercase tracking-[0.4em] mb-10 border-b border-gray-100 pb-4">
+                  Registry Update Mode
+                </h2>
 
-                {/* Form Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* First Name */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <FaUser className="inline mr-2 text-gray-400" />
-                      First Name
-                    </label>
-                    <input
-                      name="first_name"
-                      value={formData.first_name || ""}
-                      onChange={handleChange}
-                      placeholder="First Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                    />
-                  </div>
-
-                  {/* Last Name */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <FaUser className="inline mr-2 text-gray-400" />
-                      Last Name
-                    </label>
-                    <input
-                      name="last_name"
-                      value={formData.last_name || ""}
-                      onChange={handleChange}
-                      placeholder="Last Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <FaEnvelope className="inline mr-2 text-gray-400" />
-                      Email Address
-                    </label>
-                    <input
-                      name="email"
-                      type="email"
-                      value={formData.email || ""}
-                      onChange={handleChange}
-                      placeholder="email@example.com"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <FaPhone className="inline mr-2 text-gray-400" />
-                      Phone Number
-                    </label>
-                    <input
-                      name="phone"
-                      type="tel"
-                      value={formData.phone || ""}
-                      onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                    />
-                  </div>
-
-                  {/* Position */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <FaBriefcase className="inline mr-2 text-gray-400" />
-                      Position
-                    </label>
-                    <input
-                      name="position"
-                      value={formData.position || ""}
-                      onChange={handleChange}
-                      placeholder="Job Position"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                    />
-                  </div>
-
-                  {/* Department (if editable) */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <FaBuilding className="inline mr-2 text-gray-400" />
-                      Department
-                    </label>
-                    <input
-                      name="department_name"
-                      value={formData.department_name || ""}
-                      onChange={handleChange}
-                      placeholder="Department"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                    />
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {[
+                    { label: "First Name", name: "first_name", icon: <FaUser /> },
+                    { label: "Last Name", name: "last_name", icon: <FaUser /> },
+                    { label: "Corporate Email", name: "email", icon: <FaEnvelope />, type: "email" },
+                    { label: "Contact Phone", name: "phone", icon: <FaPhone />, type: "tel" },
+                    { label: "Assigned Position", name: "position", icon: <FaBriefcase /> },
+                    { label: "Department Node", name: "department_name", icon: <FaBuilding /> },
+                  ].map((field) => (
+                    <div key={field.name} className="space-y-2">
+                      <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">
+                        {field.label}
+                      </label>
+                      <div className="relative group">
+                        <span className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#FFCC00] transition-colors">
+                          {field.icon}
+                        </span>
+                        <input
+                          name={field.name}
+                          type={field.type || "text"}
+                          value={formData[field.name] || ""}
+                          onChange={handleChange}
+                          className="w-full pl-14 pr-6 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#FFCC00] transition-all outline-none font-bold text-sm"
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex space-x-4 pt-6 border-t border-gray-200">
+                <div className="flex flex-col md:flex-row gap-4 pt-10">
                   <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="flex-1 flex items-center justify-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 bg-black text-[#FFCC00] py-5 rounded-2xl font-black text-[11px] uppercase tracking-widest shadow-xl hover:bg-[#FF8800] hover:text-black transition-all flex items-center justify-center gap-3"
                   >
-                    {saving ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Saving...</span>
-                      </>
-                    ) : (
-                      <>
-                        <FaSave />
-                        <span>Save Changes</span>
-                      </>
-                    )}
+                    {saving ? <div className="animate-spin w-4 h-4 border-2 border-black border-t-transparent rounded-full" /> : <><FaSave /> Save Changes</>}
                   </button>
                   <button
                     onClick={handleCancel}
-                    disabled={saving}
-                    className="flex-1 flex items-center justify-center space-x-2 bg-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-400 transition"
+                    className="flex-1 bg-gray-100 text-gray-500 py-5 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-rose-50 hover:text-rose-600 transition-all flex items-center justify-center gap-3"
                   >
-                    <FaTimes />
-                    <span>Cancel</span>
+                    <FaTimes /> Cancel
                   </button>
                 </div>
               </div>
             ) : (
-              // View Mode
-              <div>
-                <h2 className="text-xl font-bold text-gray-800 mb-6">Employee Information</h2>
+              /* --- VIEW MODE --- */
+              <div className="animate-in slide-in-from-bottom-4 duration-500">
+                <h2 className="text-[11px] font-black text-black uppercase tracking-[0.4em] mb-10 border-b border-gray-100 pb-4">
+                  Personnel Record Details
+                </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Email */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center space-x-3 text-gray-600 mb-2">
-                      <FaEnvelope className="text-indigo-600" />
-                      <span className="text-sm font-medium">Email Address</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { label: "System Identification", value: `#${employee.id}`, icon: <FaIdCard /> },
+                    { label: "Node Joined", value: employee.date_joined ? new Date(employee.date_joined).toLocaleDateString() : "N/A", icon: <FaCalendar /> },
+                    { label: "Operational Dept", value: employee.department_name || "Unassigned", icon: <FaBuilding /> },
+                    { label: "Direct Email", value: employee.email || "No Data", icon: <FaEnvelope /> },
+                    { label: "Phone Line", value: employee.phone || "No Data", icon: <FaPhone /> },
+                    { label: "Job Node", value: employee.position || "Staff", icon: <FaBriefcase /> },
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-gray-50/50 p-6 rounded-[2rem] border border-gray-50 hover:bg-white hover:shadow-xl hover:border-white transition-all group">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="p-3 bg-white rounded-xl shadow-sm text-[#FFCC00] group-hover:bg-black transition-colors">
+                          {item.icon}
+                        </div>
+                        <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">{item.label}</span>
+                      </div>
+                      <p className="text-sm font-black text-black uppercase tracking-tight ml-1">{item.value}</p>
                     </div>
-                    <p className="text-gray-800 font-semibold">{employee.email || "Not provided"}</p>
-                  </div>
-
-                  {/* Phone */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center space-x-3 text-gray-600 mb-2">
-                      <FaPhone className="text-indigo-600" />
-                      <span className="text-sm font-medium">Phone Number</span>
-                    </div>
-                    <p className="text-gray-800 font-semibold">{employee.phone || "Not provided"}</p>
-                  </div>
-
-                  {/* Department */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center space-x-3 text-gray-600 mb-2">
-                      <FaBuilding className="text-indigo-600" />
-                      <span className="text-sm font-medium">Department</span>
-                    </div>
-                    <p className="text-gray-800 font-semibold">{employee.department_name || "Not assigned"}</p>
-                  </div>
-
-                  {/* Position */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center space-x-3 text-gray-600 mb-2">
-                      <FaBriefcase className="text-indigo-600" />
-                      <span className="text-sm font-medium">Position</span>
-                    </div>
-                    <p className="text-gray-800 font-semibold">{employee.position || "Not set"}</p>
-                  </div>
-
-                  {/* Employee ID */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center space-x-3 text-gray-600 mb-2">
-                      <FaIdCard className="text-indigo-600" />
-                      <span className="text-sm font-medium">Employee ID</span>
-                    </div>
-                    <p className="text-gray-800 font-semibold">#{employee.id}</p>
-                  </div>
-
-                  {/* Join Date */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center space-x-3 text-gray-600 mb-2">
-                      <FaCalendar className="text-indigo-600" />
-                      <span className="text-sm font-medium">Date Joined</span>
-                    </div>
-                    <p className="text-gray-800 font-semibold">
-                      {employee.date_joined
-                        ? new Date(employee.date_joined).toLocaleDateString()
-                        : "Not available"}
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
             )}
+          </div>
+
+          {/* Footer Ledger Note */}
+          <div className="bg-gray-50/30 px-10 py-6 border-t border-gray-50 flex justify-between items-center">
+            <span className="text-[8px] font-black text-gray-300 uppercase tracking-[0.4em]">Onafriq Infrastructure Personnel Record</span>
+            <div className="flex gap-1">
+              <div className="w-4 h-1 bg-[#FFCC00]"></div>
+              <div className="w-1 h-1 bg-black"></div>
+            </div>
           </div>
         </div>
       </div>

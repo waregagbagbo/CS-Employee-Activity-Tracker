@@ -1,33 +1,50 @@
 import { useEffect, useState } from "react";
 
+/**
+ * useShiftTimer
+ * @param {string|null} startTime - shift_start_time (HH:MM:SS)
+ * @param {string} status - shift_status
+ */
 export default function useShiftTimer(startTime, status) {
-  const [elapsed, setElapsed] = useState("00:00:00");
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
 
   useEffect(() => {
-    if (!startTime || status !== "In Progress") {
-      setElapsed("00:00:00");
-      return;
+    if (!startTime || status !== "In Progress") return;
+
+    const now = new Date();
+    const [h, m, s] = startTime.split(":").map(Number);
+
+    const start = new Date();
+    start.setHours(h, m, s || 0, 0);
+
+    // handle overnight shift
+    if (start > now) {
+      start.setDate(start.getDate() - 1);
     }
 
-    const start = new Date(startTime);
+    const tick = () => {
+      const diff = Math.floor((Date.now() - start.getTime()) / 1000);
+      setElapsedSeconds(diff);
+    };
 
-    const interval = setInterval(() => {
-      const now = new Date();
-      const diff = Math.max(0, now - start);
-
-      const hours = String(Math.floor(diff / 3600000)).padStart(2, "0");
-      const minutes = String(
-        Math.floor((diff % 3600000) / 60000)
-      ).padStart(2, "0");
-      const seconds = String(
-        Math.floor((diff % 60000) / 1000)
-      ).padStart(2, "0");
-
-      setElapsed(`${hours}:${minutes}:${seconds}`);
-    }, 1000);
+    tick();
+    const interval = setInterval(tick, 1000);
 
     return () => clearInterval(interval);
   }, [startTime, status]);
 
-  return elapsed;
+  const hours = Math.floor(elapsedSeconds / 3600);
+  const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+  const seconds = elapsedSeconds % 60;
+
+  const remainingSeconds = Math.max(0, 8 * 3600 - elapsedSeconds);
+
+  return {
+    elapsedSeconds,
+    hours,
+    minutes,
+    seconds,
+    remainingSeconds,
+    isComplete: elapsedSeconds >= 8 * 3600,
+  };
 }

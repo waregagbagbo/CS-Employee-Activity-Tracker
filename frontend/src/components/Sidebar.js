@@ -9,7 +9,6 @@ import {
   FaSignOutAlt,
   FaChevronLeft,
   FaChevronRight,
-  FaBars
 } from "react-icons/fa";
 
 export default function Sidebar() {
@@ -17,11 +16,12 @@ export default function Sidebar() {
   const location = useLocation();
 
   const modules = [
-    { name: "Dashboard", route: "/dashboard", icon: <FaTachometerAlt /> },
-    { name: "Employees", route: "/employees", icon: <FaUsers /> },
-    { name: "Reports", route: "/reports", icon: <FaFileAlt /> },
-    { name: "Departments", route: "/departments", icon: <FaBuilding /> },
-    { name: "Attendance", route: "/attendance", icon: <FaCalendarCheck /> },
+    { name: "DASHBOARD", route: "/dashboard", icon: <FaTachometerAlt /> },
+    { name: "EMPLOYEES", route: "/employees", icon: <FaUsers /> },
+    {name: "SHIFTS", route: "/shifts", icon: <FaTachometerAlt /> },
+    { name: "REPORTS", route: "/reports", icon: <FaFileAlt /> },
+    { name: "DEPARTMENTS", route: "/departments", icon: <FaBuilding /> },
+    { name: "ATTENDANCE", route: "/attendance", icon: <FaCalendarCheck /> },
   ];
 
   const isActive = (route) => location.pathname === route;
@@ -29,98 +29,112 @@ export default function Sidebar() {
   return (
     <div
       className={`${
-        open ? "w-64" : "w-20"
-      } bg-gradient-to-b from-indigo-700 to-indigo-900 text-white transition-all duration-300 min-h-screen flex flex-col shadow-2xl relative`}
+        open ? "w-72" : "w-24"
+      } bg-black text-white transition-all duration-500 min-h-screen flex flex-col relative z-50 shadow-[10px_0_30px_rgba(0,0,0,0.1)]`}
     >
-      {/* Header */}
-      <div className="p-6 flex items-center justify-between border-b border-indigo-600">
-        <div className={`flex items-center space-x-3 ${!open && "justify-center"}`}>
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-            <FaBars className="text-indigo-600 text-xl" />
+      {/* Brand Header */}
+      <div className="p-8 flex items-center mb-4">
+        <div className={`flex items-center space-x-4 ${!open && "mx-auto"}`}>
+          <div className="w-10 h-10 bg-[#FFCC00] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(255,204,0,0.3)]">
+            <div className="w-5 h-5 bg-black rounded-sm"></div>
           </div>
           {open && (
-            <div>
-              <h2 className="text-lg font-bold">Employee</h2>
-              <p className="text-xs text-indigo-200">Tracker</p>
+            <div className="leading-none">
+              <h2 className="text-xl font-black tracking-tighter italic italic uppercase">
+                ONAFRIQ
+              </h2>
+              <p className="text-[10px] font-bold text-[#FFCC00] tracking-[0.3em] uppercase">
+                Ops Center
+              </p>
             </div>
           )}
         </div>
 
-        {/* Toggle Button */}
+        {/* Toggle Button - Sleek and Minimal */}
         <button
           onClick={() => setOpen(!open)}
-          className="absolute -right-3 top-8 w-6 h-6 bg-white text-indigo-600 rounded-full flex items-center justify-center shadow-lg hover:bg-indigo-50 transition-all focus:outline-none focus:ring-2 focus:ring-white"
+          className="absolute -right-3 top-10 w-7 h-7 bg-[#FFCC00] text-black rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all border-4 border-black"
         >
-          {open ? <FaChevronLeft className="text-xs" /> : <FaChevronRight className="text-xs" />}
+          {open ? <FaChevronLeft size={10} /> : <FaChevronRight size={10} />}
         </button>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 flex flex-col space-y-1 px-3 py-6">
-        {modules.map((mod, idx) => (
-          <Link
-            key={idx}
-            to={mod.route}
-            className={`
-              flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200
-              ${isActive(mod.route) 
-                ? "bg-white text-indigo-600 shadow-lg font-semibold" 
-                : "text-indigo-100 hover:bg-indigo-600 hover:text-white"
-              }
-              ${!open && "justify-center"}
-            `}
-            title={!open ? mod.name : ""}
-          >
-            <span className="text-xl">{mod.icon}</span>
-            {open && <span className="text-sm">{mod.name}</span>}
+      {/* Navigation List */}
+      <nav className="flex-1 px-4 space-y-2">
+        {modules.map((mod, idx) => {
+          const active = isActive(mod.route);
+          return (
+            <Link
+              key={idx}
+              to={mod.route}
+              className={`
+                flex items-center space-x-4 px-4 py-4 rounded-xl transition-all duration-300 group
+                ${active 
+                  ? "bg-[#FFCC00] text-black shadow-[0_10px_20px_rgba(255,204,0,0.2)]" 
+                  : "text-gray-400 hover:text-white hover:bg-white/5"
+                }
+                ${!open && "justify-center px-0"}
+              `}
+            >
+              <span className={`text-xl ${active ? "text-black" : "group-hover:text-[#FFCC00] transition-colors"}`}>
+                {mod.icon}
+              </span>
 
-            {/* Active Indicator */}
-            {isActive(mod.route) && open && (
-              <span className="ml-auto w-2 h-2 bg-indigo-600 rounded-full animate-pulse"></span>
-            )}
-          </Link>
-        ))}
+              {open && (
+                <span className={`text-xs font-black tracking-widest ${active ? "text-black" : ""}`}>
+                  {mod.name}
+                </span>
+              )}
+
+              {/* Minimalist Active Indicator */}
+              {active && open && (
+                <div className="ml-auto w-1.5 h-1.5 bg-black rounded-full"></div>
+              )}
+            </Link>
+          );
+        })}
       </nav>
 
-      {/* User Profile Section (Optional) */}
-      {open && (
-        <div className="px-4 py-4 border-t border-indigo-600">
-          <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center font-bold">
-              {localStorage.getItem("username")?.charAt(0).toUpperCase() || "U"}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold truncate">
-                {localStorage.getItem("username") || "User"}
-              </p>
-              <p className="text-xs text-indigo-300 truncate">
-                {localStorage.getItem("email") || "user@example.com"}
-              </p>
+      {/* Profile & Logout Section */}
+      <div className="p-4 mt-auto space-y-4">
+        {open && (
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-[#FFCC00] rounded-full flex items-center justify-center text-black font-black text-sm">
+                {localStorage.getItem("username")?.charAt(0).toUpperCase() || "A"}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-black text-white truncate uppercase tracking-tight">
+                  {localStorage.getItem("username") || "Admin"}
+                </p>
+                <div className="flex items-center gap-1">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                    <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Online</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Logout Button */}
-      <div className="p-3">
         <Link
           to="/logout"
           className={`
-            flex items-center space-x-3 px-4 py-3 rounded-lg
-            bg-red-500 hover:bg-red-600 transition-all duration-200 shadow-lg
+            flex items-center space-x-4 px-4 py-4 rounded-xl
+            bg-white/5 hover:bg-rose-600/20 hover:text-rose-500 text-gray-400 transition-all duration-300
             ${!open && "justify-center"}
           `}
-          title={!open ? "Logout" : ""}
         >
           <FaSignOutAlt className="text-xl" />
-          {open && <span className="text-sm font-semibold">Logout</span>}
+          {open && <span className="text-xs font-black tracking-widest uppercase">Logout</span>}
         </Link>
       </div>
 
-      {/* Footer Version */}
+      {/* Version Tag */}
       {open && (
-        <div className="px-4 py-3 text-center border-t border-indigo-600">
-          <p className="text-xs text-indigo-300">v1.0.0</p>
+        <div className="py-6 text-center">
+          <p className="text-[10px] font-black text-gray-700 tracking-[0.5em] uppercase italic">
+            Onafriq Core Support
+          </p>
         </div>
       )}
     </div>
