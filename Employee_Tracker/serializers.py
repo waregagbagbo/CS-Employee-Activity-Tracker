@@ -2,7 +2,7 @@ from datetime import datetime,timedelta
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import serializers
 from accounts.models import Employee,Department
-from .models import Shift,ActivityReport
+from .models import Shift, ActivityReport, Attendance
 from django.utils import timezone
 
 
@@ -137,6 +137,15 @@ class ActivityReportSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('Only supervisor or Managers can approve')
         print('Data saved successfully')
         return super().update(instance,validated_data)
+
+
+
+# attendance serializer
+class AttendanceSerializer(serializers.ModelSerializer):
+    user = EmployeeProfileSerializer(read_only=True)
+    class Meta:
+        model = Attendance
+        fields = '__all__'
 
 
 

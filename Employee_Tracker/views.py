@@ -9,8 +9,9 @@ from rest_framework.permissions import IsAuthenticated
 from accounts.models import Employee, Department
 from accounts.permissions import UserTypeReportPermission, UserShiftPermission, CanEditOwnProfile, \
     DepartmentViewPermission
-from .models import Shift,ActivityReport
-from .serializers import EmployeeProfileSerializer,ShiftSerializer,DepartmentSerializer,ActivityReportSerializer
+from .models import Shift, ActivityReport, Attendance
+from .serializers import EmployeeProfileSerializer, ShiftSerializer, DepartmentSerializer, ActivityReportSerializer, \
+    AttendanceSerializer
 from rest_framework import viewsets, authentication, filters
 from django.utils import timezone
 from datetime import datetime, timedelta
@@ -247,6 +248,28 @@ class ReportsViewSet(viewsets.ModelViewSet):
             return reports_base_queryset.filter(shift_active_agent=employee_profile)
 
     # perform create method by user type
+
+
+
+
+""" 
+display the attendance sheet
+"""
+class AttendanceViewSet(viewsets.ModelViewSet):
+    queryset = Attendance.objects.all()
+    permission_classes = [IsAuthenticated,UserTypeReportPermission]
+    serializer_class = AttendanceSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        try:
+            employee_profile = Employee.objects.select_related('user').get(user=user)
+        except ObjectDoesNotExist as e:
+            print(f'User with that profile does not exist {e}')
+            return Attendance.objects.none()
+
+        return Attendance.objects.all()
+        print(Attendance.objects.all())
 
 
 # Check if user is clocked in

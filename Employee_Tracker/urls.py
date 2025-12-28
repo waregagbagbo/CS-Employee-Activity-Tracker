@@ -19,11 +19,16 @@ shifts_router.register(r'',views.ShiftAPIViewSet, basename='shift')
 activityreport_router = DefaultRouter()
 activityreport_router.register(r'', views.ReportsViewSet, basename='activity_report')
 
+# attendance
+attendance_router = DefaultRouter()
+attendance_router.register(r'', views.AttendanceViewSet, basename='attend')
+
 urlpatterns =[
     path('employees/', include(employees_router.urls)),
     path('departments/',include(dept_router.urls)),
     path('shifts/',include(shifts_router.urls)),
     path('reports/',include(activityreport_router.urls)),
+    path('attendance/', include(attendance_router.urls)),
 
 
     path('attendance/status/',  views.attendance_status, name='attendance_status'),
