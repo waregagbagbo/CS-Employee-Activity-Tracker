@@ -4,7 +4,7 @@ import API from "./api";
 export const listReports = (params) => API.get("api/reports/", { params });
 
 // create reports
-export const createReport = (data) => API.post("reports/", data);
+export const createReport = (data) => API.post("reports/new", data);
 
 // fetch single report
 export const getReport = (id) => API.get(`reports/${id}/`);

@@ -12681,3 +12681,741 @@ D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
 Watching for file changes with StatReloader
 "GET /api/employees/?page=1 HTTP/1.1" 200 1508
 "GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 120
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"OPTIONS /api/employees/2/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/2/ HTTP/1.1" 200 0
+"GET /api/employees/2/ HTTP/1.1" 200 330
+"GET /api/employees/2/ HTTP/1.1" 200 330
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"OPTIONS /api/employees/new/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/new/ HTTP/1.1" 200 0
+Not Found: /api/employees/new/
+"GET /api/employees/new/ HTTP/1.1" 404 23
+Not Found: /api/employees/new/
+"GET /api/employees/new/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/2/ HTTP/1.1" 200 330
+"GET /api/employees/2/ HTTP/1.1" 200 330
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 120
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+Not Found: /api/employee/me
+"GET /api/employee/me HTTP/1.1" 404 5292
+"GET /api/employees/me/ HTTP/1.1" 200 12778
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 120
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"OPTIONS /api/employees/3/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/3/ HTTP/1.1" 200 0
+"GET /api/employees/3/ HTTP/1.1" 200 286
+"GET /api/employees/3/ HTTP/1.1" 200 286
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 120
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"OPTIONS /reports/1/ HTTP/1.1" 200 0
+"OPTIONS /reports/1/ HTTP/1.1" 200 0
+Not Found: /reports/1/
+"GET /reports/1/ HTTP/1.1" 404 4439
+Not Found: /reports/1/
+"GET /reports/1/ HTTP/1.1" 404 4439
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"OPTIONS /reports/3/ HTTP/1.1" 200 0
+"OPTIONS /reports/3/ HTTP/1.1" 200 0
+Not Found: /reports/3/
+"GET /reports/3/ HTTP/1.1" 404 4439
+Not Found: /reports/3/
+"GET /reports/3/ HTTP/1.1" 404 4439
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"OPTIONS /api/shifts/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?page=1 HTTP/1.1" 200 0
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/reports/ HTTP/1.1" 200 2738
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"GET /api/shifts/?page=1 HTTP/1.1" 200 52
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/ HTTP/1.1" 200 52
+"GET /api/shifts/ HTTP/1.1" 200 52
+"GET /api/shifts/ HTTP/1.1" 200 52
+"GET /api/shifts/ HTTP/1.1" 200 52
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"GET /api/employees/?page=1 HTTP/1.1" 200 1508
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 120
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/3/ HTTP/1.1" 200 286
+"GET /api/employees/3/ HTTP/1.1" 200 286
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/3/ HTTP/1.1" 200 286
+"GET /api/employees/3/ HTTP/1.1" 200 286
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+Not Found: /reports/3/
+"GET /reports/3/ HTTP/1.1" 404 4439
+Not Found: /reports/3/
+"GET /reports/3/ HTTP/1.1" 404 4439
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 120
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+"OPTIONS /cs/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"OPTIONS /api/departments/ HTTP/1.1" 200 0
+"OPTIONS /cs/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+"OPTIONS /api/departments/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+Not Found: /cs/shifts/
+Forbidden: /api/departments/
+Forbidden: /api/employees/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 403 27
+Forbidden: /api/reports/
+Unauthorized: /api/attendance/status/
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Forbidden: /api/employees/
+"GET /api/employees/ HTTP/1.1" 403 27
+Forbidden: /api/reports/
+Unauthorized: /api/attendance/status/
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/ HTTP/1.1" 200 611
+"GET /api/shifts/ HTTP/1.1" 200 611
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Unauthorized: /api/attendance/status/
+Forbidden: /api/employees/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Forbidden: /api/reports/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+"GET /api/employees/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+"GET /api/reports/ HTTP/1.1" 403 27
+Forbidden: /api/departments/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 200 1232
+"GET /api/reports/ HTTP/1.1" 200 1232
+Not Found: /cs/shifts/
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Unauthorized: /api/attendance/status/
+Forbidden: /api/departments/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/employees/
+Unauthorized: /api/attendance/status/
+Forbidden: /api/departments/
+"GET /api/employees/ HTTP/1.1" 403 27
+Forbidden: /api/reports/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+Unauthorized: /api/attendance/status/
+Forbidden: /api/departments/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/ HTTP/1.1" 403 27
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Unauthorized: /api/attendance/status/
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+"GET /api/employees/?page=1 HTTP/1.1" 200 338
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/departments/
+Forbidden: /api/employees/
+Unauthorized: /api/attendance/status/
+Forbidden: /api/reports/
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/reports/ HTTP/1.1" 403 27
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+Forbidden: /api/reports/
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Forbidden: /api/employees/
+"GET /api/employees/ HTTP/1.1" 403 27
+Not Found: /cs/shifts/
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/departments/
+Unauthorized: /api/attendance/status/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/employees/
+"GET /api/employees/ HTTP/1.1" 403 27
+Forbidden: /api/reports/
+Forbidden: /api/departments/
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/departments/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+Not Found: /cs/shifts/
+Forbidden: /api/employees/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/reports/
+Unauthorized: /api/attendance/status/
+Forbidden: /api/departments/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/departments/ HTTP/1.1" 403 27
+Not Found: /cs/shifts/
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+Unauthorized: /api/attendance/status/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Not Found: /api/clock_in
+"GET /api/clock_in HTTP/1.1" 404 6114
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4442
+Not Found: /api/clock-in
+"GET /api/clock-in HTTP/1.1" 404 6114
+Not Found: /api/attendance
+"GET /api/attendance HTTP/1.1" 404 6120
+Not Found: /api/attendance/clock_in
+"GET /api/attendance/clock_in HTTP/1.1" 404 6147
+"GET /api/attendance/status HTTP/1.1" 301 0
+"GET /api/attendance/status/ HTTP/1.1" 200 5416
+Forbidden: /api/employees/
+Not Found: /cs/shifts/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Forbidden: /api/reports/
+Forbidden: /api/departments/
+Unauthorized: /api/attendance/status/
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/ HTTP/1.1" 403 27
+Not Found: /cs/shifts/
+Forbidden: /api/employees/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /cs/shifts/ HTTP/1.1" 404 4439
+Unauthorized: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Forbidden: /api/reports/
+"GET /api/reports/ HTTP/1.1" 403 27
+Forbidden: /api/shifts/
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+"GET /api/shifts/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+Forbidden: /api/departments/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/ HTTP/1.1" 403 27
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+Unauthorized: /api/attendance/status/
+Forbidden: /api/shifts/
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/shifts/ HTTP/1.1" 403 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Forbidden: /api/departments/
+Forbidden: /api/shifts/
+Forbidden: /api/employees/
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 403 27
+"GET /api/shifts/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+Forbidden: /api/reports/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/reports/ HTTP/1.1" 403 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Forbidden: /api/shifts/
+Forbidden: /api/employees/
+"GET /api/shifts/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Forbidden: /api/reports/
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 200 16091
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 120
+Forbidden: /api/employees/
+"GET /api/employees/ HTTP/1.1" 403 27
+Forbidden: /api/shifts/
+"GET /api/shifts/ HTTP/1.1" 403 27
+Forbidden: /api/reports/
+"GET /api/reports/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+Forbidden: /api/shifts/
+Forbidden: /api/employees/
+"GET /api/shifts/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 403 27
+Forbidden: /api/reports/
+"GET /api/reports/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+Forbidden: /api/departments/
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/reports/ HTTP/1.1" 200 1297
+"OPTIONS /reports/3/ HTTP/1.1" 200 0
+"OPTIONS /reports/3/ HTTP/1.1" 200 0
+Not Found: /reports/3/
+"GET /reports/3/ HTTP/1.1" 404 4439
+Not Found: /reports/3/
+"GET /reports/3/ HTTP/1.1" 404 4439
+Forbidden: /api/shifts/
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+"GET /api/shifts/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+Forbidden: /api/departments/
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/ HTTP/1.1" 403 27
+Forbidden: /api/shifts/
+Forbidden: /api/employees/
+Forbidden: /api/reports/
+"GET /api/shifts/ HTTP/1.1" 403 27
+"GET /api/reports/ HTTP/1.1" 403 27
+"GET /api/employees/ HTTP/1.1" 403 27
+Unauthorized: /api/attendance/status/
+Forbidden: /api/departments/
+"GET /api/attendance/status/ HTTP/1.1" 401 27
+"GET /api/departments/ HTTP/1.1" 403 27
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/employees/?page=1 HTTP/1.1" 200 382
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/departments/?page=1 HTTP/1.1" 200 192
+"GET /api/reports/ HTTP/1.1" 200 1297
+"GET /api/reports/ HTTP/1.1" 200 1297
+Not Found: /api/attendance/clock_in
+"GET /api/attendance/clock_in HTTP/1.1" 404 6147
+Not Found: /api/attendance/clock_out
+"GET /api/attendance/clock_out HTTP/1.1" 404 6150

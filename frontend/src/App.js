@@ -12,6 +12,9 @@ import Logout from "./pages/Logout.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EmployeeDetail from "./components/EmployeeDetail";
 import Settings from "./pages/Settings.jsx";
+import CreateReport from "./pages/CreateReport";
+import ApproveReports from "./pages/ApproveReports";
+import ReportDetail from "./pages/ReportDetail";
 
 function App(){
   return (
@@ -21,12 +24,22 @@ function App(){
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
           <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route path="/employee/:id" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+
+
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
+
+
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
+        <Route path="/reports/new" element={<CreateReport />} />
+        <Route path="/reports/approve" element={<ApproveReports />} />
+        <Route path="/reports/:id" element={<ReportDetail />} />
+
+
          <Route path="/departments" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
 
         {/* logout route (optional but clean) */}

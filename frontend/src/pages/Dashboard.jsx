@@ -2,137 +2,285 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import DashboardCard from "../components/DashboardCard";
-import { FaUsers, FaClipboardList, FaFileAlt, FaAppleAlt, FaCalendarCheck, FaChartLine, FaClock } from "react-icons/fa";
+import Loader from "../components/Loader";
+import axios from "axios";
+import {
+  FaUsers,
+  FaCalendarCheck,
+  FaFileAlt,
+  FaBuilding,
+  FaClock,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaPlayCircle,
+  FaStopCircle
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import {FaHouse, FaPeopleGroup} from "react-icons/fa6";
-import { listEmployees } from "../services/employee";
-
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const user = localStorage.getItem("username");
+  const user = localStorage.getItem("username") || "User";
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [totalEmployees, setTotalEmployees] = useState(0);
-  const [totalDepartments, setTotalDepartments] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState({
+    employees: 0,
+    shifts: 0,
+    reports: 0,
+    departments: 0,
+  });
 
-  // Fetch employee count on mount
+  // Clock In/Out state
+  const [isClockedIn, setIsClockedIn] = useState(false);
+  const [clockInTime, setClockInTime] = useState(null);
+  const [workDuration, setWorkDuration] = useState("00:00:00");
+  const [canClockIn, setCanClockIn] = useState(false);
+  const [userRole, setUserRole] = useState("");
+
   useEffect(() => {
-    fetchEmployeeCount();
+    // Update clock every second
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
   }, []);
 
-  const fetchEmployeeCount = async () => {
-    try {
-      const response = await listEmployees({page: 1});
+  useEffect(() => {
+    checkUserRole();
+    fetchDashboardStats();
+    checkClockStatus();
+  }, []);
 
-      // Get total count from paginated response
-      if (response.data.count) {
-        setTotalEmployees(response.data.count); // Total across all pages
-        setTotalDepartments(response.data.count);
-      } else if (Array.isArray(response.data)) {
-        setTotalEmployees(response.data.length);
+  useEffect(() => {
+    // Update work duration every second if clocked in
+    if (isClockedIn && clockInTime) {
+      const interval = setInterval(() => {
+        const now = new Date();
+        const diff = now - new Date(clockInTime);
+        const hours = Math.floor(diff / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        setWorkDuration(
+          `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+        );
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isClockedIn, clockInTime]);
+
+  const checkUserRole = async () => {
+    try {
+      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+      if (!token) return;
+
+      const response = await axios.get('http://127.0.0.1:8000/api/user/profile/', {
+        headers: { 'Authorization': `Token ${token}` }
+      });
+
+      const { is_staff, is_superuser, user_type } = response.data;
+      setUserRole(user_type || (is_staff ? "Admin" : "User"));
+
+      // Only non-admin, non-staff can clock in
+      if (!is_staff && !is_superuser && user_type !== "Admin") {
+        setCanClockIn(true);
       }
-    } catch (error) {
-      console.error("Failed to fetch employee count:", error);
+    } catch (err) {
+      console.error("Error checking role:", err);
+    }
+  };
+
+  const fetchDashboardStats = async () => {
+    setLoading(true);
+    try {
+      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+
+      // Fetch stats from your APIs
+      const [employeesRes, shiftsRes, reportsRes, deptsRes] = await Promise.allSettled([
+        axios.get('http://127.0.0.1:8000/api/employees/', { headers: { 'Authorization': `Token ${token}` } }),
+        axios.get('http://127.0.0.1:8000/api/shifts/', { headers: { 'Authorization': `Token ${token}` } }),
+        axios.get('http://127.0.0.1:8000/api/reports/', { headers: { 'Authorization': `Token ${token}` } }),
+        axios.get('http://127.0.0.1:8000/api/departments/', { headers: { 'Authorization': `Token ${token}` } }),
+      ]);
+
+      setStats({
+        employees: employeesRes.status === 'fulfilled' ? (employeesRes.value.data.results?.length || employeesRes.value.data.length || 0) : 0,
+        shifts: shiftsRes.status === 'fulfilled' ? (shiftsRes.value.data.results?.length || shiftsRes.value.data.length || 0) : 0,
+        reports: reportsRes.status === 'fulfilled' ? (reportsRes.value.data.results?.length || reportsRes.value.data.length || 0) : 0,
+        departments: deptsRes.status === 'fulfilled' ? (deptsRes.value.data.results?.length || deptsRes.value.data.length || 0) : 0,
+      });
+    } catch (err) {
+      console.error("Error fetching stats:", err);
     } finally {
       setLoading(false);
     }
   };
 
-  // Update clock every second
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const checkClockStatus = async () => {
+    try {
+      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+
+      // Check if user is currently clocked in
+      const response = await axios.get('http://127.0.0.1:8000/api/attendance/status/', {
+        headers: { 'Authorization': `Token ${token}` }
+      });
+
+      if (response.data.is_clocked_in) {
+        setIsClockedIn(true);
+        setClockInTime(response.data.clock_in_time);
+      }
+    } catch (err) {
+      console.error("Error checking clock status:", err);
+    }
+  };
+
+  const handleClockIn = async () => {
+    try {
+      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/attendance/clock-in/',
+        {},
+        { headers: { 'Authorization': `Token ${token}` } }
+      );
+
+      setIsClockedIn(true);
+      setClockInTime(response.data.clock_in_time || new Date().toISOString());
+      alert('✅ Clocked in successfully!');
+    } catch (err) {
+      console.error("Clock in error:", err);
+      alert(err.response?.data?.detail || 'Failed to clock in');
+    }
+  };
+
+  const handleClockOut = async () => {
+    try {
+      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/attendance/clock-out/',
+        {},
+        { headers: { 'Authorization': `Token ${token}` } }
+      );
+
+      setIsClockedIn(false);
+      setClockInTime(null);
+      alert(`✅ Clocked out successfully! Total time: ${workDuration}`);
+      setWorkDuration("00:00:00");
+    } catch (err) {
+      console.error("Clock out error:", err);
+      alert(err.response?.data?.detail || 'Failed to clock out');
+    }
+  };
 
   const modules = [
     {
       title: "Employees",
-      value: loading ? "..." : totalEmployees,
+      value: stats.employees.toString(),
       icon: <FaUsers />,
       route: "/employees",
       color: "bg-blue-500",
-      trend: "+12%",
-      trendUp: true
     },
     {
       title: "Shifts",
-      value: "95%",
+      value: stats.shifts.toString(),
       icon: <FaCalendarCheck />,
       route: "/shifts",
       color: "bg-green-500",
-      trend: "+5%",
-      trendUp: true
     },
     {
       title: "Reports",
-      value: "12",
+      value: stats.reports.toString(),
       icon: <FaFileAlt />,
       route: "/reports",
       color: "bg-purple-500",
-      trend: "3 new",
-      trendUp: true
     },
     {
       title: "Departments",
-      value: loading ? "...": totalDepartments,
-      icon: <FaPeopleGroup />,
+      value: stats.departments.toString(),
+      icon: <FaBuilding />,
       route: "/departments",
       color: "bg-orange-500",
-      trend: "+2",
-      trendUp: true
-    },
-    {
-      title: "Attendance",
-      value: "95%",
-      icon: <FaCalendarCheck />,
-      route: "/attendance",
-      color: "bg-teal-500",
-      trend: "-2%",
-      trendUp: false
     },
   ];
 
-  const recentActivities = [
-    { user: "John Doe", action: "clocked in", time: "2 mins ago", type: "success" },
-    { user: "Jane Smith", action: "submitted report", time: "15 mins ago", type: "info" },
-    { user: "Mike Johnson", action: "requested leave", time: "1 hour ago", type: "warning" },
-    { user: "Sarah Williams", action: "updated profile", time: "2 hours ago", type: "info" },
-  ];
-
-  const upcomingEvents = [
-    { title: "Team Meeting", time: "10:00 AM", date: "Today" },
-    { title: "Performance Review", time: "2:00 PM", date: "Today" },
-    { title: "Training Session", time: "9:00 AM", date: "Tomorrow" },
-  ];
+  if (loading) {
+    return <Loader fullPage message="Loading dashboard..." />;
+  }
 
   return (
     <div className="flex bg-gray-50">
       <Sidebar />
       <div className="flex-1 flex flex-col min-h-screen">
-        <Topbar title="Enterprise Support" user={user} />
+        <Topbar title="Dashboard" user={user} />
 
         <main className="p-6 flex-1">
-          {/* Welcome Section */}
+          {/* Welcome Section with Clock */}
           <div className="mb-6 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-3xl font-bold mb-2">Welcome back, {user}! 👋</h1>
-                <p className="text-indigo-100">Here's what's happening in your department today.</p>
+                <p className="text-indigo-100">Here's your workspace overview</p>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-semibold">
                   {currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                 </div>
                 <div className="text-sm text-indigo-100">
-                  {currentTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                  {currentTime.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Stats Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6">
+          {/* Clock In/Out Widget - Only for non-admins */}
+          {canClockIn && (
+            <div className="mb-6 bg-white rounded-xl shadow-lg p-6">
+              <div className="flex flex-col md:flex-row items-center justify-between">
+                <div className="mb-4 md:mb-0">
+                  <h2 className="text-xl font-bold text-gray-800 flex items-center mb-2">
+                    <FaClock className="mr-2 text-indigo-600" />
+                    Time Tracking
+                  </h2>
+                  <p className="text-gray-600 text-sm">Track your working hours</p>
+                </div>
+
+                {isClockedIn ? (
+                  <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+                    {/* Active Timer Display */}
+                    <div className="bg-green-50 border-2 border-green-500 rounded-lg px-6 py-4 text-center">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-green-700 font-semibold text-sm">CLOCKED IN</span>
+                      </div>
+                      <div className="text-3xl font-bold text-green-700 font-mono">
+                        {workDuration}
+                      </div>
+                      <div className="text-xs text-green-600 mt-1">
+                        Since {new Date(clockInTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                      </div>
+                    </div>
+
+                    {/* Clock Out Button */}
+                    <button
+                      onClick={handleClockOut}
+                      className="flex items-center space-x-2 bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition shadow-md hover:shadow-lg"
+                    >
+                      <FaStopCircle className="text-xl" />
+                      <span className="font-semibold">Clock Out</span>
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={handleClockIn}
+                    className="flex items-center space-x-2 bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition shadow-md hover:shadow-lg"
+                  >
+                    <FaPlayCircle className="text-2xl" />
+                    <span className="font-semibold text-lg">Clock In</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             {modules.map((mod, idx) => (
               <DashboardCard
                 key={idx}
@@ -140,129 +288,24 @@ export default function Dashboard() {
                 value={mod.value}
                 icon={mod.icon}
                 color={mod.color}
-                trend={mod.trend}
-                trendUp={mod.trendUp}
                 onClick={() => navigate(mod.route)}
               />
             ))}
           </div>
 
-          {/* Charts and Activity Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            {/* Quick Stats Chart */}
-            <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-md">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-                  <FaChartLine className="mr-2 text-indigo-600" />
-                  Performance Overview
-                </h2>
-                <select className="px-3 py-1 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                  <option>Last 7 days</option>
-                  <option>Last 30 days</option>
-                  <option>Last 3 months</option>
-                </select>
+          {/* Quick Info Section */}
+          <div className="bg-white rounded-xl shadow-md p-6">
+            <h2 className="text-xl font-bold text-gray-800 mb-4">Quick Info</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <p className="text-sm text-gray-600">Your Role</p>
+                <p className="text-lg font-semibold text-gray-800">{userRole}</p>
               </div>
-
-              {/* Simple Chart Placeholder */}
-              <div className="h-64 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg flex items-center justify-center border border-indigo-100">
-                <div className="text-center">
-                  <FaChartLine className="text-6xl text-indigo-300 mx-auto mb-3" />
-                  <p className="text-gray-500">Chart visualization will appear here</p>
-                  <p className="text-sm text-gray-400 mt-1">Connect your analytics data to see insights</p>
-                </div>
-              </div>
-
-              {/* Quick Metrics */}
-              <div className="grid grid-cols-3 gap-4 mt-4">
-                <div className="text-center p-3 bg-blue-50 rounded-lg">
-                  <p className="text-2xl font-bold text-blue-600">87%</p>
-                  <p className="text-xs text-gray-600">Attendance Rate</p>
-                </div>
-                <div className="text-center p-3 bg-green-50 rounded-lg">
-                  <p className="text-2xl font-bold text-green-600">42hrs</p>
-                  <p className="text-xs text-gray-600">Avg Work Hours</p>
-                </div>
-                <div className="text-center p-3 bg-purple-50 rounded-lg">
-                  <p className="text-2xl font-bold text-purple-600">98%</p>
-                  <p className="text-xs text-gray-600">Shift Coverage</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                <FaClock className="mr-2 text-indigo-600" />
-                Recent Activity
-              </h2>
-              <div className="space-y-4">
-                {recentActivities.map((activity, idx) => (
-                  <div key={idx} className="flex items-start space-x-3 pb-3 border-b border-gray-100 last:border-0">
-                    <div className={`w-2 h-2 mt-2 rounded-full flex-shrink-0 ${
-                      activity.type === 'success' ? 'bg-green-500' :
-                      activity.type === 'warning' ? 'bg-yellow-500' :
-                      'bg-blue-500'
-                    }`}></div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm text-gray-800">
-                        <span className="font-semibold">{activity.user}</span> {activity.action}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-0.5">{activity.time}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <button className="w-full mt-4 text-sm text-indigo-600 hover:text-indigo-700 font-medium">
-                View All Activity →
-              </button>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Upcoming Events */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Upcoming Events</h2>
-              <div className="space-y-3">
-                {upcomingEvents.map((event, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                        <FaCalendarCheck className="text-indigo-600 text-xl" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800">{event.title}</p>
-                        <p className="text-sm text-gray-500">{event.date} at {event.time}</p>
-                      </div>
-                    </div>
-                    <button className="text-indigo-600 hover:text-indigo-700 text-sm font-medium">
-                      Details →
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h2>
-              <div className="grid grid-cols-2 gap-3">
-                <button className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition shadow-md">
-                  <FaUsers className="text-2xl mb-2" />
-                  <p className="text-sm font-medium">Add Employee</p>
-                </button>
-                <button className="p-4 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition shadow-md">
-                  <FaCalendarCheck className="text-2xl mb-2" />
-                  <p className="text-sm font-medium">Create Shift</p>
-                </button>
-                <button className="p-4 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-lg hover:from-purple-600 hover:to-purple-700 transition shadow-md">
-                  <FaFileAlt className="text-2xl mb-2" />
-                  <p className="text-sm font-medium">Generate Report</p>
-                </button>
-                <button className="p-4 bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition shadow-md">
-                  <FaAppleAlt className="text-2xl mb-2" />
-                  <p className="text-sm font-medium">Manage Depts</p>
-                </button>
+              <div className="p-4 bg-green-50 rounded-lg">
+                <p className="text-sm text-gray-600">Status</p>
+                <p className="text-lg font-semibold text-gray-800">
+                  {isClockedIn ? '🟢 Active' : '⚪ Inactive'}
+                </p>
               </div>
             </div>
           </div>

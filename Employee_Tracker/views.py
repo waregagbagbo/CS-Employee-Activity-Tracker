@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.core.management.commands.makemessages import STATUS_OK
 from requests import Response
 from rest_framework.authentication import SessionAuthentication
-from rest_framework.decorators import action
+from rest_framework.decorators import action,api_view,permission_classes
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from accounts.models import Employee, Department
@@ -15,6 +15,7 @@ from rest_framework import viewsets, authentication, filters
 from django.utils import timezone
 from datetime import datetime, timedelta
 from rest_framework.response import Response
+
 
 
 User = get_user_model() # reference the custom User model
@@ -246,3 +247,97 @@ class ReportsViewSet(viewsets.ModelViewSet):
             return reports_base_queryset.filter(shift_active_agent=employee_profile)
 
     # perform create method by user type
+
+
+# Check if user is clocked in
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def attendance_status(request):
+    try:
+        employee = request.user.employee_profile
+
+        # Check for active clock-in (no clock-out yet)
+        active = Attendance.objects.filter(
+            employee=employee,
+            clock_out_time__isnull=True
+        ).first()
+
+        if active:
+            return Response({
+                'is_clocked_in': True,
+                'clock_in_time': active.clock_in_time
+            })
+        else:
+            return Response({'is_clocked_in': False})
+    except:
+        return Response({'is_clocked_in': False})
+
+
+# Clock In
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def clock_in(request):
+    try:
+        employee = request.user.employee_profile
+
+        # Check if already clocked in
+        active = Attendance.objects.filter(
+            employee=employee,
+            clock_out_time__isnull=True
+        ).first()
+
+        if active:
+            return Response(
+                {'detail': 'Already clocked in'},
+                status=400
+            )
+
+        # Create new attendance record
+        attendance = Attendance.objects.create(
+            employee=employee,
+            clock_in_time=timezone.now()
+        )
+
+        return Response({
+            'message': 'Clocked in successfully',
+            'clock_in_time': attendance.clock_in_time
+        })
+    except Exception as e:
+        return Response({'detail': str(e)}, status=400)
+
+
+# Clock Out
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def clock_out(request):
+    try:
+        employee = request.user.employee_profile
+
+        # Find active clock-in
+        active = Attendance.objects.filter(
+            employee=employee,
+            clock_out_time__isnull=True
+        ).first()
+
+        if not active:
+            return Response(
+                {'detail': 'Not clocked in'},
+                status=400
+            )
+
+        # Update with clock-out time
+        active.clock_out_time = timezone.now()
+
+        # Calculate duration in hours
+        duration = (active.clock_out_time - active.clock_in_time).total_seconds() / 3600
+        active.duration_hours = round(duration, 2)
+        active.save()
+
+        return Response({
+            'message': 'Clocked out successfully',
+            'duration_hours': active.duration_hours,
+            'clock_in_time': active.clock_in_time,
+            'clock_out_time': active.clock_out_time
+        })
+    except Exception as e:
+        return Response({'detail': str(e)}, status=400)

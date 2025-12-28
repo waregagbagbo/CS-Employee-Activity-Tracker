@@ -81,3 +81,13 @@ class ActivityReport(models.Model):
         unique_together = (('report_type', 'shift_active_agent'),)
 
 
+# Model for attendance tracking
+class Attendance(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    clock_in_time = models.DateTimeField()
+    clock_out_time = models.DateTimeField(null=True, blank=True)
+    duration_hours = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-clock_in_time']

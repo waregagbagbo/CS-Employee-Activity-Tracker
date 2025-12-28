@@ -24,4 +24,9 @@ urlpatterns =[
     path('departments/',include(dept_router.urls)),
     path('shifts/',include(shifts_router.urls)),
     path('reports/',include(activityreport_router.urls)),
+
+
+    path('attendance/status/',  views.attendance_status, name='attendance_status'),
+    path('attendance/clock-in/', views.clock_in, name='clock_in'),
+    path('attendance/clock-out/', views.clock_out, name='clock_out'),
 ]
