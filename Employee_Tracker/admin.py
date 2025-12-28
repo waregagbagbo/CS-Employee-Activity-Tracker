@@ -15,7 +15,8 @@ class ActivityAdmin(admin.ModelAdmin):
 
 
 class AttendanceAdmin(admin.ModelAdmin):
-    list_display = ('clock_in_time', 'clock_out_time',)
+    list_display = ('employee','clock_in_time', 'clock_out_time','date',)
+    list_filter = ('employee','clock_in_time','clock_out_time','date',)
 
 
 admin.site.register(Shift, ShiftAdmin)
