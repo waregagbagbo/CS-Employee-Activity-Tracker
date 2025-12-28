@@ -5,7 +5,7 @@ import Loader from "../components/Loader";
 import { listDepartments } from "../services/department";
 import {
   FaBuilding, FaSearch, FaPlus, FaUsers, FaChevronLeft,
-  FaChevronRight, FaEdit, FaTrash, FaEye, FaLock, FaUserTie,
+  FaChevronRight, FaEdit, FaTrash, FaEye, FaLock, FaUserTie, FaShieldAlt
 } from "react-icons/fa";
 
 export default function Departments() {
@@ -14,14 +14,7 @@ export default function Departments() {
   const [filteredDepartments, setFilteredDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [page, setPage] = useState(1);
-  const [nextPage, setNextPage] = useState(null);
-  const [prevPage, setPrevPage] = useState(null);
-  const [viewMode, setViewMode] = useState("list");
-
-  // Permission States - matching your DepartmentViewPermission logic
   const [canManage, setCanManage] = useState(false);
   const [userRole, setUserRole] = useState("");
 
@@ -35,11 +28,10 @@ export default function Departments() {
 
   useEffect(() => {
     const filtered = departments.filter((dept) => {
-      const searchLower = searchTerm.toLowerCase();
-      return (
-        (dept.title || "").toLowerCase().includes(searchLower) ||
-        (dept.description || "").toLowerCase().includes(searchLower)
-      );
+      const title = dept.name || dept.title || "";
+      const desc = dept.description || "";
+      return title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+             desc.toLowerCase().includes(searchTerm.toLowerCase());
     });
     setFilteredDepartments(filtered);
   }, [searchTerm, departments]);
@@ -48,29 +40,16 @@ export default function Departments() {
     try {
       const token = localStorage.getItem('token') || localStorage.getItem('authToken');
       if (!token) return;
-
       const response = await fetch('http://127.0.0.1:8000/api/employees/me/', {
-        headers: {
-          'Authorization': `Token ${token}`,
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Authorization': `Token ${token}`, 'Content-Type': 'application/json' }
       });
-
       if (response.ok) {
         const data = await response.json();
-
-        // Match your Backend: request.user.is_staff or request.user.is_superuser
-        // Also checking user_type as a fallback
-        const isAdmin = data.is_staff ||
-                        data.is_superuser ||
-                        data.user_type === "Admin" || "superuser" || 'admin'
-
+        const isAdmin = data.is_staff || data.is_superuser || ["Admin", "superuser", "admin"].includes(data.user_type);
         setCanManage(isAdmin);
         setUserRole(data.user_type || (isAdmin ? "Administrator" : "Employee"));
       }
-    } catch (err) {
-      console.error("Permission check error:", err);
-    }
+    } catch (err) { console.error("Permission check error:", err); }
   };
 
   const fetchDepartments = async (pageNumber = 1) => {
@@ -79,127 +58,132 @@ export default function Departments() {
       const response = await listDepartments({ page: pageNumber });
       const deptData = response.data.results || response.data;
       setDepartments(Array.isArray(deptData) ? deptData : []);
-      setNextPage(response.data.next);
-      setPrevPage(response.data.previous);
-    } catch (err) {
-      setError("Failed to load departments");
-    } finally {
-      setLoading(false);
-    }
+    } catch (err) { setError("Failed to load departments"); }
+    finally { setLoading(false); }
   };
 
-  if (loading) return <Loader fullPage message="Verifying permissions..." />;
+  if (loading) return <Loader fullPage message="SYNCHRONIZING DIRECTORY..." />;
 
   return (
-    <div className="flex bg-gray-50">
+    <div className="flex bg-[#F9FAFB] min-h-screen font-sans">
       <Sidebar />
-      <div className="flex-1 min-h-screen">
-        <div className="py-8 px-4 max-w-7xl mx-auto">
+      <div className="flex-1 p-8 lg:p-12">
 
-          {/* Header */}
-          <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-800 flex items-center">
-                <FaBuilding className="mr-3 text-indigo-600" /> Departments
-              </h1>
-              <p className="text-gray-600 mt-1">Role: <span className="font-bold text-indigo-600">{userRole}</span></p>
+        {/* Header Section */}
+        <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <div>
+            <h1 className="text-4xl font-black italic uppercase tracking-tighter text-black flex items-center">
+              Node <span className="text-[#FFCC00] ml-2">Directory</span>
+            </h1>
+            <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mt-2 flex items-center gap-2">
+              <FaShieldAlt className="text-[#FFCC00]" /> Access Tier: {userRole}
+            </p>
+          </div>
+
+          {canManage ? (
+            <button
+              onClick={() => navigate("/departments/new")}
+              className="bg-black text-[#FFCC00] px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl flex items-center gap-3"
+            >
+              <FaPlus /> Add Department
+            </button>
+          ) : (
+            <div className="bg-gray-100 border border-gray-200 px-6 py-3 rounded-2xl flex items-center gap-3">
+              <FaLock className="text-gray-400" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Read-Only Directory</span>
             </div>
+          )}
+        </header>
 
-            {/* CREATE BUTTON - Only for Admins */}
-            {canManage ? (
-              <button
-                onClick={() => navigate("/departments/new")}
-                className="mt-4 md:mt-0 flex items-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md"
-              >
-                <FaPlus /> <span>Add Department</span>
-              </button>
-            ) : (
-              <div className="mt-4 md:mt-0 text-gray-400 flex items-center bg-gray-100 px-4 py-2 rounded-lg border border-gray-200">
-                <FaLock className="mr-2" /> <span className="text-sm">Read-Only Access</span>
-              </div>
-            )}
-          </div>
-
-          {/* Search Bar */}
-          <div className="bg-white rounded-xl shadow-sm p-4 mb-6 border border-gray-100">
-            <div className="relative">
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search departments..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition"
-              />
-            </div>
-          </div>
-
-          {/* Table Container */}
-          <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-            <table className="w-full text-left">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Department</th>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Head</th>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Staff Count</th>
-                  <th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {filteredDepartments.map((dept) => (
-                  <tr key={dept.id} className="hover:bg-indigo-50/50 transition duration-150">
-                    <td className="px-6 py-4">
-                      <div className="font-semibold text-gray-800">{dept.name || dept.title}</div>
-                      <div className="text-xs text-gray-500 line-clamp-1">{dept.description}</div>
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">{dept.department_head || "N/A"}</td>
-                    <td className="px-6 py-4">
-                      <span className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-md text-xs font-medium">
-                        {dept.employee_count || 0} Members
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <div className="flex justify-end space-x-3">
-                        <button
-                          onClick={() => navigate(`/departments/${dept.id}`)}
-                          className="p-2 text-gray-400 hover:text-indigo-600 transition"
-                          title="View"
-                        >
-                          <FaEye />
-                        </button>
-
-                        {/* EDIT & DELETE - Only for Admins */}
-                        {canManage ? (
-                          <>
-                            <button
-                              onClick={() => navigate(`/departments/${dept.id}/edit`)}
-                              className="p-2 text-gray-400 hover:text-blue-600 transition"
-                              title="Edit"
-                            >
-                              <FaEdit />
-                            </button>
-                            <button
-                              className="p-2 text-gray-400 hover:text-red-600 transition"
-                              title="Delete"
-                            >
-                              <FaTrash />
-                            </button>
-                          </>
-                        ) : (
-                          <div className="p-2 text-gray-200" title="Permission Denied">
-                            <FaLock size={12} />
-                          </div>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Pagination omitted for brevity but logic is preserved in your fetch function */}
+        {/* Search Bar */}
+        <div className="relative mb-10 group">
+          <FaSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#FFCC00] transition-colors" />
+          <input
+            type="text"
+            placeholder="FILTER BY DEPARTMENT NAME OR DESCRIPTION..."
+            className="w-full pl-16 pr-8 py-5 bg-white border border-gray-100 rounded-[2rem] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FFCC00] text-xs font-bold uppercase tracking-widest transition-all"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
+
+        {/* Departments Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredDepartments.map((dept) => (
+            <div
+              key={dept.id}
+              className="bg-white rounded-[2.5rem] border border-gray-100 p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group"
+            >
+              {/* Abstract Background Icon */}
+              <FaBuilding className="absolute -right-4 -bottom-4 text-gray-50 text-8xl group-hover:text-[#FFCC00]/10 transition-colors" />
+
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="bg-black p-4 rounded-2xl text-[#FFCC00]">
+                    <FaBuilding size={20} />
+                  </div>
+                  <div className="flex items-center gap-2 bg-gray-50 px-3 py-1 rounded-lg">
+                    <FaUsers className="text-gray-400" size={12} />
+                    <span className="text-[10px] font-black text-black uppercase">
+                      {dept.employee_count || 0} Staff
+                    </span>
+                  </div>
+                </div>
+
+                <h3 className="font-black text-xl uppercase tracking-tight text-black mb-2 truncate">
+                  {dept.name || dept.title}
+                </h3>
+                <p className="text-xs text-gray-400 font-medium line-clamp-2 mb-8 uppercase tracking-tighter leading-relaxed">
+                  {dept.description || "Operational unit with no secondary description recorded."}
+                </p>
+
+                <div className="flex items-center gap-3 mb-8 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                  <div className="w-8 h-8 bg-[#FFCC00] rounded-lg flex items-center justify-center text-black font-black text-xs">
+                    <FaUserTie />
+                  </div>
+                  <div>
+                    <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest">Head of Node</p>
+                    <p className="text-[10px] font-black text-black uppercase">{dept.department_head || "UNASSIGNED"}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2 pt-4 border-t border-gray-50">
+                  <button
+                    onClick={() => navigate(`/departments/${dept.id}`)}
+                    className="flex-1 bg-gray-100 text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-[#FFCC00] transition-all"
+                  >
+                    <FaEye className="inline mr-2" /> View
+                  </button>
+
+                  {canManage ? (
+                    <>
+                      <button
+                        onClick={() => navigate(`/departments/${dept.id}/edit`)}
+                        className="p-3 bg-white border border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-600 rounded-xl transition-all"
+                      >
+                        <FaEdit />
+                      </button>
+                      <button className="p-3 bg-white border border-gray-200 text-gray-400 hover:text-red-600 hover:border-red-600 rounded-xl transition-all">
+                        <FaTrash />
+                      </button>
+                    </>
+                  ) : (
+                    <div className="p-3 text-gray-200 flex items-center justify-center bg-gray-50 rounded-xl border border-gray-100">
+                      <FaLock size={12} />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {filteredDepartments.length === 0 && (
+          <div className="text-center py-24 bg-white rounded-[3rem] border border-dashed border-gray-200 mt-10">
+            <FaBuilding className="mx-auto text-gray-100 text-6xl mb-4" />
+            <p className="text-gray-400 font-black uppercase tracking-[0.3em] text-xs">No matching nodes found in directory</p>
+          </div>
+        )}
       </div>
     </div>
   );

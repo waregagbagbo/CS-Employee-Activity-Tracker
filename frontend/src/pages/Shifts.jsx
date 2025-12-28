@@ -12,7 +12,8 @@ import {
   FaEye,
   FaPlay,
   FaStop,
-  FaLock
+  FaLock,
+  FaShieldAlt
 } from "react-icons/fa";
 
 export default function Shifts() {
@@ -29,9 +30,9 @@ export default function Shifts() {
   const [canCreateReports, setCanCreateReports] = useState(false);
   const [canApproveReports, setCanApproveReports] = useState(false);
 
-  /* ==========================================================
-     LOAD USER ROLE / PERMISSIONS
-     ========================================================== */
+  // LOGIC: Enable shift creation only for non-admin and non-supervisors
+  const canCreateShift = userRole !== "Admin" && userRole !== "Supervisor" && userRole !== "";
+
   useEffect(() => {
     fetchUserRole();
     fetchShifts();
@@ -50,7 +51,6 @@ export default function Shifts() {
 
       const data = await res.json();
       const profile = data.results ? data.results[0] : data;
-
       const userType = profile?.user_type || "";
 
       setUserRole(userType);
@@ -60,7 +60,7 @@ export default function Shifts() {
         setCanCreateReports(true);
         setCanApproveReports(true);
       } else if (userType === "Employee_Agent") {
-        setCanEditShifts(true); // start / end
+        setCanEditShifts(true);
         setCanCreateReports(true);
       } else if (userType === "Supervisor") {
         setCanApproveReports(true);
@@ -70,17 +70,11 @@ export default function Shifts() {
     }
   };
 
-  /* ==========================================================
-     FETCH SHIFTS (NORMALIZED)
-     ========================================================== */
   const fetchShifts = async () => {
     setLoading(true);
-    setError("");
-
     try {
       const res = await listShifts();
       const data = res.data.results || res.data;
-
       const normalized = data.map((shift) => ({
         id: shift.id,
         title: shift.shift_type,
@@ -91,7 +85,6 @@ export default function Shifts() {
         timer: shift.shift_timer_count,
         agentName: shift.shift_agent?.user?.username || "N/A"
       }));
-
       setShifts(normalized);
       setFilteredShifts(normalized);
     } catch (err) {
@@ -101,168 +94,155 @@ export default function Shifts() {
     }
   };
 
-  /* ==========================================================
-     SEARCH FILTER
-     ========================================================== */
   useEffect(() => {
-    if (!searchTerm) {
-      setFilteredShifts(shifts);
-      return;
-    }
-
     const term = searchTerm.toLowerCase();
     setFilteredShifts(
-      shifts.filter(
-        (s) =>
-          s.title.toLowerCase().includes(term) ||
-          s.agentName.toLowerCase().includes(term)
+      shifts.filter((s) =>
+        s.title.toLowerCase().includes(term) || s.agentName.toLowerCase().includes(term)
       )
     );
   }, [searchTerm, shifts]);
 
-  /* ==========================================================
-     ACTIONS
-     ========================================================== */
   const handleStart = async (id) => {
-    try {
-      await startShift(id);
-      fetchShifts();
-    } catch {
-      alert("Cannot start shift");
-    }
+    try { await startShift(id); fetchShifts(); }
+    catch { alert("Cannot start shift"); }
   };
 
   const handleEnd = async (id) => {
-    try {
-      await endShift(id);
-      fetchShifts();
-    } catch (err) {
-      alert(err.response?.data?.error || "Cannot end shift");
-    }
+    try { await endShift(id); fetchShifts(); }
+    catch (err) { alert(err.response?.data?.error || "Cannot end shift"); }
   };
 
-  /* ==========================================================
-     STATUS COLOR
-     ========================================================== */
   const statusBadge = (status) => {
-    if (status === "Scheduled") return "bg-blue-100 text-blue-700";
-    if (status === "In Progress") return "bg-green-100 text-green-700";
-    if (status === "Completed") return "bg-gray-100 text-gray-700";
-    return "bg-gray-100 text-gray-700";
+    if (status === "Scheduled") return "bg-black text-[#FFCC00] border-black";
+    if (status === "In Progress") return "bg-[#FFCC00] text-black border-[#FFCC00]";
+    return "bg-gray-100 text-gray-400 border-gray-200";
   };
 
-  /* ==========================================================
-     RENDER
-     ========================================================== */
-  if (loading) return <Loader fullPage message="Loading shifts..." />;
+  if (loading) return <Loader fullPage message="Synchronizing Shifts..." />;
 
   return (
-    <div className="flex bg-gray-50">
+    <div className="flex bg-[#F9FAFB] min-h-screen">
       <Sidebar />
-      <div className="flex-1 p-8">
-        <h1 className="text-3xl font-bold mb-6 flex items-center">
-          <FaCalendarAlt className="mr-3 text-indigo-600" />
-          Shifts
-        </h1>
+      <div className="flex-1 p-8 lg:p-12">
 
-        {/* ACTION BUTTONS */}
-        <div className="flex gap-3 mb-6">
-          {canCreateReports && (
-            <button
-              onClick={() => navigate("/reports/new")}
-              className="bg-green-600 text-white px-4 py-2 rounded-lg"
-            >
-              Add Report
-            </button>
-          )}
+        {/* Header Section */}
+        <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <div>
+            <h1 className="text-4xl font-black italic uppercase tracking-tighter text-black flex items-center">
+              Shift <span className="text-[#FFCC00] ml-2">Registry</span>
+            </h1>
+            <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mt-2 flex items-center gap-2">
+              <FaShieldAlt className="text-[#FFCC00]" /> Role-Based Access: {userRole || "Fetching..."}
+            </p>
+          </div>
 
-          {canApproveReports && (
-            <button
-              onClick={() => navigate("/reports")}
-              className="bg-purple-600 text-white px-4 py-2 rounded-lg"
-            >
-              Approve Reports
-            </button>
-          )}
-        </div>
+          <div className="flex flex-wrap gap-3">
+            {/* ONLY FOR NON-ADMIN / NON-SUPERVISOR */}
+            {canCreateShift && (
+              <button
+                onClick={() => navigate("/shifts/new")}
+                className="bg-[#FFCC00] text-black px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-lg"
+              >
+                <FaPlus className="inline mr-2" /> Create Shift
+              </button>
+            )}
 
-        {/* SEARCH */}
-        <div className="relative mb-6">
-          <FaSearch className="absolute left-4 top-3 text-gray-400" />
+            {canCreateReports && (
+              <button
+                onClick={() => navigate("/reports/new")}
+                className="bg-black text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-gray-900 transition-all shadow-lg"
+              >
+                Add Report
+              </button>
+            )}
+
+            {canApproveReports && (
+              <button
+                onClick={() => navigate("/reports")}
+                className="bg-white border-2 border-black text-black px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-black hover:text-[#FFCC00] transition-all"
+              >
+                Approve Reports
+              </button>
+            )}
+          </div>
+        </header>
+
+        {/* Search Bar */}
+        <div className="relative mb-10">
+          <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
-            className="pl-10 py-2 border rounded w-full"
-            placeholder="Search by shift or agent"
+            className="w-full pl-14 pr-6 py-5 bg-white border border-gray-100 rounded-[2rem] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FFCC00] text-sm font-medium"
+            placeholder="SEARCH BY SHIFT TYPE OR AGENT NAME..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
-        {/* SHIFTS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Shifts Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredShifts.map((shift) => (
             <div
               key={shift.id}
-              className="bg-white rounded-xl shadow-md p-6"
+              className="group bg-white rounded-[2.5rem] border border-gray-100 p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
             >
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="font-bold text-lg">{shift.title}</h3>
-                <span
-                  className={`px-3 py-1 rounded-full text-xs ${statusBadge(
-                    shift.status
-                  )}`}
-                >
+              <div className="flex justify-between items-start mb-6">
+                <div className="bg-gray-50 p-3 rounded-2xl group-hover:bg-[#FFCC00] group-hover:text-black transition-colors">
+                  <FaClock size={20} />
+                </div>
+                <span className={`px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest border shadow-sm ${statusBadge(shift.status)}`}>
                   {shift.status}
                 </span>
               </div>
 
-              <p className="text-sm text-gray-600 mb-1">
-                <FaUser className="inline mr-2" />
-                {shift.agentName}
-              </p>
+              <h3 className="font-black text-xl uppercase tracking-tight text-black mb-4">{shift.title}</h3>
 
-              <p className="text-sm text-gray-600 mb-1">
-                <FaClock className="inline mr-2" />
-                {shift.start_time || "--"} → {shift.end_time || "--"}
-              </p>
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  <FaUser className="mr-3 text-[#FFCC00]" />
+                  {shift.agentName}
+                </div>
+                <div className="flex items-center text-xs font-bold text-gray-400 uppercase tracking-widest">
+                  <FaCalendarAlt className="mr-3 text-black" />
+                  {shift.start_time || "--"} <span className="mx-2">→</span> {shift.end_time || "--"}
+                </div>
+                <div className="inline-block mt-2 px-3 py-1 bg-gray-50 rounded-lg text-[10px] font-mono font-bold text-gray-400 italic">
+                  TIMER: {shift.timer}
+                </div>
+              </div>
 
-              <p className="text-xs text-gray-500 mb-4">{shift.timer}</p>
-
-              <div className="flex gap-2">
+              <div className="flex gap-2 pt-4 border-t border-gray-50">
                 <button
                   onClick={() => navigate(`/shifts/${shift.id}`)}
-                  className="flex-1 bg-indigo-50 text-indigo-600 py-2 rounded"
+                  className="flex-1 bg-gray-50 text-black hover:bg-black hover:text-white py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all"
                 >
-                  <FaEye className="inline mr-1" />
-                  View
+                  <FaEye className="inline mr-2" /> Details
                 </button>
 
                 {shift.status === "Scheduled" && canEditShifts && (
                   <button
                     onClick={() => handleStart(shift.id)}
-                    className="flex-1 bg-green-50 text-green-600 py-2 rounded"
+                    className="flex-1 bg-[#FFCC00] text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-md"
                   >
-                    <FaPlay className="inline mr-1" />
-                    Start
+                    <FaPlay className="inline mr-2" /> Start
                   </button>
                 )}
 
                 {shift.status === "In Progress" && canEditShifts && (
                   <button
                     onClick={() => handleEnd(shift.id)}
-                    className="flex-1 bg-red-50 text-red-600 py-2 rounded"
+                    className="flex-1 bg-black text-[#FFCC00] py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-md"
                   >
-                    <FaStop className="inline mr-1" />
-                    End
+                    <FaStop className="inline mr-2" /> End
                   </button>
                 )}
 
                 {!canEditShifts && (
                   <button
                     disabled
-                    className="flex-1 bg-gray-100 text-gray-400 py-2 rounded"
+                    className="flex-1 bg-gray-100 text-gray-400 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
                   >
-                    <FaLock className="inline mr-1" />
-                    Locked
+                    <FaLock size={10} /> Locked
                   </button>
                 )}
               </div>
@@ -271,9 +251,10 @@ export default function Shifts() {
         </div>
 
         {filteredShifts.length === 0 && (
-          <p className="text-center text-gray-500 mt-10">
-            No shifts found
-          </p>
+          <div className="text-center py-20 bg-white rounded-[2.5rem] border border-dashed border-gray-200 mt-10">
+            <FaCalendarAlt className="mx-auto text-4xl text-gray-100 mb-4" />
+            <p className="text-gray-400 font-black uppercase tracking-widest">No matching shift records found</p>
+          </div>
         )}
       </div>
     </div>

@@ -5,17 +5,8 @@ import Loader from "../components/Loader";
 import { retrieveProfile, updateProfile } from "../services/profile";
 import axios from "axios";
 import {
-  FaUser,
-  FaEnvelope,
-  FaLock,
-  FaBell,
-  FaPalette,
-  FaShieldAlt,
-  FaSave,
-  FaTimes,
-  FaCheck,
-  FaCog,
-  FaExclamationTriangle
+  FaUser, FaEnvelope, FaLock, FaBell, FaPalette, FaShieldAlt,
+  FaSave, FaTimes, FaCheck, FaCog, FaExclamationTriangle, FaGlobe
 } from "react-icons/fa";
 
 export default function Settings() {
@@ -26,39 +17,12 @@ export default function Settings() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  // Profile Settings
-  const [profileData, setProfileData] = useState({
-    username: "",
-    email: "",
-    first_name: "",
-    last_name: "",
-  });
+  const [profileData, setProfileData] = useState({ username: "", email: "", first_name: "", last_name: "" });
+  const [passwordData, setPasswordData] = useState({ current_password: "", new_password: "", confirm_password: "" });
+  const [notificationSettings, setNotificationSettings] = useState({ email_notifications: true, push_notifications: true, shift_reminders: true, report_updates: false });
+  const [appearanceSettings, setAppearanceSettings] = useState({ theme: "light", language: "en", timezone: "UTC" });
 
-  // Password Settings
-  const [passwordData, setPasswordData] = useState({
-    current_password: "",
-    new_password: "",
-    confirm_password: "",
-  });
-
-  // Notification Settings
-  const [notificationSettings, setNotificationSettings] = useState({
-    email_notifications: true,
-    push_notifications: true,
-    shift_reminders: true,
-    report_updates: false,
-  });
-
-  // Appearance Settings
-  const [appearanceSettings, setAppearanceSettings] = useState({
-    theme: "light",
-    language: "en",
-    timezone: "UTC",
-  });
-
-  useEffect(() => {
-    fetchUserData();
-  }, []);
+  useEffect(() => { fetchUserData(); }, []);
 
   const fetchUserData = async () => {
     setLoading(true);
@@ -71,8 +35,7 @@ export default function Settings() {
         last_name: data.last_name || "",
       });
     } catch (err) {
-      console.error("Error fetching profile:", err);
-      setError("Failed to load profile data");
+      setError("FAILED TO RETRIEVE SECURITY PROFILE.");
     } finally {
       setLoading(false);
     }
@@ -81,509 +44,182 @@ export default function Settings() {
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     setSaving(true);
-    setError("");
-    setSuccess("");
-
     try {
       await updateProfile(profileData);
-      setSuccess("Profile updated successfully!");
-
-      // Update localStorage
-      localStorage.setItem("username", profileData.username);
-      localStorage.setItem("email", profileData.email);
-
+      setSuccess("PROFILE SYNCHRONIZED.");
       setTimeout(() => setSuccess(""), 3000);
-    } catch (err) {
-      console.error("Update error:", err);
-      setError("Failed to update profile. Please try again.");
-    } finally {
-      setSaving(false);
-    }
+    } catch (err) { setError("SYNC FAILED."); }
+    finally { setSaving(false); }
   };
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    // Validate passwords match
     if (passwordData.new_password !== passwordData.confirm_password) {
-      setError("New passwords do not match!");
+      setError("KEY MISMATCH: PASSWORDS DO NOT MATCH.");
       return;
     }
-
-    if (passwordData.new_password.length < 8) {
-      setError("Password must be at least 8 characters long!");
-      return;
-    }
-
     setSaving(true);
-
     try {
-      const token = localStorage.getItem('token') ||
-                    localStorage.getItem('authToken') ||
-                    localStorage.getItem('access');
-
-      const response = await axios.post(
-        'http://127.0.0.1:8000/api/password/change/',
-        {
-          current_password: passwordData.current_password,
-          new_password: passwordData.new_password,
-        },
-        {
-          headers: {
-            'Authorization': `Token ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
+      const token = localStorage.getItem('access');
+      await axios.post('http://127.0.0.1:8000/api/password/change/',
+        { current_password: passwordData.current_password, new_password: passwordData.new_password },
+        { headers: { 'Authorization': `Token ${token}` } }
       );
-
-      setSuccess(response.data.message || "Password updated successfully!");
-      setPasswordData({
-        current_password: "",
-        new_password: "",
-        confirm_password: "",
-      });
-
-      setTimeout(() => setSuccess(""), 3000);
-    } catch (err) {
-      console.error("Password change error:", err);
-      const errorMsg = err.response?.data?.error || "Failed to update password. Please check your current password.";
-      setError(errorMsg);
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const handleNotificationSave = () => {
-    setSaving(true);
-    setSuccess("");
-
-    // Simulate API call
-    setTimeout(() => {
-      localStorage.setItem("notificationSettings", JSON.stringify(notificationSettings));
-      setSuccess("Notification preferences saved!");
-      setSaving(false);
-      setTimeout(() => setSuccess(""), 3000);
-    }, 500);
-  };
-
-  const handleAppearanceSave = () => {
-    setSaving(true);
-    setSuccess("");
-
-    // Simulate API call
-    setTimeout(() => {
-      localStorage.setItem("appearanceSettings", JSON.stringify(appearanceSettings));
-      setSuccess("Appearance settings saved!");
-      setSaving(false);
-      setTimeout(() => setSuccess(""), 3000);
-    }, 500);
+      setSuccess("SECURITY KEY UPDATED.");
+      setPasswordData({ current_password: "", new_password: "", confirm_password: "" });
+    } catch (err) { setError("AUTHORIZATION DENIED."); }
+    finally { setSaving(false); }
   };
 
   const tabs = [
-    { id: "profile", name: "Profile", icon: <FaUser /> },
-    { id: "password", name: "Password", icon: <FaLock /> },
-    { id: "notifications", name: "Notifications", icon: <FaBell /> },
-    { id: "appearance", name: "Appearance", icon: <FaPalette /> },
+    { id: "profile", name: "User Identity", icon: <FaUser /> },
+    { id: "password", name: "Security Key", icon: <FaLock /> },
+    { id: "notifications", name: "Alert Nodes", icon: <FaBell /> },
+    { id: "appearance", name: "Interface", icon: <FaPalette /> },
   ];
 
-  if (loading) {
-    return <Loader fullPage message="Loading settings..." />;
-  }
+  if (loading) return <Loader fullPage message="INITIALIZING SETTINGS CONSOLE..." />;
 
   return (
-    <div className="flex bg-gray-50">
+    <div className="flex bg-[#F9FAFB] min-h-screen font-sans">
       <Sidebar />
-      <div className="flex-1 min-h-screen">
-        <div className="py-8 px-4">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
-            <div className="mb-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-800 flex items-center">
-                    <FaCog className="mr-3 text-indigo-600" />
-                    Settings
-                  </h1>
-                  <p className="text-gray-600 mt-1">Manage your account preferences</p>
-                </div>
+      <div className="flex-1 p-8 lg:p-12 overflow-y-auto">
+        <div className="max-w-5xl mx-auto">
+
+          {/* Branded Header */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-1 bg-[#FFCC00]"></div>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">System Preferences</span>
+            </div>
+            <h1 className="text-5xl font-black italic uppercase tracking-tighter text-black">
+              Account <span className="text-[#FF8800]">Control</span>
+            </h1>
+          </div>
+
+          {/* Feedback Alerts */}
+          {success && (
+            <div className="mb-8 bg-black text-[#FFCC00] px-6 py-4 rounded-2xl flex items-center gap-4 animate-slide-in shadow-2xl">
+              <FaCheck className="text-sm" />
+              <span className="text-[11px] font-black uppercase tracking-widest">{success}</span>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            {/* Sidebar Command Menu */}
+            <div className="lg:col-span-3">
+              <div className="bg-white rounded-[2rem] p-3 shadow-sm border border-gray-100 sticky top-8">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl transition-all mb-1 ${
+                      activeTab === tab.id
+                        ? "bg-black text-[#FFCC00] shadow-xl shadow-black/10 scale-105"
+                        : "text-gray-400 hover:text-black hover:bg-gray-50"
+                    }`}
+                  >
+                    <span className="text-sm">{tab.icon}</span>
+                    <span className="text-[11px] font-black uppercase tracking-widest">{tab.name}</span>
+                  </button>
+                ))}
               </div>
             </div>
 
-            {/* Success/Error Messages */}
-            {success && (
-              <div className="mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-start animate-pulse">
-                <FaCheck className="mr-2 mt-0.5" />
-                <span>{success}</span>
-              </div>
-            )}
+            {/* Main Configuration Deck */}
+            <div className="lg:col-span-9">
+              <div className="bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(0,0,0,0.03)] border border-gray-100 p-10 lg:p-14">
 
-            {error && (
-              <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-start">
-                <FaExclamationTriangle className="mr-2 mt-0.5" />
-                <span>{error}</span>
-              </div>
-            )}
-
-            {/* Main Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-              {/* Sidebar Tabs */}
-              <div className="lg:col-span-1">
-                <div className="bg-white rounded-xl shadow-md p-4 space-y-1">
-                  {tabs.map((tab) => (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
-                        activeTab === tab.id
-                          ? "bg-indigo-600 text-white shadow-md"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      <span className="text-lg">{tab.icon}</span>
-                      <span className="font-medium">{tab.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Content Area */}
-              <div className="lg:col-span-3">
-                <div className="bg-white rounded-xl shadow-md p-8">
-
-                  {/* Profile Tab */}
-                  {activeTab === "profile" && (
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-800 mb-6">Profile Information</h2>
-                      <form onSubmit={handleProfileUpdate} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {/* Username */}
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Username
-                            </label>
-                            <div className="relative">
-                              <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                              <input
-                                type="text"
-                                value={profileData.username}
-                                onChange={(e) => setProfileData({ ...profileData, username: e.target.value })}
-                                disabled
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 cursor-not-allowed"
-                              />
-                            </div>
-                            <p className="text-xs text-gray-500 mt-1">Username cannot be changed</p>
-                          </div>
-
-                          {/* Email */}
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Email Address
-                            </label>
-                            <div className="relative">
-                              <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                              <input
-                                type="email"
-                                value={profileData.email}
-                                onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                              />
-                            </div>
-                          </div>
-
-                          {/* First Name */}
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              First Name
-                            </label>
-                            <input
-                              type="text"
-                              value={profileData.first_name}
-                              onChange={(e) => setProfileData({ ...profileData, first_name: e.target.value })}
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                            />
-                          </div>
-
-                          {/* Last Name */}
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Last Name
-                            </label>
-                            <input
-                              type="text"
-                              value={profileData.last_name}
-                              onChange={(e) => setProfileData({ ...profileData, last_name: e.target.value })}
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                            />
-                          </div>
-                        </div>
-
-                        {/* Save Button */}
-                        <div className="flex justify-end pt-6 border-t">
-                          <button
-                            type="submit"
-                            disabled={saving}
-                            className="flex items-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition disabled:opacity-50"
-                          >
-                            {saving ? (
-                              <>
-                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                                <span>Saving...</span>
-                              </>
-                            ) : (
-                              <>
-                                <FaSave />
-                                <span>Save Changes</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  )}
-
-                  {/* Password Tab */}
-                  {activeTab === "password" && (
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-800 mb-6">Change Password</h2>
-                      <form onSubmit={handlePasswordUpdate} className="space-y-6">
-                        {/* Current Password */}
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Current Password
-                          </label>
-                          <div className="relative">
-                            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                            <input
-                              type="password"
-                              value={passwordData.current_password}
-                              onChange={(e) => setPasswordData({ ...passwordData, current_password: e.target.value })}
-                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                              required
-                            />
-                          </div>
-                        </div>
-
-                        {/* New Password */}
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            New Password
-                          </label>
-                          <div className="relative">
-                            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                            <input
-                              type="password"
-                              value={passwordData.new_password}
-                              onChange={(e) => setPasswordData({ ...passwordData, new_password: e.target.value })}
-                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                              required
-                              minLength={8}
-                            />
-                          </div>
-                          <p className="text-xs text-gray-500 mt-1">Must be at least 8 characters</p>
-                        </div>
-
-                        {/* Confirm Password */}
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Confirm New Password
-                          </label>
-                          <div className="relative">
-                            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                            <input
-                              type="password"
-                              value={passwordData.confirm_password}
-                              onChange={(e) => setPasswordData({ ...passwordData, confirm_password: e.target.value })}
-                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                              required
-                            />
-                          </div>
-                        </div>
-
-                        {/* Submit Button */}
-                        <div className="flex justify-end pt-6 border-t">
-                          <button
-                            type="submit"
-                            disabled={saving}
-                            className="flex items-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition disabled:opacity-50"
-                          >
-                            {saving ? (
-                              <>
-                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                                <span>Updating...</span>
-                              </>
-                            ) : (
-                              <>
-                                <FaSave />
-                                <span>Update Password</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  )}
-
-                  {/* Notifications Tab */}
-                  {activeTab === "notifications" && (
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-800 mb-6">Notification Preferences</h2>
-                      <div className="space-y-6">
-                        {/* Email Notifications */}
-                        <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                          <div>
-                            <h3 className="font-semibold text-gray-800">Email Notifications</h3>
-                            <p className="text-sm text-gray-600">Receive notifications via email</p>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={notificationSettings.email_notifications}
-                              onChange={(e) => setNotificationSettings({ ...notificationSettings, email_notifications: e.target.checked })}
-                              className="sr-only peer"
-                            />
-                            <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
-                          </label>
-                        </div>
-
-                        {/* Push Notifications */}
-                        <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                          <div>
-                            <h3 className="font-semibold text-gray-800">Push Notifications</h3>
-                            <p className="text-sm text-gray-600">Receive push notifications in browser</p>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={notificationSettings.push_notifications}
-                              onChange={(e) => setNotificationSettings({ ...notificationSettings, push_notifications: e.target.checked })}
-                              className="sr-only peer"
-                            />
-                            <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
-                          </label>
-                        </div>
-
-                        {/* Shift Reminders */}
-                        <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                          <div>
-                            <h3 className="font-semibold text-gray-800">Shift Reminders</h3>
-                            <p className="text-sm text-gray-600">Get reminded about upcoming shifts</p>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={notificationSettings.shift_reminders}
-                              onChange={(e) => setNotificationSettings({ ...notificationSettings, shift_reminders: e.target.checked })}
-                              className="sr-only peer"
-                            />
-                            <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
-                          </label>
-                        </div>
-
-                        {/* Report Updates */}
-                        <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                          <div>
-                            <h3 className="font-semibold text-gray-800">Report Updates</h3>
-                            <p className="text-sm text-gray-600">Notify when reports are ready</p>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={notificationSettings.report_updates}
-                              onChange={(e) => setNotificationSettings({ ...notificationSettings, report_updates: e.target.checked })}
-                              className="sr-only peer"
-                            />
-                            <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
-                          </label>
-                        </div>
-
-                        {/* Save Button */}
-                        <div className="flex justify-end pt-6 border-t">
-                          <button
-                            onClick={handleNotificationSave}
-                            disabled={saving}
-                            className="flex items-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition"
-                          >
-                            <FaSave />
-                            <span>Save Preferences</span>
-                          </button>
-                        </div>
+                {/* Profile Identity Section */}
+                {activeTab === "profile" && (
+                  <form onSubmit={handleProfileUpdate} className="space-y-8 animate-in fade-in duration-500">
+                    <h2 className="text-[12px] font-black text-black uppercase tracking-[0.4em] border-b border-gray-100 pb-6 mb-8">Personnel Identity</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">System Username</label>
+                        <input type="text" value={profileData.username} disabled className="w-full px-6 py-4 bg-gray-50 border border-transparent rounded-2xl font-bold text-gray-400 cursor-not-allowed text-sm" />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Contact Email</label>
+                        <input type="email" value={profileData.email} onChange={(e) => setProfileData({ ...profileData, email: e.target.value })} className="w-full px-6 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#FFCC00] transition-all outline-none font-bold text-sm" />
                       </div>
                     </div>
-                  )}
-
-                  {/* Appearance Tab */}
-                  {activeTab === "appearance" && (
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-800 mb-6">Appearance Settings</h2>
-                      <div className="space-y-6">
-                        {/* Theme */}
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Theme
-                          </label>
-                          <select
-                            value={appearanceSettings.theme}
-                            onChange={(e) => setAppearanceSettings({ ...appearanceSettings, theme: e.target.value })}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                          >
-                            <option value="light">Light</option>
-                            <option value="dark">Dark (Coming Soon)</option>
-                            <option value="auto">Auto (System)</option>
-                          </select>
-                        </div>
-
-                        {/* Language */}
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Language
-                          </label>
-                          <select
-                            value={appearanceSettings.language}
-                            onChange={(e) => setAppearanceSettings({ ...appearanceSettings, language: e.target.value })}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                          >
-                            <option value="en">English</option>
-                            <option value="es">Spanish</option>
-                            <option value="fr">French</option>
-                          </select>
-                        </div>
-
-                        {/* Timezone */}
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Timezone
-                          </label>
-                          <select
-                            value={appearanceSettings.timezone}
-                            onChange={(e) => setAppearanceSettings({ ...appearanceSettings, timezone: e.target.value })}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                          >
-                            <option value="UTC">UTC</option>
-                            <option value="America/New_York">Eastern Time</option>
-                            <option value="America/Chicago">Central Time</option>
-                            <option value="America/Denver">Mountain Time</option>
-                            <option value="America/Los_Angeles">Pacific Time</option>
-                          </select>
-                        </div>
-
-                        {/* Save Button */}
-                        <div className="flex justify-end pt-6 border-t">
-                          <button
-                            onClick={handleAppearanceSave}
-                            disabled={saving}
-                            className="flex items-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition"
-                          >
-                            <FaSave />
-                            <span>Save Settings</span>
-                          </button>
-                        </div>
-                      </div>
+                    <div className="flex justify-end pt-6">
+                      <button type="submit" disabled={saving} className="bg-black text-[#FFCC00] px-10 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#FF8800] hover:text-black transition-all shadow-xl">
+                        {saving ? "SYNCING..." : "COMMIT CHANGES"}
+                      </button>
                     </div>
-                  )}
+                  </form>
+                )}
 
-                </div>
+                {/* Password / Key Section */}
+                {activeTab === "password" && (
+                  <form onSubmit={handlePasswordUpdate} className="space-y-8 animate-in fade-in duration-500">
+                    <h2 className="text-[12px] font-black text-black uppercase tracking-[0.4em] border-b border-gray-100 pb-6 mb-8">Access Key Rotation</h2>
+                    <div className="space-y-6 max-w-md">
+                      {['current_password', 'new_password', 'confirm_password'].map((key) => (
+                        <div key={key} className="space-y-2">
+                          <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{key.replace('_', ' ')}</label>
+                          <div className="relative">
+                            <FaLock className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300" />
+                            <input
+                              type="password"
+                              value={passwordData[key]}
+                              onChange={(e) => setPasswordData({ ...passwordData, [key]: e.target.value })}
+                              className="w-full pl-14 pr-6 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#FF8800] transition-all outline-none font-bold"
+                              required
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-end pt-6">
+                      <button type="submit" disabled={saving} className="bg-black text-[#FFCC00] px-10 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#FF8800] hover:text-black transition-all shadow-xl">
+                        ROTATE ACCESS KEY
+                      </button>
+                    </div>
+                  </form>
+                )}
+
+                {/* Notifications Section */}
+                {activeTab === "notifications" && (
+                  <div className="space-y-8 animate-in fade-in duration-500">
+                    <h2 className="text-[12px] font-black text-black uppercase tracking-[0.4em] border-b border-gray-100 pb-6 mb-8">Alert Node Configuration</h2>
+                    <div className="grid gap-4">
+                      {Object.keys(notificationSettings).map((key) => (
+                        <div key={key} className="flex items-center justify-between p-6 bg-gray-50 rounded-[1.5rem] border border-transparent hover:border-[#FFCC00] transition-all group">
+                          <div>
+                            <h3 className="text-xs font-black uppercase text-black mb-1 italic">{key.replace('_', ' ')}</h3>
+                            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Active System Trigger</p>
+                          </div>
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" checked={notificationSettings[key]} className="sr-only peer" onChange={(e) => setNotificationSettings({...notificationSettings, [key]: e.target.checked})} />
+                            <div className="w-12 h-6 bg-gray-200 peer-focus:ring-0 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-black"></div>
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Appearance Section */}
+                {activeTab === "appearance" && (
+                  <div className="space-y-8 animate-in fade-in duration-500">
+                    <h2 className="text-[12px] font-black text-black uppercase tracking-[0.4em] border-b border-gray-100 pb-6 mb-8">Interface Parameters</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {['theme', 'language', 'timezone'].map((setting) => (
+                        <div key={setting} className="space-y-2">
+                          <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{setting}</label>
+                          <select className="w-full px-6 py-4 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#FFCC00] outline-none font-bold text-xs uppercase tracking-widest appearance-none">
+                            <option>{appearanceSettings[setting]}</option>
+                            <option>Advanced Node (Coming Soon)</option>
+                          </select>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
               </div>
             </div>
           </div>
