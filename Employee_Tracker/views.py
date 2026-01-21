@@ -43,6 +43,8 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
+        current_employee = self.request.user.employee_profile
+
         if user.is_superuser or user.is_staff:
             return Employee.objects.all()
         return Employee.objects.filter(user=self.request.user) # filter by user's own department
