@@ -47,7 +47,14 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 
         if user.is_superuser or user.is_staff:
             return Employee.objects.all()
-        return Employee.objects.filter(user=self.request.user) # filter by user's own department
+
+        profile = getattr(user, 'employee_profile', None)
+
+        if profile and profile.department:
+            return Employee.objects.filter(department=profile.department)
+
+        return Employee.objects.none()
+
 
     # for self profile
     @action(detail=False,methods=['PUT','GET','PATCH'], url_path='me')
