@@ -31,8 +31,10 @@ function App(){
         <Route path="/dashboard" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
+
           <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route path="/employee/:id" element={<Profile />} />
+
           <Route path="/settings" element={<Settings />} />
 
 

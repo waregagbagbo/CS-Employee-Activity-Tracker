@@ -39,7 +39,7 @@ export default function Employees() {
       const filtered = employees.filter((emp) => {
         const username = emp.username || "";
         const email = emp.email || "";
-        const deptTitle = emp.department?.title || "";
+        const deptTitle = emp.title || "";
         const searchLower = searchTerm.toLowerCase();
 
         return (
@@ -79,9 +79,9 @@ export default function Employees() {
   const getEmail = (emp) => emp.email || "No email registered";
   const getDepartmentName = (emp) => {
     if (emp.department && typeof emp.department === 'object') {
-      return emp.department.title || emp.department.name || "General Node";
+      return emp.department.title || "General Node";
     }
-    return emp.department_name || "General Node";
+    //return emp.department_name || "General Node";
   };
 
   const getInitials = (emp) => {

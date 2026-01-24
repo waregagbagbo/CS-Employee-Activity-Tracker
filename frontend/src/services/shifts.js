@@ -4,7 +4,7 @@ import API from "./api";
 export const listShifts = (params) => API.get("api/shifts/", { params });
 
 // GET DETAIL (The one you need for ShiftDetail)
-export const getShift = (id) => API.get(`api/shifts/${id}/`);
+export const getShift = (id) => API.get(`api/shifts/${id}`);
 
 // CREATE
 export const createShift = (data) => API.post("api/shifts/", data);
