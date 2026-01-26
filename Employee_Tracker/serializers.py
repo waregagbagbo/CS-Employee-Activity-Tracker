@@ -29,7 +29,7 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(source='user.first_name', read_only=True)
     last_name = serializers.CharField(source='user.last_name', read_only=True)
     hire_date = serializers.DateField(read_only=True) # value from the model
-    bio = serializers.CharField(read_only=True)
+    bio = serializers.CharField() # for posts
     user_type = serializers.CharField(read_only=True)
 
     class Meta:

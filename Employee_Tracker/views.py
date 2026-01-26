@@ -41,9 +41,8 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,CanEditOwnProfile)
     authentication_classes = (SessionAuthentication,authentication.TokenAuthentication,)
 
-    def get_queryset(self):
+    def get_queryset_getattr(self):
         user = self.request.user
-        current_employee = self.request.user.employee_profile
 
         if user.is_superuser or user.is_staff:
             return Employee.objects.all()
@@ -135,7 +134,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
                 'error': 'Employee profile not found. Please contact admin.'
             })
 
-    @action(detail=True, methods=['patch'], url_path='start')
+    @action(detail=False, methods=['patch'], url_path='start')
     def start_shift(self, request, pk=None):
         """Start a shift - sets shift_start_time to now and status to In Progress"""
         shift = self.get_object()
@@ -158,7 +157,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(shift)
         return Response({'message': 'Shift started successfully','shift': serializer.data})
 
-    @action(detail=True, methods=['patch'], url_path='end')
+    @action(detail=False, methods=['patch'], url_path='end')
     def end_shift(self, request, pk=None):
         """End a shift - validates 8-hour minimum before completion"""
         shift = self.get_object()
@@ -273,12 +272,13 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         user = self.request.user
         try:
             employee_profile = Employee.objects.select_related('user').get(user=user)
+
         except ObjectDoesNotExist as e:
             print(f'User with that profile does not exist {e}')
             return Attendance.objects.none()
 
         return Attendance.objects.all()
-        print(Attendance.objects.all())
+
 
 
 # Check if user is clocked in
