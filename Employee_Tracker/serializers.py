@@ -28,10 +28,16 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(source='user.email', read_only=True)
     first_name = serializers.CharField(source='user.first_name', read_only=True)
     last_name = serializers.CharField(source='user.last_name', read_only=True)
+    hire_date = serializers.DateField(read_only=True) # value from the model
+    bio = serializers.CharField(read_only=True)
+    user_type = serializers.CharField(read_only=True)
 
     class Meta:
         model = Employee
-        fields = '__all__'
+        #fields = '__all__'
+
+        # apply nested serializer for the fields for customization on the frontend
+        fields = ['id', 'username', 'email', 'first_name', 'last_name','department','hire_date','bio','user_type']
 
 
 # shifts serializer
