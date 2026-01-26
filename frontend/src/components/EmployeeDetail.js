@@ -195,10 +195,10 @@ export default function EmployeeDetail() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <Info label="Employee ID" value={id} icon={<FaIdCard />} />
                   <Info label="Email" value={employee.email || "N/A"} icon={<FaEnvelope />} />
-                  <Info label="Phone" value={employee.phone || "N/A"} icon={<FaPhone />} />
-                  <Info label="Joined" value={employee.date_joined?.slice(0, 10)} icon={<FaCalendar />} />
-                  <Info label="Position" value={employee.title || "Staff"} icon={<FaBriefcase />} />
-                  <Info label="Department" value={employee.deptTitle || "Tech"} icon={<FaBuilding />} />
+                  <Info label="Phone" value={employee.phone || "0123456789"} icon={<FaPhone />} />
+                  <Info label="Date Hired" value={employee.hire_date?.slice(0, 10)} icon={<FaCalendar />} />
+                  <Info label="Position" value={employee.user_type || "Staff"} icon={<FaBriefcase />} />
+                  <Info label="Bio" value={employee.department.title || "N/A"} icon={<FaUser />} />
                 </div>
               </>
             )}
