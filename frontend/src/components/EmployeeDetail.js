@@ -3,8 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { retrieveEmployee, updateEmployee } from "../services/employee";
 import Loader from "../components/Loader";
 import {
-  FaUser, FaEnvelope, FaBuilding, FaEdit, FaSave, FaTimes,
-  FaArrowLeft, FaPhone, FaCalendar, FaBriefcase, FaIdCard, FaShieldAlt
+  FaUser, FaEnvelope, FaEdit, FaSave, FaTimes,
+  FaArrowLeft, FaCalendar, FaBriefcase, FaIdCard, FaShieldAlt
 } from "react-icons/fa";
 
 export default function EmployeeDetail() {
@@ -194,11 +194,11 @@ export default function EmployeeDetail() {
 
                 <div className="grid md:grid-cols-3 gap-6">
                   <Info label="Employee ID" value={id} icon={<FaIdCard />} />
-                  <Info label="Email" value={employee.email || "N/A"} icon={<FaEnvelope />} />
-                  <Info label="Phone" value={employee.phone || "0123456789"} icon={<FaPhone />} />
+                  <Info label="Email" value={employee.email || ""} icon={<FaEnvelope />} />
+                  <Info label="Bio" value={employee.bio || ""} icon={<FaIdCard />} />
                   <Info label="Date Hired" value={employee.hire_date?.slice(0, 10)} icon={<FaCalendar />} />
                   <Info label="Position" value={employee.user_type || "Staff"} icon={<FaBriefcase />} />
-                  <Info label="Bio" value={employee.department.title || "N/A"} icon={<FaUser />} />
+                  <Info label="Department" value={employee.department.title || "N/A"} icon={<FaUser />} />
                 </div>
               </>
             )}
@@ -218,7 +218,7 @@ function Info({ label, value, icon }) {
           {label}
         </span>
       </div>
-      <p className="font-bold text-gray-800">{value}</p>
+      <p className="font-normal text-gray-700">{value}</p>
     </div>
   );
 }
