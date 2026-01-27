@@ -16,7 +16,7 @@ import CreateReport from "./pages/CreateReport";
 import ApproveReports from "./pages/ApproveReports";
 import ReportDetail from "./pages/ReportDetail";
 import Attendance from "./pages/Attendance";
-import EmployeeCreate from "./pages/CreateEmployee";
+//import EmployeeCreate from "./pages/CreateEmployee";
 
 function AttendanceDetail() {
   return null;

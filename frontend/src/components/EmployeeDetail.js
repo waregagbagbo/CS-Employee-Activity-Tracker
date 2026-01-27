@@ -158,7 +158,7 @@ export default function EmployeeDetail() {
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  {["first_name", "last_name", "email", "phone"].map((field) => (
+                  {["first_name", "last_name", "email", "bio"].map((field) => (
                     <input
                       key={field}
                       name={field}
