@@ -304,6 +304,25 @@ def attendance_status(request):
     except:
         return Response({'is_clocked_in': False})
 
+# fetch status
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def attendance_view(request):
+    try:
+        employee = request.user.employee_profile
+        active = Attendance.objects.filter()
+        if active:
+            return Response({
+                'is_clocked_in': True,
+                'clock_in_time': active.clock_in_time,
+            })
+        else:
+            return Response({'is_clocked_in': False})
+    except:
+        return Response({'is_clocked_in': False})
+
+
+
 
 # Clock In
 @api_view(['POST'])
