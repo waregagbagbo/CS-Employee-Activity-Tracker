@@ -13,6 +13,12 @@ STATUS = [
     ('In_Progress','In_Progress'),
 ]
 
+ATTENDANCE_TYPES = [
+    ('Clocked_In','Clocked_In'),
+    ('Clocked_Out','Clocked_Out'),
+    ('Break','Break_In'),
+]
+
 SHIFT_TYPES = [
     ('Day_Shift','Day_Shift'),
     ('Late_Shift','Late_Shift'),
