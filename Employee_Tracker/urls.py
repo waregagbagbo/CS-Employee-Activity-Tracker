@@ -31,10 +31,13 @@ urlpatterns =[
     path('attendance/', include(attendance_router.urls)),
 
 
+    # Attendance endpoints
+    path('attendance/status/', views.attendance_status, name='attendance-status'),
+    path('attendance/clock-in/', views.clock_in, name='clock-in'),
+    path('attendance/clock-out/', views.clock_out, name='clock-out'),
+    path('attendance/today/', views.today_summary, name='today-summary'),  # NEW
 
-    path('attendance/', views.attendance_view, name='attendance'),
-    path('attendance/status/',  views.attendance_status, name='attendance_status'),
-    path('attendance/clock-in/', views.clock_in, name='clock_in'),
-    path('attendance/clock-out/', views.clock_out, name='clock_out'),
+    # ViewSet
+    path('attendance/', views.AttendanceViewSet.as_view({'get': 'list'})),
 
 ]

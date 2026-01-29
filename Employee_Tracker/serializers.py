@@ -146,13 +146,206 @@ class ActivityReportSerializer(serializers.ModelSerializer):
         return super().update(instance,validated_data)
 
 
+class AttendanceListSerializer(serializers.ModelSerializer):
+    """
+    For list views - shows summary info with shift context.
+    Used in dashboard, attendance history, etc.
+    """
+    employee_name = serializers.CharField(source='employee.user.username', read_only=True)
+    shift_type = serializers.CharField(source='shift.shift_type', read_only=True, allow_null=True)
+    is_scheduled = serializers.SerializerMethodField()
 
-# attendance serializer
-class AttendanceSerializer(serializers.ModelSerializer):
-    user = EmployeeProfileSerializer(read_only=True)
+    #  Keeping full date time
+    clock_in_time = serializers.DateTimeField(read_only=True)
+    clock_out_time = serializers.DateTimeField(read_only=True, allow_null=True)
+
     class Meta:
         model = Attendance
-        fields = '__all__'
+        fields = [
+            'id',
+            'employee_name',
+            'clock_in_time',
+            'clock_out_time',
+            'duration_hours',
+            'status',
+            'date',
+            'shift_type',
+            'is_scheduled',
+        ]
 
+    def get_is_scheduled(self, obj):
+        """Indicates if this was scheduled work or unscheduled"""
+        return obj.shift is not None
+
+
+class AttendanceDetailSerializer(serializers.ModelSerializer):
+    """
+    For detail views - shows complete info including nested shift and employee.
+    Used when viewing single attendance record, clock in/out responses.
+    """
+    employee = EmployeeProfileSerializer(read_only=True)
+    shift = ShiftSerializer(read_only=True, allow_null=True)
+
+    # Calculated fields
+    variance_hours = serializers.SerializerMethodField()
+    is_late = serializers.SerializerMethodField()
+    has_overtime = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Attendance
+        fields = [
+            'id',
+            'employee',
+            'shift',
+            'clock_in_time',
+            'clock_out_time',
+            'duration_hours',
+            'status',
+            'date',
+            'variance_hours',
+            'is_late',
+            'has_overtime',
+            'created_at',
+            'updated_at',
+        ]
+
+    def get_variance_hours(self, obj):
+        """
+        Calculate difference between actual and scheduled hours.
+        Positive = overtime, Negative = undertime
+        """
+        if not obj.shift or not obj.duration_hours:
+            return None
+
+        from datetime import datetime, timedelta
+
+        # Calculate scheduled duration
+        start = datetime.combine(obj.date, obj.shift.shift_start_time)
+        end = datetime.combine(obj.date, obj.shift.shift_end_time)
+
+        if end < start:  # Overnight shift
+            end += timedelta(days=1)
+
+        scheduled_hours = (end - start).total_seconds() / 3600
+        variance = float(obj.duration_hours) - scheduled_hours
+
+        return round(variance, 2)
+
+    def get_is_late(self, obj):
+        """Check if employee clocked in late"""
+        if not obj.shift or not obj.clock_in_time:
+            return None
+
+        from datetime import datetime
+
+        scheduled_start = datetime.combine(obj.date, obj.shift.shift_start_time)
+
+        # Make timezone aware if needed
+        if scheduled_start.tzinfo is None and obj.clock_in_time.tzinfo is not None:
+            from django.utils import timezone as tz
+            scheduled_start = tz.make_aware(scheduled_start)
+
+        return obj.clock_in_time > scheduled_start
+
+    def get_has_overtime(self, obj):
+        """Check if employee worked overtime"""
+        if not obj.shift or not obj.clock_out_time:
+            return None
+
+        from datetime import datetime
+
+        scheduled_end = datetime.combine(obj.date, obj.shift.shift_end_time)
+
+        # Make timezone aware if needed
+        if scheduled_end.tzinfo is None and obj.clock_out_time.tzinfo is not None:
+            from django.utils import timezone as tz
+            scheduled_end = tz.make_aware(scheduled_end)
+
+        return obj.clock_out_time > scheduled_end
+
+
+class AttendanceCreateSerializer(serializers.ModelSerializer):
+    """
+    For creating attendance (clock in).
+    Only accepts necessary fields, other fields set by view/model.
+    """
+
+    class Meta:
+        model = Attendance
+        fields = ['employee', 'shift', 'clock_in_time', 'status']
+        read_only_fields = ['clock_in_time', 'status']  # Set by view
+
+
+class AttendanceUpdateSerializer(serializers.ModelSerializer):
+    """
+    For updating attendance (clock out).
+    """
+
+    class Meta:
+        model = Attendance
+        fields = ['clock_out_time', 'status', 'duration_hours']
+        read_only_fields = ['duration_hours']  # Calculated by model
+
+
+# ============================================
+# SUPERVISOR VIEW SERIALIZERS
+# ============================================
+
+class AttendanceSupervisorSerializer(serializers.ModelSerializer):
+    """
+    For supervisor dashboard - shows team attendance with key metrics.
+    """
+    employee_name = serializers.CharField(source='employee.user.get_full_name', read_only=True)
+    employee_id = serializers.CharField(source='employee.id', read_only=True)
+    shift_info = serializers.SerializerMethodField()
+    status_display = serializers.CharField(source='get_status_display', read_only=True)
+    has_report = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Attendance
+        fields = [
+            'id',
+            'employee_id',
+            'employee_name',
+            'clock_in_time',
+            'clock_out_time',
+            'duration_hours',
+            'status',
+            'status_display',
+            'date',
+            'shift_info',
+            'has_report',
+        ]
+
+    def get_shift_info(self, obj):
+        """Return shift info if exists"""
+        if obj.shift:
+            return {
+                'shift_type': obj.shift.shift_type,
+                'scheduled_start': obj.shift.shift_start_time,
+                'scheduled_end': obj.shift.shift_end_time,
+            }
+        return None
+
+    def get_has_report(self, obj):
+        """Check if report has been submitted for this attendance"""
+        return obj.reports.exists()
+
+
+# ============================================
+# DASHBOARD/STATS SERIALIZERS
+# ============================================
+
+class AttendanceStatsSerializer(serializers.Serializer):
+    """
+    For dashboard statistics - not tied to model directly.
+    """
+    total_hours_today = serializers.DecimalField(max_digits=5, decimal_places=2)
+    total_hours_week = serializers.DecimalField(max_digits=5, decimal_places=2)
+    total_hours_month = serializers.DecimalField(max_digits=5, decimal_places=2)
+    days_present_this_month = serializers.IntegerField()
+    average_hours_per_day = serializers.DecimalField(max_digits=5, decimal_places=2)
+    late_count_this_month = serializers.IntegerField()
+    overtime_hours_this_month = serializers.DecimalField(max_digits=5, decimal_places=2)
 
 
