@@ -60,6 +60,17 @@ Uses a custom AbstractUser model with email as the primary identifier. <br> Sign
  - GET /api/employees/{id}/ - Get employee details
  - PUT /api/employees/{id}/ - Update employee profile
 
+
+### Attendance Management (Viewsets)
+
+
+ - GET /api/attendance/ - List attendance of a user (lists)
+ - POST /api/attendance/clock_in - new attendance triggered
+ - POST /api/attendance/clok_out/ - time out for the user
+ - GET /api/attendance/status/ - Authenticated user gets status
+ - GET /api/attendance/today - Captures the day's attendance
+
+
 ### Shift Management (Viewsets)
 
 
