@@ -22,5 +22,3 @@ class AttendanceAdmin(admin.ModelAdmin):
 admin.site.register(Shift, ShiftAdmin)
 admin.site.register(ActivityReport,ActivityAdmin)
 admin.site.register(Attendance,AttendanceAdmin)
-#admin.site.register(WebHook, WebHookAdmin)
-#admin.site.register(WebHookLog, WebHookLogAdmin)

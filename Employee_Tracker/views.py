@@ -259,8 +259,7 @@ class ReportsViewSet(viewsets.ModelViewSet):
     # perform create method by user type
 
 
-"""
-Display the attendance sheet"""
+""" Display the attendance sheet """
 
 class AttendanceViewSet(viewsets.ModelViewSet):
     queryset = Attendance.objects.all()

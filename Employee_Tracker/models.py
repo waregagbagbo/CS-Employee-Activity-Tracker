@@ -68,8 +68,8 @@ class Shift(models.Model):
 
 # Model for attendance tracking
 class Attendance(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='attendances')
-    shift = models.ForeignKey(Shift, on_delete=models.SET_NULL,null=True, blank= True, related_name='attendances')
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='employee_attendance')
+    shift = models.ForeignKey(Shift, on_delete=models.SET_NULL, null=True, blank=True, related_name='shift_attendance')
 
     clock_in_time = models.DateTimeField()
     clock_out_time = models.DateTimeField(null=True, blank=True)
