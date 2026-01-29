@@ -3,7 +3,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Employee_Tracker', '0002_add_shift_field'),  # replace with your last migration
+        ('Employee_Tracker', '0002_add_shift_field '),  # replace with your last migration
     ]
 
     operations = [
