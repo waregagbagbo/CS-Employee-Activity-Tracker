@@ -1,5 +1,3 @@
-from datetime import datetime,timedelta
-from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import serializers
 from accounts.models import Employee,Department
 from .models import Shift, ActivityReport, Attendance
@@ -28,124 +26,107 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(source='user.email', read_only=True)
     first_name = serializers.CharField(source='user.first_name', read_only=True)
     last_name = serializers.CharField(source='user.last_name', read_only=True)
+    full_name = serializers.SerializerMethodField()
     hire_date = serializers.DateField(read_only=True) # value from the model
     bio = serializers.CharField() # for posts
     user_type = serializers.CharField(read_only=True)
 
-
     class Meta:
         model = Employee
-        #fields = '__all__'
 
-        # apply nested serializer for the fields for customization on the frontend
-        fields = ['id', 'username', 'email', 'first_name', 'last_name','department','hire_date','bio','user_type']
+        # apply nested serializer on the fields for customization on the frontend
+        fields = ['id', 'username', 'email', 'first_name', 'last_name','full_name','department','hire_date','bio','user_type']
+
+    # create fullname
+    def get_full_name(self,obj):
+        return f"{obj.user.first_name} {obj.user.last_name}".strip() or obj.user.username
 
 
-# shifts serializer
+
 class ShiftSerializer(serializers.ModelSerializer):
-    shift_url = serializers.HyperlinkedIdentityField(read_only=True,view_name='shift-detail', lookup_field='pk')
+    """
+    React-friendly shift serializer with attendance status.
+    """
     shift_agent = EmployeeProfileSerializer(read_only=True)
-    shift_timer_count = serializers.SerializerMethodField() # custom method to handle hours worked
+    duration_hours = serializers.DecimalField(max_digits=5, decimal_places=2, read_only=True)
+    has_attendance = serializers.SerializerMethodField()
+    attendance_status = serializers.SerializerMethodField()
 
     class Meta:
         model = Shift
-        fields = ('id','shift_url','shift_agent','shift_date','shift_start_time','shift_end_time',
-                  'shift_type','shift_status','shift_timer_count',)
+        fields = [
+            'id',
+            'shift_agent',
+            'shift_date',
+            'shift_start_time',
+            'shift_end_time',
+            'shift_type',
+            'shift_status',
+            'duration_hours',
+            'has_attendance',
+            'attendance_status',
+            'shift_created_at',
+        ]
 
+    #  Methods at CLASS level, not inside Meta!
+    def get_has_attendance(self, obj):
+        """Check if there's an attendance record for this shift"""
+        return obj.attendances.exists()
 
-   #custom serializer method
-    def get_shift_timer_count(self, obj):
-        if obj.shift_start_time and obj.shift_end_time:
-            today = timezone.localdate()
-            start_dt = timezone.make_aware(datetime.combine(today, obj.shift_start_time))
-            end_dt = timezone.make_aware(datetime.combine(today, obj.shift_end_time))
+    def get_attendance_status(self, obj):
+        """
+        Get actual work status from attendance records.
+        Returns detailed status based on clock in/out state.
+        """
+        # Get the first (should be only) attendance for this shift
+        attendance = obj.attendances.first()
 
-            # Handle overnight shift
-            if end_dt <= start_dt:
-                end_dt += timedelta(days=1)
+        # No attendance yet
+        if not attendance:
+            return {
+                'status': 'not_started',
+                'message': 'Shift not started'
+            }
 
-            duration = (end_dt - start_dt).total_seconds() / 3600
-            if duration >= 8 and not 'shift_status' == "Scheduled":
-                return 'Good work, shift done for today'
+        # Currently clocked in
+        if attendance.status == 'clocked_in':
+            if attendance.clock_in_time:
+                now = timezone.now()
+                duration = (now - attendance.clock_in_time).total_seconds() / 3600
+                return {
+                    'status': 'in_progress',
+                    'message': f'Shift in progress ({round(duration, 2)} hours so far)',
+                    'hours_worked': round(duration, 2)
+                }
+
+        # Clocked out
+        if attendance.status == 'clocked_out':
+            hours_worked = float(attendance.duration_hours) if attendance.duration_hours else 0
+            scheduled_hours = obj.duration_hours
+
+            if hours_worked >= scheduled_hours:
+                return {
+                    'status': 'completed',
+                    'message': 'Good work, shift done for today',
+                    'hours_worked': hours_worked,
+                    'scheduled_hours': scheduled_hours
+                }
             else:
-                return f'Shift incomplete ({round(duration, 2)} hours logged)'
+                return {
+                    'status': 'incomplete',
+                    'message': f'Shift incomplete ({hours_worked} hours logged)',
+                    'hours_worked': hours_worked,
+                    'scheduled_hours': scheduled_hours
+                }
 
-        elif obj.shift_start_time and not obj.shift_end_time:
-            now = timezone.now()
-            today = timezone.localdate()
-            start_dt = timezone.make_aware(datetime.combine(today, obj.shift_start_time))
-
-            # Handle overnight shift in progress
-            if now <= start_dt:
-                now += timedelta(days=1)
-
-            duration = (now - start_dt).total_seconds() / 3600
-            return f'Shift in progress ({round(duration, 2)} hours so far)'
-
-        else:
-            return 'Shift not started'
+        # Fallback for unknown status
+        return {
+            'status': 'unknown',
+            'message': 'Status unknown'
+        }
 
 
-class ActivityReportSerializer(serializers.ModelSerializer):
-    shift_active_agent = EmployeeProfileSerializer(read_only=True)
-    supervisor = EmployeeProfileSerializer(read_only=True)
-    report_id = serializers.HyperlinkedRelatedField(read_only=True, view_name='activityreport-detail', lookup_field='pk')
-    class Meta:
-        model = ActivityReport
-        fields = '__all__'
-
-    # hide is_approved field to non supervisor/admin
-    def get_fields(self):
-        fields = super().get_fields()
-        user = self.context['request'].user
-        try:
-            employee_profile = Employee.objects.get(user=user)
-        except ObjectDoesNotExist:
-            raise serializers.ValidationError('Employee does not exist')
-
-        if employee_profile.user_type not in ['Supervisor','Admin']:
-            fields.pop('is_approved',None)
-            fields.pop('activity_approved_at',None)
-        return fields
-
-    def create(self,validated_data):
-        user = self.context['request'].user
-        #fetch employee profile
-        try:
-            employee_profile = Employee.objects.get(user=user)
-        except ObjectDoesNotExist:
-            raise serializers.ValidationError('Employee does not exist')
-
-        # Always assign the active agent
-        validated_data['shift_active_agent'] = employee_profile
-
-        # Auto-attach the supervisor if the agent has one
-        if hasattr(employee_profile, 'supervisor') and employee_profile.supervisor:
-            validated_data['supervisor'] = employee_profile.supervisor
-
-        # restrict is_approved unless is supervisor
-        if validated_data.get('is_approved') or validated_data.get('activity_approved_at',False):
-            if employee_profile.user_type not in ['Supervisor','Admin']:
-                raise serializers.ValidationError('Only supervisor or Admins can approve')
-            # auto assign supervisor
-            validated_data['supervisor'] = employee_profile
-        return super().create(validated_data)
-
-    # run partial update
-    def update(self,instance,validated_data):
-        user = self.context['request'].user
-        try:
-            employee_profile = instance.shift_active_agent
-        except ObjectDoesNotExist:
-            raise serializers.ValidationError('Employee does not exist')
-        # check for validations
-        if validated_data.get('is_approved') or validated_data.get('activity_approved_at',False):
-            if not employee_profile.user_type not in ['Supervisor','Admin']:
-                raise serializers.ValidationError('Only supervisor or Managers can approve')
-        print('Data saved successfully')
-        return super().update(instance,validated_data)
-
-
+""" Attendance serializer"""
 class AttendanceListSerializer(serializers.ModelSerializer):
     """
     For list views - shows summary info with shift context.
@@ -232,7 +213,9 @@ class AttendanceDetailSerializer(serializers.ModelSerializer):
         return round(variance, 2)
 
     def get_is_late(self, obj):
+
         """Check if employee clocked in late"""
+
         if not obj.shift or not obj.clock_in_time:
             return None
 
@@ -349,3 +332,506 @@ class AttendanceStatsSerializer(serializers.Serializer):
     overtime_hours_this_month = serializers.DecimalField(max_digits=5, decimal_places=2)
 
 
+# ============================================
+# MAIN REPORT SERIALIZERS
+# ============================================
+
+class ActivityReportSerializer(serializers.ModelSerializer):
+    """
+    For list views - summary of reports.
+    Used in: report history, dashboard lists.
+    """
+    employee_name = serializers.CharField(source='employee.user.username', read_only=True)
+    employee_full_name = serializers.CharField(source='employee.user.get_full_name', read_only=True)
+    approved_by_name = serializers.CharField(source='approved_by.user.username', read_only=True, allow_null=True)
+    shift_type = serializers.CharField(read_only=True)  # Uses @property from model
+    work_date = serializers.DateField(source='attendance.date', read_only=True)
+
+    class Meta:
+        model = ActivityReport
+        fields = [
+            'id',
+            'employee_name',
+            'employee_full_name',
+            'work_date',
+            'report_type',
+            'shift_type',
+            'tickets_resolved',
+            'calls_made',
+            'issues_escalated',
+            'is_approved',
+            'approved_by_name',
+            'submitted_at',
+        ]
+
+
+class ActivityReportDetailSerializer(serializers.ModelSerializer):
+    """
+    For detail views - complete report information.
+    Used in: viewing single report, after submission, approval review.
+    """
+    employee = EmployeeProfileSerializer(read_only=True)
+    attendance = AttendanceListSerializer(read_only=True)
+    approved_by = EmployeeProfileSerializer(read_only=True, allow_null=True)
+    shift_type = serializers.CharField(read_only=True)  # Uses @property
+
+    # Computed permission fields
+    can_edit = serializers.SerializerMethodField()
+    can_approve = serializers.SerializerMethodField()
+    can_delete = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ActivityReport
+        fields = [
+            'id',
+            'employee',
+            'attendance',
+            'report_type',
+            'activity_description',
+            'tickets_resolved',
+            'calls_made',
+            'issues_escalated',
+            'notes',
+            'shift_type',
+            'is_approved',
+            'approved_by',
+            'approved_at',
+            'submitted_at',
+            'updated_at',
+            'can_edit',
+            'can_approve',
+            'can_delete',
+        ]
+
+    def get_can_edit(self, obj):
+        """Check if current user can edit this report"""
+        request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            return False
+
+        try:
+            user_profile = request.user.employee_profile
+
+            # Can't edit if already approved
+            if obj.is_approved:
+                return False
+
+            # Employee can edit their own unapproved report
+            if obj.employee == user_profile:
+                return True
+
+            # Admins can edit any unapproved report
+            if user_profile.user_type == 'Admin':
+                return True
+
+            return False
+        except:
+            return False
+
+    def get_can_approve(self, obj):
+        """Check if current user can approve this report"""
+        request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            return False
+
+        try:
+            user_profile = request.user.employee_profile
+
+            # Already approved
+            if obj.is_approved:
+                return False
+
+            # Must be supervisor or admin
+            if user_profile.user_type not in ['Supervisor', 'Manager', 'Admin']:
+                return False
+
+            #  STRICT CHECK: Can only approve direct reports
+            if obj.employee.supervisor == user_profile:
+                return True
+
+            # Admins can approve any report
+            if user_profile.user_type == 'Admin':
+                return True
+
+            return False
+        except:
+            return False
+
+    def get_can_delete(self, obj):
+        """Check if current user can delete this report"""
+        request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            return False
+
+        try:
+            user_profile = request.user.employee_profile
+
+            # Can't delete approved reports
+            if obj.is_approved:
+                return False
+
+            # Employee can delete their own unapproved report
+            if obj.employee == user_profile:
+                return True
+
+            # Admins can delete any unapproved report
+            if user_profile.user_type == 'Admin':
+                return True
+
+            return False
+        except:
+            return False
+
+
+class ActivityReportCreateSerializer(serializers.ModelSerializer):
+    """
+    For creating reports (employee submitting end-of-shift report).
+    Only accepts data needed from user; employee auto-assigned.
+    """
+    attendance_id = serializers.IntegerField(write_only=True)
+
+    class Meta:
+        model = ActivityReport
+        fields = [
+            'attendance_id',
+            'report_type',
+            'activity_description',
+            'tickets_resolved',
+            'calls_made',
+            'issues_escalated',
+            'notes',
+        ]
+
+    def validate_attendance_id(self, value):
+        """
+        Validate that attendance exists, belongs to user, and is eligible for report.
+        """
+        request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            raise serializers.ValidationError("Authentication required")
+
+        try:
+            employee_profile = request.user.employee_profile
+        except Employee.DoesNotExist:
+            raise serializers.ValidationError("Employee profile not found")
+
+        # Check attendance exists
+        try:
+            attendance = Attendance.objects.select_related('shift').get(id=value)
+        except Attendance.DoesNotExist:
+            raise serializers.ValidationError("Attendance record not found")
+
+        #  Check attendance belongs to this employee
+        if attendance.employee != employee_profile:
+            raise serializers.ValidationError(
+                "You can only submit reports for your own attendance"
+            )
+
+        #  Check attendance is clocked out
+        if attendance.status != 'clocked_out':
+            raise serializers.ValidationError(
+                "You must clock out before submitting a report"
+            )
+
+        #  Check if report already exists for this attendance
+        if ActivityReport.objects.filter(attendance=attendance).exists():
+            raise serializers.ValidationError(
+                "A report already exists for this attendance period"
+            )
+
+        return value
+
+    def validate(self, data):
+        """
+        Additional validation for report data.
+        """
+        # Ensure non-negative values
+        if data.get('tickets_resolved', 0) < 0:
+            raise serializers.ValidationError({'tickets_resolved': 'Cannot be negative'})
+        if data.get('calls_made', 0) < 0:
+            raise serializers.ValidationError({'calls_made': 'Cannot be negative'})
+        if data.get('issues_escalated', 0) < 0:
+            raise serializers.ValidationError({'issues_escalated': 'Cannot be negative'})
+
+        # Logical validation: escalations can't exceed tickets
+        if data.get('issues_escalated', 0) > data.get('tickets_resolved', 0):
+            raise serializers.ValidationError(
+                'Issues escalated cannot exceed tickets resolved'
+            )
+
+        return data
+
+    def create(self, validated_data):
+        """
+        Create report with auto-assigned employee.
+        """
+        request = self.context.get('request')
+        employee_profile = request.user.employee_profile
+
+        # Extract and get attendance object
+        attendance_id = validated_data.pop('attendance_id')
+        attendance = Attendance.objects.get(id=attendance_id)
+
+        #  Create report with proper relationships
+        report = ActivityReport.objects.create(
+            employee=employee_profile,  # Auto-assign from authenticated user
+            attendance=attendance,
+            **validated_data
+        )
+
+        return report
+
+
+class ActivityReportUpdateSerializer(serializers.ModelSerializer):
+    """
+    For updating reports (employee editing before approval).
+    Only allows editing work metrics and descriptions.
+    """
+
+    class Meta:
+        model = ActivityReport
+        fields = [
+            'activity_description',
+            'tickets_resolved',
+            'calls_made',
+            'issues_escalated',
+            'notes',
+        ]
+
+    def validate(self, data):
+        """
+        Validate that report can be edited.
+        """
+        request = self.context.get('request')
+        instance = self.instance
+
+        try:
+            user_profile = request.user.employee_profile
+        except Employee.DoesNotExist:
+            raise serializers.ValidationError("Employee profile not found")
+
+        #  Can't edit if already approved
+        if instance.is_approved:
+            raise serializers.ValidationError("Cannot edit an approved report")
+
+        #  Only the report creator can edit (unless admin)
+        if instance.employee != user_profile:
+            if user_profile.user_type != 'Admin':
+                raise serializers.ValidationError("You can only edit your own reports")
+
+        # Validate non-negative values
+        if data.get('tickets_resolved', instance.tickets_resolved) < 0:
+            raise serializers.ValidationError({'tickets_resolved': 'Cannot be negative'})
+        if data.get('calls_made', instance.calls_made) < 0:
+            raise serializers.ValidationError({'calls_made': 'Cannot be negative'})
+        if data.get('issues_escalated', instance.issues_escalated) < 0:
+            raise serializers.ValidationError({'issues_escalated': 'Cannot be negative'})
+
+        return data
+
+
+class ActivityReportApprovalSerializer(serializers.ModelSerializer):
+    """
+    For supervisors approving reports.
+    Minimal fields, strict validation.
+    """
+
+    class Meta:
+        model = ActivityReport
+        fields = ['is_approved']
+
+    def validate(self, data):
+        """
+        Validate that current user can approve this report.
+         STRICT SUPERVISOR HIERARCHY CHECK
+        """
+        request = self.context.get('request')
+        report = self.instance
+
+        try:
+            current_supervisor = request.user.employee_profile
+        except Employee.DoesNotExist:
+            raise serializers.ValidationError("Employee profile not found")
+
+        #  Must be supervisor, manager, or admin
+        if current_supervisor.user_type not in ['Supervisor', 'Manager', 'Admin']:
+            raise serializers.ValidationError(
+                "Only supervisors can approve reports"
+            )
+
+        #  Already approved?
+        if report.is_approved:
+            raise serializers.ValidationError("Report is already approved")
+
+        #  STRICT CHECK: Must supervise this employee (unless admin)
+        report_employee = report.employee
+        employee_supervisor = report_employee.supervisor
+
+        if employee_supervisor != current_supervisor:
+            if current_supervisor.user_type != 'Admin':
+                raise serializers.ValidationError(
+                    f"You can only approve reports for your direct reports. "
+                    f"This report belongs to {report_employee.user.username}, "
+                    f"whose supervisor is {employee_supervisor.user.username if employee_supervisor else 'None'}"
+                )
+
+        return data
+
+    def update(self, instance, validated_data):
+        """
+        Approve the report and record approval metadata.
+        """
+        request = self.context.get('request')
+        supervisor_profile = request.user.employee_profile
+
+        #  Set approval fields
+        instance.is_approved = True
+        instance.approved_by = supervisor_profile
+        instance.approved_at = timezone.now()
+        instance.save()
+
+        return instance
+
+
+# ============================================
+# SUPERVISOR-SPECIFIC SERIALIZERS
+# ============================================
+
+class PendingReportSerializer(serializers.ModelSerializer):
+    """
+    For supervisor's pending approvals view.
+    Optimized to show only what's needed for approval decisions.
+    """
+    employee_name = serializers.CharField(source='employee.user.get_full_name', read_only=True)
+    employee_username = serializers.CharField(source='employee.user.username', read_only=True)
+    employee_id = serializers.IntegerField(source='employee.id', read_only=True)
+
+    shift_date = serializers.DateField(source='attendance.date', read_only=True)
+    work_duration = serializers.DecimalField(
+        source='attendance.duration_hours',
+        max_digits=5,
+        decimal_places=2,
+        read_only=True
+    )
+    shift_type = serializers.CharField(read_only=True)  # Uses @property
+
+    # Quick summary
+    total_work = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ActivityReport
+        fields = [
+            'id',
+            'employee_id',
+            'employee_name',
+            'employee_username',
+            'shift_date',
+            'shift_type',
+            'work_duration',
+            'report_type',
+            'tickets_resolved',
+            'calls_made',
+            'issues_escalated',
+            'total_work',
+            'activity_description',
+            'notes',
+            'submitted_at',
+        ]
+
+    def get_total_work(self, obj):
+        """Quick summary of work done"""
+        return {
+            'tickets': obj.tickets_resolved,
+            'calls': obj.calls_made,
+            'escalations': obj.issues_escalated,
+        }
+
+
+class TeamReportSummarySerializer(serializers.ModelSerializer):
+    """
+    For supervisor dashboard - team overview.
+    Shows high-level stats per employee.
+    """
+    employee_name = serializers.CharField(source='employee.user.get_full_name', read_only=True)
+    employee_username = serializers.CharField(source='employee.user.username', read_only=True)
+    shift_type = serializers.CharField(read_only=True)
+    status = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ActivityReport
+        fields = [
+            'id',
+            'employee_name',
+            'employee_username',
+            'shift_type',
+            'tickets_resolved',
+            'calls_made',
+            'status',
+            'submitted_at',
+        ]
+
+    def get_status(self, obj):
+        """Report approval status"""
+        if obj.is_approved:
+            return 'Approved'
+        return 'Pending'
+
+
+class ApprovedReportSerializer(serializers.ModelSerializer):
+    """
+    For viewing approved reports (history, analytics).
+    """
+    employee_name = serializers.CharField(source='employee.user.username', read_only=True)
+    approved_by_name = serializers.CharField(source='approved_by.user.username', read_only=True)
+    shift_date = serializers.DateField(source='attendance.date', read_only=True)
+    shift_type = serializers.CharField(read_only=True)
+
+    class Meta:
+        model = ActivityReport
+        fields = [
+            'id',
+            'employee_name',
+            'shift_date',
+            'shift_type',
+            'tickets_resolved',
+            'calls_made',
+            'issues_escalated',
+            'approved_by_name',
+            'approved_at',
+            'submitted_at',
+        ]
+
+# ============================================
+
+
+# STATS/ANALYTICS SERIALIZERS
+# ============================================
+
+class EmployeeReportStatsSerializer(serializers.Serializer):
+    """
+    Employee's personal report statistics.
+    Not tied to model directly.
+    """
+    total_reports = serializers.IntegerField()
+    approved_reports = serializers.IntegerField()
+    pending_reports = serializers.IntegerField()
+    total_tickets_resolved = serializers.IntegerField()
+    total_calls_made = serializers.IntegerField()
+    total_escalations = serializers.IntegerField()
+    average_tickets_per_shift = serializers.DecimalField(max_digits=10, decimal_places=2)
+    this_week_reports = serializers.IntegerField()
+    this_month_reports = serializers.IntegerField()
+
+
+class TeamReportStatsSerializer(serializers.Serializer):
+    """
+    Supervisor's team statistics.
+    """
+    total_team_members = serializers.IntegerField()
+    reports_today = serializers.IntegerField()
+    pending_approvals = serializers.IntegerField()
+    approved_today = serializers.IntegerField()
+    total_tickets_today = serializers.IntegerField()
+    total_calls_today = serializers.IntegerField()
+    top_performer_today = serializers.DictField()
+    approval_rate = serializers.DecimalField(max_digits=5, decimal_places=2)
