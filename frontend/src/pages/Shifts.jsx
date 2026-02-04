@@ -1,324 +1,274 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
-import Loader from "../components/Loader";
-import { listShifts, startShift, endShift, createShift, updateShift } from "../services/shifts";
+import React, { useState, useEffect, useCallback } from 'react';
 import {
-  FaCalendarAlt,
-  FaSearch,
-  FaPlus,
-  FaClock,
-  FaUser,
-  FaChevronLeft,
-  FaChevronRight,
-  FaFilter,
-  FaEdit,
-  FaTrash,
-  FaEye,
-  FaFileAlt,
-  FaLock,
-  FaPlay,
-  FaStop
-} from "react-icons/fa";
+  Calendar, Clock, Users, Plus, X, Edit, Trash2,
+  CheckCircle, AlertCircle, TrendingUp, Filter, Search, ChevronRight
+} from 'lucide-react';
+import Sidebar from '../components/Sidebar';
+import Topbar from '../components/Topbar';
+import ShiftService from '../services/shifts';
 
-// Define available shift types for dropdown
-const SHIFT_TYPES = [
-  { value: "Day", label: "Day Shift" },
-  { value: "Night", label: "Night Shift" },
-  { value: "Remote", label: "Remote Shift" },
-];
-
-export default function Shifts() {
-  const navigate = useNavigate();
+const ShiftsDashboard = () => {
+  const [activeView, setActiveView] = useState('upcoming');
   const [shifts, setShifts] = useState([]);
-  const [filteredShifts, setFilteredShifts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [page, setPage] = useState(1);
-  const [nextPage, setNextPage] = useState(null);
-  const [prevPage, setPrevPage] = useState(null);
-  const [viewMode, setViewMode] = useState("grid");
+  const [error, setError] = useState(null);
+  const userType = localStorage.getItem("user_role") || "Employee";
+  const user = localStorage.getItem("username") || "Agent";
 
-  // Role-based state
-  const [userRole, setUserRole] = useState("");
-  const [canCreateShifts, setCanCreateShifts] = useState(false);
-  const [canEditShifts, setCanEditShifts] = useState(false);
-  const [canDeleteShifts, setCanDeleteShifts] = useState(false);
-  const [canCreateReports, setCanCreateReports] = useState(false);
-  const [canApproveReports, setCanApproveReports] = useState(false);
+  const [selectedShift, setSelectedShift] = useState(null);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // Form state for create/edit
-  const [form, setForm] = useState({
-    title: "",
-    shift_type: "",
-    shift_date: "",
-    start_time: "",
-    end_time: "",
-  });
-
-  // Live timer state
-  const [shiftTimers, setShiftTimers] = useState({});
-
-  // ----------------- EFFECTS -----------------
-  useEffect(() => {
-    checkUserPermissions();
-    fetchShifts();
-  }, []);
-
-  useEffect(() => {
-    if (searchTerm) {
-      const filtered = shifts.filter((shift) => {
-        const title = shift.title || shift.shift_type || "";
-        const employeeName = shift.shift_agent?.username || "";
-        const department = shift.department?.title|| "";
-
-
-        const searchLower = searchTerm.toLowerCase();
-        return (
-          title.toLowerCase().includes(searchLower) ||
-          employeeName.toLowerCase().includes(searchLower) ||
-          department.toLowerCase().includes(searchLower)
-        );
-      });
-      setFilteredShifts(filtered);
-    } else {
-      setFilteredShifts(shifts);
+  const fetchShifts = useCallback(async () => {
+  setLoading(true);
+  setError(null);
+  try {
+    let response;
+    switch(activeView) {
+      case 'today':
+        response = await ShiftService.getTodayShifts();
+        // Your backend returns { date: ..., shifts: [...] }
+        setShifts(response.shifts || []);
+        break;
+      case 'upcoming':
+        response = await ShiftService.getUpcomingShifts();
+        // Your backend returns { start_date: ..., shifts: [...] }
+      setShifts(response.shifts || []);
+        break;
+      case 'my-shifts':
+        response = await ShiftService.getMyShifts();
+        // Your backend returns { employee: ..., shifts: [...] }
+        setShifts(response.shifts || []);
+        break;
+      case 'all':
+        const data = filterStatus !== 'all'
+          ? await ShiftService.getShiftsByStatus(filterStatus)
+          : await ShiftService.list();
+        // Standard list returns { results: [...] } because of PageNumberPagination
+        setShifts(data.results || data || []);
+        break;
     }
-  }, [searchTerm, shifts]);
+  } catch (err) {
+    console.error(err);
+    setError('Terminal Link Failure');
+  } finally {
+    setLoading(false);
+  }
+}, [activeView, filterStatus]);
 
-  // ----------------- USER PERMISSIONS -----------------
-  const checkUserPermissions = async () => {
-    try {
-      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
-      if (!token) return setLoading(false);
+  useEffect(() => { fetchShifts(); }, [fetchShifts]);
 
-      const response = await fetch('http://127.0.0.1:8000/api/employee_profile/', {
-        headers: { 'Authorization': `Token ${token}`, 'Content-Type': 'application/json' },
-      });
-      if (response.ok) {
-        const userData = await response.json();
-        const userType = userData.user_type || "";
-        const isSuperuser = userData.is_superuser;
-        const isStaff = userData.is_staff;
-        setUserRole(userType || (isSuperuser ? "System Admin" : isStaff ? "Staff" : "User"));
-
-        // Permissions
-        if (isStaff || userType === "Admin") {
-          setCanCreateShifts(true);
-          setCanEditShifts(true);
-          setCanDeleteShifts(true);
-          setCanCreateReports(true);
-          setCanApproveReports(true);
-        } else if (userType === "Employee_Agent") {
-          setCanCreateShifts(true);
-          setCanEditShifts(true);
-          setCanDeleteShifts(false);
-          setCanCreateReports(true);
-          setCanApproveReports(false);
-        } else if (userType === "Supervisor") {
-          setCanCreateShifts(false);
-          setCanEditShifts(false);
-          setCanDeleteShifts(false);
-          setCanCreateReports(false);
-          setCanApproveReports(true);
-        } else {
-          setCanCreateShifts(false);
-          setCanEditShifts(false);
-          setCanDeleteShifts(false);
-          setCanCreateReports(false);
-          setCanApproveReports(false);
-        }
-      }
-    } catch (err) {
-      console.error("Error checking permissions:", err);
+  const handleCancelShift = async (id) => {
+    if (window.confirm('Terminate this shift allocation?')) {
+      await ShiftService.cancelShift(id);
+      fetchShifts();
     }
   };
 
-  // ----------------- FETCH SHIFTS -----------------
-  const fetchShifts = async (pageNumber = 1) => {
-    setLoading(true);
-    setError("");
-    try {
-      const response = await listShifts({ page: pageNumber });
-      const shiftsData = response.data.results || response.data || [];
-      setShifts(shiftsData);
-      setNextPage(response.data.next || null);
-      setPrevPage(response.data.previous || null);
-    } catch (err) {
-      console.error("Shifts fetch error:", err);
-      setError(err.response?.data?.detail || "Failed to load shifts");
-    } finally { setLoading(false); }
-  };
+  const formatTime = (ts) => ts ? new Date(`2000-01-01T${ts}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '-';
+  const formatDate = (ds) => ds ? new Date(ds).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) : '-';
 
-  // ----------------- SHIFT ACTIONS -----------------
-  const handleStartShift = async (id) => {
-    try {
-      await startShift(id);
-      setSuccess("Shift started!");
-      fetchShifts(page);
-      setTimeout(() => setSuccess(""), 3000);
-    } catch (err) {
-      console.error(err);
-      setError("Failed to start shift");
-    }
-  };
-
-  const handleEndShift = async (id) => {
-    try {
-      await endShift(id);
-      setSuccess("Shift ended!");
-      fetchShifts(page);
-      setTimeout(() => setSuccess(""), 3000);
-    } catch (err) {
-      console.error(err);
-      setError("Failed to end shift");
-    }
-  };
-
-  const handleCreateShift = async (e) => {
-    e.preventDefault();
-    try {
-      await createShift(form);
-      setSuccess("Shift created!");
-      setForm({ title: "", shift_type: "", shift_date: "", start_time: "", end_time: "" });
-      fetchShifts(page);
-    } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.detail || "Failed to create shift");
-    }
-  };
-
-  const handleUpdateShift = async (id) => {
-    try {
-      await updateShift(id, form);
-      setSuccess("Shift updated!");
-      fetchShifts(page);
-    } catch (err) {
-      console.error(err);
-      setError("Failed to update shift");
-    }
-  };
-
-  // ----------------- LIVE TIMER -----------------
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const newTimers = {};
-      shifts.forEach(shift => {
-        if (shift.status === "active" || shift.status === "in_progress") {
-          const start = new Date(`1970-01-01T${shift.start_time || "00:00"}:00`);
-          const now = new Date();
-          const diff = ((now - start) / 1000 / 3600).toFixed(2); // hours
-          newTimers[shift.id] = diff;
-        }
-      });
-      setShiftTimers(newTimers);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [shifts]);
-
-  // ----------------- HELPER FUNCTIONS -----------------
-  const getShiftTitle = (shift) => shift?.title || shift?.shift_type || `Shift #${shift?.id || ''}`;
-  const getShiftEmployee = (shift) => shift?.shift_agent?.user?.username || "Unassigned";
-  const getShiftDate = (shift) => shift?.shift_date || new Date(shift?.created_at).toLocaleDateString();
-  const getStatusColor = (status) => {
-    switch ((status || "").toLowerCase()) {
-      case "scheduled": return "bg-blue-100 text-blue-700";
-      case "active":
-      case "in_progress": return "bg-green-100 text-green-700";
-      case "completed": return "bg-gray-100 text-gray-700";
-      case "cancelled": return "bg-red-100 text-red-700";
-      default: return "bg-gray-100 text-gray-700";
-    }
-  };
-
-  // ----------------- PAGINATION -----------------
-  const handlePrev = () => { if (prevPage) { setPage(page-1); fetchShifts(page-1); } };
-  const handleNext = () => { if (nextPage) { setPage(page+1); fetchShifts(page+1); } };
-
-  // ----------------- RENDER -----------------
-  if (loading) return <Loader fullPage message="Loading shifts..." />;
-  if (error) return (
-    <div className="flex bg-gray-50">
-      <Sidebar />
-      <div className="flex-1 min-h-screen flex items-center justify-center p-6">
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
-          <FaCalendarAlt className="text-red-600 text-2xl mx-auto mb-4"/>
-          <h2 className="text-xl font-bold mb-2">Error Loading Shifts</h2>
-          <p className="text-gray-600 mb-6">{error}</p>
-          <button onClick={fetchShifts} className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">Try Again</button>
-        </div>
-      </div>
+  if (loading) return (
+    <div className="flex bg-[#F9FAFB] h-screen">
+      <Sidebar /><div className="flex-1 flex items-center justify-center font-black uppercase tracking-widest animate-pulse text-gray-400">Syncing Schedules...</div>
     </div>
   );
 
   return (
-    <div className="flex bg-gray-50">
+    <div className="flex bg-[#F9FAFB] h-screen w-full font-sans text-black overflow-hidden">
       <Sidebar />
-      <div className="flex-1 min-h-screen py-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Header & Actions */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+
+      <div className="flex-1 flex flex-col min-w-0 h-full relative">
+        <Topbar title="Operations Schedule" user={user} />
+
+        <main className="flex-1 overflow-y-auto p-4 md:p-10 space-y-8 pb-32">
+
+          {/* HEADER SECTION */}
+          <section className="bg-black p-8 rounded-[2.5rem] shadow-2xl text-white flex flex-col lg:flex-row justify-between items-center gap-6 border-b-4 border-[#FFCC00]">
             <div>
-              <h1 className="text-3xl font-bold text-gray-800 flex items-center">
-                <FaCalendarAlt className="mr-3 text-indigo-600"/> Shifts Management
-              </h1>
-              <p className="text-gray-600 mt-1">{shifts.length} total shifts</p>
+              <h1 className="text-3xl font-black italic tracking-tighter uppercase text-[#FFCC00]">Deployment Log</h1>
+              <p className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em] mt-1">Personnel Shift Management Terminal</p>
             </div>
-            <div className="flex space-x-3">
-              {canCreateShifts && <button onClick={() => navigate("/shifts/new")} className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 flex items-center space-x-2"><FaPlus/><span>Add Shift</span></button>}
-              {canCreateReports && <button onClick={() => navigate("/reports/new")} className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 flex items-center space-x-2"><FaFileAlt/><span>Add Report</span></button>}
+
+            {['Supervisor', 'Manager', 'Admin'].includes(userType) && (
+              <button
+                onClick={() => setShowCreateModal(true)}
+                className="bg-[#FFCC00] text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center gap-2 hover:bg-white transition-all shadow-xl"
+              >
+                <Plus size={16} /> New Deployment
+              </button>
+            )}
+          </section>
+
+          {/* VIEW NAVIGATION & FILTERS */}
+          <div className="flex flex-col xl:flex-row justify-between items-center gap-4">
+            <div className="flex gap-2 p-1 bg-gray-200/50 rounded-2xl w-full xl:w-fit overflow-x-auto">
+              {['today', 'upcoming', 'my-shifts', 'all'].map(view => (
+                (view !== 'all' || ['Supervisor', 'Manager', 'Admin'].includes(userType)) && (
+                  <button
+                    key={view}
+                    onClick={() => setActiveView(view)}
+                    className={`px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
+                      activeView === view ? "bg-black text-[#FFCC00] shadow-md" : "text-gray-500 hover:text-black"
+                    }`}
+                  >
+                    {view.replace('-', ' ')}
+                  </button>
+                )
+              ))}
             </div>
-          </div>
 
-          {/* Search */}
-          <div className="bg-white rounded-xl shadow-md p-4 mb-6 flex items-center gap-4">
-            <FaSearch className="text-gray-400"/>
-            <input
-              type="text"
-              placeholder="Search shifts..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-1 border p-2 rounded"
-            />
-          </div>
-
-          {/* Shift Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredShifts.map((shift) => (
-              <div key={shift.id} className="bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden">
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-bold text-white">{getShiftTitle(shift)}</h3>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(shift.status)}`}>{shift.status}</span>
-                  </div>
-                  <p className="text-indigo-100 text-sm mt-1">{getShiftDate(shift)}</p>
+            {activeView === 'all' && (
+              <div className="flex gap-4 w-full xl:w-auto">
+                <div className="relative flex-1">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                  <input
+                    type="text"
+                    placeholder="Search Agents..."
+                    className="w-full pl-12 pr-4 py-3 bg-white border border-gray-100 rounded-2xl text-xs font-bold"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
                 </div>
-                <div className="px-6 py-4 space-y-2">
-                  <p className="text-gray-600"><FaUser className="inline mr-1"/> {getShiftEmployee(shift)}</p>
-                  <p className="text-gray-600"><FaClock className="inline mr-1"/> {shift.start_time || "00:00"} - {shift.end_time || "00:00"}</p>
-                  {shiftTimers[shift.id] && <p className="text-green-600 font-semibold">Timer: {shiftTimers[shift.id]} hrs</p>}
-
-                  {/* Action buttons */}
-                  <div className="flex space-x-2 mt-2">
-                    <button onClick={() => navigate(`/shifts/${shift.id}`)} className="flex-1 px-3 py-2 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 text-sm flex items-center justify-center space-x-1"><FaEye/><span>View</span></button>
-                    {canEditShifts && shift.status === "scheduled" && <button onClick={() => handleStartShift(shift.id)} className="flex-1 px-3 py-2 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 text-sm flex items-center justify-center space-x-1"><FaPlay/><span>Start</span></button>}
-                    {canEditShifts && (shift.status === "active" || shift.status === "in_progress") && <button onClick={() => handleEndShift(shift.id)} className="flex-1 px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 text-sm flex items-center justify-center space-x-1"><FaStop/><span>End</span></button>}
-                    {canEditShifts && <button onClick={() => navigate(`/shifts/${shift.id}/edit`)} className="flex-1 px-3 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 text-sm flex items-center justify-center space-x-1"><FaEdit/><span>Edit</span></button>}
-                  </div>
-                </div>
+                <select
+                  className="bg-white border border-gray-100 rounded-2xl px-4 py-3 text-[10px] font-black uppercase tracking-widest"
+                  value={filterStatus}
+                  onChange={(e) => setFilterStatus(e.target.value)}
+                >
+                  <option value="all">All Status</option>
+                  <option value="Scheduled">Scheduled</option>
+                  <option value="In_Progress">Active</option>
+                  <option value="Shift_Completed">Completed</option>
+                </select>
               </div>
-            ))}
+            )}
           </div>
 
-          {/* Pagination */}
-          <div className="flex justify-between mt-6">
-            <button onClick={handlePrev} disabled={!prevPage} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Prev</button>
-            <button onClick={handleNext} disabled={!nextPage} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Next</button>
-          </div>
-        </div>
+          {/* SHIFTS GRID */}
+          {shifts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {shifts.map((shift) => (
+                <div key={shift.id} className="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:border-[#FFCC00] transition-all group">
+                  <div className="flex justify-between items-start mb-6">
+                    <div>
+                      <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-1">
+                        {shift.shift_type} Shift
+                      </span>
+                      <h3 className="text-xl font-black italic tracking-tighter uppercase leading-none">
+                        {formatDate(shift.shift_date)}
+                      </h3>
+                    </div>
+                    <StatusBadge status={shift.shift_status} />
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl">
+                      <div className="w-8 h-8 bg-black text-[#FFCC00] rounded-full flex items-center justify-center font-black text-[10px]">
+                        {shift.shift_agent?.user?.username?.[0] || 'A'}
+                      </div>
+                      <span className="font-bold text-xs uppercase italic">
+                        {shift.shift_agent?.user?.username || 'Unassigned'}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between px-2">
+                      <div className="flex items-center gap-2 text-gray-500">
+                        <Clock size={14} />
+                        <span className="text-[10px] font-bold uppercase font-mono">
+                          {formatTime(shift.shift_start_time)} - {formatTime(shift.shift_end_time)}
+                        </span>
+                      </div>
+                      <span className="text-[9px] font-black bg-gray-100 px-2 py-1 rounded">
+                        {shift.duration_hours}H
+                      </span>
+                    </div>
+
+                    {shift.attendance_status && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-gray-200">
+                        <div className="flex justify-between items-center text-[9px] font-black uppercase tracking-widest mb-1 text-gray-400">
+                          <span>Execution Status</span>
+                          <span className={shift.attendance_status.status === 'completed' ? 'text-green-500' : 'text-orange-500'}>
+                            {shift.attendance_status.status}
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-100 h-1 rounded-full overflow-hidden">
+                          <div
+                            className="bg-black h-full transition-all"
+                            style={{ width: `${(shift.attendance_status.hours_worked / shift.attendance_status.scheduled_hours) * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ADMIN ACTIONS */}
+                  {['Supervisor', 'Manager', 'Admin'].includes(userType) && shift.shift_status === 'Scheduled' && (
+                    <div className="flex gap-2 mt-6">
+                      <button
+                        onClick={() => setSelectedShift(shift)}
+                        className="flex-1 flex items-center justify-center gap-2 bg-gray-100 hover:bg-black hover:text-white p-3 rounded-xl transition-all text-gray-500"
+                      >
+                        <Edit size={14} /> <span className="text-[9px] font-black uppercase">Edit</span>
+                      </button>
+                      <button
+                        onClick={() => handleCancelShift(shift.id)}
+                        className="p-3 bg-rose-50 text-rose-500 hover:bg-rose-500 hover:text-white rounded-xl transition-all"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white rounded-[2rem] p-20 text-center border border-dashed border-gray-200">
+              <Calendar size={48} className="mx-auto text-gray-200 mb-4" />
+              <h3 className="font-black uppercase tracking-widest text-gray-400">No Deployments Found</h3>
+              <p className="text-xs text-gray-400 mt-2">Check different filter or create a new shift</p>
+            </div>
+          )}
+        </main>
       </div>
+
+      {/* MODAL PLACEHOLDER STYLE */}
+      {(showCreateModal || selectedShift) && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+           {/* ShiftModal component would go here, styled similarly to the cards */}
+           <div className="bg-white w-full max-w-md rounded-[2.5rem] p-8 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-[#FFCC00]"></div>
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-2xl font-black italic uppercase tracking-tighter">
+                  {selectedShift ? 'Edit Deployment' : 'New Deployment'}
+                </h2>
+                <button onClick={() => {setShowCreateModal(false); setSelectedShift(null)}} className="p-2 hover:bg-gray-100 rounded-full">
+                  <X size={20} />
+                </button>
+              </div>
+              {/* Form elements from your previous code but with Tailwind border-gray-100 and rounded-2xl */}
+              <p className="text-center py-10 text-gray-400 uppercase font-black tracking-widest text-[10px]">Form Terminal Ready</p>
+           </div>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+/* HELPER COMPONENTS */
+
+const StatusBadge = ({ status }) => {
+  const config = {
+    'Scheduled': 'bg-blue-50 text-blue-600',
+    'In_Progress': 'bg-green-50 text-green-600 animate-pulse',
+    'Shift_Completed': 'bg-gray-100 text-gray-500',
+    'Cancelled': 'bg-rose-50 text-rose-500',
+  };
+  return (
+    <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] ${config[status] || config.Scheduled}`}>
+      {status.replace('_', ' ')}
+    </span>
+  );
+};
+
+export default ShiftsDashboard;

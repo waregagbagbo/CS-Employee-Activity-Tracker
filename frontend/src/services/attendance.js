@@ -1,40 +1,59 @@
 import API from "./api";
 
-/**
- * ARCHIVE & REGISTRY LOGIC (Standard ViewSet)
- * These talk to your AttendanceViewSet
- */
 
-// Fetches records. Use params like { ordering: "-clock_in_time" } for Live Logs
-export const listAttendance = (params = {}) =>
-  API.get("api/attendance/", { params });
+const AttendanceService = {
 
-export const createAttendance = (data) =>
-  API.post("api/attendance/", data);
+  getStatus: async () => {
+    const response = await API.get("api/attendance/status/");
+    return response.data;
+  },
 
-export const retrieveAttendance = (id) =>
-  API.get(`api/attendance/${id}/`);
+  // POST /api/attendance/clock-in/
+  clockIn: async () => {
+    const response = await API.post("api/attendance/clock-in/");
+    return response.data;
+  },
 
-export const updateAttendance = (id, data) =>
-  API.patch(`api/attendance/${id}/`, data);
+  // POST /api/attendance/clock-out/
+  clockOut: async () => {
+    const response = await API.post("api/attendance/clock-out/");
+    return response.data;
+  },
 
-export const deleteAttendance = (id) =>
-  API.delete(`api/attendance/${id}/`);
+  // 2. Dashboard Summaries
+  // GET /api/attendance/today/
+  getTodaySummary: async () => {
+    const response = await API.get("api/attendance/today/");
+    return response.data;
+  },
 
+  // 3. History & Logs (For regular Employees)
+  // GET /api/attendance/history/
+  getPersonalHistory: async () => {
+    const response = await API.get("api/attendance/history/");
+    return response.data;
+  },
 
-/**
- * REAL-TIME OPERATIONS (Specialized Endpoints)
- * These talk to your @api_view functions (attendance_status, clock_in, clock_out)
- */
+  // 4. Supervisor/Admin Actions
+  // GET /api/attendance/team/?date=YYYY-MM-DD
+  getTeamAttendance: async (date) => {
+    const params = date ? { date } : {};
+    const response = await API.get("api/attendance/team/", { params });
+    return response.data;
+  },
 
-// GET: /api/attendance/status/
-export const getAttendanceStatus = () =>
-  API.get("api/attendance/status/");
+  // Standard CRUD (ModelViewSet defaults)
+  // GET /api/attendance/
+  list: async () => {
+    const response = await API.get("api/attendance/");
+    return response.data;
+  },
 
-// POST: /api/attendance/clock-in/
-export const clockIn = () =>
-  API.post("api/attendance/clock-in/");
+  // GET /api/attendance/{id}/
+  retrieve: async (id) => {
+    const response = await API.get(`api/attendance/${id}/`);
+    return response.data;
+  }
+};
 
-// POST: /api/attendance/clock-out/
-export const clockOut = () =>
-  API.post("api/attendance/clock-out/");
+export default AttendanceService;

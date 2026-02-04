@@ -15,12 +15,11 @@ import Settings from "./pages/Settings.jsx";
 import CreateReport from "./pages/CreateReport";
 import ApproveReports from "./pages/ApproveReports";
 import ReportDetail from "./pages/ReportDetail";
-import Attendance from "./pages/Attendance";
-//import EmployeeCreate from "./pages/CreateEmployee";
+import Attendance from "./pages/AttendancePage";
 
-function AttendanceDetail() {
-  return null;
-}
+
+
+
 
 function App(){
   return (
@@ -48,11 +47,8 @@ function App(){
         <Route path="/reports/:id" element={<ReportDetail />} />
 
 
-         <Route path="/departments" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
-
-        <Route path="/attendance" element={<Attendance />} />
-        <Route path="/attendance/:id" element={<AttendanceDetail />} />
-
+        <Route path="/departments" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
+        <Route path="/attendance" element={<ProtectedRoute><Attendance /></ProtectedRoute>} />
 
         {/* logout route (optional but clean) */}
         <Route path="/logout" element={<Logout />} />
