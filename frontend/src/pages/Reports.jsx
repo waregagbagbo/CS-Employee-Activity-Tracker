@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
 import { listReports } from "../services/reports";
@@ -13,31 +13,65 @@ import {
   FaShieldAlt
 } from "react-icons/fa";
 
+const STATUS_TABS = [
+  { key: "pending", label: "Pending Review" },
+  { key: "approved", label: "Approved" },
+  { key: "rejected", label: "Rejected" }
+];
+
 export default function Reports() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const userRole = localStorage.getItem("user_role");
+
+  const status = searchParams.get("status") || "pending";
+
   const [reports, setReports] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  /* ---------------- FETCH ---------------- */
   useEffect(() => {
-    loadReports();
-  }, []);
+    fetchReports();
+    // eslint-disable-next-line
+  }, [status]);
 
-  const loadReports = async () => {
+  const fetchReports = async () => {
     setLoading(true);
     setError("");
     try {
-      const res = await listReports();
-      setReports(res.data.results || res.data);
-    } catch (err) {
-      console.error(err);
-      setError("AUTHENTICATION OR SYNC ERROR: UNABLE TO RETRIEVE LEDGER.");
+      const res = await listReports({ status });
+      const data = res.data.results || res.data;
+      setReports(data);
+      setFiltered(data);
+    } catch {
+      setError("UNABLE TO RETRIEVE LEDGER DATA.");
     } finally {
       setLoading(false);
     }
   };
 
-  if (loading) return <Loader fullPage message="SYNCHRONIZING ACTIVITY LEDGER..." />;
+  /* ---------------- SEARCH ---------------- */
+  useEffect(() => {
+    if (!search) return setFiltered(reports);
+
+    const q = search.toLowerCase();
+    setFiltered(
+      reports.filter(
+        r =>
+          r.shift_active_agent?.first_name?.toLowerCase().includes(q) ||
+          r.shift_activity_type?.toLowerCase().includes(q)
+      )
+    );
+  }, [search, reports]);
+
+  /* ---------------- UI ---------------- */
+  if (loading) {
+    return <Loader fullPage message="SYNCHRONIZING ACTIVITY LEDGER..." />;
+  }
 
   return (
     <div className="flex bg-[#F9FAFB] min-h-screen">
@@ -45,141 +79,142 @@ export default function Reports() {
 
       <div className="flex-1 p-8 lg:p-12 overflow-x-hidden">
 
-        {/* Header Section */}
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {/* Header */}
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-black p-2 rounded-lg">
-                <FaFileAlt className="text-[#FFCC00] text-sm" />
+                <FaFileAlt className="text-[#FFCC00]" />
               </div>
-              <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">Operational Compliance</span>
+              <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                Operational Compliance
+              </span>
             </div>
-            <h1 className="text-4xl font-black italic uppercase tracking-tighter text-black">
+            <h1 className="text-4xl font-black italic uppercase tracking-tighter">
               Activity <span className="text-[#FFCC00]">Reports</span>
             </h1>
           </div>
 
-          <div className="flex gap-4">
-             <div className="bg-white border border-gray-200 rounded-2xl px-6 py-3 flex items-center gap-4 shadow-sm">
-                <FaHistory className="text-[#FFCC00]" />
-                <div className="text-left">
-                   <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest">Last Updated</p>
-                   <p className="text-[10px] font-bold text-black uppercase tracking-tight">Today, {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-                </div>
-             </div>
+          <div className="bg-white border rounded-2xl px-6 py-3 flex items-center gap-4 shadow-sm">
+            <FaHistory className="text-[#FFCC00]" />
+            <div>
+              <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest">
+                Last Updated
+              </p>
+              <p className="text-[10px] font-bold uppercase">
+                Today {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+              </p>
+            </div>
           </div>
         </header>
 
-        {/* Action Bar */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="relative flex-1">
-            <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300" />
-            <input
-              type="text"
-              placeholder="FILTER BY AGENT OR ACTIVITY TYPE..."
-              className="w-full pl-14 pr-6 py-4 bg-white border border-gray-100 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FFCC00] text-[11px] font-black tracking-widest uppercase"
-            />
-          </div>
+        {/* Status Tabs */}
+        <div className="flex gap-3 mb-8">
+          {STATUS_TABS.map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => setSearchParams({ status: tab.key })}
+              className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest border transition-all
+                ${status === tab.key
+                  ? "bg-black text-[#FFCC00] border-black"
+                  : "bg-white text-gray-400 border-gray-200 hover:border-black"}
+              `}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
-        {error ? (
-          <div className="bg-rose-50 border border-rose-100 p-6 rounded-[2rem] text-center">
-            <p className="text-rose-600 font-black uppercase tracking-widest text-xs">{error}</p>
-          </div>
-        ) : reports.length === 0 ? (
-          <div className="bg-white border border-dashed border-gray-200 p-20 rounded-[3rem] text-center">
-             <FaFileAlt className="mx-auto text-gray-100 text-6xl mb-4" />
-             <p className="text-gray-400 font-black uppercase tracking-[0.2em] text-sm">No recorded activities found in the ledger</p>
-          </div>
-        ) : (
-          /* The Ledger Table */
-          <div className="bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-gray-100 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-black">
-                    <th className="px-8 py-6 text-[10px] font-black text-[#FFCC00] uppercase tracking-[0.2em]">Personnel Agent</th>
-                    <th className="px-8 py-6 text-[10px] font-black text-[#FFCC00] uppercase tracking-[0.2em]">Activity Type</th>
-                    <th className="px-8 py-6 text-[10px] font-black text-[#FFCC00] uppercase tracking-[0.2em]">Operational Notes</th>
-                    <th className="px-8 py-6 text-[10px] font-black text-[#FFCC00] uppercase tracking-[0.2em]">Compliance Status</th>
-                    <th className="px-8 py-6 text-[10px] font-black text-[#FFCC00] uppercase tracking-[0.2em] text-right">Verification</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-50">
-                  {reports.map((report) => (
-                    <tr key={report.id} className="group hover:bg-gray-50/50 transition-all">
-                      <td className="px-8 py-6">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-[10px] font-black text-black">
-                            {report.shift_active_agent?.first_name?.charAt(0)}
-                          </div>
-                          <span className="text-sm font-black italic uppercase tracking-tighter text-black">
-                            {report.shift_active_agent?.first_name}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-8 py-6">
-                        <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest bg-gray-100 px-3 py-1 rounded-md">
-                          {report.shift_activity_type}
-                        </span>
-                      </td>
-                      <td className="px-8 py-6 max-w-[250px]">
-                        <p className="text-xs text-gray-500 font-medium truncate italic">
-                          {report.notes || "— No secondary notes recorded —"}
-                        </p>
-                      </td>
-                      <td className="px-8 py-6">
-                        {report.is_approved ? (
-                          <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-600 rounded-md border border-emerald-100">
-                            <FaCheckCircle size={10} />
-                            <span className="text-[9px] font-black uppercase tracking-widest">Verified</span>
-                          </div>
-                        ) : (
-                          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FFCC00] text-black rounded-md border border-[#FFCC00]">
-                            <FaShieldAlt size={10} className="animate-pulse" />
-                            <span className="text-[9px] font-black uppercase tracking-widest">Pending Review</span>
-                          </div>
-                        )}
-                      </td>
-                      <td className="px-8 py-6">
-                        <div className="flex justify-end gap-3">
-                          <button
-                            onClick={() => navigate(`/reports/${report.id}`)}
-                            className="p-2.5 bg-gray-50 text-black rounded-xl hover:bg-black hover:text-[#FFCC00] transition-all shadow-sm"
-                            title="Inspect Details"
-                          >
-                            <FaEye size={14} />
-                          </button>
+        {/* Search */}
+        <div className="relative mb-8">
+          <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300" />
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="FILTER BY AGENT OR ACTIVITY TYPE..."
+            className="w-full pl-14 pr-6 py-4 bg-white border rounded-2xl shadow-sm focus:ring-2 focus:ring-[#FFCC00] text-[11px] font-black tracking-widest uppercase"
+          />
+        </div>
 
-                          {!report.is_approved ? (
-                            <button
-                              onClick={() => navigate(`/reports/${report.id}/approve`)}
-                              className="p-2.5 bg-black text-[#FFCC00] rounded-xl hover:scale-110 transition-all shadow-lg shadow-black/10"
-                              title="Authorize Report"
-                            >
-                              <FaCheckCircle size={14} />
-                            </button>
-                          ) : (
-                            <div className="p-2.5 bg-gray-100 text-gray-300 rounded-xl" title="Report Locked">
-                              <FaLock size={14} />
-                            </div>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
+        {/* Errors */}
+        {error && (
+          <div className="bg-rose-50 p-6 rounded-2xl text-center text-rose-600 font-black uppercase tracking-widest text-xs">
+            {error}
+          </div>
+        )}
+
+        {/* Empty */}
+        {!error && filtered.length === 0 && (
+          <div className="bg-white p-20 rounded-[3rem] text-center">
+            <FaFileAlt className="mx-auto text-gray-100 text-6xl mb-4" />
+            <p className="text-gray-400 font-black uppercase tracking-widest">
+              No reports found
+            </p>
+          </div>
+        )}
+
+        {/* Table */}
+        {filtered.length > 0 && (
+          <div className="bg-white rounded-[2.5rem] border overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-black">
+                <tr>
+                  {["Agent", "Activity", "Notes", "Status", "Actions"].map(h => (
+                    <th key={h} className="px-8 py-6 text-[10px] font-black text-[#FFCC00] uppercase">
+                      {h}
+                    </th>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                {filtered.map(report => (
+                  <tr key={report.id} className="hover:bg-gray-50">
+                    <td className="px-8 py-6 font-black uppercase">
+                      {report.shift_active_agent?.first_name}
+                    </td>
+                    <td className="px-8 py-6 text-[10px] font-black uppercase">
+                      {report.shift_activity_type}
+                    </td>
+                    <td className="px-8 py-6 italic text-xs text-gray-500 truncate max-w-[250px]">
+                      {report.notes || "—"}
+                    </td>
+                    <td className="px-8 py-6">
+                      {report.is_approved ? (
+                        <span className="inline-flex items-center gap-2 text-emerald-600">
+                          <FaCheckCircle /> Approved
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-2 text-black">
+                          <FaShieldAlt className="animate-pulse" /> Pending
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-8 py-6 flex gap-3 justify-end">
+                      <button
+                        onClick={() =>
+                          navigate(`/reports/${report.id}?status=${status}`)
+                        }
+                        className="p-2.5 bg-gray-50 rounded-xl hover:bg-black hover:text-[#FFCC00]"
+                      >
+                        <FaEye />
+                      </button>
 
-            {/* Table Footer Branding */}
-            <div className="bg-gray-50/50 px-8 py-4 flex justify-between items-center border-t border-gray-50">
-                <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em]">End of Ledger Registry</p>
-                <div className="flex gap-2">
-                   <div className="w-2 h-2 rounded-full bg-[#FFCC00]"></div>
-                   <div className="w-2 h-2 rounded-full bg-black"></div>
-                </div>
-            </div>
+                      {report.is_approved ? (
+                        <div className="p-2.5 bg-gray-100 text-gray-300 rounded-xl">
+                          <FaLock />
+                        </div>
+                      ) : (
+                        ["admin", "supervisor"].includes(userRole) && (
+                          <div className="p-2.5 bg-black text-[#FFCC00] rounded-xl">
+                            <FaCheckCircle />
+                          </div>
+                        )
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
       </div>

@@ -19,6 +19,12 @@ class CustomUser(AbstractUser):
         'username',
     ]
 
+    # create the full name
+    #@property
+    #def full_name(self):
+       #return f"{self.first_name} {self.last_name}".strip()
+
+
     def __str__(self):
         return self.username
 
@@ -52,6 +58,12 @@ class Employee(models.Model):
 
     def __str__(self):
         return f"{self.user.username}, {self.department}, {self.user_type}"
+
+    @property
+    def full_name(self):
+        return "f{self.user.first_name} {self.user.last_name}".strip()
+
+
 
     # let us expose the username by using @property decorator to access it directly
     @property

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
-import { getReport, updateReport } from "../services/reports";
+import { getReport, approveReport } from "../services/reports";
 import {
   FaArrowLeft,
   FaCheckCircle,
-  FaTimesCircle,
   FaUser,
   FaClock,
   FaFileAlt,
@@ -17,22 +16,26 @@ import {
 export default function ReportDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const userRole = localStorage.getItem("user_role");
 
   const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [canApprove, setCanApprove] = useState(false);
+
+  const canApprove = ["admin", "supervisor"].includes(userRole);
 
   useEffect(() => {
     fetchReport();
+    // eslint-disable-next-line
   }, []);
 
   const fetchReport = async () => {
     try {
       const res = await getReport(id);
       setReport(res.data);
-      if ("is_approved" in res.data) setCanApprove(true);
-    } catch (err) {
+    } catch {
       setError("FAILED TO RETRIEVE LEDGER DATA.");
     } finally {
       setLoading(false);
@@ -41,27 +44,16 @@ export default function ReportDetail() {
 
   const approve = async () => {
     try {
-      await updateReport(id, {
-        is_approved: true,
-        activity_status: "Approved",
-        activity_approved_at: new Date().toISOString(),
-      });
+      await approveReport(id);
       fetchReport();
     } catch {
-      alert("AUTHORIZATION FAILED");
+      alert("APPROVAL FAILED OR UNAUTHORIZED");
     }
   };
 
-  const reject = async () => {
-    try {
-      await updateReport(id, {
-        is_approved: false,
-        activity_status: "Rejected",
-      });
-      fetchReport();
-    } catch {
-      alert("REJECTION FAILED");
-    }
+  // Preserve filters when going back (status-aware navigation)
+  const goBack = () => {
+    navigate(`/reports${location.search || ""}`);
   };
 
   if (loading) return <Loader fullPage message="SYNCHRONIZING RECORD..." />;
@@ -73,13 +65,22 @@ export default function ReportDetail() {
         <div className="flex-1 flex flex-col items-center justify-center p-10 text-center">
           <div className="bg-white p-12 rounded-[3rem] shadow-xl border border-gray-100 max-w-md">
             <FaInfoCircle className="text-rose-500 text-5xl mx-auto mb-6" />
-            <p className="text-black font-black uppercase tracking-widest mb-4">{error}</p>
-            <button onClick={() => navigate(-1)} className="text-xs font-black uppercase tracking-widest underline hover:text-[#FFCC00]">Return to Registry</button>
+            <p className="text-black font-black uppercase tracking-widest mb-4">
+              {error}
+            </p>
+            <button
+              onClick={goBack}
+              className="text-xs font-black uppercase tracking-widest underline hover:text-[#FFCC00]"
+            >
+              Return to Registry
+            </button>
           </div>
         </div>
       </div>
     );
   }
+
+  const isLocked = report.is_approved;
 
   return (
     <div className="flex bg-[#F9FAFB] min-h-screen">
@@ -88,138 +89,119 @@ export default function ReportDetail() {
       <div className="flex-1 p-8 lg:p-12 overflow-y-auto">
         <div className="max-w-4xl mx-auto">
 
-          {/* Back Navigation */}
+          {/* Back */}
           <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-black mb-10 transition-all group"
+            onClick={goBack}
+            className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-black mb-10"
           >
-            <div className="p-2 bg-white rounded-lg shadow-sm group-hover:bg-black group-hover:text-[#FFCC00] transition-all">
+            <div className="p-2 bg-white rounded-lg shadow-sm">
               <FaArrowLeft />
             </div>
             Return to Reports Ledger
           </button>
 
-          {/* Main Card */}
-          <div className="bg-white rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 overflow-hidden">
+          {/* Card */}
+          <div className="bg-white rounded-[3rem] shadow border border-gray-100 overflow-hidden">
 
-            {/* Header / Status Banner */}
-            <div className={`px-10 py-8 flex flex-col md:flex-row justify-between items-center gap-6 border-b border-gray-50 ${report.is_approved ? 'bg-emerald-50/30' : 'bg-gray-50/30'}`}>
+            {/* Header */}
+            <div
+              className={`px-10 py-8 flex flex-col md:flex-row justify-between items-center gap-6 border-b
+              ${isLocked ? "bg-emerald-50/30" : "bg-gray-50/30"}`}
+            >
               <div className="flex items-center gap-5">
-                <div className="bg-black p-4 rounded-2xl text-[#FFCC00] shadow-lg">
+                <div className="bg-black p-4 rounded-2xl text-[#FFCC00]">
                   <FaFileAlt size={24} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-1">Operational Report</p>
-                  <h1 className="text-3xl font-black italic uppercase tracking-tighter text-black">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                    Operational Report
+                  </p>
+                  <h1 className="text-3xl font-black italic uppercase">
                     {report.activity_type}
                   </h1>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <span className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border-2 ${
-                  report.is_approved 
-                  ? 'bg-emerald-500 border-emerald-500 text-white' 
-                  : 'bg-white border-black text-black'
-                }`}>
-                  STATUS: {report.activity_status}
-                </span>
-                {report.is_approved && <FaCheckCircle className="text-emerald-500 text-2xl" />}
-              </div>
+              <span
+                className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border-2
+                ${isLocked
+                  ? "bg-emerald-500 border-emerald-500 text-white"
+                  : "bg-white border-black text-black"}`}
+              >
+                STATUS: {report.activity_status}
+              </span>
             </div>
 
+            {/* Body */}
             <div className="p-10">
-              {/* Personnel Metadata */}
+
+              {/* Meta */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div className="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-transparent hover:border-gray-100 transition-all">
-                  <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-black">
-                    <FaUser />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Reporting Agent</p>
-                    <p className="text-sm font-bold text-black uppercase">{report.shift_active_agent?.user?.username || "N/A"}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-transparent hover:border-gray-100 transition-all">
-                  <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-black">
-                    <FaShieldAlt className="text-[#FFCC00]" />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Supervisor</p>
-                    <p className="text-sm font-bold text-black uppercase">{report.supervisor?.user?.username || "PENDING ASSIGNMENT"}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-transparent hover:border-gray-100 transition-all">
-                  <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-black">
-                    <FaClock />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Submission Timestamp</p>
-                    <p className="text-sm font-bold text-black uppercase tracking-tighter">
-                      {new Date(report.created_at).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
+                <Meta icon={<FaUser />} label="Reporting Agent" value={report.shift_active_agent?.user?.username} />
+                <Meta icon={<FaShieldAlt />} label="Supervisor" value={report.supervisor?.user?.username || "PENDING"} />
+                <Meta icon={<FaClock />} label="Submitted At" value={new Date(report.created_at).toLocaleString()} />
 
                 {report.activity_approved_at && (
-                  <div className="flex items-center gap-4 p-5 bg-emerald-50/50 rounded-2xl border border-emerald-100 transition-all">
-                    <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-emerald-500">
-                      <FaCheckCircle />
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-black text-emerald-600 uppercase tracking-widest">Verification Date</p>
-                      <p className="text-sm font-bold text-emerald-700 uppercase tracking-tighter">
-                        {new Date(report.activity_approved_at).toLocaleString()}
-                      </p>
-                    </div>
-                  </div>
+                  <Meta
+                    icon={<FaCheckCircle />}
+                    label="Approved At"
+                    value={new Date(report.activity_approved_at).toLocaleString()}
+                    highlight
+                  />
                 )}
               </div>
 
-              {/* Description Body */}
+              {/* Description */}
               <div className="mb-12">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-1 bg-[#FFCC00]"></div>
-                  <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-black">Operational Summary</h3>
-                </div>
-                <div className="bg-black rounded-[2rem] p-8 text-white relative overflow-hidden shadow-2xl">
-                  <p className="text-lg text-gray-300 leading-relaxed italic opacity-90 relative z-10">
-                    "{report.description || "No specific description recorded for this activity record."}"
-                  </p>
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFCC00] opacity-5 rounded-bl-full pointer-events-none"></div>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] mb-4">
+                  Operational Summary
+                </h3>
+                <div className="bg-black rounded-[2rem] p-8 text-gray-300 italic">
+                  “{report.description || "No description provided."}”
                 </div>
               </div>
 
-              {/* Action Suite (Supervisor Only) */}
-              {canApprove && !report.is_approved && (
-                <div className="pt-10 border-t border-gray-50 flex flex-col md:flex-row gap-4">
+              {/* Approval (locked after approval) */}
+              {canApprove && !isLocked && (
+                <div className="pt-10 border-t">
                   <button
                     onClick={approve}
-                    className="flex-1 flex items-center justify-center gap-3 bg-black text-[#FFCC00] px-8 py-5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:scale-[1.02] transition-all shadow-xl shadow-black/10"
+                    className="w-full bg-black text-[#FFCC00] py-5 rounded-2xl font-black uppercase tracking-widest hover:scale-[1.02]"
                   >
-                    <FaCheckCircle size={16} />
-                    Authorize Report
-                  </button>
-
-                  <button
-                    onClick={reject}
-                    className="flex-1 flex items-center justify-center gap-3 bg-white border-2 border-black text-black px-8 py-5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-rose-600 hover:border-rose-600 hover:text-white transition-all shadow-lg"
-                  >
-                    <FaTimesCircle size={16} />
-                    Deny Record
+                    <FaCheckCircle className="inline mr-2" />
+                    Approve Report
                   </button>
                 </div>
               )}
 
-              {/* Footer Branding */}
-              <div className="mt-12 text-center opacity-20">
-                <p className="text-[9px] font-black text-black uppercase tracking-[0.5em]">Onafriq Cs Compliance Report</p>
-              </div>
+              {isLocked && (
+                <div className="mt-10 text-center text-emerald-600 font-black uppercase tracking-widest text-xs">
+                  This report is locked and cannot be modified
+                </div>
+              )}
+
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* Small reusable meta block */
+function Meta({ icon, label, value, highlight }) {
+  return (
+    <div className={`flex items-center gap-4 p-5 rounded-2xl ${highlight ? "bg-emerald-50" : "bg-gray-50"}`}>
+      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
+        {icon}
+      </div>
+      <div>
+        <p className="text-[9px] font-black uppercase tracking-widest text-gray-400">
+          {label}
+        </p>
+        <p className="text-sm font-bold uppercase">
+          {value || "N/A"}
+        </p>
       </div>
     </div>
   );

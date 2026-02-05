@@ -456,7 +456,7 @@ class ReportsViewSet(viewsets.ModelViewSet):
         # Proceed with approval
         report.is_approved = True
         report.approved_by = current_supervisor
-        report.approved_at = timezone.now()
+        report.activity_approved_at = timezone.now()
         report.save()
         return Response({'status': 'approved'})
 

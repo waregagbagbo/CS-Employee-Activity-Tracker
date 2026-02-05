@@ -1,4 +1,5 @@
 from django.test import TestCase
+from .models import Employee
 
 # Create your tests here.
 """ create tests for the employee profile """

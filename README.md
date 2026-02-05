@@ -59,6 +59,7 @@ Uses a custom AbstractUser model with email as the primary identifier. <br> Sign
  - GET /api/employees/ - List employees (paginated)
  - GET /api/employees/{id}/ - Get employee details
  - PUT /api/employees/{id}/ - Update employee profile
+ - GET /api/employees/me/ - Fetches the logged user profile
 
 
 ### Attendance Management (Viewsets)
@@ -77,9 +78,11 @@ Uses a custom AbstractUser model with email as the primary identifier. <br> Sign
  - GET /api/shifts/ - List shifts (with filters)
  - POST /api/shifts/ - Create new shift
  - GET /api/shifts/{id}/ - Get shift details
- - PUT /api/shifts/{id}/ - Update shift
- - PATCH /api/shifts/{id}/start/ - Start shift
- - PATCH /api/shifts/{id}/end/ - End shift
+ - PUT/PATCH /shifts/{id}/ - Update shift
+ - DELETE /shifts/{id}/ - Delete shift
+ - GET /shifts/today/ - Today's shifts
+ - GET /shifts/upcoming/ - Next 7 days shifts
+ - PATCH /shifts/{id}/cancel/ - Cancel shift
 
 ### Activity Reports (Viewsets)
 
@@ -89,6 +92,8 @@ Uses a custom AbstractUser model with email as the primary identifier. <br> Sign
  - PUT /api/reports/{id}/ - Update report (if not approved)
  - PATCH /api/reports/{id}/approve/ - Approve report (supervisors/managers only)
  - GET /api/reports/export/ - <b> Export reports (CSV)(Future) ONCE VALIDATED with Frontend library</b>
+
+
 ### Webhook Management
 
 Webhooks are triggered on shift status changes (start/end). Implemented using Django signals and dispatched to registered endpoints test(https://webhook.site/). <br> 
@@ -119,8 +124,9 @@ Future support for multichannel registry.
  3. Django REST Framework
  5. MySQL 8.0+
  6. Git
- 7. Code editor (Pycharm)
+ 7. Code editor (PyCharm)
  8. Postman for endpoint tests
+ 9. React - For Frontend Scaffolding
 
 
 ## SAMPLE Results.
