@@ -26,15 +26,15 @@ urlpatterns = [
     path('departments/', include(dept_router.urls)),
     path('shifts/', include(shifts_router.urls)),
     path('reports/', include(activityreport_router.urls)),
+    path('attendance/', include(attendance_router.urls)),
 
     # ⚠️ IMPORTANT: Custom attendance endpoints MUST come BEFORE the router
-    # These are function-based views with specific paths
-    path('attendance/status/', views.attendance_status, name='attendance-status'),
-    path('attendance/clock-in/', views.clock_in, name='clock-in'),
-    path('attendance/clock-out/', views.clock_out, name='clock-out'),
-    path('attendance/today/', views.today_summary, name='today-summary'),
+    #path('status/', views.attendance_status, name='attendance-status'),
+    #path('attendance/clock-in/', views.clock_in, name='clock-in'),
+    #path('attendance/clock-out/', views.clock_out, name='clock-out'),
+    #path('attendance/today/', views.today_summary, name='today-summary'),
 
     # Attendance router (ModelViewSet) - comes LAST
     # This handles: /attendance/, /attendance/{id}/, /attendance/history/, /attendance/team/
-    path('attendance/', include(attendance_router.urls)),
+
 ]

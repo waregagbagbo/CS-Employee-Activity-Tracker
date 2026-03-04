@@ -71,7 +71,7 @@ export default function EmployeeDetail() {
 
     try {
       await updateEmployee(id, formData);
-      setSuccess("RECORD SYNCHRONIZED SUCCESSFULLY.");
+      setSuccess("DATA FETCHED SUCCESSFULLY.");
       setEditMode(false);
       await fetchEmployee();
       setTimeout(() => setSuccess(""), 3000);

@@ -77,8 +77,7 @@ class Shift(models.Model):
     # run validation before saving
     def save(self, *args, **kwargs):
         self.full_clean() #validate before saving
-        #return super(Shift, self).save()
-        return super.save(args, **kwargs)
+        return super().save(*args, **kwargs)
 
     @property
     def duration_hours(self):
@@ -98,13 +97,13 @@ class Shift(models.Model):
     @property
     def is_active(self):
         """Check if shift is currently in progress"""
-        return self.shift_status == 'In_Progress'
+        return self.shift_status == 'shift_in_progress'
 
     @property
     def is_upcoming(self):
         """Check if shift is scheduled for future"""
         from datetime import date
-        return self.shift_date >= date.today() and self.shift_status == 'Scheduled'
+        return self.shift_date >= date.today() and self.shift_status == 'shift_scheduled'
 
     @property
     def has_attendance(self):
