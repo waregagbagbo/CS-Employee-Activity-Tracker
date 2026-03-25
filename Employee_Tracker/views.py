@@ -309,7 +309,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
     # Clock-in / Clock-out / Status / Today-summary
     # =========================
     @action(detail=False, methods=['GET'], url_path='status')
-    def attendance_status(self, request):
+    def status(self, request):
         try:
             employee = request.user.employee_profile
         except Employee.DoesNotExist:
@@ -427,7 +427,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         return Response(response)
 
     @action(detail=False, methods=['GET'], url_path='today')
-    def today_summary(self, request):
+    def today(self, request):
         try:
             employee = request.user.employee_profile
         except Employee.DoesNotExist:
