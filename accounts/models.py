@@ -34,18 +34,6 @@ class CustomUser(AbstractUser):
         db_table = 'Users'
 
 
-class Department(models.Model):
-    title = models.CharField(max_length=100,default=1)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Department'
-        verbose_name_plural = 'Departments'
-        db_table = 'Department'
-        ordering = ['title']
-
 
 class Employee(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='employee_profile')
@@ -78,3 +66,27 @@ class Employee(models.Model):
 
 
 
+class Department(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, blank=True, null=True, default='Enterprise Support')
+    head_node = models.ForeignKey(Employee, on_delete=models.SET_NULL,null=True,blank=True,related_name='managed_by')
+
+
+    def __str__(self):
+        return f"{self.title},{self.head_node}"
+
+
+
+    class Meta:
+        verbose_name = 'Department'
+    class Meta:
+        verbose_name = 'Department'
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Department'
+        verbose_name_plural = 'Departments'
+        db_table = 'Department'
+        ordering = ['title']

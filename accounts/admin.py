@@ -18,7 +18,7 @@ class EmployeeAdmin(admin.ModelAdmin):
 
 class DepartmentAdmin(admin.ModelAdmin):
     model = Department
-    list_display = ('title',)
+    list_display = ('title','description','head_node',)
 
 admin.site.register(Employee,EmployeeAdmin)
 admin.site.register(Department, DepartmentAdmin)
