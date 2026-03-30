@@ -136,7 +136,7 @@ export function Departments() {
                       <div className="flex items-center gap-2 bg-gray-50 px-3 py-1 rounded-lg">
                         <FaUsers className="text-gray-400" size={12}/>
                         <span className="text-[10px] font-black text-black uppercase">
-                      {dept.employee_count || 0} Staff
+                      {dept.employee_count || 0} Staff(s)
                     </span>
                       </div>
                     </div>
