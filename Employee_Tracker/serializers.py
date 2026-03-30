@@ -7,10 +7,16 @@ from django.utils import timezone
 #create the serializers for the models
 class DepartmentSerializer(serializers.ModelSerializer):
     employee_count = serializers.SerializerMethodField()
+    head_node = serializers.SerializerMethodField()
 
     class Meta:
         model = Department
-        fields = ['id', 'title','employee_count']
+        fields = ['id', 'title','description','head_node','employee_count']
+
+    # custom user field
+    def get_head_node(self, obj):
+        return obj.head_node.username
+
 
     def get_employee_count(self, obj):
         # Count employees in this department

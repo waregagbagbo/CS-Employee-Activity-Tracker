@@ -7,7 +7,7 @@ import Employees from "./pages/Employees";
 import Shifts from "./pages/Shifts.jsx";
 import Profile from "./pages/Profile.jsx"
 import Reports from "./pages/Reports.jsx";
-import Departments from "./pages/Departments.jsx";
+import {Departments} from "./pages/Departments.jsx";
 import Logout from "./pages/Logout.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EmployeeDetail from "./components/EmployeeDetail";
