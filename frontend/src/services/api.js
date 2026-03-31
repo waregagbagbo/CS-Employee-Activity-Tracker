@@ -12,4 +12,18 @@ API.interceptors.request.use((config) => {
   }
   return config;
 });
+API.interceptors.response.use(
+  response => response,
+  async error => {
+    const config = error.config;
+    if (error.response?.status === 429 && !config._retried) {
+      config._retried = true;
+      const retryAfter = error.response.headers['retry-after'];
+      const delay = retryAfter ? parseInt(retryAfter) * 1000 : 5000;
+      await new Promise(resolve => setTimeout(resolve, delay));
+      return API(config);
+    }
+    return Promise.reject(error);
+  }
+);
 export default API;

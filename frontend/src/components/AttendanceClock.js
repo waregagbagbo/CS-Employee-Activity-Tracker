@@ -1,23 +1,21 @@
 import React, { useEffect, useState, useCallback } from "react";
 import AttendanceService from "../services/attendance";
+import ShiftService from "../services/shifts";
 import { FaClock, FaPlay, FaStop } from "react-icons/fa";
+import useLiveTimer from "../hooks/useClockTimer";
 
 export default function AttendanceClock({ userType }) {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [timer, setTimer] = useState(0);
   const [actionLoading, setActionLoading] = useState(false);
+  const [availableShifts, setAvailableShifts] = useState([]);
 
   const isEmployee = userType === "employee_agent";
 
-  // Wrap loadStatus in useCallback so it can be used safely in useEffect
   const loadStatus = useCallback(async () => {
     try {
       const data = await AttendanceService.getStatus();
       setStatus(data);
-      if (data?.seconds_worked_today) {
-        setTimer(data.seconds_worked_today);
-      }
     } catch (err) {
       console.error("Attendance status error", err);
     } finally {
@@ -25,55 +23,46 @@ export default function AttendanceClock({ userType }) {
     }
   }, []);
 
-  // Initial Load
   useEffect(() => {
-    if (isEmployee) loadStatus();
+    if (isEmployee) {
+      loadStatus();
+      fetchShifts();
+    }
   }, [isEmployee, loadStatus]);
 
-  // Handle Tab Focus / Visibility Change
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      // Re-fetch from server when user returns to the tab
-      if (document.visibilityState === "visible" && isEmployee) {
-        loadStatus();
-      }
-    };
+  const fetchShifts = async () => {
+    try {
+      const res = await ShiftService.getMyShifts();
+      setAvailableShifts(res.shifts || []);
+    } catch (err) {
+      console.error("Shift fetch error", err);
+    }
+  };
 
-    window.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => window.removeEventListener("visibilitychange", handleVisibilityChange);
-  }, [isEmployee, loadStatus]);
+  const elapsed = useLiveTimer(status?.clock_in_time);
 
-  // Live Timer Logic
-  useEffect(() => {
-    if (!status?.is_clocked_in) return;
-
-    // Calculate start point to prevent drift
-    const startTime = Date.now() - (status.seconds_worked_today * 1000);
-
-    const interval = setInterval(() => {
-      const currentElapsed = Math.floor((Date.now() - startTime) / 1000);
-      setTimer(currentElapsed);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [status?.is_clocked_in, status?.seconds_worked_today]);
-
-  const handleAction = async (action) => {
+  const handleClockIn = async (shiftId) => {
     setActionLoading(true);
     try {
-      if (action === "in") await AttendanceService.clockIn();
-      else await AttendanceService.clockOut();
-      await loadStatus();
+      const res = await AttendanceService.clockIn({ shift_id: shiftId });
+      setStatus(res);
+    } catch (err) {
+      console.error("Clock-in failed", err);
     } finally {
       setActionLoading(false);
     }
   };
 
-  const formatTime = (secs) => {
-    const h = Math.floor(secs / 3600);
-    const m = Math.floor((secs % 3600) / 60);
-    const s = secs % 60;
-    return [h, m, s].map(v => v.toString().padStart(2, "0")).join(":");
+  const handleClockOut = async () => {
+    setActionLoading(true);
+    try {
+      const res = await AttendanceService.clockOut();
+      setStatus(res);
+    } catch (err) {
+      console.error("Clock-out failed", err);
+    } finally {
+      setActionLoading(false);
+    }
   };
 
   if (!isEmployee) return null;
@@ -87,22 +76,50 @@ export default function AttendanceClock({ userType }) {
       </div>
 
       <div className="text-3xl font-black mb-4 tabular-nums">
-        {status?.is_clocked_in ? formatTime(timer) : "00:00:00"}
+        {status?.is_clocked_in ? elapsed : "00:00:00"}
       </div>
 
-      <button
-        onClick={() => handleAction(status?.is_clocked_in ? "out" : "in")}
-        disabled={actionLoading}
-        className={`w-full py-3 rounded-xl font-black flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] ${
-          status?.is_clocked_in ? "bg-black text-[#FFCC00]" : "bg-[#FFCC00] text-black"
-        }`}
-      >
-        {status?.is_clocked_in ? (
-          <><FaStop /> CLOCK OUT</>
-        ) : (
-          <><FaPlay /> CLOCK IN</>
-        )}
-      </button>
+      {/* Assigned Shift */}
+      {status?.shift ? (
+        <div className="mb-4 text-sm text-gray-600">
+          <p className="font-bold uppercase">Assigned Shift</p>
+          <p>
+            {status.shift.shift_type} ({status.shift.scheduled_start} - {status.shift.scheduled_end})
+          </p>
+        </div>
+      ) : (
+        <div className="mb-4 text-sm text-gray-400">
+          <p className="font-bold uppercase">Assigned Shift</p>
+          <p>No shift assigned yet</p>
+          <ul className="mt-2 space-y-2">
+            {availableShifts.map((shift) => (
+              <li key={shift.id} className="flex justify-between items-center">
+                <span>
+                  {shift.shift_type} ({shift.shift_start_time} - {shift.shift_end_time})
+                </span>
+                <button
+                  onClick={() => handleClockIn(shift.id)}
+                  disabled={actionLoading}
+                  className="px-3 py-1 text-xs font-black rounded bg-[#FFCC00] text-black hover:scale-[1.05] transition-transform"
+                >
+                  Clock In Here
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Clock Out Button */}
+      {status?.is_clocked_in && (
+        <button
+          onClick={handleClockOut}
+          disabled={actionLoading}
+          className="w-full py-3 rounded-xl font-black flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] bg-black text-[#FFCC00]"
+        >
+          <FaStop /> CLOCK OUT
+        </button>
+      )}
     </div>
   );
 }
