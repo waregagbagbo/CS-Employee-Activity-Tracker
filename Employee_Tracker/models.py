@@ -72,7 +72,7 @@ class Shift(models.Model):
             .exclude(pk=self.pk) # exclude self when running updates
 
             if check_shift_overlaps.exists():
-                raise ValidationError(f"{self.shift_agent} Shift overlap already exists on {self.shift.date}")
+                raise ValidationError(f"{self.shift_agent} Shift overlap already exists on {self.shift_date}")
 
     # run validation before saving
     def save(self, *args, **kwargs):

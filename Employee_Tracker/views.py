@@ -92,9 +92,9 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             'shift_agent__user', 'shift_agent__department', 'created_by__user'
         ).prefetch_related('attendances')
 
-        if employee_profile.user_type == 'Admin':
+        if employee_profile.user_type in ['admin','superuser','staff']:
             return qs.all()
-        elif employee_profile.user_type in ['Supervisor', 'Manager']:
+        elif employee_profile.user_type in ['supervisor', 'manager']:
             return qs.filter(models.Q(shift_agent__supervisor=employee_profile) | models.Q(shift_agent=employee_profile))
         else:
             return qs.filter(shift_agent=employee_profile)

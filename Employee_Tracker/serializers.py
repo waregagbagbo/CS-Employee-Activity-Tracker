@@ -100,7 +100,7 @@ class ShiftSerializer(serializers.ModelSerializer):
                 now = timezone.now()
                 duration = (now - attendance.clock_in_time).total_seconds() / 3600
                 return {
-                    'status': 'in_progress',
+                    'status': 'shift_in_progress',
                     'message': f'Shift in progress ({round(duration, 2)} hours so far)',
                     'hours_worked': round(duration, 2)
                 }
@@ -112,14 +112,14 @@ class ShiftSerializer(serializers.ModelSerializer):
 
             if hours_worked >= scheduled_hours:
                 return {
-                    'status': 'completed',
+                    'status': 'shift_completed',
                     'message': 'Good work, shift done for today',
                     'hours_worked': hours_worked,
                     'scheduled_hours': scheduled_hours
                 }
             else:
                 return {
-                    'status': 'incomplete',
+                    'status': 'shift_cancelled',
                     'message': f'Shift incomplete ({hours_worked} hours logged)',
                     'hours_worked': hours_worked,
                     'scheduled_hours': scheduled_hours
@@ -127,8 +127,8 @@ class ShiftSerializer(serializers.ModelSerializer):
 
         # Fallback for unknown status
         return {
-            'status': 'unknown',
-            'message': 'Status unknown'
+            'status': 'no_show',
+            'message': 'Shift status unknown'
         }
 
 
@@ -139,7 +139,7 @@ class AttendanceListSerializer(serializers.ModelSerializer):
     Used in dashboard, attendance history, etc.
     """
     employee_name = serializers.CharField(source='employee.user.username', read_only=True)
-    shift_type = serializers.CharField(source='shift.shift_type', read_only=True, allow_null=True)
+    shift_type = serializers.CharField(source='shift.shift_type', allow_null=False)
     is_scheduled = serializers.SerializerMethodField()
 
     #  Keeping full date time
