@@ -298,7 +298,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
 
         qs = Attendance.objects.select_related('shift_attendance', 'employee__user')
 
-        if employee_profile.user_type == 'admin':
+        if employee_profile.user_type in ['admin','staff','supervisor']:
             return qs.all()
         elif employee_profile.user_type in ['supervisor', 'manager']:
             return qs.filter(employee__supervisor=employee_profile) | qs.filter(employee=employee_profile)
@@ -317,7 +317,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Response({'detail': 'Employee profile not found'}, status=404)
 
-        active = Attendance.objects.filter(employee=employee, status='clocked_in', clock_out_time__isnull=True).select_related('shift').first()
+        active = Attendance.objects.filter(employee=employee, status='clocked_in', clock_out_time__isnull=True).select_related('shift_attendance').first()
         today_shift = Shift.objects.filter(shift_agent=employee, shift_date=date.today()).first()
 
         if active:
@@ -327,12 +327,12 @@ class AttendanceViewSet(viewsets.ModelViewSet):
                 'clock_in_time': active.clock_in_time,
                 'duration_so_far': calculate_current_duration(active.clock_in_time),
             }
-            if active.shift:
+            if active.shift_attendance:
                 response['shift'] = {
-                    'id': active.shift.id,
-                    'shift_type': active.shift.shift_type,
-                    'scheduled_start': active.shift.shift_start_time,
-                    'scheduled_end': active.shift.shift_end_time,
+                    'id': active.shift_attendance.id,
+                    'shift_type': active.shift_attendance.shift_type,
+                    'scheduled_start': active.shift_attendance.shift_start_time,
+                    'scheduled_end': active.shift_attendance.shift_end_time,
                 }
             return Response(response)
 
@@ -360,12 +360,12 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         today_shift = Shift.objects.filter(shift_agent=employee, shift_date=date.today()).first()
         attendance = Attendance.objects.create(
             employee=employee,
-            shift=today_shift,
+            shift_attendance=today_shift,
             clock_in_time=timezone.now(),
             status='clocked_in'
         )
         if today_shift:
-            today_shift.shift_status = 'In_Progress'
+            today_shift.shift_status = 'shift_in_progress'
             today_shift.save()
 
         response = {
@@ -375,7 +375,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             'status': attendance.status,
             'is_scheduled': bool(today_shift)
         }
-        if today_shift:
+        if today_shift.sh:
             response['shift'] = {
                 'id': today_shift.id,
                 'shift_type': today_shift.shift_type,
@@ -394,7 +394,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Response({'detail': 'Employee profile not found'}, status=404)
 
-        active = Attendance.objects.filter(employee=employee, status='clocked_in', clock_out_time__isnull=True).select_related('shift').first()
+        active = Attendance.objects.filter(employee=employee, status='clocked_in', clock_out_time__isnull=True).select_related('shift_attendance').first()
         if not active:
             return Response({'detail': 'Not clocked in'}, status=400)
 
@@ -402,8 +402,8 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         active.status = 'clocked_out'
         active.save()
 
-        if active.shift:
-            active.shift.shift_status = 'Shift_Completed'
+        if active.shift_attendance:
+            active.shift_attendance.shift_status = 'shift_completed'
             active.shift.save()
 
         response = {
@@ -414,15 +414,15 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             'duration_hours': active.duration_hours,
             'prompt_report': True
         }
-        if active.shift:
-            scheduled_duration = calculate_scheduled_duration(active.shift)
+        if active.shift_attendance:
+            scheduled_duration = calculate_scheduled_duration(active.shift_attendance)
             variance = float(active.duration_hours) - scheduled_duration if scheduled_duration else 0
             response['shift'] = {
-                'id': active.shift.id,
-                'shift_type': active.shift.shift_type,
-                'scheduled_start': active.shift.shift_start_time,
-                'scheduled_end': active.shift.shift_end_time,
-                'scheduled_duration': scheduled_duration,
+                'id': active.shift_attendance.id,
+                'shift_type': active.shift_attendance.shift_type,
+                'scheduled_start': active.shift_attendance.shift_start_time,
+                'scheduled_end': active.shift_attendance.shift_end_time,
+                'scheduled_duration':scheduled_duration,
                 'variance_hours': round(variance, 2)
             }
 
@@ -436,14 +436,14 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             return Response({'detail': 'Employee profile not found'}, status=404)
 
         today = date.today()
-        attendances = Attendance.objects.filter(employee=employee, date=today).select_related('shift')
+        attendances = Attendance.objects.filter(employee=employee, clock_in_time__date=today).select_related('shift_attendance')
 
         today_shift = Shift.objects.filter(shift_agent=employee, shift_date=today).first()
         summary = {'date': today, 'has_shift': bool(today_shift), 'attendances': []}
         if today_shift:
             summary['shift'] = {
                 'id': today_shift.id,
-                'shift_attendance_type': today_shift.shift_type,
+                'shift_attendance': today_shift.shift_type,
                 'scheduled_start': today_shift.shift_start_time,
                 'scheduled_end': today_shift.shift_end_time,
                 'status': today_shift.shift_status
