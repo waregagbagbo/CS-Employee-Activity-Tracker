@@ -127,7 +127,7 @@ class Shift(models.Model):
 """ Model for attendance tracking """
 class Attendance(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='employee_attendance')
-    shift = models.ForeignKey(Shift, on_delete=models.SET_NULL, null=True, blank=True, related_name='attendances')
+    shift_attendance = models.ForeignKey(Shift, on_delete=models.SET_NULL, null=True, blank=True, related_name='attendances')
 
     clock_in_time = models.DateTimeField()
     clock_out_time = models.DateTimeField(null=True, blank=True)
@@ -140,7 +140,7 @@ class Attendance(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.employee} - {self.shift}({self.status})"
+        return f"{self.employee} - {self.shift_attendance}({self.status})"
 
     def calculate_duration_hours(self):
         if self.clock_in_time and self.clock_out_time:

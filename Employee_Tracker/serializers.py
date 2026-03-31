@@ -139,7 +139,6 @@ class AttendanceListSerializer(serializers.ModelSerializer):
     Used in dashboard, attendance history, etc.
     """
     employee_name = serializers.CharField(source='employee.user.username', read_only=True)
-    shift_type = serializers.CharField(source='shift.shift_type', allow_null=False)
     is_scheduled = serializers.SerializerMethodField()
 
     #  Keeping full date time
@@ -156,13 +155,13 @@ class AttendanceListSerializer(serializers.ModelSerializer):
             'duration_hours',
             'status',
             'date',
-            'shift_type',
+            'shift_attendance',
             'is_scheduled',
         ]
 
     def get_is_scheduled(self, obj):
         """Indicates if this was scheduled work or unscheduled"""
-        return obj.shift is not None
+        return obj.date is not None
 
 
 class AttendanceDetailSerializer(serializers.ModelSerializer):
@@ -183,7 +182,7 @@ class AttendanceDetailSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'employee',
-            'shift',
+            'shift_attendance_type',
             'clock_in_time',
             'clock_out_time',
             'duration_hours',
@@ -261,7 +260,7 @@ class AttendanceCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Attendance
-        fields = ['employee', 'shift', 'clock_in_time', 'status']
+        fields = ['employee', 'shift_attendance_type', 'clock_in_time', 'status']
         read_only_fields = ['clock_in_time', 'status']  # Set by view
 
 
@@ -310,7 +309,7 @@ class AttendanceSupervisorSerializer(serializers.ModelSerializer):
         """Return shift info if exists"""
         if obj.shift:
             return {
-                'shift_type': obj.shift.shift_type,
+                'shift_attendance_type': obj.shift.shift_type,
                 'scheduled_start': obj.shift.shift_start_time,
                 'scheduled_end': obj.shift.shift_end_time,
             }

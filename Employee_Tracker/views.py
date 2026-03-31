@@ -107,7 +107,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
             raise ValidationError({'error': 'Employee profile not found'})
 
         shift_agent_id = self.request.data.get('shift_agent')
-        if employee_profile.user_type in ['Supervisor', 'Manager', 'Admin'] and shift_agent_id:
+        if employee_profile.user_type in ['supervisor', 'manager', 'admin'] and shift_agent_id:
             try:
                 shift_agent = Employee.objects.get(id=shift_agent_id)
                 if employee_profile.user_type != 'Admin' and shift_agent.supervisor != employee_profile:
@@ -286,6 +286,8 @@ class ReportsViewSet(viewsets.ModelViewSet):
 # ===========================
 class AttendanceViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, UserTypeReportPermission]
+    serializer_class = AttendanceListSerializer
+    queryset = Attendance.objects.all()
 
     def get_queryset(self):
         user = self.request.user
@@ -294,11 +296,11 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Attendance.objects.none()
 
-        qs = Attendance.objects.select_related('shift', 'employee__user')
+        qs = Attendance.objects.select_related('shift_attendance', 'employee__user')
 
-        if employee_profile.user_type == 'Admin':
+        if employee_profile.user_type == 'admin':
             return qs.all()
-        elif employee_profile.user_type in ['Supervisor', 'Manager']:
+        elif employee_profile.user_type in ['supervisor', 'manager']:
             return qs.filter(employee__supervisor=employee_profile) | qs.filter(employee=employee_profile)
         return qs.filter(employee=employee_profile)
 
@@ -441,7 +443,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         if today_shift:
             summary['shift'] = {
                 'id': today_shift.id,
-                'shift_type': today_shift.shift_type,
+                'shift_attendance_type': today_shift.shift_type,
                 'scheduled_start': today_shift.shift_start_time,
                 'scheduled_end': today_shift.shift_end_time,
                 'status': today_shift.shift_status
