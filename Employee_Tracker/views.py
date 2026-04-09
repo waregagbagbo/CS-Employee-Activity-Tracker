@@ -298,9 +298,9 @@ class AttendanceViewSet(viewsets.ModelViewSet):
 
         qs = Attendance.objects.select_related('shift_attendance', 'employee__user')
 
-        if employee_profile.user_type in ['admin','staff','supervisor']:
+        if employee_profile.user_type in ['Admin','Staff','Supervisor']:
             return qs.all()
-        elif employee_profile.user_type in ['supervisor', 'manager']:
+        elif employee_profile.user_type in ['Supervisor', 'Manager']:
             return qs.filter(employee__supervisor=employee_profile) | qs.filter(employee=employee_profile)
         return qs.filter(employee=employee_profile)
 
@@ -317,33 +317,44 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Response({'detail': 'Employee profile not found'}, status=404)
 
-        active = Attendance.objects.filter(employee=employee, status='clocked_in', clock_out_time__isnull=True).select_related('shift_attendance').first()
-        today_shift = Shift.objects.filter(shift_agent=employee, shift_date=date.today()).first()
+        active = Attendance.objects.filter(
+            employee=employee,
+            status='clocked_in',
+            clock_out_time__isnull=True
+        ).select_related('shift_attendance').first()
 
-        if active:
-            response = {
-                'is_clocked_in': True,
-                'attendance_id': active.id,
-                'clock_in_time': active.clock_in_time,
-                'duration_so_far': calculate_current_duration(active.clock_in_time),
+        today_shift = Shift.objects.filter(
+            shift_agent=employee,shift_date=date.today()).first()
+
+        # Base response always includes these
+        response = {
+            'is_clocked_in': bool(active),
+            'attendance_status': active.status if active else 'not_clocked_in',
+            'attendance_id': active.id if active else None,
+            'clock_in_time': active.clock_in_time if active else None,
+            'clock_out_time': active.clock_out_time if active else None,
+            'duration_so_far': calculate_current_duration(active.clock_in_time) if active else None,
+        }
+
+        # Attach shift info if available
+        if active and active.shift_attendance:
+            response['shift'] = {
+                'id': active.shift_attendance.id,
+                'shift_type': active.shift_attendance.shift_type,
+                'shift_type_display': active.shift_attendance.get_shift_type_display(),
+                'scheduled_start': active.shift_attendance.shift_start_time,
+                'scheduled_end': active.shift_attendance.shift_end_time,
+                'shift_status': active.shift_attendance.shift_status,
             }
-            if active.shift_attendance:
-                response['shift'] = {
-                    'id': active.shift_attendance.id,
-                    'shift_type': active.shift_attendance.shift_type,
-                    'scheduled_start': active.shift_attendance.shift_start_time,
-                    'scheduled_end': active.shift_attendance.shift_end_time,
-                }
-            return Response(response)
-
-        response = {'is_clocked_in': False}
-        if today_shift:
+        elif today_shift:
             response['upcoming_shift'] = {
                 'id': today_shift.id,
                 'shift_type': today_shift.shift_type,
                 'scheduled_start': today_shift.shift_start_time,
                 'scheduled_end': today_shift.shift_end_time,
+                'shift_status': today_shift.shift_status,
             }
+
         return Response(response)
 
     @action(detail=False, methods=['POST'], url_path='clock-in')
@@ -375,7 +386,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             'status': attendance.status,
             'is_scheduled': bool(today_shift)
         }
-        if today_shift.sh:
+        if today_shift:
             response['shift'] = {
                 'id': today_shift.id,
                 'shift_type': today_shift.shift_type,
@@ -394,7 +405,12 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Response({'detail': 'Employee profile not found'}, status=404)
 
-        active = Attendance.objects.filter(employee=employee, status='clocked_in', clock_out_time__isnull=True).select_related('shift_attendance').first()
+        active = Attendance.objects.filter(
+            employee=employee,
+            status='clocked_in',
+            clock_out_time__isnull=True
+        ).select_related('shift_attendance').first()
+
         if not active:
             return Response({'detail': 'Not clocked in'}, status=400)
 
@@ -404,7 +420,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
 
         if active.shift_attendance:
             active.shift_attendance.shift_status = 'shift_completed'
-            active.shift.save()
+            active.shift_attendance.save()
 
         response = {
             'message': 'Clocked out successfully',
@@ -412,17 +428,21 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             'clock_in_time': active.clock_in_time,
             'clock_out_time': active.clock_out_time,
             'duration_hours': active.duration_hours,
+            'attendance_status': active.status,
             'prompt_report': True
         }
+
         if active.shift_attendance:
             scheduled_duration = calculate_scheduled_duration(active.shift_attendance)
             variance = float(active.duration_hours) - scheduled_duration if scheduled_duration else 0
             response['shift'] = {
                 'id': active.shift_attendance.id,
                 'shift_type': active.shift_attendance.shift_type,
+                'shift_type_display': active.shift_attendance.get_shift_type_display(),
                 'scheduled_start': active.shift_attendance.shift_start_time,
                 'scheduled_end': active.shift_attendance.shift_end_time,
-                'scheduled_duration':scheduled_duration,
+                'shift_status': active.shift_attendance.shift_status,
+                'scheduled_duration': scheduled_duration,
                 'variance_hours': round(variance, 2)
             }
 

@@ -3,13 +3,12 @@ import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import AttendanceClock from "../components/AttendanceClock";
 import LiveLogs from "../components/LiveLogs";
-import ShiftService from "../services/shifts";
 import AttendanceService from "../services/attendance";
 import { listEmployees } from "../services/employee";
 import { FaUsers, FaCalendarCheck, FaChartLine, FaPlus, FaArrowRight } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { SHIFT_TYPE_MAP } from "../constants/shiftTypeMap"; // ✅ shared map
+import { SHIFT_TYPE_MAP } from "../constants/shiftTypeMap";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -67,7 +66,7 @@ export default function Dashboard() {
     try {
       const res = await AttendanceService.clockIn({ shift_type: shiftType });
       setStatus(res);
-      setSelectedShift(shiftType); // ✅ mark chosen shift
+      setSelectedShift(shiftType);
     } catch (err) {
       console.error("Clock-in failed", err);
     }

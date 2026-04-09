@@ -57,6 +57,7 @@ class ShiftSerializer(serializers.ModelSerializer):
     duration_hours = serializers.DecimalField(max_digits=5, decimal_places=2, read_only=True)
     has_attendance = serializers.SerializerMethodField()
     attendance_status = serializers.SerializerMethodField()
+    shift_type_display = serializers.CharField(source='get_shift_type_display', read_only=True)
 
     class Meta:
         model = Shift
@@ -72,6 +73,7 @@ class ShiftSerializer(serializers.ModelSerializer):
             'has_attendance',
             'attendance_status',
             'shift_created_at',
+            'shift_type_display'
         ]
 
     #  Methods at CLASS level, not inside Meta!
@@ -145,6 +147,9 @@ class AttendanceListSerializer(serializers.ModelSerializer):
     clock_in_time = serializers.DateTimeField(read_only=True)
     clock_out_time = serializers.DateTimeField(read_only=True, allow_null=True)
 
+    #  Add nested shift
+    shift = ShiftSerializer(source='shift_attendance', read_only=True)
+
     class Meta:
         model = Attendance
         fields = [
@@ -156,7 +161,9 @@ class AttendanceListSerializer(serializers.ModelSerializer):
             'status',
             'date',
             'shift_attendance',
+            'shift',
             'is_scheduled',
+
         ]
 
     def get_is_scheduled(self, obj):
@@ -260,7 +267,7 @@ class AttendanceCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Attendance
-        fields = ['employee', 'shift_attendance_type', 'clock_in_time', 'status']
+        fields = ['employee', 'shift_attendance', 'clock_in_time', 'status']
         read_only_fields = ['clock_in_time', 'status']  # Set by view
 
 
