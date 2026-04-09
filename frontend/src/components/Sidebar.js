@@ -17,11 +17,11 @@ export default function Sidebar() {
 
   const modules = [
     { name: "DASHBOARD", route: "/dashboard", icon: <FaTachometerAlt /> },
-    { name: "DEPARTMENTS", route: "/departments", icon: <FaBuilding /> },
-    { name: "EMPLOYEES", route: "/employees", icon: <FaUsers /> },
     { name: "ATTENDANCE", route: "/attendance", icon: <FaCalendarCheck /> },
     {name: "SHIFTS", route: "/shifts", icon: <FaTachometerAlt /> },
     { name: "REPORTS", route: "/reports", icon: <FaFileAlt /> },
+    { name: "DEPARTMENTS", route: "/departments", icon: <FaBuilding /> },
+    { name: "EMPLOYEES", route: "/employees", icon: <FaUsers /> },
   ];
 
   const isActive = (route) => location.pathname === route;
