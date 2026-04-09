@@ -59,7 +59,7 @@ const ShiftService = {
 
   // GET /api/shifts/my-shifts/ - Current user's shifts (last 30 days + upcoming)
   getMyShifts: async () => {
-    const response = await API.get("api/shifts/my-shifts/");
+    const response = await API.get("api/shifts/");
     return response.data;
   },
 

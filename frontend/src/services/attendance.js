@@ -30,7 +30,7 @@ const AttendanceService = {
   // 3. History & Logs (For regular Employees)
   // GET /api/attendance/history/
   getPersonalHistory: async () => {
-    const response = await API.get("api/attendance/history/");
+    const response = await API.get("api/attendance");
     return response.data;
   },
 

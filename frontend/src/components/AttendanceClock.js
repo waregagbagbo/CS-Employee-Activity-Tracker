@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import AttendanceService from "../services/attendance";
 import ShiftService from "../services/shifts";
-import { FaClock, FaPlay, FaStop } from "react-icons/fa";
+import { FaClock, FaStop } from "react-icons/fa";
 import useLiveTimer from "../hooks/useClockTimer";
 
 export default function AttendanceClock({ userType }) {
@@ -45,6 +45,7 @@ export default function AttendanceClock({ userType }) {
     setActionLoading(true);
     try {
       const res = await AttendanceService.clockIn({ shift_id: shiftId });
+      // ✅ update status so Assigned shift shows immediately
       setStatus(res);
     } catch (err) {
       console.error("Clock-in failed", err);
@@ -84,7 +85,8 @@ export default function AttendanceClock({ userType }) {
         <div className="mb-4 text-sm text-gray-600">
           <p className="font-bold uppercase">Assigned Shift</p>
           <p>
-            {status.shift.shift_type} ({status.shift.scheduled_start} - {status.shift.scheduled_end})
+            {status.shift.shift_type_display || status.shift.shift_type} (
+            {status.shift.shift_start_time} - {status.shift.shift_end_time})
           </p>
         </div>
       ) : (
@@ -95,7 +97,8 @@ export default function AttendanceClock({ userType }) {
             {availableShifts.map((shift) => (
               <li key={shift.id} className="flex justify-between items-center">
                 <span>
-                  {shift.shift_type} ({shift.shift_start_time} - {shift.shift_end_time})
+                  {shift.shift_type_display || shift.shift_type} (
+                  {shift.shift_start_time} - {shift.shift_end_time})
                 </span>
                 <button
                   onClick={() => handleClockIn(shift.id)}

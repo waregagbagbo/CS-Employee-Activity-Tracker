@@ -143,7 +143,7 @@ const ShiftsDashboard = () => {
           {/* HEADER */}
           <section className="bg-black p-8 rounded-[2.5rem] shadow-2xl text-white flex flex-col lg:flex-row justify-between items-center gap-6 border-b-4 border-[#FFCC00]">
             <div>
-              <h1 className="text-3xl font-black italic tracking-tighter uppercase text-[#FFCC00]">Deployment Log</h1>
+              <h1 className="text-3xl font-black italic tracking-tighter uppercase text-[#FFCC00]">Shifts Deployment Log</h1>
               <p className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em] mt-1">Personnel Shift Management Terminal</p>
             </div>
             {['Supervisor', 'Manager', 'Admin'].includes(userType) && (
