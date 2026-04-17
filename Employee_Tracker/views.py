@@ -21,6 +21,7 @@ from .serializers import (
 )
 
 User = get_user_model()
+today = timezone.localdate()
 
 
 # ===========================
@@ -122,7 +123,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
 
         shift = serializer.save(
             shift_agent=shift_agent,
-            shift_date=date.today(),
+            shift_date=today,
             shift_start_time=timezone.now().time(),
             shift_status='shift_in_progress',
             created_by=employee_profile
@@ -177,8 +178,8 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Response({'error': 'Employee profile not found'}, status=404)
 
-        today = date.today()
-        if employee.user_type == 'Admin':
+        today = today
+        if employee.user_type in ['Admin','staff']:
             shifts = Shift.objects.filter(shift_date=today)
         elif employee.user_type in ['Supervisor', 'Manager']:
             shifts = Shift.objects.filter(shift_date=today).filter(models.Q(shift_agent__supervisor=employee) | models.Q(shift_agent=employee))
@@ -196,7 +197,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Response({'error': 'Employee profile not found'}, status=404)
 
-        today = date.today()
+        today = today
         next_week = today + timedelta(days=7)
 
         if employee.user_type == 'Admin':
@@ -238,7 +239,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
         except Employee.DoesNotExist:
             return Response({'error': 'Employee profile not found'}, status=404)
 
-        today = date.today()
+        today = today
         past_30 = today - timedelta(days=30)
         next_30 = today + timedelta(days=30)
 
@@ -324,7 +325,8 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         ).select_related('shift_attendance').first()
 
         today_shift = Shift.objects.filter(
-            shift_agent=employee,shift_date=date.today()).first()
+            shift_agent=employee,shift_date=today).first()
+        #print(today_shift)
 
         # Base response always includes these
         response = {
@@ -350,6 +352,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             response['upcoming_shift'] = {
                 'id': today_shift.id,
                 'shift_type': today_shift.shift_type,
+                'shift_type_display': today_shift.get_shift_type_display(),
                 'scheduled_start': today_shift.shift_start_time,
                 'scheduled_end': today_shift.shift_end_time,
                 'shift_status': today_shift.shift_status,
@@ -368,12 +371,12 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         if active:
             return Response({'detail': 'Already clocked in', 'attendance_id': active.id, 'clock_in_time': active.clock_in_time}, status=400)
 
-        today_shift = Shift.objects.filter(shift_agent=employee, shift_date=date.today()).first()
+        today_shift = Shift.objects.filter(shift_agent=employee, shift_date=today).first()
         attendance = Attendance.objects.create(
             employee=employee,
             shift_attendance=today_shift,
             clock_in_time=timezone.now(),
-            status='clocked_in'
+            status='clocked_in',
         )
         if today_shift:
             today_shift.shift_status = 'shift_in_progress'
@@ -390,6 +393,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             response['shift'] = {
                 'id': today_shift.id,
                 'shift_type': today_shift.shift_type,
+                'shift_type_display': today_shift.get_shift_type_display(),
                 'scheduled_start': today_shift.shift_start_time,
                 'scheduled_end': today_shift.shift_end_time
             }
@@ -456,14 +460,28 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             return Response({'detail': 'Employee profile not found'}, status=404)
 
         today = date.today()
-        attendances = Attendance.objects.filter(employee=employee, clock_in_time__date=today).select_related('shift_attendance')
+        attendances = Attendance.objects.filter(
+            employee=employee,
+            clock_in_time__date=today
+        ).select_related('shift_attendance')
 
-        today_shift = Shift.objects.filter(shift_agent=employee, shift_date=today).first()
-        summary = {'date': today, 'has_shift': bool(today_shift), 'attendances': []}
+        today_shift = Shift.objects.filter(
+            shift_agent=employee,
+            shift_date=today
+        ).first()
+
+        summary = {
+            'date': today,
+            'has_shift': bool(today_shift),  # scheduled shift exists
+            'has_attendance': attendances.exists(),
+            'attendances': []
+        }
+
         if today_shift:
             summary['shift'] = {
                 'id': today_shift.id,
-                'shift_attendance': today_shift.shift_type,
+                'shift_type': today_shift.shift_type,
+                'shift_type_display': today_shift.get_shift_type_display(),
                 'scheduled_start': today_shift.shift_start_time,
                 'scheduled_end': today_shift.shift_end_time,
                 'status': today_shift.shift_status
@@ -475,7 +493,9 @@ class AttendanceViewSet(viewsets.ModelViewSet):
                 'clock_in_time': a.clock_in_time,
                 'clock_out_time': a.clock_out_time,
                 'duration_hours': a.duration_hours,
-                'status': a.status
+                'status': a.status,
+                'shift_attendance': a.shift_attendance.shift_type if a.shift_attendance else None,
+                'shift_type_display': a.shift_attendance.get_shift_type_display() if a.shift_attendance else None
             })
 
         return Response(summary)
@@ -493,8 +513,8 @@ def calculate_current_duration(clock_in_time):
 
 def calculate_scheduled_duration(shift):
     if shift and shift.shift_start_time and shift.shift_end_time:
-        start = datetime.combine(date.today(), shift.shift_start_time)
-        end = datetime.combine(date.today(), shift.shift_end_time)
+        start = datetime.combine(today, shift.shift_start_time)
+        end = datetime.combine(today, shift.shift_end_time)
         if end < start:
             end += timedelta(days=1)
         delta = end - start
