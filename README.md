@@ -138,9 +138,9 @@ Future support for multichannel registry.
 
 #### Authentication and permissions required for the view functionality (http://127.0.0.1:8000/cs/shifts/)
 
-<img width="653" height="181" alt="image" src="https://github.com/user-attachments/assets/579fc4c1-8791-44ba-b199-575ee414d39f" />
+<img width="600" height="800" alt="image" src="https://github.com/waregagbagbo/CS-Employee-Activity-Tracker/blob/e0216f2ede43b0414c12ac7d54d6ea95be07793b/Screenshot%202026-06-17%20004818.png" />
 
-#### Token Auth in operation
+#### Frontend Dashboard
 
 <img width="648" height="302" alt="image" src="https://github.com/user-attachments/assets/104d2465-05d3-4bc0-bf1b-19c98a2d4c26" />
 <br>
