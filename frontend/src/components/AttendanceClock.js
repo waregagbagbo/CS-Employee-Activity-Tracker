@@ -10,7 +10,7 @@ export default function AttendanceClock({ userType }) {
   const [actionLoading, setActionLoading] = useState(false);
   const [availableShifts, setAvailableShifts] = useState([]);
 
-  const isEmployee = userType === "employee_agent";
+  const isEmployee = userType === "employee_agent" || "Employee Agent";
 
   const loadStatus = useCallback(async () => {
     try {
@@ -97,7 +97,7 @@ export default function AttendanceClock({ userType }) {
             {availableShifts.map((shift) => (
               <li key={shift.id} className="flex justify-between items-center">
                 <span>
-                  {shift.shift_type_display || shift.shift_type} (
+                  {shift.shift_display || shift.shift_type} (
                   {shift.shift_start_time} - {shift.shift_end_time})
                 </span>
                 <button

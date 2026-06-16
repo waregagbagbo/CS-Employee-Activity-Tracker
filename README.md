@@ -6,6 +6,7 @@ A Django-based system for customer support teams to log end-of-shift reports and
 - `accounts/` – Custom user model and auth logic
 - `shifts/` – Shift tracking and webhook triggers
 - `reports/` – End-of-shift reporting and approval flow
+- `departments/` – Departments present
 
 ## 🚀 Quickstart
 
@@ -50,8 +51,7 @@ A Django-based system for customer support teams to log end-of-shift reports and
  - POST /login/ - User login
  - POST /auth/register - User register
  - POST /auth/logout/ - User logout
- - POST /api/auth/refresh/ - Refresh JWT token. Also updates session-based auth tokens for compatibility with the accounts app.
-
+ 
 ### Employee Management (Viewsets)/Generic
 
 Uses a custom AbstractUser model with email as the primary identifier. <br> Signals ensure automatic profile creation and token regeneration on user creation.
@@ -110,6 +110,7 @@ Future support for multichannel registry.
 ### Performance
 - Database indexing on frequently queried fields (MySQL)
 - Pagination via DRF’s `PageNumberPagination` setting
+- Throttling has been enabled
 
 ### Architecture
 - Modular design using ViewSets, signals, and custom user models.
@@ -131,7 +132,7 @@ Future support for multichannel registry.
 
 ## SAMPLE Results.
 
-#### DRF Login (use case for SessionAuth) http://127.0.0.1:8000/accounts/api/login/
+#### DRF Login (use case for SessionAuth) http://127.0.0.1:8000 or http://localhost:3000/
 
 <img width="673" height="281" alt="image" src="https://github.com/user-attachments/assets/6c274122-b485-4be7-bf4e-9ccfa064ba7f" />
 
