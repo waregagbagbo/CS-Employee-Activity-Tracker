@@ -134,7 +134,7 @@ Future support for multichannel registry.
 
 #### DRF Login (use case for SessionAuth) http://127.0.0.1:8000 or http://localhost:3000/
 
-<img width="673" height="281" alt="image" src="https://github.com/user-attachments/assets/6c274122-b485-4be7-bf4e-9ccfa064ba7f" />
+<img width="600" height="800" alt="image" src="https://github.com/waregagbagbo/CS-Employee-Activity-Tracker/blob/760981c5e1532f4d76fc7344a637bd5fb67c7683/Screenshot%202026-06-17%20003839.png" />
 
 #### Authentication and permissions required for the view functionality (http://127.0.0.1:8000/cs/shifts/)
 
