@@ -142,7 +142,7 @@ Future support for multichannel registry.
 
 #### Frontend Dashboard
 
-<img width="648" height="302" alt="image" src="https://github.com/user-attachments/assets/104d2465-05d3-4bc0-bf1b-19c98a2d4c26" />
+<img width="600" height="800" alt="image" src="https://github.com/waregagbagbo/CS-Employee-Activity-Tracker/blob/7c7938625655e441df2327d0b5b699f1267c9511/Screenshot%202026-06-17%20010116.png" />
 <br>
 
 
