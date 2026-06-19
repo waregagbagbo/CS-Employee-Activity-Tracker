@@ -3,6 +3,9 @@ from Employee_Tracker.models import *
 
 # Register your models here.
 
+class StaticShiftsAdmin(admin.ModelAdmin):
+    list_display = ('shift_type_chosen','shift_start_time','shift_complete_time',)
+
 class ShiftAdmin(admin.ModelAdmin):
     list_display = ('id','shift_type','shift_date','shift_status','shift_agent','shift_start_time','shift_end_time',)
     list_filter = ('shift_agent','shift_type','shift_date','shift_status',)
@@ -20,5 +23,6 @@ class AttendanceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Shift, ShiftAdmin)
+admin.site.register(StaticShifts,StaticShiftsAdmin)
 admin.site.register(ActivityReport,ActivityAdmin)
 admin.site.register(Attendance,AttendanceAdmin)

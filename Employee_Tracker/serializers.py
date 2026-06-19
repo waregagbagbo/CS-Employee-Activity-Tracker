@@ -148,7 +148,7 @@ class AttendanceListSerializer(serializers.ModelSerializer):
     clock_out_time = serializers.DateTimeField(read_only=True, allow_null=True)
 
     #  Add nested shift
-    shift = ShiftSerializer(source='shift_attendance', read_only=True)
+    #shift = ShiftSerializer(source='shift_attendance', read_only=True)
 
     class Meta:
         model = Attendance
@@ -161,7 +161,7 @@ class AttendanceListSerializer(serializers.ModelSerializer):
             'status',
             'date',
             'shift_attendance',
-            'shift',
+            #'shift',
             'is_scheduled',
 
         ]

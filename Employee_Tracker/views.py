@@ -326,7 +326,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
 
         today_shift = Shift.objects.filter(
             shift_agent=employee,shift_date=today).first()
-        #print(today_shift)
+        print(today_shift)
 
         # Base response always includes these
         response = {
