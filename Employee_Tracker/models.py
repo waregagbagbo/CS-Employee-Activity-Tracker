@@ -48,15 +48,6 @@ def event():
         'report_submitted':'report_submitted',
     }
 
-# create a dummy shift model that has no restrictions
-class StaticShifts(models.Model):
-    shift_type_chosen = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift')
-    shift_start_time = models.TimeField(auto_now=False, blank=False)
-    shift_complete_time = models.TimeField(auto_now=False, blank=False)
-
-    def __str__(self):
-        return f"{self.shift_type_chosen} - {self.shift_start_time} ({self.shift_complete_time})"
-
 
 """ create shift class """
 class Shift(models.Model):
@@ -65,9 +56,9 @@ class Shift(models.Model):
 
     shift_start_time = models.TimeField(auto_now=False,blank=False)
     shift_end_time = models.TimeField(auto_now=False, blank=False)
-    shift_type = models.ForeignKey(StaticShifts, on_delete=models.SET_NULL, null=True, blank=True, related_name='shiftmodes')
-
+    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift', blank=False)
     shift_status = models.CharField(max_length=50, choices=SHIFT_STATUS, default='no_show',blank = False)
+
     shift_created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     shift_updated_at = models.DateTimeField(auto_now=True) # records the time at which the shift was last updated
@@ -119,7 +110,6 @@ class Shift(models.Model):
 
 
     def __str__(self):
-        #return str(self.shift_agent)
         return f"{self.shift_agent} - {self.shift_date} ({self.shift_type})"
 
     class Meta:
@@ -127,8 +117,6 @@ class Shift(models.Model):
         verbose_name_plural = 'Shifts'
         ordering = ['-shift_date', 'shift_start_time']
         unique_together = (('shift_agent', 'shift_date'),) # Agent cannot have more than a shift per day
-
-
 
 
 """ Model for attendance tracking """
