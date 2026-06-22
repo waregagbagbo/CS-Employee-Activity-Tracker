@@ -13,7 +13,7 @@ from rest_framework.response import Response
 
 from accounts.models import Employee, Department
 from accounts.permissions import UserTypeReportPermission, UserShiftPermission, CanEditOwnProfile, DepartmentViewPermission
-from .models import Shift, ActivityReport, Attendance
+from .models import Shift, ActivityReport, Attendance,StaticShift
 from .serializers import (
     EmployeeProfileSerializer, ShiftSerializer, DepartmentSerializer,
     ActivityReportSerializer, AttendanceStatsSerializer, AttendanceUpdateSerializer,
