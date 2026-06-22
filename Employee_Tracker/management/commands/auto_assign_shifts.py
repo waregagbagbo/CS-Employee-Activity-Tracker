@@ -2,7 +2,8 @@ import random
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 from datetime import timedelta
-from .models import Employee, StaticShift, Shift
+from accounts.models import Employee
+from Employee_Tracker.models import StaticShift,Shift
 
 
 class Command(BaseCommand):
@@ -23,14 +24,14 @@ class Command(BaseCommand):
         employees = Employee.objects.filter(is_active=True)
 
         if not employees.exists():
-            self.stdout.write(self.style.ERROR('❌ No active employees found'))
+            self.stdout.write(self.style.ERROR('No active employees found'))
             return
 
         # Get all static shifts
         static_shifts = list(StaticShift.objects.all())
 
         if not static_shifts:
-            self.stdout.write(self.style.ERROR('❌ No static shifts found. Create them first!'))
+            self.stdout.write(self.style.ERROR('No static shifts found. Create them first!'))
             return
 
         admin_user = Employee.objects.filter(is_superuser=True).first()
@@ -61,5 +62,5 @@ class Command(BaseCommand):
                     shifts_created += 1
 
         self.stdout.write(
-            self.style.SUCCESS(f'✅ Created {shifts_created} shifts for {len(employees)} employees over {days} days')
+            self.style.SUCCESS(f'Created {shifts_created} shifts for {len(employees)} employees over {days} days')
         )
