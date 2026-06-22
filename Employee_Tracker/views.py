@@ -94,17 +94,25 @@ class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
     ordering_fields = ['shift_date','shift_created_at']
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticated, UserShiftPermission]
+    pagination_class = PageNumberPagination
 
     def get_queryset(self):
         user = self.request.user
         """Only return shifts assigned to logged-in user"""
         try:
             employee = user.employee_profile  # Get the Employee object linked to this user
-            return Shift.objects.filter(
+            if employee.user_type in ['superuser', 'admin']:
+                return Shift.objects.all()
+
+            elif employee.user_type in ['supervisor', 'manager']:
+                return Shift.objects.filter(shift_agent__supervisor=employee)
+
+            else:
+                return Shift.objects.filter(
                 shift_agent=employee,  #  Pass Employee object, not username
-            ).select_related('static_shift')  # ✅ Correct relation name
+            ).select_related('static_shift')
         except Employee.DoesNotExist:
-            return Shift.objects.none()  # Return empty if user has no employee profile
+            raise ValidationError ('Employee profile or details not found')
 
     @action(detail=False, methods=['get'])
     def today_shifts(self, request):
