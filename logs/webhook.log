@@ -12991,3 +12991,43 @@ Watching for file changes with StatReloader
 "GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 8146
 Not Found: /api/shifts/schedule_shifts/
 "GET /api/shifts/schedule_shifts/ HTTP/1.1" 404 5587
+"GET /admin/Employee_Tracker/shift/add/ HTTP/1.1" 200 22165
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/2/change/ HTTP/1.1" 200 22559
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/Employee_Tracker/shift/3/change/ HTTP/1.1" 200 22556
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/Employee_Tracker/shift/7/change/ HTTP/1.1" 200 22550
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/accounts/department/ HTTP/1.1" 200 16603
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Not Found: /api/shifts/schedule_shifts/
+"GET /api/shifts/schedule_shifts/ HTTP/1.1" 404 5587
+Not Found: /api/shifts/schedule_shifts/
+"GET /api/shifts/schedule_shifts/ HTTP/1.1" 404 5587
+Not Found: /api/shifts/schedule_shifts/
+"GET /api/shifts/schedule_shifts/ HTTP/1.1" 404 5587
+"GET /api/shifts/scheduled_shifts HTTP/1.1" 301 0
+Not Found: /api/shifts/scheduled_shifts/
+"GET /api/shifts/scheduled_shifts/ HTTP/1.1" 404 5593
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/24/change/ HTTP/1.1" 200 22558
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /api/shifts/ HTTP/1.1" 200 19415
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 19199
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Cs_Tracker\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 19199
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 9672
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 19199
