@@ -58,6 +58,8 @@ class StaticShift(models.Model):
         return f"{self.name} - {self.start_time} - {self.end_time}"
 
     class Meta:
+        verbose_name = 'Defaults'
+        verbose_name_plural = 'Defaults'
         ordering = ['start_time', 'end_time']
 
 

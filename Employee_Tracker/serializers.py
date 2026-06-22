@@ -71,7 +71,8 @@ class ShiftSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Shift
-        fields = ['id', 'shift_date', 'static_shift', 'shift_status', 'shift_agent_name', 'shift_agent']
+        fields = '__all__'
+        #fields = ['id', 'shift_date', 'static_shift', 'shift_status', 'shift_agent_name', 'shift_agent']
 
     """class Meta:
         model = Shift

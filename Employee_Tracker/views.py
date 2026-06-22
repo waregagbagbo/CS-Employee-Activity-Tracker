@@ -76,6 +76,8 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 # STATIC SHIFT VIEWSET
 # ===========================
 class StaticShiftViewSet(viewsets.ReadOnlyModelViewSet):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+
     """read only shift templates"""
     queryset = StaticShift.objects.all()
     serializer_class = StaticShiftSerializer
@@ -89,7 +91,7 @@ class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ShiftSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['shift_agent__user__username', 'shift_status']
-    ordering_fields = ['shift_date', 'shift_start_time', 'shift_created_at']
+    ordering_fields = ['shift_date','shift_created_at']
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticated, UserShiftPermission]
 
@@ -325,6 +327,7 @@ class ReportsViewSet(viewsets.ModelViewSet):
 # ===========================
 class AttendanceViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, UserTypeReportPermission]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     serializer_class = AttendanceListSerializer
     queryset = Attendance.objects.all()
 
