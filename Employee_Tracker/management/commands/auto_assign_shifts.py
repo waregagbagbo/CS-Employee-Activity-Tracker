@@ -20,8 +20,8 @@ class Command(BaseCommand):
         if options['start_date']:
             start_date = timezone.datetime.strptime(options['start_date'], '%Y-%m-%d').date()
 
-        # Get all active employees
-        employees = Employee.objects.filter(is_active=True)
+        # Get all active employees that are agents
+        employees = Employee.objects.filter(is_active=True, is_employee_agent=True)
 
         if not employees.exists():
             self.stdout.write(self.style.ERROR('No active employees found'))
