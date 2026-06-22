@@ -14,8 +14,6 @@ SHIFT_STATUS = [
     ('shift_completed','Shift_Completed'), # shift completed
     ('shift_in_progress',"Shift_In_Progress"), # shift started
     ('shift_scheduled','Shift_Scheduled'), # shift scheduled
-    ('shift_cancelled','Shift_Cancelled'), # agent canceled the shift
-    ('shift_missed','Shift_Missed'), # agent missed the shift work time
     ('no_show','No_Show'), # agent did not show up
 ]
 
@@ -26,10 +24,10 @@ ATTENDANCE_TYPES = [
 ]
 
 SHIFT_TYPES = [
-    ('Day_Shift','Day_Shift'),
-    ('Late_Shift','Late_Shift'),
-    ('Recon_Shift','RS_Shift'),
-    ('Night_Shift','Night_shift'),
+    ('day_shift','Day_Shift'),
+    ('late_shift','Late_Shift'),
+    ('recon_shift','RS_Shift'),
+    ('night_shift','Night_shift'),
 ]
 
 REPORT_TYPES = [
@@ -46,7 +44,21 @@ def event():
         'shift_type':'shift_type',
         'report_type':'report_type',
         'report_submitted':'report_submitted',
+
     }
+
+"""create reusable static shift template,defined once"""
+class StaticShift(models.Model):
+    name = models.CharField(max_length=50, blank=False, unique=True) # day, afternoon
+    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='day_shift', blank=False)
+    start_time = models.TimeField(db_index=True) # explicit
+    end_time = models.TimeField()  # explicit via default
+
+    def __str__(self):
+        return f"{self.name} - {self.start_time} - {self.end_time}"
+
+    class Meta:
+        ordering = ['start_time', 'end_time']
 
 
 """ create shift class """
@@ -54,17 +66,75 @@ class Shift(models.Model):
     shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE,blank=False, related_name='shifts')
     shift_date = models.DateField(auto_now=False, blank=False)
 
-    shift_start_time = models.TimeField(auto_now=False,blank=False)
-    shift_end_time = models.TimeField(auto_now=False, blank=False)
-    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift', blank=False)
+    #shift_start_time = models.TimeField(auto_now=False,blank=False)
+    #shift_end_time = models.TimeField(auto_now=False, blank=False)
+    #shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift', blank=False)
     shift_status = models.CharField(max_length=50, choices=SHIFT_STATUS, default='no_show',blank = False)
 
     shift_created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     shift_updated_at = models.DateTimeField(auto_now=True) # records the time at which the shift was last updated
 
-    # validate shift before save
+    # Properties to access data from StaticShift
+    @property
+    def shift_type(self):
+        return self.static_shift.shift_type
+
+    @property
+    def shift_start_time(self):
+        return self.static_shift.start_time
+
+    @property
+    def shift_end_time(self):
+        return self.static_shift.end_time
+
+    @property
+    def duration_hours(self):
+        """Calculate scheduled shift duration"""
+        from datetime import datetime, timedelta
+        start = datetime.combine(self.shift_date, self.shift_start_time)
+        end = datetime.combine(self.shift_date, self.shift_end_time)
+
+        if end < start:
+            end += timedelta(days=1)
+
+        delta = end - start
+        return round(delta.total_seconds() / 3600, 2)
+
+    @property
+    def is_active(self):
+        return self.shift_status == 'shift_in_progress'
+
+    @property
+    def has_attendance(self):
+        return self.attendances.exists()
+
     def clean(self):
+        """Validate no overlapping shifts for same agent on same date"""
+        check_shift_overlaps = Shift.objects.filter(
+            shift_agent=self.shift_agent,
+            shift_date=self.shift_date
+        ).exclude(pk=self.pk)
+
+        if check_shift_overlaps.exists():
+            raise ValidationError(f"{self.shift_agent} already has a shift on {self.shift_date}")
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.shift_agent} - {self.shift_date} ({self.static_shift.name})"
+
+    class Meta:
+        verbose_name = 'Shift'
+        verbose_name_plural = 'Shifts'
+        ordering = ['-shift_date', 'static_shift__start_time']
+        unique_together = (('shift_agent', 'shift_date'),)
+
+
+    # validate shift before save
+    """def clean(self):
         if self.shift_agent and self.shift_date:
             check_shift_overlaps = Shift.objects.filter(shift_agent=self.shift_agent, shift_date=self.shift_date)\
             .exclude(pk=self.pk) # exclude self when running updates
@@ -79,7 +149,7 @@ class Shift(models.Model):
 
     @property
     def duration_hours(self):
-        """Calculate scheduled shift duration"""
+        Calculate scheduled shift duration
         from datetime import datetime, timedelta
 
         start = datetime.combine(self.shift_date, self.shift_start_time)
@@ -94,18 +164,18 @@ class Shift(models.Model):
 
     @property
     def is_active(self):
-        """Check if shift is currently in progress"""
+        Check if shift is currently in progress
         return self.shift_status == 'shift_in_progress'
 
     @property
     def is_upcoming(self):
-        """Check if shift is scheduled for future"""
+        Check if shift is scheduled for future
         from datetime import date
         return self.shift_date >= date.today() and self.shift_status == 'shift_scheduled'
 
     @property
     def has_attendance(self):
-        """Check if there's an attendance record for this shift"""
+        Check if there's an attendance record for this shift
         return self.attendances.exists()
 
 
@@ -116,7 +186,7 @@ class Shift(models.Model):
         verbose_name = 'Shift'
         verbose_name_plural = 'Shifts'
         ordering = ['-shift_date', 'shift_start_time']
-        unique_together = (('shift_agent', 'shift_date'),) # Agent cannot have more than a shift per day
+        unique_together = (('shift_agent', 'shift_date'),) # Agent cannot have more than a shift per day"""
 
 
 """ Model for attendance tracking """
@@ -148,7 +218,7 @@ class Attendance(models.Model):
         """ calculate duration on save """
         if self.clock_out_time and not self.calculate_duration_hours():
             self.calculate_duration_hours()
-        super(Attendance, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
     class Meta:

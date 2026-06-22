@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from accounts.models import Employee,Department
-from .models import Shift, ActivityReport, Attendance
+from .models import Shift, ActivityReport, Attendance,StaticShift
 from django.utils import timezone
 
 
@@ -48,17 +48,32 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
         return f"{obj.user.first_name} {obj.user.last_name}".strip() or obj.user.username
 
 
+class StaticShiftSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StaticShift
+        fields = ['id', 'name', 'shift_type', 'start_time', 'end_time']
+        #fields = "__all__"
+
+
+
 class ShiftSerializer(serializers.ModelSerializer):
     """
     React-friendly shift serializer with attendance status.
     """
-    shift_agent = EmployeeProfileSerializer(read_only=True)
-    duration_hours = serializers.DecimalField(max_digits=5, decimal_places=2, read_only=True)
-    has_attendance = serializers.SerializerMethodField()
-    attendance_status = serializers.SerializerMethodField()
-    shift_type_display = serializers.CharField(source='get_shift_type_display', read_only=True)
+    #shift_agent = EmployeeProfileSerializer(read_only=True)
+    #duration_hours = serializers.DecimalField(max_digits=5, decimal_places=2, read_only=True)
+    #has_attendance = serializers.SerializerMethodField()
+    #attendance_status = serializers.SerializerMethodField()
+    #shift_type_display = serializers.CharField(source='get_shift_type_display', read_only=True)
+
+    static_shift = StaticShiftSerializer(read_only=True)
+    shift_agent_name = serializers.CharField(source='shift_agent.name', read_only=True)
 
     class Meta:
+        model = Shift
+        fields = ['id', 'shift_date', 'static_shift', 'shift_status', 'shift_agent_name', 'shift_agent']
+
+    """class Meta:
         model = Shift
         fields = [
             'id',
@@ -73,7 +88,7 @@ class ShiftSerializer(serializers.ModelSerializer):
             'attendance_status',
             'shift_created_at',
             'shift_type_display'
-        ]
+        ]"""
 
     #  Methods at CLASS level, not inside Meta!
     def get_has_attendance(self, obj):
