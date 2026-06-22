@@ -12,7 +12,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 from accounts.models import Employee, Department
-from accounts.permissions import UserTypeReportPermission, UserShiftPermission, CanEditOwnProfile, DepartmentViewPermission
+from accounts.permissions import UserShiftPermission
 from .models import Shift, ActivityReport, Attendance,StaticShift
 from .serializers import (
     EmployeeProfileSerializer, ShiftSerializer, DepartmentSerializer,
@@ -31,10 +31,11 @@ class DepartmentAPIViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
-    permission_classes = [IsAuthenticated, DepartmentViewPermission]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Department.objects.all()
+
 
 
 # ===========================
@@ -44,7 +45,7 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeProfileSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
-    permission_classes = [IsAuthenticated, CanEditOwnProfile]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset_getattr(self):
         user = self.request.user
@@ -73,7 +74,7 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 
 
 # ===========================
-# STATIC SHIFT VIEWSET
+# STATIC SHIFT VIEWSET TEMPLATE
 # ===========================
 class StaticShiftViewSet(viewsets.ReadOnlyModelViewSet):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
@@ -81,7 +82,6 @@ class StaticShiftViewSet(viewsets.ReadOnlyModelViewSet):
     """read only shift templates"""
     queryset = StaticShift.objects.all()
     serializer_class = StaticShiftSerializer
-
 
 
 # ===========================
@@ -93,8 +93,9 @@ class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
     search_fields = ['shift_agent__user__username', 'shift_status']
     ordering_fields = ['shift_date','shift_created_at']
     authentication_classes = [SessionAuthentication, TokenAuthentication]
-    permission_classes = [IsAuthenticated, UserShiftPermission]
+    permission_classes = [IsAuthenticated]
     pagination_class = PageNumberPagination
+
 
     def get_queryset(self):
         user = self.request.user
@@ -307,7 +308,7 @@ class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
 class ReportsViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
     serializer_class = ActivityReportSerializer
-    permission_classes = [IsAuthenticated, UserTypeReportPermission]
+    permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['activity_type', 'activity_status']
@@ -339,7 +340,7 @@ class ReportsViewSet(viewsets.ModelViewSet):
 # ATTENDANCE VIEWSET (all endpoints merged)
 # ===========================
 class AttendanceViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated, UserTypeReportPermission]
+    permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     serializer_class = AttendanceListSerializer
     queryset = Attendance.objects.all()

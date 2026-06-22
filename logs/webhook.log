@@ -12934,3 +12934,60 @@ Not Found: /api/shifts/upcoming/
 "GET /api/shifts/upcoming/ HTTP/1.1" 404 5550
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
 Watching for file changes with StatReloader
+Forbidden: /api/shifts/1/
+"GET /api/shifts/1/ HTTP/1.1" 403 5492
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /api/shifts/1/
+"GET /api/shifts/1/ HTTP/1.1" 403 5235
+Forbidden: /api/shifts/1/
+"GET /api/shifts/1/ HTTP/1.1" 403 5235
+"GET /api/shifts/ HTTP/1.1" 200 9674
+Forbidden: /api/shifts/1/
+"GET /api/shifts/1/ HTTP/1.1" 403 5235
+Forbidden: /api/shifts/1/
+"GET /api/shifts/1/ HTTP/1.1" 403 5235
+Forbidden: /api/shifts/
+"GET /api/shifts/ HTTP/1.1" 403 5091
+Forbidden: /api/shifts/
+"GET /api/shifts/ HTTP/1.1" 403 5091
+Forbidden: /api/shifts/
+"GET /api/shifts/ HTTP/1.1" 403 5091
+Forbidden: /api/shifts/
+"GET /api/shifts/ HTTP/1.1" 403 5091
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/shifts/ HTTP/1.1" 200 9669
+"GET /api/shifts/ HTTP/1.1" 200 9669
+"GET /api/shifts/1/ HTTP/1.1" 200 6886
+"GET /api/shifts/ HTTP/1.1" 200 9669
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/shifts/ HTTP/1.1" 200 9669
+"GET /admin/ HTTP/1.1" 200 18021
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 18398
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/add/ HTTP/1.1" 200 22165
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /api/shifts/today_shifts HTTP/1.1" 301 0
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 9672
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 8146
+Not Found: /api/shifts/schedule_shifts/
+"GET /api/shifts/schedule_shifts/ HTTP/1.1" 404 5587

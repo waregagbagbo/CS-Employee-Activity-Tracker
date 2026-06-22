@@ -4,15 +4,14 @@ from django.utils import timezone
 from datetime import timedelta
 from accounts.models import Employee
 from Employee_Tracker.models import StaticShift,Shift
-from django.db.models import Q
 
 
 class Command(BaseCommand):
-    help = 'Auto-generate random shifts for all employees'
+    help = 'Auto-generate random shifts for all active employee agents'
 
     def add_arguments(self, parser):
-        parser.add_argument('--days', type=int, default=30, help='Number of days to generate shifts for')
-        parser.add_argument('--start-date', type=str, help='Start date (YYYY-MM-DD)')
+        parser.add_argument('--days', type=int, default=30)
+        parser.add_argument('--start-date', type=str)
 
     def handle(self, *args, **options):
         days = options['days']
@@ -21,39 +20,34 @@ class Command(BaseCommand):
         if options['start_date']:
             start_date = timezone.datetime.strptime(options['start_date'], '%Y-%m-%d').date()
 
-        # Get all active employees that are agents
-        employees = Employee.objects.filter(is_active=True,user_type='employee_agent')
-
+        employees = Employee.objects.filter(is_active=True, user_type='employee_agent')
 
         if not employees.exists():
-            self.stdout.write(self.style.ERROR('No active employees found'))
+            self.stdout.write(self.style.ERROR('❌ No active employee agents found'))
             return
 
-        # Get all static shifts
         static_shifts = list(StaticShift.objects.all())
 
         if not static_shifts:
-            self.stdout.write(self.style.ERROR('No static shifts found. Create them first!'))
+            self.stdout.write(self.style.ERROR('❌ No static shifts found'))
             return
 
-        admin_user = Employee.objects.filter(is_superuser=True).first()
+        admin_user = Employee.objects.filter(user_type='admin').first()
         shifts_created = 0
 
         for day_offset in range(days):
             shift_date = start_date + timedelta(days=day_offset)
 
             for employee in employees:
-                # Pick ONE random shift type
-                random_shift = random.choice(static_shifts)
-
-                # Check if already exists
+                # ✅ Check if employee has ANY shift on this date
                 shift_exists = Shift.objects.filter(
                     shift_agent=employee,
-                    shift_date=shift_date,
-                    static_shift=random_shift
+                    shift_date=shift_date
                 ).exists()
 
                 if not shift_exists:
+                    # Only then pick random shift
+                    random_shift = random.choice(static_shifts)
                     Shift.objects.create(
                         shift_agent=employee,
                         shift_date=shift_date,
@@ -64,5 +58,9 @@ class Command(BaseCommand):
                     shifts_created += 1
 
         self.stdout.write(
-            self.style.SUCCESS(f'Created {shifts_created} shifts for {len(employees)} employees over {days} days')
+            self.style.SUCCESS(
+                f'✅ Created {shifts_created} shifts for {len(employees)} employee agents over {days} days')
         )
+
+
+
