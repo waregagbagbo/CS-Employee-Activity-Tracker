@@ -4,7 +4,7 @@ from typing import Any
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
-from accounts.models import CustomUser,Employee
+from accounts.models import Employee
 #from .dispatcher import webhook_dispatcher
 from .registry import EVENTS
 #from .webhook_email import shift_email_trigger
@@ -65,12 +65,10 @@ class StaticShift(models.Model):
 
 """ create shift class """
 class Shift(models.Model):
-    shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE,blank=False, related_name='shifts')
+    shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE,blank=False, related_name='employee_profile')
     shift_date = models.DateField(auto_now=False, blank=False)
 
-    #shift_start_time = models.TimeField(auto_now=False,blank=False)
-    #shift_end_time = models.TimeField(auto_now=False, blank=False)
-    #shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift', blank=False)
+    static_shift = models.ForeignKey(StaticShift, on_delete=models.PROTECT, null=True, related_name='shift_instances')
     shift_status = models.CharField(max_length=50, choices=SHIFT_STATUS, default='no_show',blank = False)
 
     shift_created_at = models.DateTimeField(auto_now_add=True)

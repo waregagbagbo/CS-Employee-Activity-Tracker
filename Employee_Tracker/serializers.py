@@ -36,12 +36,13 @@ class EmployeeProfileSerializer(serializers.ModelSerializer):
     hire_date = serializers.DateField(read_only=True) # value from the model
     bio = serializers.CharField() # for posts
     user_type = serializers.CharField(read_only=True)
+    is_active = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = Employee
 
         # apply nested serializer on the fields for customization on the frontend
-        fields = ['id', 'username', 'email', 'first_name', 'last_name','full_name','department','hire_date','bio','user_type']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name','full_name','department','hire_date','bio','user_type','is_active']
 
     # create fullname
     def get_full_name(self,obj):
@@ -60,19 +61,25 @@ class ShiftSerializer(serializers.ModelSerializer):
     """
     React-friendly shift serializer with attendance status.
     """
-    #shift_agent = EmployeeProfileSerializer(read_only=True)
+    shift_agent = EmployeeProfileSerializer(read_only=True)
     #duration_hours = serializers.DecimalField(max_digits=5, decimal_places=2, read_only=True)
     #has_attendance = serializers.SerializerMethodField()
     #attendance_status = serializers.SerializerMethodField()
     #shift_type_display = serializers.CharField(source='get_shift_type_display', read_only=True)
 
     static_shift = StaticShiftSerializer(read_only=True)
-    shift_agent_name = serializers.CharField(source='shift_agent.name', read_only=True)
 
     class Meta:
         model = Shift
-        fields = '__all__'
-        #fields = ['id', 'shift_date', 'static_shift', 'shift_status', 'shift_agent_name', 'shift_agent']
+        fields = ['id',
+                  'shift_agent',
+                  'shift_date',
+                  'shift_status',
+                  'shift_created_at',
+                  'created_by',
+                  'shift_updated_at',
+                  'static_shift'
+                  ]
 
     """class Meta:
         model = Shift

@@ -96,10 +96,15 @@ class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated, UserShiftPermission]
 
     def get_queryset(self):
+        user = self.request.user
         """Only return shifts assigned to logged-in user"""
-        return Shift.objects.filter(
-            shift_agent=self.request.user.employee
-        ).select_related('static_shift')
+        try:
+            employee = user.employee_profile  # Get the Employee object linked to this user
+            return Shift.objects.filter(
+                shift_agent=employee,  #  Pass Employee object, not username
+            ).select_related('static_shift')  # ✅ Correct relation name
+        except Employee.DoesNotExist:
+            return Shift.objects.none()  # Return empty if user has no employee profile
 
     @action(detail=False, methods=['get'])
     def today_shifts(self, request):
@@ -332,7 +337,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
     queryset = Attendance.objects.all()
 
     def get_queryset(self):
-        return Attendance.objects.filter(employee=self.request.user.employee)
+        return Attendance.objects.filter(employee=self.request.user.employee_profile)
 
     @action(detail=False, methods=['post'])
     def clock_in(self, request):
@@ -340,7 +345,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         shift_id = request.data.get('shift_id')
 
         try:
-            shift = Shift.objects.get(id=shift_id, shift_agent=request.user.employee)
+            shift = Shift.objects.get(id=shift_id, shift_agent=request.user.employee_profile)
         except Shift.DoesNotExist:
             return Response({'error': 'Shift not found'}, status=404)
 
@@ -355,7 +360,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Already clocked in for this shift'}, status=400)
 
         attendance = Attendance.objects.create(
-            employee=request.user.employee,
+            employee=request.user.employee_profile,
             shift_attendance=shift,
             clock_in_time=timezone.now(),
             status='clocked_in'
@@ -376,7 +381,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         try:
             attendance = Attendance.objects.get(
                 id=attendance_id,
-                employee=request.user.employee,
+                employee=request.user.employee_profile,
                 clock_out_time__isnull=True
             )
         except Attendance.DoesNotExist:

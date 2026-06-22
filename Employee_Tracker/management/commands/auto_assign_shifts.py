@@ -4,6 +4,7 @@ from django.utils import timezone
 from datetime import timedelta
 from accounts.models import Employee
 from Employee_Tracker.models import StaticShift,Shift
+from django.db.models import Q
 
 
 class Command(BaseCommand):
@@ -21,7 +22,8 @@ class Command(BaseCommand):
             start_date = timezone.datetime.strptime(options['start_date'], '%Y-%m-%d').date()
 
         # Get all active employees that are agents
-        employees = Employee.objects.filter(is_active=True, is_employee_agent=True)
+        employees = Employee.objects.filter(is_active=True,user_type='employee_agent')
+
 
         if not employees.exists():
             self.stdout.write(self.style.ERROR('No active employees found'))
