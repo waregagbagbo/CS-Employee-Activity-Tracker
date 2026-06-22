@@ -129,7 +129,7 @@ class Shift(models.Model):
     class Meta:
         verbose_name = 'Shift'
         verbose_name_plural = 'Shifts'
-        ordering = ['-shift_date', 'static_shift__start_time']
+        ordering = ['-shift_date']
         unique_together = (('shift_agent', 'shift_date'),)
 
 

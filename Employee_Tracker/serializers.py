@@ -152,9 +152,21 @@ class ShiftSerializer(serializers.ModelSerializer):
 class AttendanceListSerializer(serializers.ModelSerializer):
     """
     For list views - shows summary info with shift context.
-    Used in dashboard, attendance history, etc.
-    """
-    employee_name = serializers.CharField(source='employee.user.username', read_only=True)
+    Used in dashboard, attendance history, etc.    """
+
+    shift_info = ShiftSerializer(source='shift_attendance', read_only=True)
+
+    class Meta:
+        model = Attendance
+        fields = ['id', 'shift_attendance', 'shift_info', 'clock_in_time', 'clock_out_time', 'status', 'duration_hours']
+
+    def create(self, validated_data):
+        # Auto-set employee to logged-in user
+        validated_data['employee'] = self.context['request'].user.employee
+        return super().create(validated_data)
+
+
+    """employee_name = serializers.CharField(source='employee.user.username', read_only=True)
     is_scheduled = serializers.SerializerMethodField()
 
     #  Keeping full date time
@@ -179,7 +191,7 @@ class AttendanceListSerializer(serializers.ModelSerializer):
             'shift',
             'is_scheduled',
 
-        ]
+        ]"""
 
     def get_is_scheduled(self, obj):
         """Indicates if this was scheduled work or unscheduled"""

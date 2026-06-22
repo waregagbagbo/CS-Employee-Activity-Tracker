@@ -17,7 +17,7 @@ from .models import Shift, ActivityReport, Attendance,StaticShift
 from .serializers import (
     EmployeeProfileSerializer, ShiftSerializer, DepartmentSerializer,
     ActivityReportSerializer, AttendanceStatsSerializer, AttendanceUpdateSerializer,
-    AttendanceSupervisorSerializer, AttendanceListSerializer
+    AttendanceSupervisorSerializer, AttendanceListSerializer,StaticShiftSerializer
 )
 
 User = get_user_model()
@@ -71,18 +71,56 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
+
+# ===========================
+# STATIC SHIFT VIEWSET
+# ===========================
+class StaticShiftViewSet(viewsets.ReadOnlyModelViewSet):
+    """read only shift templates"""
+    queryset = StaticShift.objects.all()
+    serializer_class = StaticShiftSerializer
+
+
+
 # ===========================
 # SHIFT VIEWS
 # ===========================
-class ShiftAPIViewSet(viewsets.ModelViewSet):
+class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ShiftSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    search_fields = ['shift_agent__user__username', 'shift_type', 'shift_status']
+    search_fields = ['shift_agent__user__username', 'shift_status']
     ordering_fields = ['shift_date', 'shift_start_time', 'shift_created_at']
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticated, UserShiftPermission]
 
     def get_queryset(self):
+        """Only return shifts assigned to logged-in user"""
+        return Shift.objects.filter(
+            shift_agent=self.request.user.employee
+        ).select_related('static_shift')
+
+    @action(detail=False, methods=['get'])
+    def today_shifts(self, request):
+        """Get user's shifts for today"""
+        today = timezone.now().date()
+        shifts = self.get_queryset().filter(shift_date=today)
+        serializer = self.get_serializer(shifts, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def upcoming_shifts(self, request):
+        """Get upcoming shifts (next 7 days)"""
+        today = timezone.now().date()
+        week_later = today + timedelta(days=7)
+        shifts = self.get_queryset().filter(
+            shift_date__gte=today,
+            shift_date__lte=week_later,
+            shift_status='shift_scheduled'
+        )
+        serializer = self.get_serializer(shifts, many=True)
+        return Response(serializer.data)
+
+    """def get_queryset(self):
         user = self.request.user
         try:
             employee_profile = user.employee_profile
@@ -245,7 +283,7 @@ class ShiftAPIViewSet(viewsets.ModelViewSet):
 
         shifts = Shift.objects.filter(shift_agent=employee, shift_date__range=[past_30, next_30]).order_by('-shift_date')
         serializer = self.get_serializer(shifts, many=True)
-        return Response({'employee': employee.user.username, 'count': shifts.count(), 'shifts': serializer.data})
+        return Response({'employee': employee.user.username, 'count': shifts.count(), 'shifts': serializer.data})"""
 
 
 # ===========================
@@ -291,6 +329,68 @@ class AttendanceViewSet(viewsets.ModelViewSet):
     queryset = Attendance.objects.all()
 
     def get_queryset(self):
+        return Attendance.objects.filter(employee=self.request.user.employee)
+
+    @action(detail=False, methods=['post'])
+    def clock_in(self, request):
+        """User clocks in to a shift"""
+        shift_id = request.data.get('shift_id')
+
+        try:
+            shift = Shift.objects.get(id=shift_id, shift_agent=request.user.employee)
+        except Shift.DoesNotExist:
+            return Response({'error': 'Shift not found'}, status=404)
+
+        # Check if already clocked in
+        existing = Attendance.objects.filter(
+            employee=request.user.employee,
+            shift_attendance=shift,
+            clock_out_time__isnull=True
+        ).exists()
+
+        if existing:
+            return Response({'error': 'Already clocked in for this shift'}, status=400)
+
+        attendance = Attendance.objects.create(
+            employee=request.user.employee,
+            shift_attendance=shift,
+            clock_in_time=timezone.now(),
+            status='clocked_in'
+        )
+
+        # Update shift status
+        shift.shift_status = 'shift_in_progress'
+        shift.save()
+
+        serializer = self.get_serializer(attendance)
+        return Response(serializer.data, status=201)
+
+    @action(detail=False, methods=['post'])
+    def clock_out(self, request):
+        """User clocks out"""
+        attendance_id = request.data.get('attendance_id')
+
+        try:
+            attendance = Attendance.objects.get(
+                id=attendance_id,
+                employee=request.user.employee,
+                clock_out_time__isnull=True
+            )
+        except Attendance.DoesNotExist:
+            return Response({'error': 'No active clock-in found'}, status=404)
+
+        attendance.clock_out_time = timezone.now()
+        attendance.status = 'clocked_out'
+        attendance.save()
+
+        # Update shift status
+        attendance.shift_attendance.shift_status = 'shift_completed'
+        attendance.shift_attendance.save()
+
+        serializer = self.get_serializer(attendance)
+        return Response(serializer.data)
+
+    """def get_queryset(self):
         user = self.request.user
         try:
             employee_profile = user.employee_profile
@@ -519,4 +619,4 @@ def calculate_scheduled_duration(shift):
             end += timedelta(days=1)
         delta = end - start
         return round(delta.total_seconds() / 3600, 2)
-    return None
+    return None"""
