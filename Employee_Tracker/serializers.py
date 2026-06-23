@@ -163,10 +163,14 @@ class AttendanceListSerializer(serializers.ModelSerializer):
     Used in dashboard, attendance history, etc.    """
 
     shift_info = ShiftSerializer(source='shift_attendance', read_only=True)
+    duration_hours = serializers.DecimalField(max_digits=5, decimal_places=2, read_only=True)
+    validation_error = serializers.CharField(read_only=True)
+    validation_message = serializers.CharField(read_only=True)
 
     class Meta:
         model = Attendance
-        fields = ['id', 'shift_attendance', 'shift_info', 'clock_in_time', 'clock_out_time', 'status', 'duration_hours']
+        fields = ['id', 'shift_attendance', 'shift_info', 'clock_in_time', 'clock_out_time', 'status', 'duration_hours',
+                  'validation_error', 'validation_message']
 
     def create(self, validated_data):
         # Auto-set employee to logged-in user

@@ -629,7 +629,7 @@ def calculate_current_duration(clock_in_time):
 
 
 def calculate_scheduled_duration(shift):
-    if shift and shift.shift_start_time and shift.shift_end_time:
+    if shift and shift.start_time and shift.end_time:
         start = datetime.combine(today, shift.shift_start_time)
         end = datetime.combine(today, shift.shift_end_time)
         if end < start:

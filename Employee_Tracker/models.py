@@ -1,10 +1,12 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any
 
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
 from accounts.models import Employee
+from datetime import datetime, time
+
 #from .dispatcher import webhook_dispatcher
 from .registry import EVENTS
 #from .webhook_email import shift_email_trigger
@@ -53,6 +55,19 @@ class StaticShift(models.Model):
     shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='day_shift', blank=False)
     start_time = models.TimeField(db_index=True) # explicit
     end_time = models.TimeField()  # explicit via default
+
+    def get_shift_duration_hours(self):
+        """Calculate duration in hours between start_time and end_time"""
+        # Convert time objects to datetime for calculation
+        start = datetime.combine(datetime.today(), self.start_time)
+        end = datetime.combine(datetime.today(), self.end_time)
+
+        # Handle shifts that cross midnight
+        if end < start:
+            end = datetime.combine(datetime.today() + timedelta(days=1), self.end_time)
+
+        duration = end - start
+        return round(duration.total_seconds() / 3600, 2)
 
     def __str__(self):
         return f"{self.name} - {self.start_time} - {self.end_time}"
@@ -204,6 +219,10 @@ class Attendance(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    # validation fields
+    validation_error = models.TextField(null=True, blank=True)
+    validation_message = models.TextField(null=True, blank=True)
+
     def __str__(self):
         return f"{self.employee} - {self.shift_attendance}({self.status})"
 
@@ -214,12 +233,63 @@ class Attendance(models.Model):
             return self.duration_hours
         return None
 
-    def save(self, *args, **kwargs):
-        """ calculate duration on save """
-        if self.clock_out_time and not self.calculate_duration_hours():
-            self.calculate_duration_hours()
-        super().save(*args, **kwargs)
+    def validate_clock_out(self):
+        """
+        Validate clock-out against shift requirements.
+        """
+        if not self.shift_attendance:
+            return {
+                'success': False,
+                'message': 'No shift assigned to this attendance record',
+                'duration_hours': None
+            }
 
+        # Set clock_out_time if not already set
+        if not self.clock_out_time:
+            self.clock_out_time = timezone.now()
+
+        # Calculate duration
+        duration = self.calculate_duration_hours()
+        if duration is None:
+            return {
+                'success': False,
+                'message': 'Cannot calculate duration. Missing clock in/out times',
+                'duration_hours': None
+            }
+
+        # Get required hours from StaticShift
+        required_hours = self.shift_attendance.static_shift.get_shift_duration_hours()
+        duration_float = float(self.duration_hours)
+
+        # Validate against shift template
+        if duration_float < required_hours:
+            error_msg = (
+                f"Insufficient work hours. Expected: {required_hours}hrs, "
+                f"Got: {duration_float:.2f}hrs"
+            )
+            self.validation_error = error_msg
+            self.status = 'incomplete'
+
+            return {
+                'success': False,
+                'message': error_msg,
+                'duration_hours': duration_float,
+                'required_hours': required_hours
+            }
+        else:
+            success_msg = (
+                f"Clock out successful. Duration: {duration_float:.2f}hrs "
+                f"(Required: {required_hours}hrs)"
+            )
+            self.validation_error = None
+            self.status = 'completed'
+
+            return {
+                'success': True,
+                'message': success_msg,
+                'duration_hours': duration_float,
+                'required_hours': required_hours
+            }
 
     class Meta:
         verbose_name = 'Attendance'
