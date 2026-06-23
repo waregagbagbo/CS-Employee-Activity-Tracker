@@ -16309,3 +16309,5 @@ Method Not Allowed: /
 "GET /api/reports/ HTTP/1.1" 200 19218
 Method Not Allowed: /
 "GET / HTTP/1.1" 405 7327
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\migrations\0001_initial.py changed, reloading.
+Watching for file changes with StatReloader

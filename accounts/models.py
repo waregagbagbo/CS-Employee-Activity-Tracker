@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 USER_TYPE =[
     ('supervisor', 'Supervisor'),
-    ('employee_agent', 'Employee_Agent'),
+    ('employee_agent', 'Employee Agent'),
     ('admin', 'Admin'),
 ]
 
@@ -34,6 +34,7 @@ class CustomUser(AbstractUser):
         db_table = 'Users'
 
 
+
 class Employee(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='employee_profile')
     hire_date = models.DateField(null=True, blank=True)
@@ -41,7 +42,6 @@ class Employee(models.Model):
     department = models.ForeignKey('Department', on_delete=models.CASCADE, blank=True, null=True)
     user_type = models.CharField(max_length=20, choices=USER_TYPE, default='employee_agent')
     supervisor = models.ForeignKey('self', on_delete=models.SET_NULL,null=True,blank=True,related_name='supervised_employee')
-    is_active = models.BooleanField(default=True)
 
 
     def __str__(self):
@@ -49,7 +49,8 @@ class Employee(models.Model):
 
     @property
     def full_name(self):
-        return "f{self.first_name} {self.last_name}".strip()
+        return "f{self.user.first_name} {self.user.last_name}".strip()
+
 
 
     # let us expose the username by using @property decorator to access it directly

@@ -1,12 +1,10 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Any
 
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
-from accounts.models import Employee
-from datetime import datetime, time
-
+from accounts.models import CustomUser,Employee
 #from .dispatcher import webhook_dispatcher
 from .registry import EVENTS
 #from .webhook_email import shift_email_trigger
@@ -16,6 +14,8 @@ SHIFT_STATUS = [
     ('shift_completed','Shift_Completed'), # shift completed
     ('shift_in_progress',"Shift_In_Progress"), # shift started
     ('shift_scheduled','Shift_Scheduled'), # shift scheduled
+    ('shift_cancelled','Shift_Cancelled'), # agent canceled the shift
+    ('shift_missed','Shift_Missed'), # agent missed the shift work time
     ('no_show','No_Show'), # agent did not show up
 ]
 
@@ -26,10 +26,10 @@ ATTENDANCE_TYPES = [
 ]
 
 SHIFT_TYPES = [
-    ('day_shift','Day_Shift'),
-    ('late_shift','Late_Shift'),
-    ('recon_shift','RS_Shift'),
-    ('night_shift','Night_shift'),
+    ('Day_Shift','Day_Shift'),
+    ('Late_Shift','Late_Shift'),
+    ('Recon_Shift','RS_Shift'),
+    ('Night_Shift','Night_shift'),
 ]
 
 REPORT_TYPES = [
@@ -46,110 +46,25 @@ def event():
         'shift_type':'shift_type',
         'report_type':'report_type',
         'report_submitted':'report_submitted',
-
     }
-
-"""create reusable static shift template,defined once"""
-class StaticShift(models.Model):
-    name = models.CharField(max_length=50, blank=False, unique=True) # day, afternoon
-    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='day_shift', blank=False)
-    start_time = models.TimeField(db_index=True) # explicit
-    end_time = models.TimeField()  # explicit via default
-
-    def get_shift_duration_hours(self):
-        """Calculate duration in hours between start_time and end_time"""
-        # Convert time objects to datetime for calculation
-        start = datetime.combine(datetime.today(), self.start_time)
-        end = datetime.combine(datetime.today(), self.end_time)
-
-        # Handle shifts that cross midnight
-        if end < start:
-            end = datetime.combine(datetime.today() + timedelta(days=1), self.end_time)
-
-        duration = end - start
-        return round(duration.total_seconds() / 3600, 2)
-
-    def __str__(self):
-        return f"{self.name} - {self.start_time} - {self.end_time}"
-
-    class Meta:
-        verbose_name = 'Defaults'
-        verbose_name_plural = 'Defaults'
-        ordering = ['start_time', 'end_time']
 
 
 """ create shift class """
 class Shift(models.Model):
-    shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE,blank=False, related_name='employee_profile')
+    shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE,blank=False, related_name='shifts')
     shift_date = models.DateField(auto_now=False, blank=False)
 
-    static_shift = models.ForeignKey(StaticShift, on_delete=models.PROTECT, null=True, related_name='shift_instances')
+    shift_start_time = models.TimeField(auto_now=False,blank=False)
+    shift_end_time = models.TimeField(auto_now=False, blank=False)
+    shift_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Day_Shift', blank=False)
     shift_status = models.CharField(max_length=50, choices=SHIFT_STATUS, default='no_show',blank = False)
 
     shift_created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     shift_updated_at = models.DateTimeField(auto_now=True) # records the time at which the shift was last updated
 
-    # Properties to access data from StaticShift
-    @property
-    def shift_type(self):
-        return self.static_shift.shift_type
-
-    @property
-    def shift_start_time(self):
-        return self.static_shift.start_time
-
-    @property
-    def shift_end_time(self):
-        return self.static_shift.end_time
-
-    @property
-    def duration_hours(self):
-        """Calculate scheduled shift duration"""
-        from datetime import datetime, timedelta
-        start = datetime.combine(self.shift_date, self.shift_start_time)
-        end = datetime.combine(self.shift_date, self.shift_end_time)
-
-        if end < start:
-            end += timedelta(days=1)
-
-        delta = end - start
-        return round(delta.total_seconds() / 3600, 2)
-
-    @property
-    def is_active(self):
-        return self.shift_status == 'shift_in_progress'
-
-    @property
-    def has_attendance(self):
-        return self.attendances.exists()
-
-    def clean(self):
-        """Validate no overlapping shifts for same agent on same date"""
-        check_shift_overlaps = Shift.objects.filter(
-            shift_agent=self.shift_agent,
-            shift_date=self.shift_date
-        ).exclude(pk=self.pk)
-
-        if check_shift_overlaps.exists():
-            raise ValidationError(f"{self.shift_agent} already has a shift on {self.shift_date}")
-
-    def save(self, *args, **kwargs):
-        self.full_clean()
-        return super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f"{self.shift_agent} - {self.shift_date} ({self.static_shift.name})"
-
-    class Meta:
-        verbose_name = 'Shift'
-        verbose_name_plural = 'Shifts'
-        ordering = ['-shift_date']
-        unique_together = (('shift_agent', 'shift_date'),)
-
-
     # validate shift before save
-    """def clean(self):
+    def clean(self):
         if self.shift_agent and self.shift_date:
             check_shift_overlaps = Shift.objects.filter(shift_agent=self.shift_agent, shift_date=self.shift_date)\
             .exclude(pk=self.pk) # exclude self when running updates
@@ -164,7 +79,7 @@ class Shift(models.Model):
 
     @property
     def duration_hours(self):
-        Calculate scheduled shift duration
+        """Calculate scheduled shift duration"""
         from datetime import datetime, timedelta
 
         start = datetime.combine(self.shift_date, self.shift_start_time)
@@ -179,18 +94,18 @@ class Shift(models.Model):
 
     @property
     def is_active(self):
-        Check if shift is currently in progress
+        """Check if shift is currently in progress"""
         return self.shift_status == 'shift_in_progress'
 
     @property
     def is_upcoming(self):
-        Check if shift is scheduled for future
+        """Check if shift is scheduled for future"""
         from datetime import date
         return self.shift_date >= date.today() and self.shift_status == 'shift_scheduled'
 
     @property
     def has_attendance(self):
-        Check if there's an attendance record for this shift
+        """Check if there's an attendance record for this shift"""
         return self.attendances.exists()
 
 
@@ -201,7 +116,7 @@ class Shift(models.Model):
         verbose_name = 'Shift'
         verbose_name_plural = 'Shifts'
         ordering = ['-shift_date', 'shift_start_time']
-        unique_together = (('shift_agent', 'shift_date'),) # Agent cannot have more than a shift per day"""
+        unique_together = (('shift_agent', 'shift_date'),) # Agent cannot have more than a shift per day
 
 
 """ Model for attendance tracking """
@@ -219,10 +134,6 @@ class Attendance(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # validation fields
-    validation_error = models.TextField(null=True, blank=True)
-    validation_message = models.TextField(null=True, blank=True)
-
     def __str__(self):
         return f"{self.employee} - {self.shift_attendance}({self.status})"
 
@@ -233,122 +144,12 @@ class Attendance(models.Model):
             return self.duration_hours
         return None
 
-    def validate_clock_in(self):
-        """
-        Validate that clock-in happens during the shift's start time window.
-        Prevent clocking in before shift starts.
-        """
-        if not self.shift_attendance or not self.shift_attendance.static_shift:
-            return {
-                'success': False,
-                'message': 'No shift assigned to this attendance record',
-            }
+    def save(self, *args, **kwargs):
+        """ calculate duration on save """
+        if self.clock_out_time and not self.calculate_duration_hours():
+            self.calculate_duration_hours()
+        super(Attendance, self).save(*args, **kwargs)
 
-        static_shift = self.shift_attendance.static_shift
-        current_time = datetime.now().time()
-        shift_start = static_shift.start_time
-        shift_end = static_shift.end_time
-
-        # Handle shifts that cross midnight
-        if shift_end < shift_start:
-            # Overnight shift
-            if current_time >= shift_start or current_time < shift_end:
-                self.clock_in_time = timezone.now()
-                self.status = 'clocked_in'
-                return {
-                    'success': True,
-                    'message': f'Clock in successful. Shift starts at {shift_start}'
-                }
-            else:
-                return {
-                    'success': False,
-                    'message': f'Cannot clock in. Shift starts at {shift_start} (Current time: {current_time.strftime("%H:%M")})',
-                    'shift_start': shift_start.strftime("%H:%M"),
-                    'current_time': current_time.strftime("%H:%M")
-                }
-        else:
-            # Regular daytime shift
-            if shift_start <= current_time < shift_end:
-                self.clock_in_time = timezone.now()
-                self.status = 'clocked_in'
-                return {
-                    'success': True,
-                    'message': f'Clock in successful. Shift starts at {shift_start}'
-                }
-            elif current_time < shift_start:
-                return {
-                    'success': False,
-                    'message': f'Cannot clock in. Shift starts at {shift_start} (Current time: {current_time.strftime("%H:%M")})',
-                    'shift_start': shift_start.strftime("%H:%M"),
-                    'current_time': current_time.strftime("%H:%M")
-                }
-            else:
-                return {
-                    'success': False,
-                    'message': f'Cannot clock in. Shift ended at {shift_end} (Current time: {current_time.strftime("%H:%M")})',
-                    'shift_end': shift_end.strftime("%H:%M"),
-                    'current_time': current_time.strftime("%H:%M")
-                }
-
-
-
-    def validate_clock_out(self):
-        """
-        Validate clock-out against shift requirements.
-        """
-        if not self.shift_attendance:
-            return {
-                'success': False,
-                'message': 'No shift assigned to this attendance record',
-                'duration_hours': None
-            }
-
-        # Set clock_out_time if not already set
-        if not self.clock_out_time:
-            self.clock_out_time = timezone.now()
-
-        # Calculate duration
-        duration = self.calculate_duration_hours()
-        if duration is None:
-            return {
-                'success': False,
-                'message': 'Cannot calculate duration. Missing clock in/out times',
-                'duration_hours': None
-            }
-
-        # Get required hours from StaticShift
-        required_hours = self.shift_attendance.static_shift.get_shift_duration_hours()
-        duration_float = float(self.duration_hours)
-
-        # Validate against shift template
-        if duration_float < required_hours:
-            error_msg = (
-                f"Insufficient work hours. Expected: {required_hours}hrs, "
-                f"Got: {duration_float:.2f}hrs"
-            )
-            self.validation_error = error_msg
-            self.status = 'incomplete. Hours is below threshold'
-
-            return {
-                'success': False,
-                'message': error_msg,
-                'duration_hours': duration_float,
-                'required_hours': required_hours
-            }
-        else:
-            success_msg = (
-                f"Clock out successful. Duration: {duration_float:.2f}hrs "
-                f"(Required: {required_hours}hrs)"
-            )
-            self.validation_error = None
-            self.status = 'Shift completed successfully'
-
-            return {
-                'success': True,
-                'message': success_msg,
-                'duration_hours': duration_float,
-                'required_hours': required_hours
-            }
 
     class Meta:
         verbose_name = 'Attendance'
@@ -360,12 +161,15 @@ class Attendance(models.Model):
 class ActivityReport(models.Model):
     # ONE employee reference
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='activity_reports')
+
+    # The key relationship - tells us WHO worked and WHEN plus the appriver
     attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE,related_name='reports')
+    approved_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True, related_name='approved_reports')
+
 
     shift_activity_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Night_Shift')
     report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
     activity_description = models.TextField()
-
     tickets_resolved = models.IntegerField(default=0)
     calls_made = models.IntegerField(default=0)
     issues_escalated = models.IntegerField(default=0)
@@ -373,9 +177,6 @@ class ActivityReport(models.Model):
 
     activity_submitted_at = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
-    approved_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=False,
-                                    related_name='approved_reports')
-
     activity_approved_at = models.DateTimeField(auto_now=False, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -384,50 +185,31 @@ class ActivityReport(models.Model):
     def __str__(self):
         return f"{self.employee} - {self.activity_submitted_at}({self.shift_activity_type})"
 
+    # access shift if present though attendance
     @property
     def shift(self):
-        """Fetch shift from attendance"""
-        return self.attendance.shift_attendance if self.attendance else None
+        # fetch shift if present
+        return self.attendance.shift if self.attendance else None
 
+
+    # get shift type if present from attendance
     @property
     def shift_type(self):
-        """Fetch shift type from attendance"""
-        if self.attendance and self.attendance.shift_attendance:
-            return self.attendance.shift_attendance.static_shift.name if self.attendance.shift_attendance.static_shift else "Unscheduled"
+        #fetch shift type if shift exists
+        if self.attendance and self.attendance.shift:
+            return self.attendance.shift.shift_type
         return "Unscheduled"
+
 
     @property
     def supervisor(self):
-        """Fetch employee's supervisor"""
+        """ fetch employee's supervisor """
         return self.employee.supervisor if self.employee else None
 
     class Meta:
         verbose_name = 'Report'
         verbose_name_plural = 'Reports'
         ordering = ['report_type', 'activity_submitted_at']
+        #unique_together = (('report_type', 'shift_active_agent'),)
 
-
-class ShiftArchive(models.Model):
-    """Archived shifts after 30 days"""
-    # Copy all Shift fields
-    shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE,related_name='achived_shifts')
-    shift_date = models.DateField()
-    static_shift = models.ForeignKey(StaticShift, on_delete=models.PROTECT, null=True)
-    shift_status = models.CharField(max_length=50, choices=SHIFT_STATUS)
-
-    shift_created_at = models.DateTimeField()
-    created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
-    shift_updated_at = models.DateTimeField()
-
-    # Archive metadata
-    original_shift_id = models.IntegerField()  # Reference to original
-    archived_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Archived Shift'
-        verbose_name_plural = 'Archived Shifts'
-        ordering = ['-archived_at']
-
-    def __str__(self):
-        return f"[ARCHIVED] {self.shift_agent} - {self.shift_date}"
 

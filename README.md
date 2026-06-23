@@ -1,7 +1,6 @@
 ## Employee Activity Tracker for Customer Support 
 
 A Django-based system for customer support teams to log end-of-shift reports and provide managers/supervisors with real-time visibility into team activities and performance.
-The system also aut-generates a 30day shift schedule for agents,hence reducing the manual allocations.
 
 ## Project Structure
 - `accounts/` – Custom user model and auth logic
@@ -39,8 +38,6 @@ The system also aut-generates a 30day shift schedule for agents,hence reducing t
    ``` bash
    python manage.py makemigrations  - schema version control
    python manage.py migrate - Applies changes
-   python manage.py auto_assign_shifts.py --days=30 ; auto-generates a 30 day plan in the DB for user.
-   
 
 5. Run the server:
 
@@ -84,7 +81,7 @@ Uses a custom AbstractUser model with email as the primary identifier. <br> Sign
  - PUT/PATCH /shifts/{id}/ - Update shift
  - DELETE /shifts/{id}/ - Delete shift
  - GET /shifts/today/ - Today's shifts
- - GET /shifts/upcoming_shifts/ - Next 7 days shifts
+ - GET /shifts/upcoming/ - Next 7 days shifts
  - PATCH /shifts/{id}/cancel/ - Cancel shift
 
 ### Activity Reports (Viewsets)
@@ -113,11 +110,10 @@ Future support for multichannel registry.
 ### Performance
 - Database indexing on frequently queried fields (MySQL)
 - Pagination via DRF’s `PageNumberPagination` setting
-- Throttling to control requests
+- Throttling has been enabled
 
 ### Architecture
 - Modular design using ViewSets, signals, and custom user models.
-- Incorporation of Django management/ commands structure to isolate the auto shift generation
 - Webhook dispatch system for real-time notifications on shifts and reports. Testing ground (https://webhook.site/#!/view/a66fc247-bafa-41ce-93af-a408e52ea2b3)
 
 
@@ -130,7 +126,7 @@ Future support for multichannel registry.
  5. MySQL 8.0+
  6. Git
  7. Code editor (PyCharm)
- 8. Postman for endpoint testing
+ 8. Postman for endpoint tests
  9. React - For Frontend Scaffolding
 
 
