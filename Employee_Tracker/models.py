@@ -407,6 +407,27 @@ class ActivityReport(models.Model):
         ordering = ['report_type', 'activity_submitted_at']
 
 
+class ShiftArchive(models.Model):
+    """Archived shifts after 30 days"""
+    # Copy all Shift fields
+    shift_agent = models.ForeignKey(Employee, on_delete=models.CASCADE,related_name='achived_shifts')
+    shift_date = models.DateField()
+    static_shift = models.ForeignKey(StaticShift, on_delete=models.PROTECT, null=True)
+    shift_status = models.CharField(max_length=50, choices=SHIFT_STATUS)
 
+    shift_created_at = models.DateTimeField()
+    created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
+    shift_updated_at = models.DateTimeField()
 
+    # Archive metadata
+    original_shift_id = models.IntegerField()  # Reference to original
+    archived_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Archived Shift'
+        verbose_name_plural = 'Archived Shifts'
+        ordering = ['-archived_at']
+
+    def __str__(self):
+        return f"[ARCHIVED] {self.shift_agent} - {self.shift_date}"
 
