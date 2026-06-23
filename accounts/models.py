@@ -34,7 +34,6 @@ class CustomUser(AbstractUser):
         db_table = 'Users'
 
 
-
 class Employee(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name='employee_profile')
     hire_date = models.DateField(null=True, blank=True)
