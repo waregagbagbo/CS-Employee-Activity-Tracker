@@ -16043,3 +16043,93 @@ Watching for file changes with StatReloader
 "GET /api/reports/ HTTP/1.1" 200 19218
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
 Watching for file changes with StatReloader
+"GET /api/reports/1 HTTP/1.1" 301 0
+"GET /api/reports/1/ HTTP/1.1" 200 17028
+Bad Request: /api/reports/1/download_pdf/
+"GET /api/reports/1/download_pdf/ HTTP/1.1" 400 6510
+"GET /admin/accounts/ HTTP/1.1" 200 6757
+"GET /admin/ HTTP/1.1" 200 18320
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 18687
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 200 27473
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 18975
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 18687
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /api/reports/1/ HTTP/1.1" 200 17028
+"GET /api/reports/1/ HTTP/1.1" 200 17028
+"GET /api/reports/1/ HTTP/1.1" 200 17028
+"GET /api/reports/1/ HTTP/1.1" 200 17028
+"GET /api/reports/1/ HTTP/1.1" 200 17028
+Report 1 downloaded by Mauricio
+Internal Server Error: /api/reports/1/download_pdf/
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py", line 450, in download_pdf
+    response = HttpResponse(buffer, content_type='application/pdf')
+               ^^^^^^^^^^^^
+NameError: name 'HttpResponse' is not defined
+"GET /api/reports/1/download_pdf/ HTTP/1.1" 500 102679
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
+Report 1 downloaded by Mauricio
+"GET /api/reports/1/download_pdf/ HTTP/1.1" 200 2319
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 18687
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Report 1 downloaded by Mauricio
+"GET /api/reports/1/download_pdf/ HTTP/1.1" 200 2319
+Report 1 downloaded by Mauricio
+"GET /api/reports/1/download_pdf/ HTTP/1.1" 200 2319
+"GET /api/reports/1/ HTTP/1.1" 200 17028
+"GET /api/reports/ HTTP/1.1" 200 19218
+Not Found: /shifts
+"GET /shifts HTTP/1.1" 404 4427
+"GET /api/shifts/ HTTP/1.1" 200 19643
+"GET /auth/logout HTTP/1.1" 301 0
+"GET /auth/logout/ HTTP/1.1" 201 5045
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"GET /admin/accounts/customuser/ HTTP/1.1" 200 18399
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST / HTTP/1.1" 200 7443
+"GET /api/shifts/ HTTP/1.1" 200 19639
+"GET /api/shifts/1/ HTTP/1.1" 200 6918
+"GET /api/shifts/1/ HTTP/1.1" 200 6918
+"GET /api/reports/1/ HTTP/1.1" 200 18275
+"GET /api/reports/ HTTP/1.1" 200 21434
+"GET /api/reports/1/ HTTP/1.1" 200 18275
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/staticshift/ HTTP/1.1" 200 17782
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/logout/ HTTP/1.1" 200 3568
+"GET /admin/Employee_Tracker/staticshift/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/Employee_Tracker/staticshift/ HTTP/1.1" 200 4228
+"GET /auth/logout/ HTTP/1.1" 201 5045
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\models.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\models.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\admin.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
