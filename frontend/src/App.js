@@ -12,9 +12,6 @@ import Logout from "./pages/Logout.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EmployeeDetail from "./components/EmployeeDetail";
 import Settings from "./pages/Settings.jsx";
-import CreateReport from "./pages/CreateReport";
-import ApproveReports from "./pages/ApproveReports";
-import ReportDetail from "./pages/ReportDetail";
 import Attendance from "./pages/AttendancePage";
 
 
@@ -40,12 +37,7 @@ function App(){
 
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
 
-
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
-        <Route path="/reports/new" element={<CreateReport />} />
-        <Route path="/reports/approve" element={<ApproveReports />} />
-        <Route path="/reports/:id" element={<ReportDetail />} />
-
 
         <Route path="/departments" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
         <Route path="/attendance" element={<ProtectedRoute><Attendance /></ProtectedRoute>} />

@@ -1,327 +1,166 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import {
-  Calendar, Clock, Users, Plus, X, Edit, Trash2
-} from 'lucide-react';
-import Sidebar from '../components/Sidebar';
-import Topbar from '../components/Topbar';
-import ShiftService from '../services/shifts';
-import AttendanceService from '../services/attendance';
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { CalendarRange, Search } from "lucide-react";
+import Sidebar from "../components/Sidebar";
+import Topbar from "../components/Topbar";
+import { ShiftService } from "../services/shifts";
+import ShiftFeed from "../components/ShiftFeed";
 
-const ShiftsDashboard = () => {
-  const [activeView, setActiveView] = useState('upcoming');
+export default function ShiftsPage() {
+  const [activeTab, setActiveTab] = useState("today"); // 'today', 'upcoming', 'all'
   const [shifts, setShifts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pagination, setPagination] = useState({ hasNext: false, hasPrev: false });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedShift, setSelectedShift] = useState(null);
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  const [filterStatus, setFilterStatus] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const isFetchingRef = useRef(false); // Guard against overlapping in-flight requests
+  const isFetchingRef = useRef(false);
 
-  const userType = localStorage.getItem("user_role") || "Employee";
-  const user = localStorage.getItem("username") || "Agent";
+  const username = localStorage.getItem("username") || "Agent";
+  const userRole = localStorage.getItem("user_role") || "Employee";
+  const isManagement = ["Supervisor", "Manager", "Admin"].includes(userRole);
 
-  // --- Fetch shifts (guarded, no attendance inside) ---
-  const fetchShifts = useCallback(async () => {
-    if (isFetchingRef.current) return; // skip if already fetching
+  const loadShifts = useCallback(async (targetPage = 1, currentSearch = "") => {
+    if (isFetchingRef.current) return;
     isFetchingRef.current = true;
-    setError(null);
 
     try {
-      let fetchedShifts = [];
-
-      switch (activeView) {
-        case 'today': {
-          const response = await ShiftService.getTodayShifts();
-          fetchedShifts = response.results || [];
-          break;
-        }
-        case 'upcoming': {
-          const response = await ShiftService.getUpcomingShifts();
-          fetchedShifts = response.results || [];
-          break;
-        }
-        case 'my-shifts': {
-          const response = await ShiftService.getMyShifts();
-          fetchedShifts = response.results || [];
-          break;
-        }
-        case 'all': {
-          const data = filterStatus !== 'all'
-            ? await ShiftService.getShiftsByStatus(filterStatus)
-            : await ShiftService.list();
-          fetchedShifts = data.results || [];
-          break;
-        }
-        default:
-          fetchedShifts = [];
-      }
-
-      setShifts(fetchedShifts);
-
-    } catch (err) {
-      console.error(err);
-      if (err.response?.status === 429) {
-        setError('Too many requests — slowing down sync...');
+      if (activeTab === "today") {
+        const data = await ShiftService.getTodayShifts();
+        setShifts(data);
+        setPagination({ hasNext: false, hasPrev: false });
+      } else if (activeTab === "upcoming") {
+        const data = await ShiftService.getUpcomingShifts();
+        setShifts(data);
+        setPagination({ hasNext: false, hasPrev: false });
       } else {
-        setError('Terminal Link Failure');
+        // Tab is 'all' history layout
+        const data = await ShiftService.getShifts(targetPage, currentSearch);
+        setShifts(data.results);
+        setPagination({ hasNext: data.hasNext, hasPrev: data.hasPrev });
+        setPage(targetPage);
       }
+    } catch (err) {
+      console.error("Shift fetching pipeline integration error:", err);
     } finally {
       setLoading(false);
       isFetchingRef.current = false;
     }
-  }, [activeView, filterStatus]);
+  }, [activeTab]);
 
-  // --- Separate, slower attendance sync using functional state update ---
-  const syncAttendance = useCallback(async () => {
-    try {
-      const attendanceData = await AttendanceService.getStatus();
-      setShifts(prev => prev.map(s => {
-        if (attendanceData.shift_id === s.id) {
-          return {
-            ...s,
-            attendance_status: {
-              status: attendanceData.is_clocked_in ? 'shift_in_progress' : 'shift_scheduled',
-              hours_worked: attendanceData.hours_today || 0,
-              scheduled_hours: parseFloat(s.duration_hours) || 1,
-            },
-          };
-        }
-        return s;
-      }));
-    } catch (err) {
-      if (err.response?.status === 429) {
-        console.warn('Attendance sync rate limited, backing off...');
-      }
-    }
-  }, []);
-
-  // Shifts poll: every 60s | Attendance poll: every 120s (decoupled, slower)
   useEffect(() => {
-    fetchShifts();
-    const shiftInterval = setInterval(fetchShifts, 60000);
-    const attendanceInterval = setInterval(syncAttendance, 120000);
-    return () => {
-      clearInterval(shiftInterval);
-      clearInterval(attendanceInterval);
-    };
-  }, [fetchShifts, syncAttendance]);
+    setLoading(true);
+    loadShifts(1, searchQuery);
+  }, [activeTab, loadShifts]);
 
-  // --- Cancel shift ---
-  const handleCancelShift = async (id) => {
-    if (window.confirm('Terminate this shift allocation?')) {
-      await ShiftService.cancelShift(id);
-      fetchShifts();
+  // Handle live query text searching with an execution callback
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    if (activeTab === "all") {
+      loadShifts(1, value);
     }
   };
-
-  const formatTime = ts => ts
-    ? new Date(`2000-01-01T${ts}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    : '-';
-
-  const formatDate = ds => ds
-    ? new Date(ds).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })
-    : '-';
-
-  if (loading) return (
-    <div className="flex bg-[#F9FAFB] h-screen">
-      <Sidebar />
-      <div className="flex-1 flex items-center justify-center font-black uppercase tracking-widest animate-pulse text-gray-400">
-        Syncing Deployments...
-      </div>
-    </div>
-  );
 
   return (
     <div className="flex bg-[#F9FAFB] h-screen w-full font-sans text-black overflow-hidden">
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0 h-full relative">
-        <Topbar title="Operations Schedule" user={user} />
-        <main className="flex-1 overflow-y-auto p-4 md:p-10 space-y-8 pb-32">
+        <Topbar title="Operations Schedule" user={username} />
 
-          {/* HEADER */}
-          <section className="bg-black p-8 rounded-[2.5rem] shadow-2xl text-white flex flex-col lg:flex-row justify-between items-center gap-6 border-b-4 border-[#FFCC00]">
-            <div>
-              <h1 className="text-3xl font-black italic tracking-tighter uppercase text-[#FFCC00]">Shifts Deployment Log</h1>
-              <p className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em] mt-1">Personnel Shift Management Terminal</p>
+        <main className="flex-1 overflow-y-auto p-6 md:p-10 space-y-6">
+
+          {/* TOP CONTROLS DASHBOARD SHELL BAR */}
+          <section className="bg-black p-6 rounded-[2.5rem] text-white flex justify-between items-center border-b-4 border-[#FFCC00]">
+            <div className="flex items-center gap-3">
+              <CalendarRange size={22} className="text-[#FFCC00]" />
+              <h1 className="text-xl font-black uppercase tracking-tight text-white">
+                Deployments Registry
+              </h1>
             </div>
-            {['Supervisor', 'Manager', 'Admin'].includes(userType) && (
-              <button
-                onClick={() => setShowCreateModal(true)}
-                className="bg-[#FFCC00] text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center gap-2 hover:bg-white transition-all shadow-xl"
-              >
-                <Plus size={16} /> New Deployment
-              </button>
-            )}
+            <span className="text-[10px] font-mono bg-neutral-900 text-gray-400 px-3 py-1.5 rounded-xl uppercase tracking-wider border border-neutral-800 font-bold">
+              Scope: {userRole}
+            </span>
           </section>
 
-          {/* VIEW NAVIGATION */}
-          <div className="flex flex-col xl:flex-row justify-between items-center gap-4">
-            <div className="flex gap-2 p-1 bg-gray-200/50 rounded-2xl w-full xl:w-fit overflow-x-auto">
-              {['today', 'upcoming', 'my-shifts', 'all'].map(view =>
-                (view !== 'all' || ['Supervisor', 'Manager', 'Admin'].includes(userType)) && (
-                  <button
-                    key={view}
-                    onClick={() => setActiveView(view)}
-                    className={`px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
-                      activeView === view ? "bg-black text-[#FFCC00] shadow-md" : "text-gray-500 hover:text-black"
-                    }`}
-                  >
-                    {view.replace('-', ' ')}
-                  </button>
-                )
-              )}
+          {/* VIEW TAB CONTROLS & DYNAMIC SEARCH BAR BAR */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex gap-2 p-1 bg-gray-200/50 rounded-2xl w-full sm:w-fit">
+              {[
+                { id: "today", label: "Today" },
+                { id: "upcoming", label: "Upcoming (7d)" },
+                { id: "all", label: "All History" }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-5 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
+                    activeTab === tab.id ? "bg-black text-[#FFCC00] shadow-sm" : "text-gray-500 hover:text-black"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
 
-            {activeView === 'all' && (
-              <div className="flex gap-4 w-full xl:w-auto">
+            {/* Render direct context filter input element only if viewing comprehensive layout logs */}
+            {activeTab === "all" && (
+              <div className="relative w-full sm:w-64">
+                <Search size={14} className="absolute left-4 top-3.5 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search Agents..."
-                  className="w-full pl-12 pr-4 py-3 bg-white border border-gray-100 rounded-2xl text-xs font-bold"
+                  placeholder="Search Agent / Status..."
                   value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
+                  onChange={handleSearchChange}
+                  className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs font-bold focus:border-black outline-none transition-all shadow-xs"
                 />
-                <select
-                  className="bg-white border border-gray-100 rounded-2xl px-4 py-3 text-[10px] font-black uppercase tracking-widest"
-                  value={filterStatus}
-                  onChange={e => setFilterStatus(e.target.value)}
-                >
-                  <option value="all">All Status</option>
-                  <option value="shift_scheduled">Scheduled</option>
-                  <option value="shift_in_progress">Active</option>
-                  <option value="shift_completed">Completed</option>
-                  <option value="shift_cancelled">Cancelled</option>
-                  <option value="shift_missed">Shift Missed</option>
-                  <option value="no_show">Agent Missed</option>
-                </select>
               </div>
             )}
           </div>
 
-          {/* ERROR BANNER */}
-          {error && (
-            <div className="bg-rose-50 text-rose-500 font-black uppercase text-xs tracking-widest p-4 rounded-2xl text-center">
-              {error}
-            </div>
-          )}
+          {/* RENDERING FEED GRID */}
+          <div className="space-y-4">
+            {loading ? (
+              <div className="text-center py-12 text-gray-400 font-black uppercase tracking-widest">
+                Loading schedule data...
+              </div>
+            ) : (
+              <>
+                <ShiftFeed shifts={shifts} />
 
-          {/* SHIFTS GRID */}
-          {shifts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {shifts.map(s => (
-                <div key={s.id} className="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:border-[#FFCC00] transition-all group">
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-1">
-                        {s.shift_type?.replace(/_/g, ' ')} Shift
-                      </span>
-                      <h3 className="text-xl font-black italic tracking-tighter uppercase leading-none">
-                        {formatDate(s.shift_date)}
-                      </h3>
-                    </div>
-                    <StatusBadge status={s.attendance_status?.status || s.shift_status} />
+                {/* HISTORICAL PAGINATION INTERACTION LAYER */}
+                {activeTab === "all" && (pagination.hasNext || pagination.hasPrev) && (
+                  <div className="flex justify-between items-center pt-4">
+                    <button
+                      onClick={() => loadShifts(page - 1, searchQuery)}
+                      disabled={!pagination.hasPrev}
+                      className={`px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all ${
+                        pagination.hasPrev ? "bg-white text-black border-gray-200 hover:bg-gray-50" : "bg-gray-100 text-gray-400 border-gray-100 cursor-not-allowed"
+                      }`}
+                    >
+                      Prev
+                    </button>
+
+                    <span className="text-[10px] font-black tracking-widest bg-black text-[#FFCC00] px-4 py-2 rounded-xl">
+                      {page}
+                    </span>
+
+                    <button
+                      onClick={() => loadShifts(page + 1, searchQuery)}
+                      disabled={!pagination.hasNext}
+                      className={`px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all ${
+                        pagination.hasNext ? "bg-white text-black border-gray-200 hover:bg-gray-50" : "bg-gray-100 text-gray-400 border-gray-100 cursor-not-allowed"
+                      }`}
+                    >
+                      Next
+                    </button>
                   </div>
+                )}
+              </>
+            )}
+          </div>
 
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl">
-                      <div className="w-8 h-8 bg-black text-[#FFCC00] rounded-full flex items-center justify-center font-black text-[10px]">
-                        {s.shift_agent?.username?.[0]?.toUpperCase() || 'A'}
-                      </div>
-                      <div>
-                        <span className="font-bold text-xs uppercase italic block">
-                          {s.shift_agent?.full_name || s.shift_agent?.username || 'Unassigned'}
-                        </span>
-                        <span className="text-[9px] text-gray-400 uppercase tracking-widest">
-                          {s.shift_agent?.department?.title || ''}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between px-2">
-                      <div className="flex items-center gap-2 text-gray-500">
-                        <Clock size={14} />
-                        <span className="text-[10px] font-bold uppercase font-mono">
-                          {formatTime(s.shift_start_time)} — {formatTime(s.shift_end_time)}
-                        </span>
-                      </div>
-                      <span className="text-[9px] font-black bg-gray-100 px-2 py-1 rounded">
-                        {s.duration_hours}H
-                      </span>
-                    </div>
-
-                    {s.attendance_status && (
-                      <div className="mt-4 pt-4 border-t border-dashed border-gray-200">
-                        <div className="flex justify-between items-center text-[9px] font-black uppercase tracking-widest mb-1 text-gray-400">
-                          <span>Execution Status</span>
-                          <span className={s.attendance_status.status === 'shift_in_progress' ? 'text-green-500' : 'text-orange-500'}>
-                            {s.attendance_status.message || s.attendance_status.status?.replace(/_/g, ' ')}
-                          </span>
-                        </div>
-                        {s.attendance_status.hours_worked != null && (
-                          <div className="w-full bg-gray-100 h-1 rounded-full overflow-hidden">
-                            <div
-                              className="bg-black h-full transition-all"
-                              style={{
-                                width: `${Math.min(
-                                  (s.attendance_status.hours_worked / (s.attendance_status.scheduled_hours || 1)) * 100,
-                                  100
-                                )}%`
-                              }}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  {['Supervisor', 'Manager', 'Admin'].includes(userType) && s.shift_status === 'shift_scheduled' && (
-                    <div className="flex gap-2 mt-6">
-                      <button
-                        onClick={() => setSelectedShift(s)}
-                        className="flex-1 flex items-center justify-center gap-2 bg-gray-100 hover:bg-black hover:text-white p-3 rounded-xl transition-all text-gray-500"
-                      >
-                        <Edit size={14} /> <span className="text-[9px] font-black uppercase">Edit</span>
-                      </button>
-                      <button
-                        onClick={() => handleCancelShift(s.id)}
-                        className="p-3 bg-rose-50 text-rose-500 hover:bg-rose-500 hover:text-white rounded-xl transition-all"
-                      >
-                        <Trash2 size={14} />
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="bg-white rounded-[2rem] p-20 text-center border border-dashed border-gray-200">
-              <Calendar size={48} className="mx-auto text-gray-200 mb-4" />
-              <h3 className="font-black uppercase tracking-widest text-gray-400">No Deployments Found</h3>
-              <p className="text-xs text-gray-400 mt-2">Check different filter or create a new shift</p>
-            </div>
-          )}
         </main>
       </div>
     </div>
   );
-};
-
-const StatusBadge = ({ status }) => {
-  const config = {
-    'shift_scheduled':   'bg-blue-50 text-blue-600',
-    'shift_in_progress': 'bg-green-50 text-green-600 animate-pulse',
-    'shift_completed':   'bg-gray-100 text-gray-500',
-    'shift_cancelled':   'bg-rose-50 text-rose-500',
-    'shift_missed':      'bg-orange-50 text-orange-500',
-    'no_show':           'bg-yellow-50 text-yellow-600',
-  };
-  return (
-    <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] ${config[status] || 'bg-gray-100 text-gray-400'}`}>
-      {status?.replace(/_/g, ' ') || 'Unknown'}
-    </span>
-  );
-};
-
-export default ShiftsDashboard;
+}

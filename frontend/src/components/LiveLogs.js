@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AttendanceService from "../services/attendance"; // Using our centralized service
+import {AttendanceService} from "../services/attendance"
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 export default function LiveLogs() {
