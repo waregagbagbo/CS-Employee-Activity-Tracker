@@ -356,31 +356,39 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         try:
             shift = Shift.objects.get(id=shift_id, shift_agent=request.user.employee_profile)
         except Shift.DoesNotExist:
-            return Response({'error': 'Shift not found'}, status=404)
+            return Response({'error': 'Shift not found'}, status=status.HTTP_404_NOT_FOUND)
 
         # Check if already clocked in
         existing = Attendance.objects.filter(
-            employee=request.user.employee,
+            employee=request.user.employee_profile,
             shift_attendance=shift,
             clock_out_time__isnull=True
         ).exists()
 
         if existing:
-            return Response({'error': 'Already clocked in for this shift'}, status=400)
+            return Response({'error': 'Already clocked in for this shift'}, status=status.HTTP_400_BAD_REQUEST)
 
-        attendance = Attendance.objects.create(
+        # Create attendance record for validation
+        attendance = Attendance(
             employee=request.user.employee_profile,
-            shift_attendance=shift,
-            clock_in_time=timezone.now(),
-            status='clocked_in'
+            shift_attendance=shift
         )
+
+        # Validate clock-in time
+        validation_result = attendance.validate_clock_in()
+
+        if not validation_result['success']:
+            return Response(validation_result, status=status.HTTP_400_BAD_REQUEST)
+
+        # Save attendance after validation passes
+        attendance.save()
 
         # Update shift status
         shift.shift_status = 'shift_in_progress'
         shift.save()
 
         serializer = self.get_serializer(attendance)
-        return Response(serializer.data, status=201)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     @action(detail=False, methods=['post'])
     def clock_out(self, request):
@@ -394,18 +402,33 @@ class AttendanceViewSet(viewsets.ModelViewSet):
                 clock_out_time__isnull=True
             )
         except Attendance.DoesNotExist:
-            return Response({'error': 'No active clock-in found'}, status=404)
+            return Response({'error': 'No active clock-in found'}, status=status.HTTP_404_NOT_FOUND)
 
+        # Set clock_out_time
         attendance.clock_out_time = timezone.now()
-        attendance.status = 'clocked_out'
+
+        # Validate clock-out (duration and hours check)
+        validation_result = attendance.validate_clock_out()
+
+        # Save attendance (status set by validate_clock_out)
         attendance.save()
 
-        # Update shift status
-        attendance.shift_attendance.shift_status = 'shift_completed'
+        # Update shift status based on validation result
+        if validation_result['success']:
+            attendance.shift_attendance.shift_status = 'shift_completed'
+        else:
+            attendance.shift_attendance.shift_status = 'shift_incomplete'  # Didn't meet hours
+
         attendance.shift_attendance.save()
 
-        serializer = self.get_serializer(attendance)
-        return Response(serializer.data)
+        # Return validation result with attendance data
+        response_data = {
+            **validation_result,
+            'attendance': self.get_serializer(attendance).data
+        }
+
+        http_status = status.HTTP_200_OK if validation_result['success'] else status.HTTP_400_BAD_REQUEST
+        return Response(response_data, status=http_status)
 
     """def get_queryset(self):
         user = self.request.user

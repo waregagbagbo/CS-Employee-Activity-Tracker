@@ -233,6 +233,65 @@ class Attendance(models.Model):
             return self.duration_hours
         return None
 
+    def validate_clock_in(self):
+        """
+        Validate that clock-in happens during the shift's start time window.
+        Prevent clocking in before shift starts.
+        """
+        if not self.shift_attendance or not self.shift_attendance.static_shift:
+            return {
+                'success': False,
+                'message': 'No shift assigned to this attendance record',
+            }
+
+        static_shift = self.shift_attendance.static_shift
+        current_time = datetime.now().time()
+        shift_start = static_shift.start_time
+        shift_end = static_shift.end_time
+
+        # Handle shifts that cross midnight
+        if shift_end < shift_start:
+            # Overnight shift
+            if current_time >= shift_start or current_time < shift_end:
+                self.clock_in_time = timezone.now()
+                self.status = 'clocked_in'
+                return {
+                    'success': True,
+                    'message': f'Clock in successful. Shift starts at {shift_start}'
+                }
+            else:
+                return {
+                    'success': False,
+                    'message': f'Cannot clock in. Shift starts at {shift_start} (Current time: {current_time.strftime("%H:%M")})',
+                    'shift_start': shift_start.strftime("%H:%M"),
+                    'current_time': current_time.strftime("%H:%M")
+                }
+        else:
+            # Regular daytime shift
+            if shift_start <= current_time < shift_end:
+                self.clock_in_time = timezone.now()
+                self.status = 'clocked_in'
+                return {
+                    'success': True,
+                    'message': f'Clock in successful. Shift starts at {shift_start}'
+                }
+            elif current_time < shift_start:
+                return {
+                    'success': False,
+                    'message': f'Cannot clock in. Shift starts at {shift_start} (Current time: {current_time.strftime("%H:%M")})',
+                    'shift_start': shift_start.strftime("%H:%M"),
+                    'current_time': current_time.strftime("%H:%M")
+                }
+            else:
+                return {
+                    'success': False,
+                    'message': f'Cannot clock in. Shift ended at {shift_end} (Current time: {current_time.strftime("%H:%M")})',
+                    'shift_end': shift_end.strftime("%H:%M"),
+                    'current_time': current_time.strftime("%H:%M")
+                }
+
+
+
     def validate_clock_out(self):
         """
         Validate clock-out against shift requirements.
@@ -268,7 +327,7 @@ class Attendance(models.Model):
                 f"Got: {duration_float:.2f}hrs"
             )
             self.validation_error = error_msg
-            self.status = 'incomplete'
+            self.status = 'incomplete. Hours is below threshold'
 
             return {
                 'success': False,
@@ -282,7 +341,7 @@ class Attendance(models.Model):
                 f"(Required: {required_hours}hrs)"
             )
             self.validation_error = None
-            self.status = 'completed'
+            self.status = 'Shift completed successfully'
 
             return {
                 'success': True,

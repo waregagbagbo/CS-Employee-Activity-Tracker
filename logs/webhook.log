@@ -13573,3 +13573,102 @@ Watching for file changes with StatReloader
 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 D:\CS-Employee-Activity-Tracker\Employee_Tracker\serializers.py changed, reloading.
 Watching for file changes with StatReloader
+"GET /api/attendance/ HTTP/1.1" 200 20296
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/add/ HTTP/1.1" 200 22165
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /api/shifts/ HTTP/1.1" 200 19643
+"GET /admin/Employee_Tracker/shift/add/ HTTP/1.1" 200 22165
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"OPTIONS / HTTP/1.1" 200 0
+"OPTIONS / HTTP/1.1" 200 0
+"OPTIONS / HTTP/1.1" 200 0
+"GET /admin/accounts/employee/ HTTP/1.1" 200 18384
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/accounts/employee/2/change/ HTTP/1.1" 200 22809
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/accounts/customuser/ HTTP/1.1" 200 18399
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"OPTIONS / HTTP/1.1" 200 0
+"OPTIONS / HTTP/1.1" 200 0
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 121
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /api/attendance HTTP/1.1" 200 0
+"GET /api/attendance HTTP/1.1" 301 0
+"GET /api/attendance/ HTTP/1.1" 200 937
+"OPTIONS /api/shifts/upcoming/ HTTP/1.1" 200 0
+Not Found: /api/shifts/upcoming/
+"GET /api/shifts/upcoming/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /api/shifts/today/ HTTP/1.1" 200 0
+Not Found: /api/shifts/today/
+"GET /api/shifts/today/ HTTP/1.1" 404 23
+Not Found: /api/shifts/upcoming/
+"GET /api/shifts/upcoming/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+Not Found: /api/shifts/today/
+"GET /api/shifts/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 9713
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33064
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/?shift_date__gte=2026-06-23&shift_date__lt=2026-06-24 HTTP/1.1" 200 19818
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/3/change/?_changelist_filters=shift_date__gte%3D2026-06-23%26shift_date__lt%3D2026-06-24 HTTP/1.1" 200 22803
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\models.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\models.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\views.py changed, reloading.
+Watching for file changes with StatReloader
