@@ -1,3 +1,4 @@
+from rest_framework import viewsets, status
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -15,13 +16,19 @@ from accounts.models import Employee, Department
 from accounts.permissions import UserShiftPermission
 from .models import Shift, ActivityReport, Attendance,StaticShift
 from .serializers import (
-    EmployeeProfileSerializer, ShiftSerializer, DepartmentSerializer,
-    ActivityReportSerializer, AttendanceStatsSerializer, AttendanceUpdateSerializer,
-    AttendanceSupervisorSerializer, AttendanceListSerializer,StaticShiftSerializer
+    EmployeeProfileSerializer, ShiftSerializer, DepartmentSerializer,ActivityReportSupervisorSerializer,
+    ActivityReportEmployeeSerializer, AttendanceStatsSerializer,AttendanceSupervisorSerializer, AttendanceListSerializer,StaticShiftSerializer
 )
+import logging
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+from io import BytesIO
 
 User = get_user_model()
 today = timezone.localdate()
+logger = logging.getLogger(__name__)
 
 
 # ===========================
@@ -78,8 +85,6 @@ class EmployeeProfileViewSet(viewsets.ModelViewSet):
 # ===========================
 class StaticShiftViewSet(viewsets.ReadOnlyModelViewSet):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
-
-    """read only shift templates"""
     queryset = StaticShift.objects.all()
     serializer_class = StaticShiftSerializer
 
@@ -136,170 +141,6 @@ class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
         serializer = self.get_serializer(shifts, many=True)
         return Response(serializer.data)
 
-    """def get_queryset(self):
-        user = self.request.user
-        try:
-            employee_profile = user.employee_profile
-        except Employee.DoesNotExist:
-            return Shift.objects.none()
-
-        qs = Shift.objects.select_related(
-            'shift_agent__user', 'shift_agent__department', 'created_by__user'
-        ).prefetch_related('attendances')
-
-        if employee_profile.user_type in ['admin','superuser','staff']:
-            return qs.all()
-        elif employee_profile.user_type in ['supervisor', 'manager']:
-            return qs.filter(models.Q(shift_agent__supervisor=employee_profile) | models.Q(shift_agent=employee_profile))
-        else:
-            return qs.filter(shift_agent=employee_profile)
-
-    def perform_create(self, serializer):
-        user = self.request.user
-        try:
-            employee_profile = user.employee_profile
-        except Employee.DoesNotExist:
-            raise ValidationError({'error': 'Employee profile not found'})
-
-        shift_agent_id = self.request.data.get('shift_agent')
-        if employee_profile.user_type in ['supervisor', 'manager', 'admin'] and shift_agent_id:
-            try:
-                shift_agent = Employee.objects.get(id=shift_agent_id)
-                if employee_profile.user_type != 'Admin' and shift_agent.supervisor != employee_profile:
-                    raise ValidationError({'error': 'Can only create shifts for your team'})
-            except Employee.DoesNotExist:
-                raise ValidationError({'error': 'Employee not found'})
-        else:
-            shift_agent = employee_profile
-
-        if Shift.objects.filter(shift_agent=shift_agent, shift_status='shift_in_progress').exists():
-            raise ValidationError({'error': 'You already have an active shift'})
-
-        shift = serializer.save(
-            shift_agent=shift_agent,
-            shift_date=today,
-            shift_start_time=timezone.now().time(),
-            shift_status='shift_in_progress',
-            created_by=employee_profile
-        )
-
-        Attendance.objects.create(
-            employee=shift_agent,
-            shift=shift,
-            clock_in_time=timezone.now(),
-            status='clocked_in'
-        )
-
-    def perform_update(self, serializer):
-        shift = self.get_object()
-        user = self.request.user
-        try:
-            employee_profile = user.employee_profile
-        except Employee.DoesNotExist:
-            raise ValidationError({'error': 'Employee profile not found'})
-
-        if shift.shift_status == 'shift_completed':
-            raise ValidationError({'error': 'Cannot modify a completed shift'})
-
-        if employee_profile.user_type != 'Admin':
-            if shift.shift_agent != employee_profile and shift.shift_agent.supervisor != employee_profile:
-                raise ValidationError({'error': 'Can only modify your shifts or your team shifts'})
-
-        serializer.save()
-
-    def perform_destroy(self, instance):
-        user = self.request.user
-        try:
-            employee_profile = user.employee_profile
-        except Employee.DoesNotExist:
-            raise ValidationError({'error': 'Employee profile not found'})
-
-        if instance.shift_status in ['shift_in_progress', 'shift_completed']:
-            raise ValidationError({'error': 'Cannot delete an active or completed shift'})
-
-        if employee_profile.user_type != 'Admin':
-            if instance.shift_agent != employee_profile and instance.shift_agent.supervisor != employee_profile:
-                raise ValidationError({'error': 'Can only delete your shifts or your team shifts'})
-
-        instance.delete()
-
-    # Extra endpoints: today, upcoming, cancel, my-shifts
-    @action(detail=False, methods=['get'], url_path='today')
-    def today_shifts(self, request):
-        user = request.user
-        try:
-            employee = user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'error': 'Employee profile not found'}, status=404)
-
-        today = today
-        if employee.user_type in ['Admin','staff']:
-            shifts = Shift.objects.filter(shift_date=today)
-        elif employee.user_type in ['Supervisor', 'Manager']:
-            shifts = Shift.objects.filter(shift_date=today).filter(models.Q(shift_agent__supervisor=employee) | models.Q(shift_agent=employee))
-        else:
-            shifts = Shift.objects.filter(shift_date=today, shift_agent=employee)
-
-        serializer = self.get_serializer(shifts, many=True)
-        return Response({'date': today, 'count': shifts.count(), 'shifts': serializer.data})
-
-    @action(detail=False, methods=['get'], url_path='upcoming')
-    def upcoming_shifts(self, request):
-        user = request.user
-        try:
-            employee = user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'error': 'Employee profile not found'}, status=404)
-
-        today = today
-        next_week = today + timedelta(days=7)
-
-        if employee.user_type == 'Admin':
-            shifts = Shift.objects.filter(shift_date__range=[today, next_week], shift_status='shift_scheduled')
-        elif employee.user_type in ['Supervisor', 'Manager']:
-            shifts = Shift.objects.filter(shift_date__range=[today, next_week]).filter(models.Q(shift_agent__supervisor=employee) | models.Q(shift_agent=employee), shift_status='shift_scheduled')
-        else:
-            shifts = Shift.objects.filter(shift_date__range=[today, next_week], shift_agent=employee, shift_status='shift_scheduled')
-
-        serializer = self.get_serializer(shifts.order_by('shift_date', 'shift_start_time'), many=True)
-        return Response({'start_date': today, 'end_date': next_week, 'count': shifts.count(), 'shifts': serializer.data})
-
-    @action(detail=True, methods=['patch'], url_path='cancel')
-    def cancel_shift(self, request, pk=None):
-        shift = self.get_object()
-        try:
-            employee = request.user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'error': 'Employee profile not found'}, status=404)
-
-        if employee.user_type not in ['Supervisor', 'Manager', 'Admin']:
-            return Response({'error': 'Only supervisors/admins can cancel shifts'}, status=403)
-
-        if shift.shift_status in ['shift_in_progress', 'shift_completed']:
-            return Response({'error': 'Cannot cancel an active or completed shift'}, status=400)
-
-        if employee.user_type != 'Admin' and shift.shift_agent.supervisor != employee:
-            return Response({'error': 'Can only cancel shifts of your team'}, status=403)
-
-        shift.shift_status = 'shift_cancelled'
-        shift.save()
-        serializer = self.get_serializer(shift)
-        return Response({'message': 'Shift cancelled', 'shift': serializer.data})
-
-    @action(detail=False, methods=['get'], url_path='my-shifts')
-    def my_shifts(self, request):
-        try:
-            employee = request.user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'error': 'Employee profile not found'}, status=404)
-
-        today = today
-        past_30 = today - timedelta(days=30)
-        next_30 = today + timedelta(days=30)
-
-        shifts = Shift.objects.filter(shift_agent=employee, shift_date__range=[past_30, next_30]).order_by('-shift_date')
-        serializer = self.get_serializer(shifts, many=True)
-        return Response({'employee': employee.user.username, 'count': shifts.count(), 'shifts': serializer.data})"""
 
 
 # ===========================
@@ -307,34 +148,342 @@ class ShiftAPIViewSet(viewsets.ReadOnlyModelViewSet):
 # ===========================
 class ReportsViewSet(viewsets.ModelViewSet):
     queryset = ActivityReport.objects.all()
-    serializer_class = ActivityReportSerializer
     permission_classes = [IsAuthenticated]
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
-    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    search_fields = ['activity_type', 'activity_status']
-    ordering_fields = ['activity_type', 'activity_status']
     pagination_class = PageNumberPagination
+    ordering = ['-activity_submitted_at']
+
+    def is_supervisor(self):
+        """Check if current user is a supervisor"""
+        try:
+            employee = self.request.user.employee_profile
+            # Debug: Print the user type
+            print(f"DEBUG: User {self.request.user} is type: {employee.user_type}")
+            return employee.user_type == 'supervisor'
+        except Exception as e:
+            print(f"DEBUG: Error checking supervisor: {e}")
+            return False
+
+    def get_serializer_class(self):
+        """Return different serializers based on user role"""
+        if self.is_supervisor():
+            print("DEBUG: Using SupervisorSerializer")
+            return ActivityReportSupervisorSerializer
+        else:
+            print("DEBUG: Using EmployeeSerializer")
+            return ActivityReportEmployeeSerializer
+
+
+    def get_serializer_class(self):
+        """Return different serializers based on user role"""
+        try:
+            employee = self.request.user.employee_profile
+            if employee.user_type == 'supervisor':
+                return ActivityReportSupervisorSerializer
+        except Employee.DoesNotExist:
+            pass
+
+        return ActivityReportEmployeeSerializer
 
     def get_queryset(self):
-        employee_profile = self.request.user.employee_profile
-        if employee_profile.user_type == 'Supervisor':
-            return ActivityReport.objects.filter(employee__supervisor=employee_profile)
-        return ActivityReport.objects.filter(employee=employee_profile)
+        """
+        Filter reports based on user role.
+        - Supervisors see their team's reports
+        - Employees see only their own reports
+        """
+        user = self.request.user
+
+        try:
+            employee = user.employee_profile
+        except Employee.DoesNotExist:
+            return ActivityReport.objects.none()
+
+        # Check user type
+        if employee.user_type == 'supervisor':
+            # Supervisors see reports of employees they supervise
+            return ActivityReport.objects.filter(
+                employee__supervisor=employee
+            ).order_by('-activity_submitted_at')
+
+        # Regular employees see only their own reports
+        return ActivityReport.objects.filter(
+            employee=employee
+        ).order_by('-activity_submitted_at')
+
+    def create(self, request, *args, **kwargs):
+        """Employee submits a report"""
+        try:
+            attendance_id = request.data.get('attendance')
+
+            try:
+                employee = request.user.employee_profile
+                attendance = Attendance.objects.get(
+                    id=attendance_id,
+                    employee=employee
+                )
+            except Attendance.DoesNotExist:
+                return Response(
+                    {'error': 'Attendance record not found or does not belong to you'},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+            except Employee.DoesNotExist:
+                return Response(
+                    {'error': 'User has no employee profile'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            # Check if report already exists
+            if ActivityReport.objects.filter(attendance=attendance).exists():
+                return Response(
+                    {'error': 'Report already submitted for this shift'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            # Validate clock_out
+            if not attendance.clock_out_time:
+                return Response(
+                    {'error': 'Cannot submit report. Shift not yet completed'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            # Create report
+            report = ActivityReport.objects.create(
+                employee=employee,
+                attendance=attendance,
+                shift_activity_type=request.data.get('shift_activity_type', 'Night_Shift'),
+                report_type=request.data.get('report_type', 'other'),
+                activity_description=request.data.get('activity_description', ''),
+                tickets_resolved=request.data.get('tickets_resolved', 0),
+                calls_made=request.data.get('calls_made', 0),
+                issues_escalated=request.data.get('issues_escalated', 0),
+                notes=request.data.get('notes', '')
+            )
+
+            logger.info(f"Report submitted by {request.user} for attendance {attendance_id}")
+
+            serializer = self.get_serializer(report)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        except Exception as e:
+            logger.error(f"Error creating report: {str(e)}")
+            return Response(
+                {'error': str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
     @action(detail=True, methods=['post'])
     def approve(self, request, pk=None):
+        """Supervisor approves a report"""
         report = self.get_object()
-        current_supervisor = request.user.employee_profile
 
-        if report.employee.supervisor != current_supervisor and current_supervisor.user_type != 'Admin':
-            return Response({'detail': 'Can only approve reports from direct reports'}, status=403)
+        try:
+            supervisor = request.user.employee_profile
+        except Employee.DoesNotExist:
+            return Response(
+                {'error': 'User has no employee profile'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        if supervisor.user_type != 'supervisor':
+            return Response(
+                {'error': 'Only supervisors can approve reports'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        if report.employee.supervisor != supervisor:
+            return Response(
+                {'error': 'You can only approve reports for your team'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        if report.is_approved:
+            return Response(
+                {'error': 'Report already approved'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
         report.is_approved = True
-        report.approved_by = current_supervisor
         report.activity_approved_at = timezone.now()
+        report.approved_by = supervisor
         report.save()
-        return Response({'status': 'approved'})
 
+        logger.info(f"Report {pk} approved by {request.user}")
+
+        serializer = self.get_serializer(report)
+        return Response(
+            {'message': 'Report approved', 'data': serializer.data},
+            status=status.HTTP_200_OK
+        )
+
+    @action(detail=True, methods=['post'])
+    def reject(self, request, pk=None):
+        """Supervisor rejects a report"""
+        report = self.get_object()
+
+        try:
+            supervisor = request.user.employee_profile
+        except Employee.DoesNotExist:
+            return Response(
+                {'error': 'User has no employee profile'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        if supervisor.user_type != 'supervisor':
+            return Response(
+                {'error': 'Only supervisors can reject reports'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        if report.is_approved:
+            return Response(
+                {'error': 'Cannot reject an approved report'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        report.delete()
+        logger.info(f"Report {pk} rejected by {request.user}")
+
+        return Response(
+            {'message': 'Report rejected'},
+            status=status.HTTP_200_OK
+        )
+
+    @action(detail=False, methods=['get'])
+    def pending_approval(self, request):
+        """Get pending reports for supervisor"""
+        try:
+            supervisor = request.user.employee_profile
+        except Employee.DoesNotExist:
+            return Response(
+                {'error': 'User has no employee profile'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        if supervisor.user_type != 'supervisor':
+            return Response(
+                {'error': 'Only supervisors can view pending reports'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        pending = ActivityReport.objects.filter(
+            employee__supervisor=supervisor,
+            is_approved=False
+        ).order_by('activity_submitted_at')
+
+        serializer = self.get_serializer(pending, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['get'])
+    def download_pdf(self, request, pk=None):
+        """Download approved report as PDF"""
+        report = self.get_object()
+
+        # Only approved reports can be downloaded
+        if not report.is_approved:
+            return Response(
+                {'error': 'Only approved reports can be downloaded'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Create PDF
+        buffer = BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=letter)
+        elements = []
+
+        styles = getSampleStyleSheet()
+        title_style = ParagraphStyle(
+            'CustomTitle',
+            parent=styles['Heading1'],
+            fontSize=16,
+            textColor='#003366',
+            spaceAfter=20,
+            alignment=1  # Center
+        )
+
+        # Title
+        elements.append(Paragraph("Activity Report", title_style))
+        elements.append(Spacer(1, 0.3 * inch))
+
+        # Report Details
+        report_data = [
+            ['Field', 'Value'],
+            ['Employee', report.employee.user.get_full_name()],
+            ['Report Type', report.get_report_type_display()],
+            ['Shift Type', report.shift_activity_type],
+            ['Submitted Date', report.activity_submitted_at.strftime('%Y-%m-%d %H:%M')],
+            ['Approved By', report.approved_by.user.get_full_name() if report.approved_by else 'N/A'],
+            ['Approval Date',
+             report.activity_approved_at.strftime('%Y-%m-%d %H:%M') if report.activity_approved_at else 'N/A'],
+            ['Tickets Resolved', str(report.tickets_resolved)],
+            ['Calls Made', str(report.calls_made)],
+            ['Issues Escalated', str(report.issues_escalated)],
+        ]
+
+        table = Table(report_data)
+        table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), '#003366'),
+            ('TEXTCOLOR', (0, 0), (-1, 0), '#FFFFFF'),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, 0), 12),
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+            ('GRID', (0, 0), (-1, -1), 1, '#CCCCCC'),
+        ]))
+
+        elements.append(table)
+        elements.append(Spacer(1, 0.3 * inch))
+
+        # Description
+        elements.append(Paragraph("<b>Activity Description:</b>", styles['Normal']))
+        elements.append(Paragraph(report.activity_description, styles['Normal']))
+        elements.append(Spacer(1, 0.2 * inch))
+
+        # Notes
+        elements.append(Paragraph("<b>Notes:</b>", styles['Normal']))
+        elements.append(Paragraph(report.notes, styles['Normal']))
+
+        # Build PDF
+        doc.build(elements)
+        buffer.seek(0)
+
+        logger.info(f"Report {pk} downloaded by {request.user}")
+
+        response = HttpResponse(buffer, content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="report_{report.id}.pdf"'
+        return response
+
+    @action(detail=False, methods=['get'])
+    def analytics(self, request):
+        """Get activity analytics"""
+        employee_id = request.query_params.get('employee_id')
+        date_from = request.query_params.get('date_from')
+        date_to = request.query_params.get('date_to')
+
+        queryset = ActivityReport.objects.filter(is_approved=True)
+
+        if employee_id:
+            queryset = queryset.filter(employee_id=employee_id)
+
+        if date_from:
+            queryset = queryset.filter(activity_submitted_at__gte=date_from)
+
+        if date_to:
+            queryset = queryset.filter(activity_submitted_at__lte=date_to)
+
+        analytics = {
+            'total_reports': queryset.count(),
+            'total_tickets_resolved': queryset.aggregate(Sum('tickets_resolved'))['tickets_resolved__sum'] or 0,
+            'total_calls_made': queryset.aggregate(Sum('calls_made'))['calls_made__sum'] or 0,
+            'total_issues_escalated': queryset.aggregate(Sum('issues_escalated'))['issues_escalated__sum'] or 0,
+            'reports_by_type': dict(
+                queryset.values('report_type').annotate(count=Count('id')).values_list('report_type', 'count')
+            ),
+            'reports_by_shift': dict(
+                queryset.values('shift_activity_type').annotate(count=Count('id')).values_list('shift_activity_type',
+                                                                                               'count')
+            )
+        }
+
+        return Response(analytics)
 
 # ===========================
 # ATTENDANCE VIEWSET (all endpoints merged)
@@ -429,234 +578,3 @@ class AttendanceViewSet(viewsets.ModelViewSet):
 
         http_status = status.HTTP_200_OK if validation_result['success'] else status.HTTP_400_BAD_REQUEST
         return Response(response_data, status=http_status)
-
-    """def get_queryset(self):
-        user = self.request.user
-        try:
-            employee_profile = user.employee_profile
-        except Employee.DoesNotExist:
-            return Attendance.objects.none()
-
-        qs = Attendance.objects.select_related('shift_attendance', 'employee__user')
-
-        if employee_profile.user_type in ['Admin','Staff','Supervisor']:
-            return qs.all()
-        elif employee_profile.user_type in ['Supervisor', 'Manager']:
-            return qs.filter(employee__supervisor=employee_profile) | qs.filter(employee=employee_profile)
-        return qs.filter(employee=employee_profile)
-
-    def get_serializer_class(self):
-        return AttendanceListSerializer
-
-    # =========================
-    # Clock-in / Clock-out / Status / Today-summary
-    # =========================
-    @action(detail=False, methods=['GET'], url_path='status')
-    def status(self, request):
-        try:
-            employee = request.user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'detail': 'Employee profile not found'}, status=404)
-
-        active = Attendance.objects.filter(
-            employee=employee,
-            status='clocked_in',
-            clock_out_time__isnull=True
-        ).select_related('shift_attendance').first()
-
-        today_shift = Shift.objects.filter(
-            shift_agent=employee,shift_date=today).first()
-        print(today_shift)
-
-        # Base response always includes these
-        response = {
-            'is_clocked_in': bool(active),
-            'attendance_status': active.status if active else 'not_clocked_in',
-            'attendance_id': active.id if active else None,
-            'clock_in_time': active.clock_in_time if active else None,
-            'clock_out_time': active.clock_out_time if active else None,
-            'duration_so_far': calculate_current_duration(active.clock_in_time) if active else None,
-        }
-
-        # Attach shift info if available
-        if active and active.shift_attendance:
-            response['shift'] = {
-                'id': active.shift_attendance.id,
-                'shift_type': active.shift_attendance.shift_type,
-                'shift_type_display': active.shift_attendance.get_shift_type_display(),
-                'scheduled_start': active.shift_attendance.shift_start_time,
-                'scheduled_end': active.shift_attendance.shift_end_time,
-                'shift_status': active.shift_attendance.shift_status,
-            }
-        elif today_shift:
-            response['upcoming_shift'] = {
-                'id': today_shift.id,
-                'shift_type': today_shift.shift_type,
-                'shift_type_display': today_shift.get_shift_type_display(),
-                'scheduled_start': today_shift.shift_start_time,
-                'scheduled_end': today_shift.shift_end_time,
-                'shift_status': today_shift.shift_status,
-            }
-
-        return Response(response)
-
-    @action(detail=False, methods=['POST'], url_path='clock-in')
-    def clock_in(self, request):
-        try:
-            employee = request.user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'detail': 'Employee profile not found'}, status=404)
-
-        active = Attendance.objects.filter(employee=employee, status='clocked_in', clock_out_time__isnull=True).first()
-        if active:
-            return Response({'detail': 'Already clocked in', 'attendance_id': active.id, 'clock_in_time': active.clock_in_time}, status=400)
-
-        today_shift = Shift.objects.filter(shift_agent=employee, shift_date=today).first()
-        attendance = Attendance.objects.create(
-            employee=employee,
-            shift_attendance=today_shift,
-            clock_in_time=timezone.now(),
-            status='clocked_in',
-        )
-        if today_shift:
-            today_shift.shift_status = 'shift_in_progress'
-            today_shift.save()
-
-        response = {
-            'message': 'Clocked in successfully',
-            'attendance_id': attendance.id,
-            'clock_in_time': attendance.clock_in_time,
-            'status': attendance.status,
-            'is_scheduled': bool(today_shift)
-        }
-        if today_shift:
-            response['shift'] = {
-                'id': today_shift.id,
-                'shift_type': today_shift.shift_type,
-                'shift_type_display': today_shift.get_shift_type_display(),
-                'scheduled_start': today_shift.shift_start_time,
-                'scheduled_end': today_shift.shift_end_time
-            }
-        else:
-            response['note'] = 'Unscheduled work - no shift assigned'
-
-        return Response(response, status=201)
-
-    @action(detail=False, methods=['POST'], url_path='clock-out')
-    def clock_out(self, request):
-        try:
-            employee = request.user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'detail': 'Employee profile not found'}, status=404)
-
-        active = Attendance.objects.filter(
-            employee=employee,
-            status='clocked_in',
-            clock_out_time__isnull=True
-        ).select_related('shift_attendance').first()
-
-        if not active:
-            return Response({'detail': 'Not clocked in'}, status=400)
-
-        active.clock_out_time = timezone.now()
-        active.status = 'clocked_out'
-        active.save()
-
-        if active.shift_attendance:
-            active.shift_attendance.shift_status = 'shift_completed'
-            active.shift_attendance.save()
-
-        response = {
-            'message': 'Clocked out successfully',
-            'attendance_id': active.id,
-            'clock_in_time': active.clock_in_time,
-            'clock_out_time': active.clock_out_time,
-            'duration_hours': active.duration_hours,
-            'attendance_status': active.status,
-            'prompt_report': True
-        }
-
-        if active.shift_attendance:
-            scheduled_duration = calculate_scheduled_duration(active.shift_attendance)
-            variance = float(active.duration_hours) - scheduled_duration if scheduled_duration else 0
-            response['shift'] = {
-                'id': active.shift_attendance.id,
-                'shift_type': active.shift_attendance.shift_type,
-                'shift_type_display': active.shift_attendance.get_shift_type_display(),
-                'scheduled_start': active.shift_attendance.shift_start_time,
-                'scheduled_end': active.shift_attendance.shift_end_time,
-                'shift_status': active.shift_attendance.shift_status,
-                'scheduled_duration': scheduled_duration,
-                'variance_hours': round(variance, 2)
-            }
-
-        return Response(response)
-
-    @action(detail=False, methods=['GET'], url_path='today')
-    def today(self, request):
-        try:
-            employee = request.user.employee_profile
-        except Employee.DoesNotExist:
-            return Response({'detail': 'Employee profile not found'}, status=404)
-
-        today = date.today()
-        attendances = Attendance.objects.filter(
-            employee=employee,
-            clock_in_time__date=today
-        ).select_related('shift_attendance')
-
-        today_shift = Shift.objects.filter(
-            shift_agent=employee,
-            shift_date=today
-        ).first()
-
-        summary = {
-            'date': today,
-            'has_shift': bool(today_shift),  # scheduled shift exists
-            'has_attendance': attendances.exists(),
-            'attendances': []
-        }
-
-        if today_shift:
-            summary['shift'] = {
-                'id': today_shift.id,
-                'shift_type': today_shift.shift_type,
-                'shift_type_display': today_shift.get_shift_type_display(),
-                'scheduled_start': today_shift.shift_start_time,
-                'scheduled_end': today_shift.shift_end_time,
-                'status': today_shift.shift_status
-            }
-
-        for a in attendances:
-            summary['attendances'].append({
-                'id': a.id,
-                'clock_in_time': a.clock_in_time,
-                'clock_out_time': a.clock_out_time,
-                'duration_hours': a.duration_hours,
-                'status': a.status,
-                'shift_attendance': a.shift_attendance.shift_type if a.shift_attendance else None,
-                'shift_type_display': a.shift_attendance.get_shift_type_display() if a.shift_attendance else None
-            })
-
-        return Response(summary)
-
-
-# ===========================
-# HELPER FUNCTIONS
-# ===========================
-def calculate_current_duration(clock_in_time):
-    if clock_in_time:
-        delta = timezone.now() - clock_in_time
-        return round(delta.total_seconds() / 3600, 2)
-    return 0
-
-
-def calculate_scheduled_duration(shift):
-    if shift and shift.start_time and shift.end_time:
-        start = datetime.combine(today, shift.shift_start_time)
-        end = datetime.combine(today, shift.shift_end_time)
-        if end < start:
-            end += timedelta(days=1)
-        delta = end - start
-        return round(delta.total_seconds() / 3600, 2)
-    return None"""

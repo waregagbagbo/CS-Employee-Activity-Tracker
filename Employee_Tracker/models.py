@@ -360,15 +360,12 @@ class Attendance(models.Model):
 class ActivityReport(models.Model):
     # ONE employee reference
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='activity_reports')
-
-    # The key relationship - tells us WHO worked and WHEN plus the appriver
     attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE,related_name='reports')
-    approved_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True, related_name='approved_reports')
-
 
     shift_activity_type = models.CharField(max_length=50, choices=SHIFT_TYPES, default='Night_Shift')
     report_type = models.CharField(max_length=50, choices=REPORT_TYPES, default='other')
     activity_description = models.TextField()
+
     tickets_resolved = models.IntegerField(default=0)
     calls_made = models.IntegerField(default=0)
     issues_escalated = models.IntegerField(default=0)
@@ -376,6 +373,9 @@ class ActivityReport(models.Model):
 
     activity_submitted_at = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
+    approved_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=False,
+                                    related_name='approved_reports')
+
     activity_approved_at = models.DateTimeField(auto_now=False, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -384,31 +384,29 @@ class ActivityReport(models.Model):
     def __str__(self):
         return f"{self.employee} - {self.activity_submitted_at}({self.shift_activity_type})"
 
-    # access shift if present though attendance
     @property
     def shift(self):
-        # fetch shift if present
-        return self.attendance.shift if self.attendance else None
+        """Fetch shift from attendance"""
+        return self.attendance.shift_attendance if self.attendance else None
 
-
-    # get shift type if present from attendance
     @property
     def shift_type(self):
-        #fetch shift type if shift exists
-        if self.attendance and self.attendance.shift:
-            return self.attendance.shift.shift_type
+        """Fetch shift type from attendance"""
+        if self.attendance and self.attendance.shift_attendance:
+            return self.attendance.shift_attendance.static_shift.name if self.attendance.shift_attendance.static_shift else "Unscheduled"
         return "Unscheduled"
-
 
     @property
     def supervisor(self):
-        """ fetch employee's supervisor """
+        """Fetch employee's supervisor"""
         return self.employee.supervisor if self.employee else None
 
     class Meta:
         verbose_name = 'Report'
         verbose_name_plural = 'Reports'
         ordering = ['report_type', 'activity_submitted_at']
-        #unique_together = (('report_type', 'shift_active_agent'),)
+
+
+
 
 
