@@ -13,8 +13,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import EmployeeDetail from "./components/EmployeeDetail";
 import Settings from "./pages/Settings.jsx";
 import Attendance from "./pages/AttendancePage";
-
-
+import ApproveReports from './pages/ApproveReports';
+import Analytics from './pages/Analytics';
 
 
 
@@ -28,7 +28,6 @@ function App(){
         <Route path="/dashboard" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 
         <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
-
           <Route path="/employees/:id" element={<EmployeeDetail />} />
           <Route path="/employee/:id" element={<Profile />} />
 
@@ -38,6 +37,8 @@ function App(){
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
 
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
+        <Route path="/reports/:id/approve" element={<ApproveReports />} />
+        <Route path="/analytics" element={<Analytics />} />
 
         <Route path="/departments" element={<ProtectedRoute><Departments /></ProtectedRoute>} />
         <Route path="/attendance" element={<ProtectedRoute><Attendance /></ProtectedRoute>} />

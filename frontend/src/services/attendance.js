@@ -1,31 +1,54 @@
 import API from "./api";
 
-export const AttendanceService = {
-  /**
-   * Fetches active user's attendance log history
-   * Mapped to: GET /attendance/
-   */
-  async getHistory() {
-    const response = await API.get("api/attendance/");
-    // Handles DRF DefaultRouter list array mappings
-    return Array.isArray(response.data) ? response.data : response.data?.results || [];
-  },
-
-  /**
-   * Action trigger to punch into an allocated shift node
-   * Mapped to: POST /attendance/clock_in/ -> Payload: { shift_id }
-   */
-  async clockIn(shiftId) {
-    const response = await API.post("api/attendance/clock_in/", { shift_id: parseInt(shiftId, 10) });
+const AttendanceService = {
+  // GET current user's status
+  getStatus: async () => {
+    const response = await API.get("/api/attendance/status/");
     return response.data;
   },
 
-  /**
-   * Action trigger to punch out of an active shift node
-   * Mapped to: POST /attendance/clock_out/ -> Payload: { attendance_id }
-   */
-  async clockOut(attendanceId) {
-    const response = await API.post("api/attendance/clock_out/", { attendance_id: parseInt(attendanceId, 10) });
+  // POST /api/attendance/clock_in/ - Clock in with shift validation
+  clockIn: async (data) => {
+    const response = await API.post("/api/attendance/clock_in/", data);
     return response.data;
-  }
+  },
+
+  // POST /api/attendance/clock_out/ - Clock out with duration validation
+  clockOut: async (data = {}) => {
+    const response = await API.post("/api/attendance/clock_out/", data);
+    return response.data;
+  },
+
+  // GET /api/attendance/today/ - Today's summary
+  getTodaySummary: async () => {
+    const response = await API.get("/api/attendance/today/");
+    return response.data;
+  },
+
+  // GET /api/attendance/history/ - Personal attendance history
+  getPersonalHistory: async (params = {}) => {
+    const response = await API.get("/api/attendance/history/", { params });
+    return response.data;
+  },
+
+  // GET /api/attendance/team/ - Team attendance (supervisors only)
+  getTeamAttendance: async (date = null) => {
+    const params = date ? { date } : {};
+    const response = await API.get("/api/attendance/team/", { params });
+    return response.data;
+  },
+
+  // GET /api/attendance/ - List all attendance records
+  list: async (params = {}) => {
+    const response = await API.get("/api/attendance/", { params });
+    return response.data;
+  },
+
+  // GET /api/attendance/{id}/ - Get single attendance record
+  retrieve: async (id) => {
+    const response = await API.get(`/api/attendance/${id}/`);
+    return response.data;
+  },
 };
+
+export default AttendanceService;

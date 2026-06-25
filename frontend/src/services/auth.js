@@ -28,6 +28,7 @@ export const loginUser = async (email, password) => {
     localStorage.setItem("employee_id", res.data.id);
   }
 
+
   localStorage.setItem("email", email);
 
   console.log("✅ Logged in:", res.data.username); // You'll see the username!
@@ -48,4 +49,5 @@ export const logoutUser = async () => {
   localStorage.removeItem("email");
   window.location.href = "/";
 };
+
 

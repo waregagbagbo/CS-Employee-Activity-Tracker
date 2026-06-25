@@ -9,6 +9,8 @@ import {
   FaSignOutAlt,
   FaChevronLeft,
   FaChevronRight,
+  FaPlus,     // For "New Report" button
+  FaChartBar  // For "Analytics" button
 } from "react-icons/fa";
 
 export default function Sidebar() {
@@ -18,7 +20,7 @@ export default function Sidebar() {
   const modules = [
     { name: "DASHBOARD", route: "/dashboard", icon: <FaTachometerAlt /> },
     { name: "ATTENDANCE", route: "/attendance", icon: <FaCalendarCheck /> },
-    {name: "SHIFTS", route: "/shifts", icon: <FaTachometerAlt /> },
+    { name: "SHIFTS", route: "/shifts", icon: <FaTachometerAlt /> },
     { name: "REPORTS", route: "/reports", icon: <FaFileAlt /> },
     { name: "DEPARTMENTS", route: "/departments", icon: <FaBuilding /> },
     { name: "EMPLOYEES", route: "/employees", icon: <FaUsers /> },

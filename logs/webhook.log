@@ -1,0 +1,629 @@
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\admin.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\admin.py changed, reloading.
+Watching for file changes with StatReloader
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 121
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7327
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /reports/?page=1 HTTP/1.1" 200 0
+"OPTIONS /reports/?page=1 HTTP/1.1" 200 0
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /api/shifts/upcoming/ HTTP/1.1" 200 0
+Not Found: /api/shifts/upcoming/
+"GET /api/shifts/upcoming/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /api/shifts/today/ HTTP/1.1" 200 0
+Not Found: /api/shifts/today/
+"GET /api/shifts/today/ HTTP/1.1" 404 23
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /api/shifts/upcoming/
+"GET /api/shifts/upcoming/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/shifts/ HTTP/1.1" 200 4089
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/shifts/upcoming/
+"GET /api/shifts/upcoming/ HTTP/1.1" 404 23
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/shifts/ HTTP/1.1" 200 4089
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/shifts/ HTTP/1.1" 200 4089
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"OPTIONS /api/attendance/clock-in/ HTTP/1.1" 200 0
+Method Not Allowed: /api/attendance/clock-in/
+"POST /api/attendance/clock-in/ HTTP/1.1" 405 41
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"OPTIONS /shifts/today_shifts/ HTTP/1.1" 200 0
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"OPTIONS /attendance/ HTTP/1.1" 200 0
+"OPTIONS /attendance/ HTTP/1.1" 200 0
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+"OPTIONS /shifts/upcoming_shifts/ HTTP/1.1" 200 0
+Not Found: /shifts/upcoming_shifts/
+"GET /shifts/upcoming_shifts/ HTTP/1.1" 404 4478
+"OPTIONS /shifts/?page=1 HTTP/1.1" 200 0
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/upcoming_shifts/
+"GET /shifts/upcoming_shifts/ HTTP/1.1" 404 4478
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/upcoming_shifts/
+"GET /shifts/upcoming_shifts/ HTTP/1.1" 404 4478
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/upcoming_shifts/
+"GET /shifts/upcoming_shifts/ HTTP/1.1" 404 4478
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 19472
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+"OPTIONS /shifts/upcoming_shifts HTTP/1.1" 200 0
+Not Found: /shifts/upcoming_shifts
+"GET /shifts/upcoming_shifts HTTP/1.1" 404 4475
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/upcoming_shifts
+"GET /shifts/upcoming_shifts HTTP/1.1" 404 4475
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/upcoming_shifts
+"GET /shifts/upcoming_shifts HTTP/1.1" 404 4475
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+"OPTIONS /api/shifts/upcoming_shifts HTTP/1.1" 200 0
+"GET /api/shifts/upcoming_shifts HTTP/1.1" 301 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+Not Found: /shifts/today_shifts/
+"GET /shifts/today_shifts/ HTTP/1.1" 404 4469
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 9713
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 9713
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+Not Found: /shifts/
+"GET /shifts/?page=1 HTTP/1.1" 404 4437
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"OPTIONS /api/shifts/?page=1 HTTP/1.1" 200 0
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+Not Found: /reports/
+"GET /reports/?page=1 HTTP/1.1" 404 4440
+"OPTIONS /api/reports/?page=1 HTTP/1.1" 200 0
+"GET /api/reports/?page=1 HTTP/1.1" 200 982
+"GET /api/reports/?page=1 HTTP/1.1" 200 982
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+Not Found: /attendance/
+"GET /attendance/ HTTP/1.1" 404 4442
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/reports/?page=1 HTTP/1.1" 200 982
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/attendance/ HTTP/1.1" 200 937
+"GET /api/attendance/ HTTP/1.1" 200 937
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7327
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3693
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 19103
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33560
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/3/change/ HTTP/1.1" 200 23052
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/attendance/ HTTP/1.1" 200 19888
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/3/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/attendance/1/change/ HTTP/1.1" 200 26269
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/attendance/1/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/attendance/ HTTP/1.1" 200 20202
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /api/attendance/ HTTP/1.1" 200 932
+"GET /api/attendance/ HTTP/1.1" 200 932
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/reports/?page=1 HTTP/1.1" 200 982
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/attendance/ HTTP/1.1" 200 932
+"GET /api/attendance/ HTTP/1.1" 200 932
+"GET /api/reports/?page=1 HTTP/1.1" 200 982
+"GET /api/reports/?page=1 HTTP/1.1" 200 982
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+"GET /api/reports/?page=1 HTTP/1.1" 200 1139
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/reports/?page=1 HTTP/1.1" 200 1139
+"POST /admin/logout/ HTTP/1.1" 200 3568
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7290
+"POST / HTTP/1.1" 200 7443
+"GET /api/shifts/ HTTP/1.1" 200 19639
+"GET /api/reports/ HTTP/1.1" 200 21435
+"GET /api/reports/?page=1 HTTP/1.1" 200 1139
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/reports/?page=1 HTTP/1.1" 200 1139
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/attendance/ HTTP/1.1" 200 52
+"GET /api/attendance/ HTTP/1.1" 200 52
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4670
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7323
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4442
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 117
+"OPTIONS /api/attendance/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/ HTTP/1.1" 200 0
+"GET /api/attendance/ HTTP/1.1" 200 52
+"GET /api/attendance/ HTTP/1.1" 200 52
+"OPTIONS /api/attendance/clock_in/ HTTP/1.1" 200 0
+Not Found: /api/attendance/clock_in/
+"POST /api/attendance/clock_in/ HTTP/1.1" 404 27
+Not Found: /api/attendance/clock_in/
+"POST /api/attendance/clock_in/ HTTP/1.1" 404 27
+Not Found: /api/attendance/clock_in/
+"POST /api/attendance/clock_in/ HTTP/1.1" 404 27
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"OPTIONS /api/shifts/upcoming_shifts HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5335
+"OPTIONS /api/shifts/?page=1 HTTP/1.1" 200 0
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5335
+"GET /api/shifts/?page=1 HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5335
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"OPTIONS /api/reports/?page=1 HTTP/1.1" 200 0
+"GET /api/reports/?page=1 HTTP/1.1" 200 1139
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/attendance/ HTTP/1.1" 200 52
+"GET /api/attendance/ HTTP/1.1" 200 52
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/attendance/ HTTP/1.1" 200 52
+"GET /api/attendance/ HTTP/1.1" 200 52
+"GET /api/shifts/ HTTP/1.1" 200 19639
+"GET /api/attendance/ HTTP/1.1" 200 17918
+"OPTIONS /api/profile/me/ HTTP/1.1" 200 0
+"OPTIONS /api/profile/me/ HTTP/1.1" 200 0
+Not Found: /api/profile/me/
+"GET /api/profile/me/ HTTP/1.1" 404 5793
+Not Found: /api/profile/me/
+"GET /api/profile/me/ HTTP/1.1" 404 5793
+"GET /api/reports/?page=1 HTTP/1.1" 200 1139
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"OPTIONS /api/reports/?is_approved=false HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"OPTIONS /api/reports/?is_approved=true HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/attendance/ HTTP/1.1" 200 17918

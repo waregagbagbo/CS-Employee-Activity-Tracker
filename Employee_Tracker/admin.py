@@ -22,7 +22,7 @@ class AttendanceAdmin(admin.ModelAdmin):
     list_filter = ('employee','clock_in_time','clock_out_time','date',)
 
 class ArchivedShiftAdmin(admin.ModelAdmin):
-    list_display = ('employee','shift_agent','shift_date','riginal_shift_id ')
+    list_display = ('shift_agent','shift_date','original_shift_id',)
 
 
 admin.site.register(StaticShift,StaticShiftAdmin)

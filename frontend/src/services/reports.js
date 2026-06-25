@@ -1,40 +1,38 @@
 import API from "./api";
 
-export const ReportService = {
-  /**
-   * Fetches paginated data mapping perfectly to: /reports/?page=X
-   */
-  async getReports(page = 1) {
-    const response = await API.get(`api/reports/?page=${page}`);
-    return {
-      results: response.data?.results || [],
-      hasNext: !!response.data?.next,
-      hasPrev: !!response.data?.previous,
-    };
-  },
+const ReportService = {
+  // LIST (role-filtered automatically by backend)
+  list: (params) => API.get("/api/reports/", { params }),
 
-  /**
-   * Dispatches payloads to your DRF creation view at: /reports/
-   */
-  async createReport(reportData) {
-    const response = await API.post("api/reports/", {
-      attendance: parseInt(reportData.attendance, 10),
-      shift_activity_type: reportData.shift_activity_type,
-      report_type: reportData.report_type,
-      activity_description: reportData.activity_description,
-      tickets_resolved: parseInt(reportData.tickets_resolved, 10) || 0,
-      calls_made: parseInt(reportData.calls_made, 10) || 0,
-      issues_escalated: parseInt(reportData.issues_escalated, 10) || 0,
-      notes: reportData.notes || "",
-    });
-    return response.data;
-  },
+  // RETRIEVE single report
+  get: (id) => API.get(`/api/reports/${id}/`),
 
-  /**
-   * Hits your custom detail action path at: /reports/{id}/approve/
-   */
-  async approveReport(reportId) {
-    const response = await API.post(`/reports/${reportId}/approve/`);
-    return response.data;
-  },
+  // CREATE new report
+  create: (data) => API.post("/api/reports/", data),
+
+  // UPDATE report (employee edits before approval)
+  update: (id, data) => API.patch(`/api/reports/${id}/`, data),
+
+  // DELETE report
+  delete: (id) => API.delete(`/api/reports/${id}/`),
+
+  // APPROVE (Supervisor/Admin only)
+  approve: (id) => API.post(`/api/reports/${id}/approve/`),
+
+  // REJECT (Supervisor/Admin only)
+  reject: (id) => API.post(`/api/reports/${id}/reject/`),
+
+  // GET pending reports for supervisor
+  getPendingApproval: (params) =>
+    API.get("/api/reports/pending_approval/", { params }),
+
+  // GET analytics
+  getAnalytics: (params) =>
+    API.get("/api/reports/analytics/", { params }),
+
+  // DOWNLOAD report as PDF
+  downloadPDF: (id) =>
+    API.get(`/api/reports/${id}/download_pdf/`, { responseType: 'blob' }),
 };
+
+export default ReportService;
