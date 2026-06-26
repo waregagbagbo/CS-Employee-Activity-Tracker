@@ -1,164 +1,416 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
-import { CalendarRange, Search } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
-import { ShiftService } from "../services/shifts";
-import ShiftFeed from "../components/ShiftFeed";
+import ShiftService from "../services/shifts";
+import { useNavigate } from "react-router-dom";
+import {
+  Clock, Calendar, AlertCircle, CheckCircle, Loader,
+  Eye, Edit2, Trash2, Plus, TrendingUp
+} from "lucide-react";
 
-export default function ShiftsPage() {
-  const [activeTab, setActiveTab] = useState("today"); // 'today', 'upcoming', 'all'
-  const [shifts, setShifts] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pagination, setPagination] = useState({ hasNext: false, hasPrev: false });
+export default function ShiftsEnhanced() {
+  const navigate = useNavigate();
+  const user = localStorage.getItem("username") || "Admin";
+  const userType = localStorage.getItem("user_type") || "employee_agent";
+
+  const [tab, setTab] = useState("today"); // today, upcoming, history
+  const [todayShifts, setTodayShifts] = useState([]);
+  const [upcomingShifts, setUpcomingShifts] = useState([]);
+  const [historyShifts, setHistoryShifts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const isFetchingRef = useRef(false);
-
-  const username = localStorage.getItem("username") || "Agent";
-  const userRole = localStorage.getItem("user_role") || "Employee";
-  const isManagement = ["Supervisor", "Manager", "Admin"].includes(userRole);
-
-  const loadShifts = useCallback(async (targetPage = 1, currentSearch = "") => {
-    if (isFetchingRef.current) return;
-    isFetchingRef.current = true;
-
-    try {
-      if (activeTab === "today") {
-        const data = await ShiftService.getTodayShifts();
-        setShifts(data);
-        setPagination({ hasNext: false, hasPrev: false });
-      } else if (activeTab === "upcoming") {
-        const data = await ShiftService.getUpcomingShifts();
-        setShifts(data);
-        setPagination({ hasNext: false, hasPrev: false });
-      } else {
-        // Tab is 'all' history layout
-        const data = await ShiftService.getShifts(targetPage, currentSearch);
-        setShifts(data.results);
-        setPagination({ hasNext: data.hasNext, hasPrev: data.hasPrev });
-        setPage(targetPage);
-      }
-    } catch (err) {
-      console.error("Shift fetching pipeline integration error:", err);
-    } finally {
-      setLoading(false);
-      isFetchingRef.current = false;
-    }
-  }, [activeTab]);
+  const [error, setError] = useState(null);
+  const [selectedShift, setSelectedShift] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [deleting, setDeleting] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    loadShifts(1, searchQuery);
-  }, [activeTab, loadShifts]);
+    fetchShiftData();
+  }, []);
 
-  // Handle live query text searching with an execution callback
-  const handleSearchChange = (e) => {
-    const value = e.target.value;
-    setSearchQuery(value);
-    if (activeTab === "all") {
-      loadShifts(1, value);
+  const fetchShiftData = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [today, upcoming, history] = await Promise.all([
+        ShiftService.getTodayShifts(),
+        ShiftService.getUpcomingShifts(),
+        ShiftService.getShiftHistory(30), // Last 30 days
+      ]);
+
+      setTodayShifts(Array.isArray(today) ? today : today.results || []);
+      setUpcomingShifts(Array.isArray(upcoming) ? upcoming : upcoming.results || []);
+      setHistoryShifts(Array.isArray(history) ? history : history.results || []);
+    } catch (err) {
+      setError("Failed to load shifts");
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this shift?")) return;
+
+    setDeleting(id);
+    try {
+      await ShiftService.delete(id);
+      setError(null);
+      // Refresh data
+      fetchShiftData();
+    } catch (err) {
+      setError("Failed to delete shift");
+    } finally {
+      setDeleting(null);
+    }
+  };
+
+  const getStatusBadge = (shift) => {
+    if (!shift.shift_agent) {
+      return (
+        <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold">
+          <AlertCircle size={12} /> Unassigned
+        </span>
+      );
+    }
+
+    const status = shift.shift_status;
+    if (status === "shift_completed") {
+      return (
+        <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold">
+          <CheckCircle size={12} /> Completed
+        </span>
+      );
+    }
+
+    if (status === "shift_in_progress") {
+      return (
+        <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">
+          <Clock size={12} /> In Progress
+        </span>
+      );
+    }
+
+    if (status === "shift_incomplete") {
+      return (
+        <span className="inline-flex items-center gap-1 bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">
+          <AlertCircle size={12} /> Incomplete
+        </span>
+      );
+    }
+
+    if (status === "no_show") {
+      return (
+        <span className="inline-flex items-center gap-1 bg-rose-100 text-rose-700 px-3 py-1 rounded-full text-xs font-bold">
+          <AlertCircle size={12} /> No Show
+        </span>
+      );
+    }
+
+    return (
+      <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold">
+        <Clock size={12} /> Scheduled
+      </span>
+    );
+  };
+
+  const ShiftTable = ({ shifts, showActions = true }) => {
+    return (
+      <>
+        {shifts.length === 0 ? (
+          <div className="bg-white rounded-[2.5rem] p-12 text-center border border-gray-100">
+            <Calendar size={40} className="mx-auto text-gray-300 mb-4" />
+            <p className="text-gray-500 font-bold uppercase tracking-widest">
+              No shifts found
+            </p>
+          </div>
+        ) : (
+          <div className="bg-white rounded-[2.5rem] shadow-sm overflow-hidden border border-gray-100">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-black">
+                  <tr>
+                    <th className="px-6 py-4 text-left font-black text-xs uppercase tracking-widest text-[#FFCC00]">
+                      Date
+                    </th>
+                    <th className="px-6 py-4 text-left font-black text-xs uppercase tracking-widest text-[#FFCC00]">
+                      Shift Type
+                    </th>
+                    <th className="px-6 py-4 text-left font-black text-xs uppercase tracking-widest text-[#FFCC00]">
+                      Time
+                    </th>
+                    <th className="px-6 py-4 text-left font-black text-xs uppercase tracking-widest text-[#FFCC00]">
+                      Employee
+                    </th>
+                    <th className="px-6 py-4 text-left font-black text-xs uppercase tracking-widest text-[#FFCC00]">
+                      Status
+                    </th>
+                    {showActions && (
+                      <th className="px-6 py-4 text-center font-black text-xs uppercase tracking-widest text-[#FFCC00]">
+                        Actions
+                      </th>
+                    )}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {shifts.map((shift) => (
+                    <tr key={shift.id} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-6 py-4 font-bold text-sm">
+                        {new Date(shift.shift_date).toLocaleDateString()}
+                      </td>
+                      <td className="px-6 py-4 text-xs font-black uppercase">
+                        <span className="bg-gray-100 px-3 py-1 rounded-full">
+                          {shift.static_shift?.name || "—"}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-xs font-bold text-gray-600">
+                        {shift.static_shift?.start_time} - {shift.static_shift?.end_time}
+                      </td>
+                      <td className="px-6 py-4 font-bold text-sm">
+                        {shift.shift_agent?.user?.first_name || "Unassigned"}
+                      </td>
+                      <td className="px-6 py-4">
+                        {getStatusBadge(shift)}
+                      </td>
+                      {showActions && (
+                        <td className="px-6 py-4">
+                          <div className="flex gap-2 justify-center">
+                            <button
+                              onClick={() => {
+                                setSelectedShift(shift);
+                                setShowModal(true);
+                              }}
+                              className="p-2 bg-gray-50 rounded-lg hover:bg-black hover:text-[#FFCC00] transition-all"
+                              title="View Details"
+                            >
+                              <Eye size={14} />
+                            </button>
+
+                            {userType === "supervisor" && (
+                              <>
+                                <button
+                                  onClick={() => navigate(`/edit-shift/${shift.id}`)}
+                                  className="p-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all"
+                                  title="Edit Shift"
+                                >
+                                  <Edit2 size={14} />
+                                </button>
+
+                                <button
+                                  onClick={() => handleDelete(shift.id)}
+                                  disabled={deleting === shift.id}
+                                  className="p-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition-all disabled:opacity-50"
+                                  title="Delete Shift"
+                                >
+                                  {deleting === shift.id ? (
+                                    <Loader size={14} className="animate-spin" />
+                                  ) : (
+                                    <Trash2 size={14} />
+                                  )}
+                                </button>
+                              </>
+                            )}
+                          </div>
+                        </td>
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  };
+
+  if (loading) {
+    return (
+      <div className="flex bg-[#F9FAFB] h-screen">
+        <Sidebar />
+        <div className="flex-1 flex items-center justify-center font-black uppercase tracking-widest animate-pulse text-gray-400 flex-col gap-3">
+          <Loader size={24} className="animate-spin" />
+          Loading Shifts...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex bg-[#F9FAFB] h-screen w-full font-sans text-black overflow-hidden">
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0 h-full relative">
-        <Topbar title="Operations Schedule" user={username} />
+        <Topbar title="Shift Schedule" user={user} />
+        <main className="flex-1 overflow-y-auto p-4 md:p-10 pb-32">
+          <div className="max-w-7xl mx-auto">
 
-        <main className="flex-1 overflow-y-auto p-6 md:p-10 space-y-6">
-
-          {/* TOP CONTROLS DASHBOARD SHELL BAR */}
-          <section className="bg-black p-6 rounded-[2.5rem] text-white flex justify-between items-center border-b-4 border-[#FFCC00]">
-            <div className="flex items-center gap-3">
-              <CalendarRange size={22} className="text-[#FFCC00]" />
-              <h1 className="text-xl font-black uppercase tracking-tight text-white">
-                Deployments Registry
-              </h1>
-            </div>
-            <span className="text-[10px] font-mono bg-neutral-900 text-gray-400 px-3 py-1.5 rounded-xl uppercase tracking-wider border border-neutral-800 font-bold">
-              Scope: {userRole}
-            </span>
-          </section>
-
-          {/* VIEW TAB CONTROLS & DYNAMIC SEARCH BAR BAR */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="flex gap-2 p-1 bg-gray-200/50 rounded-2xl w-full sm:w-fit">
-              {[
-                { id: "today", label: "Today" },
-                { id: "upcoming", label: "Upcoming (7d)" },
-                { id: "all", label: "All History" }
-              ].map((tab) => (
+            {/* HEADER */}
+            <section className="bg-black p-8 rounded-[2.5rem] shadow-2xl text-white mb-8 border-b-4 border-[#FFCC00] flex justify-between items-center flex-wrap gap-4">
+              <div>
+                <h1 className="text-3xl font-black italic tracking-tighter uppercase text-[#FFCC00]">
+                  Shift Schedule
+                </h1>
+                <p className="text-gray-400 font-mono text-xs mt-1 uppercase tracking-[0.2em]">
+                  View your shifts across today, upcoming, and history
+                </p>
+              </div>
+              {userType === "supervisor" && (
                 <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-5 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
-                    activeTab === tab.id ? "bg-black text-[#FFCC00] shadow-sm" : "text-gray-500 hover:text-black"
+                  onClick={() => navigate("/create-shift")}
+                  className="bg-[#FFCC00] text-black px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-white transition-all flex items-center gap-2"
+                >
+                  <Plus size={18} /> New Shift
+                </button>
+              )}
+            </section>
+
+            {/* ERROR MESSAGE */}
+            {error && (
+              <div className="bg-rose-50 border border-rose-200 text-rose-600 p-4 rounded-2xl flex items-start gap-3 mb-6">
+                <AlertCircle size={20} className="mt-0.5 flex-shrink-0" />
+                <p className="font-bold">{error}</p>
+              </div>
+            )}
+
+            {/* TABS */}
+            <div className="flex gap-3 mb-8 flex-wrap">
+              {[
+                { key: "today", label: "Today", count: todayShifts.length },
+                { key: "upcoming", label: "Upcoming (7 Days)", count: upcomingShifts.length },
+                { key: "history", label: "History (30 Days)", count: historyShifts.length },
+              ].map((t) => (
+                <button
+                  key={t.key}
+                  onClick={() => setTab(t.key)}
+                  className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest border transition-all flex items-center gap-2 ${
+                    tab === t.key
+                      ? "bg-black text-[#FFCC00] border-black"
+                      : "bg-white text-gray-400 border-gray-200 hover:border-black"
                   }`}
                 >
-                  {tab.label}
+                  {t.label}
+                  <span className={`text-xs font-bold px-2 py-1 rounded-full ${
+                    tab === t.key 
+                      ? "bg-[#FFCC00] text-black" 
+                      : "bg-gray-200 text-gray-600"
+                  }`}>
+                    {t.count}
+                  </span>
                 </button>
               ))}
             </div>
 
-            {/* Render direct context filter input element only if viewing comprehensive layout logs */}
-            {activeTab === "all" && (
-              <div className="relative w-full sm:w-64">
-                <Search size={14} className="absolute left-4 top-3.5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search Agent / Status..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs font-bold focus:border-black outline-none transition-all shadow-xs"
-                />
-              </div>
-            )}
-          </div>
-
-          {/* RENDERING FEED GRID */}
-          <div className="space-y-4">
-            {loading ? (
-              <div className="text-center py-12 text-gray-400 font-black uppercase tracking-widest">
-                Loading schedule data...
-              </div>
-            ) : (
-              <>
-                <ShiftFeed shifts={shifts} />
-
-                {/* HISTORICAL PAGINATION INTERACTION LAYER */}
-                {activeTab === "all" && (pagination.hasNext || pagination.hasPrev) && (
-                  <div className="flex justify-between items-center pt-4">
-                    <button
-                      onClick={() => loadShifts(page - 1, searchQuery)}
-                      disabled={!pagination.hasPrev}
-                      className={`px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all ${
-                        pagination.hasPrev ? "bg-white text-black border-gray-200 hover:bg-gray-50" : "bg-gray-100 text-gray-400 border-gray-100 cursor-not-allowed"
-                      }`}
-                    >
-                      Prev
-                    </button>
-
-                    <span className="text-[10px] font-black tracking-widest bg-black text-[#FFCC00] px-4 py-2 rounded-xl">
-                      {page}
-                    </span>
-
-                    <button
-                      onClick={() => loadShifts(page + 1, searchQuery)}
-                      disabled={!pagination.hasNext}
-                      className={`px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all ${
-                        pagination.hasNext ? "bg-white text-black border-gray-200 hover:bg-gray-50" : "bg-gray-100 text-gray-400 border-gray-100 cursor-not-allowed"
-                      }`}
-                    >
-                      Next
-                    </button>
+            {/* TAB CONTENT */}
+            {tab === "today" && (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-[2.5rem] p-6 border border-blue-200">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Clock size={20} className="text-blue-600" />
+                      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Shifts Today</span>
+                    </div>
+                    <p className="text-3xl font-black text-blue-700">{todayShifts.length}</p>
                   </div>
-                )}
-              </>
+                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-[2.5rem] p-6 border border-emerald-200">
+                    <div className="flex items-center gap-3 mb-2">
+                      <CheckCircle size={20} className="text-emerald-600" />
+                      <span className="text-xs font-black uppercase tracking-widest text-emerald-600">Completed</span>
+                    </div>
+                    <p className="text-3xl font-black text-emerald-700">
+                      {todayShifts.filter(s => s.shift_status === 'shift_completed').length}
+                    </p>
+                  </div>
+                  <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-[2.5rem] p-6 border border-amber-200">
+                    <div className="flex items-center gap-3 mb-2">
+                      <TrendingUp size={20} className="text-amber-600" />
+                      <span className="text-xs font-black uppercase tracking-widest text-amber-600">In Progress</span>
+                    </div>
+                    <p className="text-3xl font-black text-amber-700">
+                      {todayShifts.filter(s => s.shift_status === 'shift_in_progress').length}
+                    </p>
+                  </div>
+                </div>
+                <ShiftTable shifts={todayShifts} />
+              </div>
+            )}
+
+            {tab === "upcoming" && (
+              <div className="space-y-4">
+                <ShiftTable shifts={upcomingShifts} />
+              </div>
+            )}
+
+            {tab === "history" && (
+              <div className="space-y-4">
+                <ShiftTable shifts={historyShifts} showActions={false} />
+              </div>
+            )}
+
+            {/* SHIFT DETAILS MODAL */}
+            {showModal && selectedShift && (
+              <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                <div className="bg-white rounded-[2.5rem] p-8 max-w-md w-full">
+                  <h2 className="text-2xl font-black uppercase tracking-tighter mb-6">
+                    Shift Details
+                  </h2>
+
+                  <div className="space-y-4 mb-8">
+                    <div>
+                      <label className="text-xs font-black uppercase tracking-widest text-gray-500 block mb-2">
+                        Date
+                      </label>
+                      <p className="font-bold text-lg">
+                        {new Date(selectedShift.shift_date).toLocaleDateString("en-US", {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </p>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-black uppercase tracking-widest text-gray-500 block mb-2">
+                        Shift Type
+                      </label>
+                      <p className="font-bold text-lg">{selectedShift.static_shift?.name}</p>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-black uppercase tracking-widest text-gray-500 block mb-2">
+                        Time
+                      </label>
+                      <p className="font-bold text-lg">
+                        {selectedShift.static_shift?.start_time} - {selectedShift.static_shift?.end_time}
+                      </p>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-black uppercase tracking-widest text-gray-500 block mb-2">
+                        Employee
+                      </label>
+                      <p className="font-bold text-lg">
+                        {selectedShift.shift_agent?.user?.first_name || "Unassigned"}
+                      </p>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-black uppercase tracking-widest text-gray-500 block mb-2">
+                        Status
+                      </label>
+                      {getStatusBadge(selectedShift)}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setShowModal(false)}
+                    className="w-full bg-black text-[#FFCC00] px-6 py-3 rounded-2xl font-black uppercase tracking-widest hover:bg-gray-800 transition-all"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             )}
           </div>
-
         </main>
       </div>
     </div>

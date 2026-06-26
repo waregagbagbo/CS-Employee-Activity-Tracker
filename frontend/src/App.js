@@ -5,6 +5,7 @@ import Register from "./pages/Register.jsx";
 import Home from "./pages/Dashboard.jsx";
 import Employees from "./pages/Employees";
 import Shifts from "./pages/Shifts.jsx";
+import CreateShift from "./pages/CreateShift.jsx";
 import Profile from "./pages/Profile.jsx"
 import Reports from "./pages/Reports.jsx";
 import {Departments} from "./pages/Departments.jsx";
@@ -35,6 +36,7 @@ function App(){
 
 
         <Route path="/shifts" element={<ProtectedRoute><Shifts /></ProtectedRoute>} />
+        <Route path="/create-shift" element={<CreateShift />} />
 
         <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
         <Route path="/reports/:id/approve" element={<ApproveReports />} />
