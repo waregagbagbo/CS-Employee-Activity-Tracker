@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react"; // Added useContext
 import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext"; // Added AuthContext import
 import {
   FaTachometerAlt,
   FaUsers,
@@ -9,22 +10,31 @@ import {
   FaSignOutAlt,
   FaChevronLeft,
   FaChevronRight,
-  FaPlus,     // For "New Report" button
-  FaChartBar  // For "Analytics" button
+  FaPlus,     // Used for "New Report" button
+  FaChartBar  // Used for "Analytics" button
 } from "react-icons/fa";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);
   const location = useLocation();
+  const { userType } = useContext(AuthContext); // Destructured userType state
 
+  const isSupervisor = userType === "supervisor";
+
+  // Defined authorization rules explicitly for each module
   const modules = [
-    { name: "DASHBOARD", route: "/dashboard", icon: <FaTachometerAlt /> },
-    { name: "ATTENDANCE", route: "/attendance", icon: <FaCalendarCheck /> },
-    { name: "SHIFTS", route: "/shifts", icon: <FaTachometerAlt /> },
-    { name: "REPORTS", route: "/reports", icon: <FaFileAlt /> },
-    { name: "DEPARTMENTS", route: "/departments", icon: <FaBuilding /> },
-    { name: "EMPLOYEES", route: "/employees", icon: <FaUsers /> },
+    { name: "DASHBOARD", route: "/dashboard", icon: <FaTachometerAlt />, visible: true },
+    { name: "NEW REPORT", route: "/new-report", icon: <FaPlus />, visible: !isSupervisor }, // Employees only
+    { name: "ANALYTICS", route: "/analytics", icon: <FaChartBar />, visible: isSupervisor },   // Supervisors only
+    { name: "ATTENDANCE", route: "/attendance", icon: <FaCalendarCheck />, visible: true },
+    { name: "SHIFTS", route: "/shifts", icon: <FaTachometerAlt />, visible: true },
+    { name: "REPORTS", route: "/reports", icon: <FaFileAlt />, visible: true },
+    { name: "DEPARTMENTS", route: "/departments", icon: <FaBuilding />, visible: true },
+    { name: "EMPLOYEES", route: "/employees", icon: <FaUsers />, visible: true },
   ];
+
+  // Filtered array to isolate elements permitted for the active role
+  const visibleModules = modules.filter((mod) => mod.visible);
 
   const isActive = (route) => location.pathname === route;
 
@@ -42,7 +52,7 @@ export default function Sidebar() {
           </div>
           {open && (
             <div className="leading-none">
-              <h2 className="text-xl font-black tracking-tighter italic italic uppercase">
+              <h2 className="text-xl font-black tracking-tighter italic uppercase">
                 ONAFRIQ
               </h2>
               <p className="text-[10px] font-bold text-[#FFCC00] tracking-[0.3em] uppercase">
@@ -63,7 +73,7 @@ export default function Sidebar() {
 
       {/* Navigation List */}
       <nav className="flex-1 px-4 space-y-2">
-        {modules.map((mod, idx) => {
+        {visibleModules.map((mod, idx) => {
           const active = isActive(mod.route);
           return (
             <Link
@@ -102,16 +112,18 @@ export default function Sidebar() {
         {open && (
           <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-[#FFCC00] rounded-full flex items-center justify-center text-black font-black text-sm">
+              <div className="w-10 h-10 bg-[#FFCC00] rounded-full flex items-center justify-center text-black font-black text-sm text-center line-clamp-1">
                 {localStorage.getItem("username")?.charAt(0).toUpperCase() || "A"}
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-black text-white truncate uppercase tracking-tight">
                   {localStorage.getItem("username") || "Admin"}
                 </p>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                    <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Online</span>
+                    <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest truncate">
+                      {userType ? userType.replace("_", " ") : "Online"}
+                    </span>
                 </div>
               </div>
             </div>

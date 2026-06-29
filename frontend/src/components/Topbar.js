@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react"; // Added useContext
 import { FaBell, FaSearch, FaUser, FaCog, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext"; // Added AuthContext import
 
 export default function Topbar({ title }) {
   const navigate = useNavigate();
+  const { userType } = useContext(AuthContext); // Destructured userType from Context
   const employeeId = localStorage.getItem("employee_id");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -19,7 +21,7 @@ export default function Topbar({ title }) {
 
   const fetchUserData = async () => {
     try {
-      const token = localStorage.getItem("token") || localStorage.getItem("authToken");
+      const token = localStorage.getItem("token") || localStorage.getItem("authToken") || localStorage.getItem("access"); // Added "access" fallback match
       if (!token) { setLoading(false); return; }
 
       const response = await fetch("http://127.0.0.1:8000/", {
@@ -137,7 +139,10 @@ export default function Topbar({ title }) {
               <p className="text-[10px] font-black text-black uppercase tracking-tighter">
                 {loading ? "..." : user.username}
               </p>
-              <p className="text-[8px] text-[#FFCC00] font-black uppercase tracking-[0.1em]">Verified</p>
+              {/* Dynamic Badge: Displays active profile type dynamically */}
+              <p className="text-[8px] text-[#FFCC00] font-black uppercase tracking-[0.1em]">
+                {userType ? userType.replace("_", " ") : "Verified User"}
+              </p>
             </div>
             <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center text-[#FFCC00] font-black text-sm shadow-lg">
               {loading ? "" : user.username.charAt(0).toUpperCase()}
@@ -166,18 +171,21 @@ export default function Topbar({ title }) {
                   <span>Account Settings</span>
                 </button>
               </div>
+
+              {/* FIXED/COMPLETED: Resolved truncated JSX layout structure */}
               <div className="p-2 border-t border-gray-100">
                 <button
                   onClick={() => navigate("/logout")}
                   className="w-full px-4 py-3 text-left text-[10px] font-black uppercase tracking-widest text-white bg-black hover:bg-rose-600 rounded-2xl flex items-center space-x-3 transition-all"
                 >
-                  <FaSignOutAlt size={12} className="text-[#FFCC00]" />
-                  <span>Terminate Session</span>
+                  <FaSignOutAlt size={12} />
+                  <span>Logout Node</span>
                 </button>
               </div>
             </div>
           )}
         </div>
+
       </div>
     </div>
   );

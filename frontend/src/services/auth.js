@@ -12,10 +12,7 @@ export const registerUser = async (payload) => {
 // login authentication
 export const loginUser = async (email, password) => {
   const res = await API.post("", { email, password });
-  //console.log("Login response",res.data.username);
 
-  //const token  = res.data.token || res.data.access;
-  // Backend returns { message, token, username }
   if (res.data.token) {
     localStorage.setItem("access", res.data.token);
   }
@@ -24,14 +21,17 @@ export const loginUser = async (email, password) => {
     localStorage.setItem("username", res.data.username);
   }
 
-  if(res.data.id){
+  if (res.data.id) {
     localStorage.setItem("employee_id", res.data.id);
   }
 
+  if (res.data.user_type) {
+  localStorage.setItem("user_type", res.data.user_type);
+}
 
   localStorage.setItem("email", email);
 
-  console.log("✅ Logged in:", res.data.username); // You'll see the username!
+  console.log("✅ Logged in:", res.data.username);
 
   return res.data;
 };
@@ -45,8 +45,9 @@ export const logoutUser = async () => {
   }
   localStorage.removeItem("access");
   localStorage.removeItem("username");
-  localStorage.removeItem("id");
+  localStorage.removeItem("employee_id"); // Fixed: matches your login key
   localStorage.removeItem("email");
+  localStorage.removeItem("user_type");    // ADDED: Clears user type on logout
   window.location.href = "/";
 };
 

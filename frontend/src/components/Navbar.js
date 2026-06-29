@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react"; // Added useContext
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { logoutUser } from "../services/auth";
+import { AuthContext } from "../context/AuthContext"; // Added AuthContext import
 import {
   FaTachometerAlt,
   FaUsers,
@@ -9,27 +9,38 @@ import {
   FaSignOutAlt,
   FaBars,
   FaTimes,
-  FaBuilding
+  FaBuilding,
+  FaPlus,     // Added for New Report
+  FaChartBar  // Added for Analytics
 } from "react-icons/fa";
 
 export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { userType, logout } = useContext(AuthContext); // Destructured userType and logout from Context
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const username = localStorage.getItem("user") || "User";
+
+  // Fixed: Fallback changed from "user" to "username" to match your auth.js configuration
+  const username = localStorage.getItem("username") || "User";
+  const isSupervisor = userType === "supervisor";
 
   const navLinks = [
-    { name: "Dashboard", path: "/dashboard", icon: <FaTachometerAlt /> },
-    { name: "Employees", path: "/employees", icon: <FaUsers /> },
-    { name: "Shifts", path: "/shifts", icon: <FaCalendarAlt /> },
-    { name: "Reports", path: "/reports", icon: <FaFileAlt /> },
-    { name: "Departments", path: "/departments", icon: <FaBuilding /> },
+    { name: "Dashboard", path: "/dashboard", icon: <FaTachometerAlt />, visible: true },
+    { name: "New Report", path: "/new-report", icon: <FaPlus />, visible: !isSupervisor }, // Employees only
+    { name: "Analytics", path: "/analytics", icon: <FaChartBar />, visible: isSupervisor },   // Supervisors only
+    { name: "Employees", path: "/employees", icon: <FaUsers />, visible: true },
+    { name: "Shifts", path: "/shifts", icon: <FaCalendarAlt />, visible: true },
+    { name: "Reports", path: "/reports", icon: <FaFileAlt />, visible: true },
+    { name: "Departments", path: "/departments", icon: <FaBuilding />, visible: true },
   ];
+
+  // Filter links based on visibility parameter rules
+  const visibleLinks = navLinks.filter(link => link.visible);
 
   const isActive = (path) => location.pathname === path;
 
   const handleLogout = async () => {
-    await logoutUser();
+    await logout(); // Changed to utilize your central Context layout setup
     navigate("/login");
   };
 
@@ -49,7 +60,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
+            {visibleLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -72,7 +83,12 @@ export default function Navbar() {
               <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
                 {username.charAt(0).toUpperCase()}
               </div>
-              <span className="text-sm font-medium text-gray-700">{username}</span>
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-gray-700 leading-tight">{username}</span>
+                <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">
+                  {userType ? userType.replace("_", " ") : "Online"}
+                </span>
+              </div>
             </div>
 
             {/* Logout Button */}
@@ -99,7 +115,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
           <div className="px-4 py-3 space-y-1">
-            {navLinks.map((link) => (
+            {visibleLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -122,6 +138,9 @@ export default function Navbar() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-gray-800">{username}</p>
+                <p className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">
+                  {userType ? userType.replace("_", " ") : "Online"}
+                </p>
               </div>
             </div>
 
@@ -136,59 +155,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
-  );
-}
-
-// Alternative: Minimal Navbar (if you prefer simpler design)
-export function MinimalNavbar() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const navLinks = [
-    { name: "Dashboard", path: "/dashboard" },
-    { name: "Employees", path: "/employees" },
-    { name: "Shifts", path: "/shifts" },
-    { name: "Reports", path: "/reports" },
-    { name: "Departments", path: "/departments" },
-  ];
-
-  const isActive = (path) => location.pathname === path;
-
-  const handleLogout = async () => {
-    await logoutUser();
-    navigate("/login");
-  };
-
-  return (
-    <nav className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center space-x-6">
-          <h1 className="text-lg font-bold text-indigo-600">Employee Tracker</h1>
-          <div className="flex space-x-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm font-medium transition-colors ${
-                  isActive(link.path)
-                    ? "text-indigo-600 border-b-2 border-indigo-600 pb-1"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <button
-          onClick={handleLogout}
-          className="text-sm font-medium text-red-600 hover:text-red-700 transition"
-        >
-          Logout
-        </button>
-      </div>
     </nav>
   );
 }

@@ -627,3 +627,1920 @@ Not Found: /api/profile/me/
 "GET /api/reports/ HTTP/1.1" 200 1139
 "GET /api/reports/ HTTP/1.1" 200 1139
 "GET /api/attendance/ HTTP/1.1" 200 17918
+Watching for file changes with StatReloader
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7323
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4442
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7323
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"OPTIONS /api/reports/?is_approved=false HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"OPTIONS /api/reports/?is_approved=true HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+"OPTIONS /api/reports/?is_approved=false HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1139
+"OPTIONS /api/reports/?is_approved=true HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1139
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"GET /api/reports/ HTTP/1.1" 200 1139
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"OPTIONS /api/attendance/history/ HTTP/1.1" 200 0
+Not Found: /api/attendance/history/
+"GET /api/attendance/history/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/reports/ HTTP/1.1" 200 1139
+"GET /api/reports/ HTTP/1.1" 200 1139
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/history/
+"GET /api/attendance/history/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"OPTIONS /api/employees/new/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/new/ HTTP/1.1" 200 0
+Not Found: /api/employees/new/
+"GET /api/employees/new/ HTTP/1.1" 404 23
+Not Found: /api/employees/new/
+"GET /api/employees/new/ HTTP/1.1" 404 23
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 121
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /admin HTTP/1.1" 301 0
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3693
+"GET /static/admin/css/login.css HTTP/1.1" 200 951
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 19250
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33558
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/4/change/ HTTP/1.1" 200 23058
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33558
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/4/change/ HTTP/1.1" 200 23058
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/4/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33817
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/6/change/ HTTP/1.1" 200 23052
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/6/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33817
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /admin/Employee_Tracker/shift/6/change/ HTTP/1.1" 200 23052
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/6/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33817
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/history/
+"GET /api/attendance/history/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33560
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/employees/ HTTP/1.1" 200 1025
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 669
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /admin/Employee_Tracker/shift/6/change/ HTTP/1.1" 200 23052
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/shift/6/change/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33815
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 982
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/ HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 982
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 982
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 19183
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 200 27978
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 19183
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 200 27978
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 19183
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/?o=-1.2 HTTP/1.1" 200 19391
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/?_changelist_filters=o%3D-1.2 HTTP/1.1" 200 28075
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/shift/ HTTP/1.1" 200 33558
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 19183
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/add/ HTTP/1.1" 200 27020
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/activityreport/add/ HTTP/1.1" 200 27603
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/activityreport/add/ HTTP/1.1" 200 27323
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/Employee_Tracker/activityreport/add/ HTTP/1.1" 302 0
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 20161
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1453
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1453
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1453
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1453
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /admin/Employee_Tracker/activityreport/2/change/ HTTP/1.1" 200 27534
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 667
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"GET /api/shifts/?shift_date__lte=2026-06-26&shift_date__gte=2026-05-27&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 4673
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /admin/logout/ HTTP/1.1" 200 3568
+Watching for file changes with StatReloader
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 121
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"OPTIONS /api/reports/ HTTP/1.1" 200 0
+"GET /api/reports/ HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+"OPTIONS /api/reports/?is_approved=false HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1453
+"OPTIONS /api/reports/?is_approved=true HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1453
+"GET /api/reports/ HTTP/1.1" 200 1453
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/employees/ HTTP/1.1" 200 1025
+"OPTIONS /api/shifts/4/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/4/ HTTP/1.1" 200 0
+"OPTIONS /api/static-shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/static-shifts/ HTTP/1.1" 200 0
+Not Found: /api/static-shifts/
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+Not Found: /api/static-shifts/
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+"GET /api/shifts/4/ HTTP/1.1" 200 668
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/4/ HTTP/1.1" 200 668
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/employees/ HTTP/1.1" 200 1025
+Not Found: /api/static-shifts/
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+Not Found: /api/static-shifts/
+"GET /api/shifts/4/ HTTP/1.1" 200 668
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/4/ HTTP/1.1" 200 668
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4170
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4442
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 19233
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 19873
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 200 27978
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 19873
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+D:\CS-Employee-Activity-Tracker\Employee_Tracker\admin.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 20063
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 200 27978
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 20063
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST / HTTP/1.1" 200 117
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/ HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1768
+"OPTIONS /api/reports/?all=true HTTP/1.1" 200 0
+"OPTIONS /api/reports/?all=true HTTP/1.1" 200 0
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 20063
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 20063
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/1/change/ HTTP/1.1" 200 27978
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/Employee_Tracker/activityreport/ HTTP/1.1" 200 20063
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/?is_approved=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"POST /auth/logout/ HTTP/1.1" 201 42
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 27
+Bad Request: /
+"POST / HTTP/1.1" 400 52
+"POST / HTTP/1.1" 200 117
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"POST /auth/logout/ HTTP/1.1" 201 42
+Forbidden: /auth/logout/
+"POST /auth/logout/ HTTP/1.1" 403 27
+"POST / HTTP/1.1" 200 117
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 121
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+Method Not Allowed: /
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Method Not Allowed: /
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/reports/?all=true HTTP/1.1" 200 0
+"OPTIONS /api/reports/?all=true HTTP/1.1" 200 0
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"OPTIONS /api/reports/?is_approved=false HTTP/1.1" 200 0
+"GET /api/reports/?is_approved=false HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Method Not Allowed: /
+Not Found: /api/attendance/today/
+"GET / HTTP/1.1" 405 40
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"OPTIONS / HTTP/1.1" 200 0
+"POST / HTTP/1.1" 200 117
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+"OPTIONS /api/attendance/today/ HTTP/1.1" 200 0
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"OPTIONS /auth/logout/ HTTP/1.1" 200 0
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/attendance/status/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?ordering=-shift_date HTTP/1.1" 200 0
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/status/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 67, in post
+    'user_type':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 98477
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 67, in post
+    'user_type':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 98478
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 67, in post
+    'user_type':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 98478
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 67, in post
+    'user_type':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 98493
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 67, in post
+    'user_type':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 98478
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST / HTTP/1.1" 200 121
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/status/
+Not Found: /api/attendance/today/
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Not Found: /api/attendance/today/
+Not Found: /api/attendance/status/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+"GET /api/attendance/status/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"GET /api/shifts/?ordering=-shift_date HTTP/1.1" 200 4110
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/today_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/upcoming_shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 0
+"OPTIONS /api/shifts/ HTTP/1.1" 200 0
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST / HTTP/1.1" 200 117
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+"OPTIONS /api/employees/ HTTP/1.1" 200 0
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/employees/ HTTP/1.1" 200 1025
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/employees/ HTTP/1.1" 200 1025
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/static-shifts/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/9/ HTTP/1.1" 200 0
+"OPTIONS /api/shifts/9/ HTTP/1.1" 200 0
+"OPTIONS /api/static-shifts/ HTTP/1.1" 200 0
+Not Found: /api/static-shifts/
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+Not Found: /api/static-shifts/
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/9/ HTTP/1.1" 200 662
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/9/ HTTP/1.1" 200 662
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/reports/?all=true HTTP/1.1" 200 0
+"OPTIONS /api/reports/?all=true HTTP/1.1" 200 0
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Not Found: /api/static-shifts/
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+Not Found: /api/static-shifts/
+"GET /api/shifts/9/ HTTP/1.1" 200 662
+"GET /api/static-shifts/ HTTP/1.1" 404 5802
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET /api/shifts/9/ HTTP/1.1" 200 662
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET /api/employees/ HTTP/1.1" 200 1025
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/employees/?page=1 HTTP/1.1" 200 0
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"GET /api/employees/?page=1 HTTP/1.1" 200 1025
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"OPTIONS /api/departments/?page=1 HTTP/1.1" 200 0
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/departments/?page=1 HTTP/1.1" 200 384
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/reports/?all=true HTTP/1.1" 200 1768
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/today_shifts/ HTTP/1.1" 200 664
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"GET /api/shifts/?shift_date__lte=2026-06-29&shift_date__gte=2026-05-30&shift_status__in=shift_completed,shift_incomplete,no_show&ordering=-shift_date HTTP/1.1" 200 4226
+"GET /api/shifts/ HTTP/1.1" 200 4089
+"GET /api/shifts/upcoming_shifts/ HTTP/1.1" 200 5339
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Not Found: /api/attendance/today/
+"GET /api/attendance/today/ HTTP/1.1" 404 23
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 40
+"POST /auth/logout/ HTTP/1.1" 201 42
+"POST /auth/logout/ HTTP/1.1" 201 42
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 67, in post
+    'user_type':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 98513
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 68, in post
+    'user_role':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 98651
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7332
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 68, in post
+    'user_role':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 100651
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 68, in post
+    'user_role':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 100651
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\Alx_DjangoLearnLab\advanced-api-project\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\CS-Employee-Activity-Tracker\accounts\views.py", line 72, in post
+    'user_type':user.user_type
+                ^^^^^^^^^^^^^^
+AttributeError: 'CustomUser' object has no attribute 'user_type'
+"POST / HTTP/1.1" 500 100614
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+"POST / HTTP/1.1" 200 7443
+D:\CS-Employee-Activity-Tracker\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /
+"POST / HTTP/1.1" 403 3842
+D:\CS-Employee-Activity-Tracker\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+D:\CS-Employee-Activity-Tracker\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /
+"POST / HTTP/1.1" 403 3842
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7323
+Method Not Allowed: /
+"GET / HTTP/1.1" 405 7323
+"POST / HTTP/1.1" 200 7494

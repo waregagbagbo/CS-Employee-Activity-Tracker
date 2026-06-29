@@ -49,6 +49,10 @@ export default function Reports() {
       } else if (status === "approved") {
         params.is_approved = true;
       }
+      else if (status === "all"){
+        params.all= true;
+      }
+
 
       const data = await ReportService.list(params);
       const reportsList = data.results || data;

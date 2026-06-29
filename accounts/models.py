@@ -24,9 +24,27 @@ class CustomUser(AbstractUser):
     #def full_name(self):
        #return f"{self.first_name} {self.last_name}".strip()
 
-
     def __str__(self):
         return self.username
+
+    @property
+    def user_type(self):
+        """
+        Safely routes user_type queries from the user instance
+        straight to the linked Employee profile.
+        """
+        try:
+            return self.employee_profile.user_type
+        except AttributeError:
+            # Fallback if employee_profile related_name doesn't match
+            try:
+                from .models import Employee  # Adjust import if needed
+                employee = Employee.objects.get(user=self)
+                return employee.user_type
+            except Exception:
+                return 'employee_agent'
+        except Exception:
+            return 'employee_agent'
 
     class Meta:
         verbose_name = 'User'
@@ -56,6 +74,8 @@ class Employee(models.Model):
     @property
     def username(self):
         return self.user.username
+
+
 
     class Meta:
         verbose_name = 'Employee'

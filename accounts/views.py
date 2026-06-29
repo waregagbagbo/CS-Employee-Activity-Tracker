@@ -54,16 +54,21 @@ class UserLogin(APIView):
 
         # get employee ID
         employee_id = None
+        user_type = 'employee_agent'
+
         try:
             employee = Employee.objects.get(user=user)
             employee_id = employee.id
+
         except Employee.DoesNotExist:
             pass
+
 
         context = {"message":'User logged in successfully',
                    'token':token.key,
                    'username':user.username,
                    'id':employee_id,
+                   'user_type':user.user_type
                    }
         return Response(context,status=status.HTTP_200_OK)
 

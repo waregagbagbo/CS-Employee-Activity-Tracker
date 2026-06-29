@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react"; // Added useContext
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../services/auth";
+import { AuthContext } from "../context/AuthContext"; // Added AuthContext import
 import { FaEnvelope, FaLock, FaShieldAlt, FaExclamationTriangle } from "react-icons/fa";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // Destructured login function from Context
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await loginUser(email, password);
+      // Changed from loginUser(email, password) to use Context wrapper
+      await login(email, password);
       navigate("/dashboard");
     } catch (err) {
       setError("AUTHENTICATION FAILED: INVALID CREDENTIALS.");
